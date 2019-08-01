@@ -1,7 +1,7 @@
 <?php
 
 
-route::set(' ', function(){
+route::set('', function(){
     echo "home-page";
 });
 
@@ -9,8 +9,8 @@ route::set('home', function(){
     echo "home";
 });
 
-route::set('contact', function(){
-
+route::set('contact-us', function(){
+    echo "contact us";
 });
 
 ?>

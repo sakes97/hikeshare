@@ -1,16 +1,16 @@
 <?php
 
 
-Route::set('', function(){
-    echo "home-page";
+Route::set('index.php', function(){
+    Home::CreateView('home');
 });
 
 Route::set('home', function(){
-    echo "home";
+    Home::CreateView('home');
 });
 
 Route::set('contact-us', function(){
-    echo "contact us";
+    Contact_us::CreateView('contact-us');    
 });
 
 ?>

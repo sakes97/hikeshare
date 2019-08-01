@@ -8,7 +8,15 @@ class Route {
 
         self::$validRoutes[] = $route;
         
-        print_r(self::$validRoutes);
+        /*
+        allows for if theres code stored in the function, the invoke
+        will execute all that code
+        */
+        if($_GET['url'] == $route){
+            $function->__invoke();
+        }
+
+
 
     }
 

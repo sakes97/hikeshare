@@ -1,15 +1,15 @@
 <?php
 
 
-route::set('', function(){
+Route::set('', function(){
     echo "home-page";
 });
 
-route::set('home', function(){
+Route::set('home', function(){
     echo "home";
 });
 
-route::set('contact-us', function(){
+Route::set('contact-us', function(){
     echo "contact us";
 });
 

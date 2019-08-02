@@ -13,4 +13,8 @@ Route::set('contact-us', function(){
     Contact_us::CreateView('contact-us');    
 });
 
+Route::set('signup', function(){
+    Users::CreateView('signup');
+});
+
 ?>

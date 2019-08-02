@@ -1,4 +1,12 @@
 {
+    "name" : "hikeshare",
+    "description": "4th Year Project - Carpooling web application",
+    "type": "project",
+    "authors": [{
+        "name": "Sisikelelwe Maqabangqa",
+        "email": "s216443881@mandela.ac.za",
+        "role": "Full Stack Developer"
+    }],
     "require": {
         "twbs/bootstrap": "4.3.1"
     }

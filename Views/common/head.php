@@ -6,6 +6,10 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--link to the bootstrap-->
+        <link rel="stylesheet" href="Views/assets/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
         
     </head>
     <body>
+    <div class="container-fluid">

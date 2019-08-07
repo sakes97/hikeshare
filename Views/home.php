@@ -20,6 +20,16 @@ include("common/basic_nav.php");
 <section class="py-5">
     <div class="container">
         <h2 class="font-weight-light">Page Content</h2>
+
+
+        <!-- enter destination inputs -->
+        <form class="form-group">
+            <input type="text" name="from" class="form-control-lg" placeholder="From">
+            <input type="text" name="to" class="form-control-lg" placeholder="Destination">
+            <button class="btn btn-primary">Find Ride</button>
+        </form>
+
+
     </div>
 </section>
 <?php 

@@ -3,17 +3,25 @@ include("common/head.php");
 include("common/basic_nav.php");
 ?>
 
-<div class="row" align="center">
-    <div class="col-4">
-        col-1
+<!-- Home page Image Header -->
+<header class="masthead" style="background-image: url('Views/img/ra3_2x.png');">
+    <div class="h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="font-weight-light">Vertically Centered Masthead Content</h1>
+                <p class="lead">Starter text</p>
+            </div>
+        </div>
     </div>
-    <div class="col-4">
-        col-2
+
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="font-weight-light">Page Content</h2>
     </div>
-    <div class="col-4">
-        col-3
-    </div>
-</div>
+</section>
 <?php 
 include("common/foot.php");
 ?>

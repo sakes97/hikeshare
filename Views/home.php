@@ -1,5 +1,6 @@
 <?php
 include("common/head.php");
+include("common/basic_nav.php");
 ?>
 
 <div class="row" align="center">
@@ -13,7 +14,6 @@ include("common/head.php");
         col-3
     </div>
 </div>
-
 <?php 
 include("common/foot.php");
 ?>

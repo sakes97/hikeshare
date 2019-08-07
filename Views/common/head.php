@@ -7,12 +7,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--link to the bootstrap-->
-        <link rel="stylesheet" href="Views/assets/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-        <!-- normalize.css -->
-        <link rel="stylesheet" href="Views/assets/components/normalize/normalize.css">
-        <!-- link font awesome -->
-        <link rel="stylesheet" href="Views/assets/components/font-awesome/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
     </head>
     <body>
     <div class="container-fluid">

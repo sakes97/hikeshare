@@ -13,3 +13,7 @@ include("common/head.php");
         col-3
     </div>
 </div>
+
+<?php 
+include("common/foot.php");
+?>

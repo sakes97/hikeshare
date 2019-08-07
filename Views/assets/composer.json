@@ -8,6 +8,9 @@
         "role": "Full Stack Developer"
     }],
     "require": {
-        "twbs/bootstrap": "4.3.1"
+        "twbs/bootstrap": "4.3.1",
+        "robloach/component-installer": "^0.2.3",
+        "components/jquery": "^3.3",
+        "components/font-awesome": "^5.9"
     }
 }

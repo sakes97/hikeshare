@@ -14,6 +14,7 @@
         <!--link to the css-->
         <link rel="stylesheet" href="Views/css/main.css">
         <link rel="stylesheet" href="Views/css/register.css">
+        <script src="Views/js/myscript.js"></script>
     </head>
     <body>
     <div class="container-fluid">

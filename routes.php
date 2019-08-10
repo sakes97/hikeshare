@@ -17,4 +17,8 @@ Route::set('signup', function(){
     Users::CreateView('signup');
 });
 
+Route::set('profile' , function(){
+    Users::CreateView('profile');
+});
+
 ?>

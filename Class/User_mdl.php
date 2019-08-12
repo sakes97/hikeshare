@@ -18,23 +18,45 @@ class  User {
 
     public function _construct(){}
 
-    public function get_all (){
+    public function get_all_users(){
         $query = 'CALL uspGetAllUsers()';
-        $result = Database::GetRow($query);
-        $user = [];
-        $user[0] = $result['userid'];
-        $user[1] = $result['firstname'];
-        $user[2] = $result['lastname'];
-        $user[3] = $result['password'];
-        return $user;
+        return Database::GetRow($query);
     }
 
-    public function reg_user($fnam, $lname, $email, $password){
-        //user registration
+    public function reg_user(){
+
+        $fname = $_POST['inputFname'];
+        $lname = $_POST['inputLname'];
+        $email = $_POST['inputEmail'];
+        $password = $_POST['inputPassword'];
+
+        $query = 'CALL uspRegister(:firstname, :lastname, :email, :pass)';
+        $params = array(
+            ':firstname' => $fname,
+            ':lastname' => $lname,
+            ':email' => $email,
+            ':pass' => $password
+        );
+
+        $result = Database::Execute($query, $params);
+        
+        // if($result){
+        //     header("Location: dashboard");
+        // }else{
+        //     header("Location: signup?result=fail");
+        // }
     }
 
     public function login_user($email, $password){
-        //user login
+        $email = $_POST['inputEmail'];
+        $password = $_POST['inputPassword'];
+
+        $query = 'CALL uspSignIn(:email, :pass)';
+        $params = array(
+            ':email' => $email,
+            ':pass' => $password
+        );
+        return Database::GetRow($query, $params);
     }
 
     public function update_profile_details(){

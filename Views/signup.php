@@ -23,24 +23,24 @@ include("common/basic_nav.php");
                             Facebook Sign-up
                         </button>
                         <p class="lead text-center">Or</p>
-                        <form>
+                        <form method="POST" action="User_mdl">
                             <div class="form-label-group">
-                                <input type="text" id="fname" class="form-control" placeholder="Forename" required autofocus>
+                                <input type="text" name="inputFname" id="inputFname" class="form-control" placeholder="Forename" required autofocus>
                                 <label for="fname">First Name</label>
                             </div>
                             
                             <div class="form-label-group">
-                                <input type="text" id="lname" class="form-control" placeholder="Last Name" required autofocus>
+                                <input type="text" name="inputLname" id="inputLname" class="form-control" placeholder="Last Name" required autofocus>
                                 <label for="lname">Last Name</label>
                             </div>
 
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+                                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
                                 <label for="inputEmail">Email Address</label>
                             </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
                                 <label for="inputPassword">Password</label>
                             </div>
 

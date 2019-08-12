@@ -21,4 +21,7 @@ Route::set('profile' , function(){
     Users_ctrl::CreateView('profile');
 });
 
+Route::set('dashboard' , function(){
+    Users_ctrl::CreateView('dashboard');
+});
 ?>

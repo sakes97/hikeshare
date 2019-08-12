@@ -2,23 +2,23 @@
 
 
 Route::set('index.php', function(){
-    Home::CreateView('home');
+    Home_ctrl::CreateView('home');
 });
 
 Route::set('home', function(){
-    Home::CreateView('home');
+    Home_ctrl::CreateView('home');
 });
 
 Route::set('contact-us', function(){
-    Contact_us::CreateView('contact-us');    
+    Contact_us_ctrl::CreateView('contact-us');    
 });
 
 Route::set('signup', function(){
-    Users::CreateView('signup');
+    Users_ctrl::CreateView('signup');
 });
 
 Route::set('profile' , function(){
-    Users::CreateView('profile');
+    Users_ctrl::CreateView('profile');
 });
 
 ?>

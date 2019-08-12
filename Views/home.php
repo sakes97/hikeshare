@@ -1,6 +1,8 @@
 <?php
 include("common/head.php");
 include("common/basic_nav.php");
+
+// $user = Home_ctrl::home();
 ?>
 
 <!-- Home page Image Header -->
@@ -32,6 +34,16 @@ include("common/basic_nav.php");
 
     </div>
 </section>
+
+
+
+<ul>
+    <li><?php echo $user[0];?></li>
+    <li><?php echo $user[1];?></li>
+    <li><?php echo $user[2];?></li>
+    <li><?php echo $user[3];?></li>
+</ul>
+
 <?php 
 include("common/foot.php");
 ?>

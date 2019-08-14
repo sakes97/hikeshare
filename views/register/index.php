@@ -1,11 +1,5 @@
-<?php
-include("common/head.php");
-include("common/basic_nav.php");
-?>
-
-
 <div class="row no-gutter"> <!--no-gutter removes the spacing between coloumns-->
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image:url('Views/img/fullcar-01_2x.jpg');"></div>
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image:url('<?php echo URL; ?>public/images/fullcar-01_2x.jpg');"></div>
     <div class="col-md-8 col-lg-6">
         <div class="login d-flex align-items-center py-5">
             <div class="container">
@@ -23,15 +17,16 @@ include("common/basic_nav.php");
                             Facebook Sign-up
                         </button>
                         <p class="lead text-center">Or</p>
-                        <form method="POST" action="User_mdl">
+                        <form method="POST" action="register/register_standard">
+                            
                             <div class="form-label-group">
                                 <input type="text" name="inputFname" id="inputFname" class="form-control" placeholder="Forename" required autofocus>
-                                <label for="fname">First Name</label>
+                                <label for="inputFname">First Name</label>
                             </div>
                             
                             <div class="form-label-group">
                                 <input type="text" name="inputLname" id="inputLname" class="form-control" placeholder="Last Name" required autofocus>
-                                <label for="lname">Last Name</label>
+                                <label for="inputLname">Last Name</label>
                             </div>
 
                             <div class="form-label-group">

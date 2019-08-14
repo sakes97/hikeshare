@@ -1,10 +1,5 @@
-<?php
-include("common/head.php");
-include("common/basic_nav.php");
-?>
-
 <!-- Home page Image Header -->
-<header class="masthead" style="background-image: url('Views/img/ra3_2x.png');">
+<header class="masthead" style="background-image: url('<?php echo URL; ?>public/images/ra3_2x.png');">
     <div class="h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
@@ -32,8 +27,3 @@ include("common/basic_nav.php");
 
     </div>
 </section>
-
-
-<?php 
-include("common/foot.php");
-?>

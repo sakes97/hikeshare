@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarnav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="home">Home</a>
+                    <a class="nav-link" href="index">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Find a ride</a>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signup">
+                    <a class="nav-link" href="register">
                         Sign-up
                     </a>
                 </li>

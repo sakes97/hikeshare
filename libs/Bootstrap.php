@@ -29,6 +29,7 @@ class Bootstrap
             require $file;
         } else {
             $this->error();
+            return false;
         }
 
         $controller = new $url[0];

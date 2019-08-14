@@ -7,10 +7,12 @@ class Register_Model extends Model
         parent::__construct();
     }
 
-    public function reg_google()
+    public function register_standard()
     {}
-    public function reg_facebook()
+
+    public function register_google()
     {}
-    public function reg_standard()
+
+    public function register_facebook()
     {}
 }

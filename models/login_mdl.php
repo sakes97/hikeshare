@@ -7,23 +7,22 @@ class Login_Model extends Model
         parent::__construct();
     }
 
-    public function login_user()
+    public function login()
     {
-        /*
-           function called when user is loggin in
-        */
+        $query = 'CALL uspLogin(:login, :password)';
+        $params = array(
+            ':login' => $_POST['input_username'],
+            ':password' => $_POST['input_password']
+        );
+        $result = Database::GetRow($query,$params);
+        
+        if(!empty($result))
+        {
+            header("location: ../dashboard");
+        }else {
+            echo "empty" ;
+            // header("location: ../login");
+        }
     }
 
-    public function register_standard()
-    {
-        /*
-           function called when user is registering an account
-        */
-    }
-
-    public function register_google()
-    {}
-
-    public function register_facebook()
-    {}
 }

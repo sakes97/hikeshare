@@ -16,7 +16,7 @@
         <!--link to the css-->
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/main.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/register.css">
-
+        <script src="<?php echo URL; ?>public/js/genScript.js"></script>
     </head>
     <body>
     <div class="container-fluid">

@@ -11,4 +11,8 @@ class Register extends Controller
     {
         $this->view->render('register/index');
     }
+
+    public function register_standard(){
+        $this->model->register_standard();
+    }
 }

@@ -18,7 +18,7 @@ class Login_Model extends Model
         so -
         $params = array(
             ':email' => $_POST['email'],
-            ':password' => Hash::create('md5', $_POST['password'], HASH_KEY)
+            ':password' => Hash::create('md5', $_POST['password'], HASH_PASSWORD_KEY)
         );
 
 

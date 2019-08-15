@@ -20,7 +20,7 @@ class Bootstrap
 
         //trim the slash
         $url = rtrim($url, '/');
-
+        $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/',$url);
 
         $file = 'controllers/'.$url[0].'.php';

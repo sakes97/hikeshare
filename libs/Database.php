@@ -63,6 +63,7 @@ class Database
             $statement = $pdo_conn->prepare($sql);
             //Execute statement
             $statement->execute($params);
+            return $statement;
         } catch (PDOException $e) {
             self::Close();
             $error_message = $e->getMessage();

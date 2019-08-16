@@ -13,8 +13,8 @@ class Login extends Controller {
         $this->view->render('login/index');
     }
 
-    public function login(){
+    public function signin(){
         //method to login user - business logic is stored in the login model
-        $this->model->login();
+        $this->model->signin();
     }
 }

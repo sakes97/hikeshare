@@ -7,7 +7,7 @@ class Login_Model extends Model
         parent::__construct();
     }
 
-    public function login()
+    public function signin()
     {
 
         /*
@@ -24,19 +24,20 @@ class Login_Model extends Model
 
         */
 
-        $query = 'CALL uspLogin(:login, :password)';
+        $query = 'CALL uspSignIn(:email, :pass)';
         $params = array(
-            ':login' => $_POST['input_username'],
-            ':password' => $_POST['input_password']
+            ':email' => $_POST['input_username'],
+            ':pass' => Hash::create('md5', $_POST['input_password'], HASH_PASSWORD_KEY)
         );
         $result = Database::GetRow($query,$params);
         
-        if(!empty($result))
-        {
-            header("location: ../dashboard");
+        if(isset($result)){
+            header('location: ../dashboard');
+            // print_r($result);
         }else {
             echo "empty" ;
-            // header("location: ../login");
+            print_r($result);
+            echo $result;
         }
     }
 

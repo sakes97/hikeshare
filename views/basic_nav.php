@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarnav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index">Home</a>
+                    <a class="nav-link" href="<?php echo URL; ?>index">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Find a ride</a>
@@ -20,12 +20,12 @@
                     <a class="nav-link" href="#">Offer a ride</a>
                 </li>
                 <li class="nav-item"> 
-                    <a class="nav-link" href="login">
+                    <a class="nav-link" href="<?php echo URL; ?>login">
                         Login
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register">
+                    <a class="nav-link" href="<?php echo URL; ?>register">
                         Sign-up
                     </a>
                 </li>

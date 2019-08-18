@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard/logout">
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/logout">
                         Logout
                     </a>
                 </li>

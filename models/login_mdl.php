@@ -17,12 +17,16 @@ class Login_Model extends Model
         $result = Database::GetRow($query,$params);
         
         if(isset($result)){
-            Util::set_session('loggedin', true);
-            setcookie('user_id',$result['userid'],time() + (86400 * 30),"/");//cookie lasts a day
+            $arr = array(
+                'online'=>true,
+                'userid'=>$result['userid']
+            );
+            Util::init_session();
+            Util::set_session('loggedin',$arr);
             header('location:' . URL . 'dashboard');
             exit;
         }else {
-            echo "empty" ;
+            header('locatio:' . URL . 'login');
         }
     }
 

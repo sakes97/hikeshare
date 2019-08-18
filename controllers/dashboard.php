@@ -6,32 +6,27 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct();
-        Session::init();
+        // Session::init();
+        Util::init_session();
         $session = Util::get_session('loggedin');
-        if ($session === false) {
+        if ($session['online'] === false) {
             Util::destroy_session();
             header('location:' . URL . 'login');
             exit;
-        }
+        } 
     }
 
     public function index()
     {
         $this->view->title = "User Dashboard";
-        if(isset($_COOKIE['user_id'])){
-            $this->view->user = $this->model->getUserDetails($_COOKIE['user_id']);
-        } else {
-            echo "dashboard > cookie not set"; //@remove
-        }
-
-        $cookie_val = $_COOKIE['user_id'];
+        $user_session = Util::get_session('loggedin');
+        $this->view->user = $this->model->getUserDetails($user_session['userid']);
         $this->view->render('dashboard/index','user_nav');
     }
 
     public function logout()
     {
-        Util::destroy_session();//destroy the session
-        setcookie("user_id", "", time()-3600);//remove cookie
+        Util::destroy_session();
         header('location:' . URL . 'login');
         exit;
     }

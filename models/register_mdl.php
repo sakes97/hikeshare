@@ -9,16 +9,27 @@ class Register_Model extends Model
 
     public function register_standard()
     {
-        $query = ('CALL uspRegister(:firstname,:lastname,:pass,:email)');
+        $userid = Util::generate_userid();
+        $query = ('CALL uspRegister(:firstname,:lastname,:pass,:email, :userid)');
         $params = array(
             ':firstname' => $_POST['inputFname'],
             ':lastname' => $_POST['inputLname'],
-            ':pass' => Hash::create('md5', $_POST['inputPassword'],  HASH_PASSWORD_KEY),
-            ':email' => $_POST['inputEmail']
+            ':pass' => Hash::create('md5', $_POST['inputPassword'], HASH_PASSWORD_KEY),
+            ':email' => $_POST['inputEmail'],
+            ':userid' => $userid,
         );
         $result = Database::Execute($query, $params);
-        if($result){
+        if ($result) {
+            $arr = array(
+                'online'=>true,
+                'userid'=>$userid
+            );
+            Util::init_session();
+            Util::set_session('loggedin',$arr);
             header('location:' . URL . 'dashboard');
+            exit;
+        } else {
+            header('location:' . URL .'register');
         }
     }
 

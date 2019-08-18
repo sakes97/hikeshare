@@ -1,4 +1,7 @@
-<?php   Session::init();     ?>
+<?php   
+    Util::init_session();
+    $session = Util::get_session('loggedin');
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">Logo</a>
@@ -9,17 +12,6 @@
         </button>
         <div class="collapse navbar-collapse" id="usernav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <?php
-                            if(isset($_COOKIE['user_id'])){
-                                echo $this->user['firstname'];
-                            } else {
-                                echo "User > Home";
-                            }
-                        ?>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         Find a ride

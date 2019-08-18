@@ -29,6 +29,9 @@ class Util
         session_unset();
         session_destroy();
     }
+
+    public static function handleLogin(){}
+    public static function handleLogout(){}        
 #endregion
 
 #region Generators

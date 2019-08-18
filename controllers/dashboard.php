@@ -7,9 +7,9 @@ class Dashboard extends Controller
     {
         parent::__construct();
         Session::init();
-        $session = Session::get('loggedin');
+        $session = Util::get_session('loggedin');
         if ($session === false) {
-            Session::destroy();
+            Util::destroy_session();
             header('location:' . URL . 'login');
             exit;
         }
@@ -30,7 +30,7 @@ class Dashboard extends Controller
 
     public function logout()
     {
-        Session::destroy();//destroy the session
+        Util::destroy_session();//destroy the session
         setcookie("user_id", "", time()-3600);//remove cookie
         header('location:' . URL . 'login');
         exit;

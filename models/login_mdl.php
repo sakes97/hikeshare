@@ -17,7 +17,7 @@ class Login_Model extends Model
         $result = Database::GetRow($query,$params);
         
         if(isset($result)){
-            Session::set('loggedin', true);
+            Util::set_session('loggedin', true);
             setcookie('user_id',$result['userid'],time() + (86400 * 30),"/");//cookie lasts a day
             header('location:' . URL . 'dashboard');
             exit;

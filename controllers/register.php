@@ -1,18 +1,20 @@
-<?php 
+<?php
 
-class Register extends Controller 
+class Register extends Controller
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
     }
 
     public function index()
     {
+        $this->view->title = "hikeshare - Login";
         $this->view->render('register/index');
     }
 
-    public function register_standard(){
+    public function register_standard()
+    {
         $this->model->register_standard();
     }
 }

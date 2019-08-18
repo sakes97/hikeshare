@@ -7,8 +7,9 @@ class Dashboard_Model extends Model
         parent::__construct();
     }
 
-    public function someFunction()
-    {
-        echo 'dashboard_model->someFunction()';
+    public function getUserDetails($id){
+        $query = 'CALL uspGetUserDetails(:userid)';
+        $params = array(':userid' => $id);
+        return Database::GetRow($query,$params);
     }
 }

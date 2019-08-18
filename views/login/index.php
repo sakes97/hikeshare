@@ -9,8 +9,5 @@
     <br>
 
     <input type="submit">
-
-    <?php 
-    echo Hash::create('md5', 'test', HASH_PASSWORD_KEY);
-    ?>
+    
 </form>

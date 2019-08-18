@@ -18,7 +18,7 @@ class Register_Model extends Model
         );
         $result = Database::Execute($query, $params);
         if($result){
-            header('location: ../dashboard');
+            header('location:' . URL . 'dashboard');
         }
     }
 

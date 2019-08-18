@@ -1,19 +1,21 @@
-<?php 
+<?php
 
-class Login extends Controller {
+class Login extends Controller
+{
 
-    function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function index() {
-
-        //echo Hash::create('md5', 'test', HASH_PASSWORD_KEY);
-
+    public function index()
+    {
+        $this->view->title = "hikeshare - Login";
         $this->view->render('login/index');
     }
 
-    public function signin(){
+    public function signin()
+    {
         //method to login user - business logic is stored in the login model
         $this->model->signin();
     }

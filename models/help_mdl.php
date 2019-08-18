@@ -6,10 +6,4 @@ class Help_Model extends Model
     {
         parent::__construct();
     }
-
-    public function doSomething()
-    {
-        echo 'help_model->doSomething()';
-    }
-
 }

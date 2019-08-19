@@ -37,7 +37,6 @@ class Util
 #endregion
 
 #region Generators
-    #region ID's
     private function crypto_rand_secure($min, $max)
     {
         $range = $max - $min;
@@ -69,9 +68,6 @@ class Util
 
         return $token;
     }
-    #endregion 
-
-    
 #endregion
 
 #region Hash

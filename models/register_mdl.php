@@ -14,7 +14,7 @@ class Register_Model extends Model
         $params = array(
             ':firstname' => $_POST['inputFname'],
             ':lastname' => $_POST['inputLname'],
-            ':pass' => Hash::create('md5', $_POST['inputPassword'], HASH_PASSWORD_KEY),
+            ':pass' => Util::create('md5', $_POST['inputPassword'], HASH_PASSWORD_KEY),
             ':email' => $_POST['inputEmail'],
             ':userid' => $userid,
         );

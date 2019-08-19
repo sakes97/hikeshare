@@ -30,17 +30,20 @@ class Util
         session_destroy();
     }
 
-    public static function handleLogin(){}
-    public static function handleLogout(){}        
+    public static function handleLogin()
+    {}
+    public static function handleLogout()
+    {}
 #endregion
 
 #region Generators
+    #region ID's
     private function crypto_rand_secure($min, $max)
     {
         $range = $max - $min;
         if ($range < 1) {
             return $min;
-        }// not so random...
+        } // not so random...
 
         $log = ceil(log($range, 2));
         $bytes = (int) ($log / 8) + 1; // length in bytes
@@ -52,7 +55,7 @@ class Util
         } while ($rnd > $range);
         return $min + $rnd;
     }
-    public static function generate_userid($length=11)
+    public static function generate_userid($length = 11)
     {
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -61,12 +64,29 @@ class Util
         $max = strlen($codeAlphabet);
 
         for ($i = 0; $i < $length; $i++) {
-            $token .= $codeAlphabet[self::crypto_rand_secure(0, $max - 1)]; 
+            $token .= $codeAlphabet[self::crypto_rand_secure(0, $max - 1)];
         }
 
         return $token;
     }
+    #endregion 
+
+    
 #endregion
 
+#region Hash
+    /*
+    @param string = $algo The algorithm (md5)
+    @param string = $data The data to encode
+    @param string = $salt Should be the same throughout the system
+    @return string The hashed data/salt
+     */
+    public static function create($algo, $data, $salt)
+    {
+        $context = hash_init($algo, HASH_HMAC, $salt);
+        hash_update($context, $data);
+        return hash_final($context);
+    }
+#endregion
 
 }

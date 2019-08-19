@@ -12,7 +12,7 @@ class Login_Model extends Model
         $query = 'CALL uspSignIn(:email, :pass)';
         $params = array(
             ':email' => $_POST['input_username'],
-            ':pass' => Hash::create('md5', $_POST['input_password'], HASH_PASSWORD_KEY)
+            ':pass' => Util::create('md5', $_POST['input_password'], HASH_PASSWORD_KEY)
         );
         $result = Database::GetRow($query,$params);
         

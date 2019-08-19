@@ -8,16 +8,17 @@ class Bootstrap
     public function __construct()
     {
         $this->_getURL();
+
         if ($this->_url[0] == "index.php") {
             $this->_url = "index";
             // print_r($this->_url);
             $this->_loadDefaultController();
             return false;
         }
-        $this->_loadExistingController();
-        $this->_callControllerMethod();
 
-        
+        $this->_loadExistingController();
+
+        $this->_callControllerMethod();
     }
 
     private function _getURL()

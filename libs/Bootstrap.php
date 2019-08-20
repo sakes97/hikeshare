@@ -3,9 +3,18 @@
 class Bootstrap
 {
     private $_url = null;
-	private $_controller = null;
+    private $_controller = null;
+    private $_controllerPath = 'controllers/';
+    private $_modelPath = 'models/';
+    private $_errorFile = 'err.php';
+    private $_defaultFile = 'index.php';
 
     public function __construct()
+    {
+
+    }
+
+    public function init()
     {
         $this->_getURL();
 
@@ -21,6 +30,29 @@ class Bootstrap
         $this->_callControllerMethod();
     }
 
+#region Path Settings setters
+    public function setControllerPath($path)
+    {
+        $this->_controllerPath = trim($path, '/') . '/';
+    }
+
+    public function setModelPath($path)
+    {
+        $this->_modelPath = trim($path, '/') . '/';
+    }
+
+    public function setErrorFile($path)
+    {
+        $this->_errorFile = trim($path, '/'); 
+    }
+
+    public function setDefaultFile($path)
+    {
+        $this->_defaultFile = trim($path, '/') . '/';
+    }
+#endregion
+
+
     private function _getURL()
     {
         if (isset($_GET["url"])) {
@@ -33,50 +65,76 @@ class Bootstrap
 
     private function _loadDefaultController()
     {
-        require 'controllers/index.php';
+        require $this->_controllerPath . $this->_defaultFile;
         $this->_controller = new Index();
         $this->_controller->index();
     }
 
     private function _loadExistingController()
     {
-        $file = 'controllers/' . $this->_url[0] . '.php';
+        $file = $this->_controllerPath . $this->_url[0] . '.php';
         if (file_exists($file)) {
             require $file;
             $this->_controller = new $this->_url[0];
-            $this->_controller->loadModel($this->_url[0]);
+            $this->_controller->loadModel($this->_url[0], $this->_modelPath);
         } else {
-            // echo "error 2";
-            $this->err();
-            return false;
+            $this->_err();
         }
 
-        
     }
 
     private function _callControllerMethod()
     {
-        if (isset($this->_url[2])) {
-            $this->_controller->{$this->_url[0][1]}($this->_url[0][2]);
-        } else {
-            if (isset($this->_url[1])) {
-                if (method_exists($this->_controller, $this->_url[1])) {
-                    $this->_controller->{$this->_url[1]}();
-                } else {
-                    // echo "error 1";
-                    $this->err();
-                }
-            } else {
-                $this->_controller->index();
+        // if (isset($this->_url[2])) {
+        //     $this->_controller->{$this->_url[0][1]}($this->_url[0][2]);
+        // } else {
+        //     if (isset($this->_url[1])) {
+        //         if (method_exists($this->_controller, $this->_url[1])) {
+        //             $this->_controller->{$this->_url[1]}();
+        //         } else {
+        //             // echo "error 1";
+        //             $this->err();
+        //         }
+        //     } else {
+        //         $this->_controller->index();
+        //     }
+        // }
+        $length = count($this->_url);
+        if ($length > 1) {
+            if (!method_exists($this->_controller, $this->_url[1])) {
+                $this->_err();
             }
+        }
+
+        switch ($length) {
+            case 5:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
+                break;
+
+            case 4:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
+                break;
+
+            case 3:
+                $this->_controller->{$this->_url[1]}($this->_url[2]);
+                break;
+
+            case 2:
+                $this->_controller->{$this->_url[1]}();
+                break;
+
+            default:
+                // die('Something went haywire with the parameters. Please check your bootstrap');
+                $this->_controller->index();
+                break;
         }
     }
 
-    private function err()
+    private function _err()
     {
-        require 'controllers/err.php';
+        require $this->_controllerPath . $this->_errorFile;
         $error = new Err();
         $error->index();
-        return false;
+        exit;
     }
 }

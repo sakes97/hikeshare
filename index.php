@@ -9,3 +9,4 @@ function __autoload($class)
 
 
 $app = new Bootstrap();
+$app->init();

@@ -14,12 +14,19 @@ class Controller
         $this->view = new View();
     }
 
-    public function loadModel($name)
+    /**
+     * Undocumented function
+     *
+     * @param string $name Name of the model
+     * @param string $path Location of the models
+     * @return void
+     */
+    public function loadModel($name, $modelPath = 'models/')
     {
-        $path = 'models/' . $name . '_mdl.php';
+        $path = $modelPath . $name . '_mdl.php';
 
         if (file_exists($path)) {
-            require 'models/' . $name . '_mdl.php';
+            require $modelPath . $name . '_mdl.php';
             $modelName = $name . '_Model';
             $this->model = new $modelName();
         }

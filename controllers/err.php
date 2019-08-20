@@ -8,7 +8,7 @@ class Err extends Controller
     }
     public function index()
     {
-        $this->view->title = "hikeshare - Error";
+        $this->view->title = "Error404";
         $this->view->render('error/index');
     }
 }

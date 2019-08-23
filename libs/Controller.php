@@ -13,7 +13,7 @@ class Controller
          */
         $this->view = new View();
     }
-
+    
     /**
      * Undocumented function
      *

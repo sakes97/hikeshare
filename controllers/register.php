@@ -17,4 +17,7 @@ class Register extends Controller
     {
         $this->model->register_standard();
     }
+    
+    public function register_facebook(){}
+    public function register_google(){}
 }

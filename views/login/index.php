@@ -1,3 +1,31 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">
+                hikeshare - Ridesharing Community
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarnav" aria-label="Toggle Navigation"
+                aria-controls="navbarnav" aria-expanded="false">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarnav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo URL; ?>index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo URL; ?>register">
+                        Register
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="page-header" style="background-image: url('<?php echo URL; ?>public/images/city_matched_2x.jpg');">
     <div class="filter"></div>
     <div class="container">

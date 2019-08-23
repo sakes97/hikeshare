@@ -11,7 +11,7 @@ class Login extends Controller
     public function index()
     {
         $this->view->title = "hikeshare - Login";
-        $this->view->render('login/index');
+        $this->view->render('login/index','basic_nav',true);
     }
 
     public function signin()

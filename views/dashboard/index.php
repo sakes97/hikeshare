@@ -13,7 +13,7 @@
     <div class="container">
       <div class="owner">
         <div class="avatar">
-          <img src="<?php echo URL; ?>public/images/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+          <img src="<?php echo URL; ?>public/images/profile-picture-silhouette.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
         </div>
         <div class="name">
           <h4 class="title">Jane Faker

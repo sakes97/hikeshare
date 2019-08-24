@@ -9,7 +9,7 @@ class Register extends Controller
 
     public function index()
     {
-        $this->view->title = "hikeshare - Login";
+        $this->view->title = "hikeshare - Register";
         $this->view->render('register/index','basic_nav',true);
     }
 

@@ -1,5 +1,5 @@
         <footer class="footer footer-white">
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row">
                     <nav class="footer-nav">
                         <ul>
@@ -23,7 +23,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </footer>
     </div>
 

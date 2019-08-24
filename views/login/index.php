@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">
-                hikeshare - Ridesharing Community
+            <a class="navbar-brand" href="index" rel="tooltip" title="hikeshare - ridesharing community">
+                hikeshare
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#navbarnav" aria-label="Toggle Navigation"
@@ -33,6 +33,7 @@
         <div class="col-lg-4 ml-auto mr-auto">
           <div class="card card-register">
             <h3 class="title mx-auto">Welcome</h3>
+            <p style="padding: 5 5 0;" class="lead text-center">Login using social media accounts</p>
             <div class="social-line text-center">
               <a href="<?php echo URL; ?>register/register_facebook" class="btn btn-neutral btn-facebook btn-just-icon">
                 <i class="fab fa-facebook-square"></i>
@@ -44,6 +45,7 @@
                 <i class="fab fa-twitter"></i>
               </a>
             </div>
+            <p style="padding:5px;" class="lead text-center"> Or </p>
             <form class="register-form" method="POST" action="login/signin">
               <label>Email</label>
               <input type="text" class="form-control" name="input_username" placeholder="Email">

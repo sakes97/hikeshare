@@ -32,11 +32,13 @@
     <div class="filter"></div>
     <div class="container">
       <div class="motto text-center">
-        <h1>hikeshare landing page</h1>
-        <h3>Ridesharing - Join our community</h3>
+        <h1 class="display-1">hikeshare</h1>
+        <h2 class="display-5">Ridesharing Community</h2>
+        <h3>Join like-minded people and save on travel costs by sharing rides to your destinations</h3>
         <br />
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>
-        <button type="button" class="btn btn-outline-neutral btn-round">Download</button>
+        <a href="login" class="btn btn-outline-neutral btn-round">
+          Get Started
+        </a>
       </div>
     </div>
   </div>

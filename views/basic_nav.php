@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">
-                Logo
+            <a class="navbar-brand" href="index" rel="tooltip" title="hikeshare - ridesharing community">
+                hikeshare 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#navbarnav" aria-label="Toggle Navigation"

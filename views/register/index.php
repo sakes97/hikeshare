@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">
-                hikeshare - Ridesharing Community
+            <a class="navbar-brand" href="index" rel="tooltip" title="hikeshare - ridesharing community">
+                hikeshare
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#navbarnav" aria-label="Toggle Navigation"
@@ -45,10 +45,14 @@
               </a>
             </div>
             <form class="register-form" method="post" action="register/register_standard">
+              <label>Firstname</label>
+              <input type="text" name="inputFname" class="form-control" placeholder="Firstname" required>
+              <label>Lastname</label>
+              <input type="text" name="inputLname" class="form-control" placeholder="Lastname" required>
               <label>Email</label>
-              <input type="text" class="form-control" placeholder="Email">
+              <input type="text" name="inputEmail"  class="form-control" placeholder="Email" required>
               <label>Password</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
               <button class="btn btn-danger btn-block btn-round">Register</button>
             </form>
             <div class="forgot">

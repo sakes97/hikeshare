@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">Logo</a>
+            <a class="navbar-brand" href="dashboard" rel="tooltip" title="hikeshare - ridesharing community">hikeshare</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#usernav" aria-label="Toggle Navigation"
                 aria-controls="usernav" aria-expanded="false">
@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="usernav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="dashboard">
                         Home
                     </a>
                 </li>

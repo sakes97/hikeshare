@@ -35,13 +35,13 @@
             <h3 class="title mx-auto">Welcome</h3>
             <div class="social-line text-center">
               <a href="<?php echo URL; ?>register/register_facebook" class="btn btn-neutral btn-facebook btn-just-icon">
-                <i class="fa fa-facebook-square"></i>
+                <i class="fab fa-facebook-square"></i>
               </a>
               <a href="<?php echo URL; ?>register/register_google" class="btn btn-neutral btn-google btn-just-icon">
-                <i class="fa fa-google-plus"></i>
+                <i class="fab fa-google-plus-g"></i>
               </a>
               <a href="<?php echo URL; ?>register/register_google" class="btn btn-neutral btn-twitter btn-just-icon">
-                <i class="fa fa-twitter"></i>
+                <i class="fab fa-twitter"></i>
               </a>
             </div>
             <form class="register-form" method="post" action="login/signin">

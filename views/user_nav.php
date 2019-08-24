@@ -2,7 +2,7 @@
     Util::init_session();
     $session = Util::get_session('loggedin');
 ?>
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+<nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">Logo</a>

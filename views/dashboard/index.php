@@ -6,99 +6,50 @@
 // }
 ?>
 
-<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('<?php echo URL; ?>public/images/get_matched_2x.jpg');">
-    <div class="filter"></div>
-  </div>
-  <div class="section profile-content">
-    <div class="container">
-      <div class="owner">
-        <div class="avatar">
-          <img src="<?php echo URL; ?>public/images/profile-picture-silhouette.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-        </div>
-        <div class="name">
-          <h4 class="title">Jane Faker
-            <br />
-          </h4>
-          <h6 class="description">Music Producer</h6>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ml-auto mr-auto text-center">
-          <p>An artist of considerable range, Jane Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-          <br />
-          <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>
-        </div>
-      </div>
-      <br/>
-      <div class="nav-tabs-navigation">
-        <div class="nav-tabs-wrapper">
-          <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#follows" role="tab">Follows</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#following" role="tab">Following</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Tab panes -->
-      <div class="tab-content following">
-        <div class="tab-pane active" id="follows" role="tabpanel">
+
+<div class="section profile-content">
+  <div class="container">
+    
+    <div class="row max">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mr-auto">
+        <div class="owner">
+          <div class="avatar">
+            <img src="<?php echo URL; ?>public/images/profile-picture-silhouette.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+          </div>
+          <div class="name">
+            <h4 class="title">Jane Faker
+              <br />
+            </h4>
+          </div>
           <div class="row">
-            <div class="col-md-6 ml-auto mr-auto">
-              <ul class="list-unstyled follows">
-                <li>
-                  <div class="row">
-                    <div class="col-lg-2 col-md-4 col-4 ml-auto mr-auto">
-                      <img src="../assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                    </div>
-                    <div class="col-lg-7 col-md-4 col-4  ml-auto mr-auto">
-                      <h6>Flume
-                        <br/>
-                        <small>Musical Producer</small>
-                      </h6>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-4  ml-auto mr-auto">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" value="" checked>
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <hr />
-                <li>
-                  <div class="row">
-                    <div class="col-lg-2 col-md-4 col-4 mx-auto ">
-                      <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                    </div>
-                    <div class="col-lg-7 col-md-4 col-4">
-                      <h6>Banks
-                        <br />
-                        <small>Singer</small>
-                      </h6>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-4">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" value="">
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+            <div class="col-md-12 ml-auto mr-auto text-center">
+              <button class="btn btn-outline-default btn-round">Edit Profile <i class="fas fa-edit"></i></button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <ul id="owner-sidebar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Notifications(0)</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Account</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="tab-pane text-center" id="following" role="tabpanel">
-          <h3 class="text-muted">Not following anyone yet :(</h3>
-          <button class="btn btn-warning btn-round">Find artists</button>
-        </div>
       </div>
     </div>
-  </div>
+
+
+
+
+
+
+
+
+
+
+  </div><!-- end container -->
+</div><!-- end section -->

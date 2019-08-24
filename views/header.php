@@ -22,7 +22,7 @@
 
         
         <!--link the font awesome -->
-        <!-- <script src="https://kit.fontawesome.com/6b92042dff.js"></script> -->
+        <script src="https://kit.fontawesome.com/6b92042dff.js"></script>
         
         <!--link to the css-->
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/main.css">
@@ -31,7 +31,7 @@
         
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> -->
     </head>
     <body>
     <div>

@@ -4,7 +4,8 @@
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mr-auto">
         <div class="owner">
           <div class="avatar">
-            <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+            <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>" alt="User Profile Picture" 
+                  class="img-circle img-no-padding img-responsive">
           </div>
           <div class="name">
             <h4 class="title">

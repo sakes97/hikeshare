@@ -29,6 +29,7 @@
 </section> -->
 
 <div class="page-header" data-parallax="true" style="background-image: url('<?php echo URL; ?>public/images/ra3_2x.png');">
+  <!-- PAGE HEADER -->
     <div class="filter"></div>
     <div class="container">
       <div class="motto text-center">
@@ -42,19 +43,76 @@
       </div>
     </div>
   </div>
+
+  <!-- MAIN BODY -->
   <div class="main">
     <div class="section text-center">
       <div class="container">
+
+      <!-- WHY HIKESHARE -->
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">Let's talk product</h2>
-            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+            <h2 class="title">Why Hikeshare?</h2>
+            <h5 class="description">
+              With Hikeshare, carpooling is fast, fun and a affordable way to commute.
+              Hikeshare is a fresh way to share the road and the costs. Join tens of thousands of members 
+              already car sharing!
+            </h5>
+            <div class="row">
+              <div class="col-12">
+                <div class="avatar">
+                  <img class="img-circle img-no-padding img-responsive" src="<?php echo URL; ?>public/images/volt-car.png" 
+                      alt="Ridesharing Members"/>
+                </div>
+              </div>
+            </div>
+            <div class="why-pills">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title font-weight-bold mb-2">
+                        Drivers
+                      </h4>
+                      <p class="card-text lead">
+                        <ol style="list-style-type:none;">
+                          <li style="padding:5px;">Offer a ride</li>
+                          <li style="padding:5px;">List available seats</li>
+                          <li style="padding:5px;">Meet your passengers</li>
+                          <li style="padding:5px;">Share the costs</li>
+                          <li style="padding:5px;">Rate your trip</li>
+                        </ol>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title font-weight-bold mb-2">
+                        Passengers
+                      </h4>
+                      <p class="card-text lead">
+                        <ol style="list-style-type:none;">
+                          <li style="padding:5px;">Find a ride</li>
+                          <li style="padding:5px;">Book a ride</li>
+                          <li style="padding:5px;">Meet the driver and passengers</li>
+                          <li style="padding:5px;">Share the costs</li>
+                          <li style="padding:5px;">Rate your trip</li>
+                        </ol>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <br>
-            <a href="#paper-kit" class="btn btn-danger btn-round">See Details</a>
           </div>
         </div>
         <br/>
         <br/>
+
+      <!-- HOW IT WORKS -->
         <div class="row">
           <div class="col-md-3">
             <div class="info">
@@ -107,9 +165,11 @@
         </div>
       </div>
     </div>
+
+    <!-- JOIN THE COMMUNITY -->
     <div class="section section-dark text-center">
       <div class="container">
-        <h2 class="title">Let's talk about us</h2>
+        <h2 class="title">Join the community</h2>
         <div class="row">
           <div class="col-md-4">
             <div class="card card-profile card-plain">
@@ -189,6 +249,8 @@
         </div>
       </div>
     </div>
+
+    <!-- SEND US A MESSAGE -->
     <div class="section landing-section">
       <div class="container">
         <div class="row">
@@ -231,4 +293,6 @@
         </div>
       </div>
     </div>
+
+  
   </div>

@@ -21,6 +21,11 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
                         Find a ride
                     </a>
                 </li>
@@ -31,22 +36,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Messages
+                        <i class="fas fa-envelope"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Notifications
+                        <i class="fas fa-bell"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Ride history
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        User settings
+                        Account
                     </a>
                 </li>
                 <li class="nav-item">

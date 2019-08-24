@@ -1,6 +1,9 @@
 <?php   
     Util::init_session();
     $session = Util::get_session('loggedin');
+    if(isset($session)){
+        if($session['online'] === true){
+
 ?>
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
@@ -55,3 +58,8 @@
         </div>
     </div>
 </nav>
+
+<?php
+        }
+    }
+?>

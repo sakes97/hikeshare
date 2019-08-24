@@ -6,14 +6,16 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct();
-        // Session::init();
         Util::init_session();
         $session = Util::get_session('loggedin');
         if ($session['online'] === false) {
             Util::destroy_session();
             header('location:' . URL . 'login');
             exit;
-        } 
+        }else if (!isset($session)){
+            header('location:' . URL . 'login');
+            exit;
+        }
     }
 
     public function index()

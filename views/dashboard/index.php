@@ -1,23 +1,14 @@
-<?php
-// if ($session['online'] === true) {
-//     echo "\n" . "Welcome back " . $this->user['firstname'] . "!" . var_dump($_SESSION);
-// } else {
-//     var_dump($_SESSION);
-// }
-?>
-
-
 <div class="section profile-content">
-  <div class="container">
-    
+  <div class="container">    
     <div class="row max">
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mr-auto">
         <div class="owner">
           <div class="avatar">
-            <img src="<?php echo URL; ?>public/images/profile-picture-silhouette.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+            <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>" alt="Circle Image" class="img-circle img-no-padding img-responsive">
           </div>
           <div class="name">
-            <h4 class="title">Jane Faker
+            <h4 class="title">
+              <?php echo $this->user['firstname'] . ' ' . $this->user['lastname']; ?>
               <br />
             </h4>
           </div>

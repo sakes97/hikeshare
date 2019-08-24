@@ -16,7 +16,7 @@ class Login_Model extends Model
         );
         $result = Database::GetRow($query,$params);
         
-        if(isset($result)){
+        if(!empty($result)){
             $arr = array(
                 'online'=>true,
                 'userid'=>$result['userid']
@@ -26,7 +26,8 @@ class Login_Model extends Model
             header('location:' . URL . 'dashboard');
             exit;
         }else {
-            header('locatio:' . URL . 'login');
+            header('location:' . URL . 'login');
+            exit;
         }
     }
 

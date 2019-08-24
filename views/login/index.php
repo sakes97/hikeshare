@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+<nav class="navbar navbar-expand-lg fixed-top" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="#" rel="tooltip" title="hikeshare - ridesharing community">
@@ -44,12 +44,13 @@
                 <i class="fab fa-twitter"></i>
               </a>
             </div>
-            <form class="register-form" method="post" action="login/signin">
+            <form class="register-form" method="POST" action="login/signin">
               <label>Email</label>
               <input type="text" class="form-control" name="input_username" placeholder="Email">
               <label>Password</label>
               <input type="password" class="form-control" name="input_password" placeholder="Password">
-              <button class="btn btn-danger btn-block btn-round">Login</button>
+              <!-- <button type="submit" class="btn btn-danger btn-block btn-round">Login</button> -->
+              <input type="submit" class="btn btn-danger btn-block btn-round" value="Login">
             </form>
             <div class="forgot">
               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>

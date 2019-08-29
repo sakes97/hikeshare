@@ -1,10 +1,15 @@
 $(document).ready(function(){
-    //set the menu item/link to active 
+    /**
+     * set the menu item/link to active
+     */ 
     $("li a").click(function(){
         $("li a").removeClass("active");
         $(this).addClass("active");
     });
-    //Hide/Show menu's view
+
+    /**
+     * Hide/Show menu's view
+     */
     $("#t_home").click(function(){
         $("#display-content div").hide();
         $("#display-content #dash_home").show();
@@ -26,4 +31,13 @@ $(document).ready(function(){
         $("#display-content #dash_account").show();
     });
 
+    /**
+     * edit profile button click
+     */
+    $("#edit_profile").click(function(){
+        $("#display-content div").hide();
+        $("li a").removeClass("active");
+        $("#t_account").addClass("active");
+        $("#display-content #dash_account").show();
+    })
 });

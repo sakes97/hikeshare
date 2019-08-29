@@ -43,19 +43,19 @@
                 <div class="nav-tabs-wrapper">
                   <ul class="nav nav-tabs" id="nav-menu" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#home">Home</a>
+                      <a class="nav-link active" href="#dash_home" id="t_home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#messages">Messages</a>
+                      <a class="nav-link" href="#dash_messages" id="t_messages">Messages</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#reviews">Reviews</a>
+                      <a class="nav-link" href="#dash_reviews" id="t_reviews">Reviews</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#ride">Ride History</a>
+                      <a class="nav-link" href="#dash_ride_history" id="t_ride_history">Ride History</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#account">Account</a>
+                      <a class="nav-link" href="#dash_account" id="t_account">Account</a>
                     </li>
                   </ul>
                 </div>

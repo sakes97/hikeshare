@@ -28,3 +28,9 @@
     background-color: #555;
     color: #fff;
 }
+.showw{
+    display: block;
+}
+.out{
+    display: none;
+}

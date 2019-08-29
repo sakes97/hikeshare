@@ -37,8 +37,14 @@
 <script src="<?php echo URL; ?>public/js/core/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo URL; ?>public/js/core/bootstrap.min.js" type="text/javascript"></script>
 
-<script src="<?php echo URL; ?>public/js/main.js" type="text/javascript"></script>
-
+<?php
+    //dynamically loading a pages javascript 
+    if (isset($this->js))
+    {
+        foreach ($this->js as $js)
+            echo '<script type="text/javascript" src="'.URL. 'views/' .$js.'"></script>';
+    }
+?>
 <script src="<?php echo URL; ?>public/js/plugins/bootstrap-switch.js"></script>
 
 <script src="<?php echo URL; ?>public/js/plugins/nouislider.min.js" type="text/javascript"></script>

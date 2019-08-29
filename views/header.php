@@ -17,6 +17,8 @@
 
         </title>
 
+        
+
         <!--link the bootstrap-->
         <link href="<?php echo URL; ?>public/css/bootstrap.min.css" rel="stylesheet" />
 

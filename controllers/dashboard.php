@@ -16,6 +16,10 @@ class Dashboard extends Controller
             header('location:' . URL . 'login');
             exit;
         }
+
+        $this->view->js = array(
+            'dashboard/js/dashboard.js'
+        );
     }
 
     public function index()

@@ -2,7 +2,7 @@
   <div class="container">    
     <div class="row max">
         <!-- USER PROFILE -->
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mr-auto">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mr-auto shadow-sm p-3 mb-5 bg-white rounded">
           <div class="owner">
             <div class="avatar">
               <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>" alt="User Profile Picture" 
@@ -91,7 +91,7 @@
 
 
         <!-- USER DASHBOARD DISPLAY VIEW -->
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 ml-auto">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 ml-auto shadow-sm p-3 mb-5 bg-white rounded">
           <!-- NAVIGATION PANE -->
           <div class="row max">
             <div class="col-12">

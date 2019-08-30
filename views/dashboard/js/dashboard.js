@@ -26,10 +26,15 @@ $(document).ready(function(){
         $("#display-content div").hide();
         $("#display-content #dash_ride_history").show();
     });
+    $("#t_preferences").click(function(){
+        $("#display-content div").hide();
+        $("#display-content #dash_preferences").show();
+    });
     $("#t_account").click(function(){
         $("#display-content div").hide();
         $("#display-content #dash_account").show();
     });
+    
 
     /**
      * edit profile button click
@@ -39,5 +44,11 @@ $(document).ready(function(){
         $("li a").removeClass("active");
         $("#t_account").addClass("active");
         $("#display-content #dash_account").show();
-    })
+    });
+    $("#edit_preferences").click(function(){
+        $("#display-content div").hide();
+        $("li a").removeClass("active");
+        $("#t_preferences").addClass("active");
+        $("#display-content #dash_preferences").show();
+    });
 });

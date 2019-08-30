@@ -29,7 +29,11 @@
                       <td style="text-align:right;">June 8 2019</td>
                     </tr>
                     <tr>
-                      <td style="text-align:left;">Preferences</td>
+                      <td style="text-align:left;">
+                        Preferences 
+                        <br>
+                        <a id="edit_preferences" href="#">Edit Preferences<i class="fas fa-edit"></i></a>
+                      </td>
                       <td style="text-align:right;">
                         <?php 
                             $smoking = $this->user['smoking_yn'];
@@ -107,6 +111,9 @@
                       <a class="nav-link" href="#" id="t_ride_history">Ride History</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="#" id="t_preferences">Preferences</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="#" id="t_account">Account</a>
                     </li>
                   </ul>
@@ -135,6 +142,10 @@
               <!-- RIDE HISTORY --> 
               <div id="dash_ride_history" class="col-12 out">
                 <h5>dashboard > ride history</h5>
+              </div>
+              <!-- PREFERENCES --> 
+              <div id="dash_preferences" class="col-12 out">
+                <h5>dashboard > preferences</h5>
               </div>
               <!-- ACCOUNT --> 
               <div id="dash_account" class="col-12 out">

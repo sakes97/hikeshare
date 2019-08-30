@@ -1,33 +1,3 @@
-<!-- Home page Image Header -->
-<!-- <header class="masthead" style="background-image: url('<?php // echo URL; ?>public/images/ra3_2x.png');">
-    <div class="h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12 text-center">
-                <h1 class="font-weight-light">Vertically Centered Masthead Content</h1>
-                <p class="lead">Starter text</p>
-            </div>
-        </div>
-    </div>
-
-</header> -->
-
-<!-- Page Content -->
-<!-- <section class="py-5">
-    <div class="container">
-        <h2 class="font-weight-light">Page Content</h2> -->
-
-
-        <!-- enter destination inputs -->
-        <!-- <form class="form-group">
-            <input type="text" name="from" class="form-control-lg" placeholder="From">
-            <input type="text" name="to" class="form-control-lg" placeholder="Destination">
-            <button class="btn btn-primary">Find Ride</button>
-        </form> -->
-
-
-    <!-- </div>
-</section> -->
-
 <div class="page-header" data-parallax="true" style="background-image: url('<?php echo URL; ?>public/images/ra3_2x.png');">
   <!-- PAGE HEADER -->
     <div class="filter"></div>
@@ -112,12 +82,12 @@
         <br/>
         <br/>
 
-      <!-- HOW IT WORKS -->
+      <!-- PERKS -->
         <div class="row">
           <div class="col-md-3">
             <div class="info">
               <div class="icon icon-danger">
-                <i class="nc-icon nc-album-2"></i>
+                <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/comfortable.png' />
               </div>
               <div class="description">
                 <h4 class="info-title">Beautiful Gallery</h4>
@@ -129,7 +99,7 @@
           <div class="col-md-3">
             <div class="info">
               <div class="icon icon-danger">
-                <i class="nc-icon nc-bulb-63"></i>
+                <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/community.png' />
               </div>
               <div class="description">
                 <h4 class="info-title">New Ideas</h4>
@@ -141,7 +111,7 @@
           <div class="col-md-3">
             <div class="info">
               <div class="icon icon-danger">
-                <i class="nc-icon nc-chart-bar-32"></i>
+                <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/convenient.png' />
               </div>
               <div class="description">
                 <h4 class="info-title">Statistics</h4>
@@ -153,7 +123,7 @@
           <div class="col-md-3">
             <div class="info">
               <div class="icon icon-danger">
-                <i class="nc-icon nc-sun-fog-29"></i>
+                <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/cost-effective.png' />
               </div>
               <div class="description">
                 <h4 class="info-title">Delightful design</h4>

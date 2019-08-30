@@ -24,7 +24,7 @@ class Dashboard extends Controller
 
     public function index()
     {
-        $this->view->title = "User Dashboard";
+        $this->view->title = "Dashboard";
         $user_session = Util::get_session('loggedin');
         $this->view->user = $this->model->getUserDetails($user_session['userid']);
         $this->view->render('dashboard/index','user_nav');

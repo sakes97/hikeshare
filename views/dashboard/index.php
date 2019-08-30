@@ -6,7 +6,7 @@
           <div class="owner">
             <div class="avatar">
               <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>" alt="User Profile Picture" 
-                    class="img-circle img-no-padding img-responsive">
+                    class="img-circle img-no-padding img-responsive img-circle">
             </div>
             <div class="name">
               <h4 class="title">
@@ -18,6 +18,71 @@
               <div class="col-md-12 ml-auto mr-auto text-center">
                 <a class="btn btn-outline-default btn-round" href="#" id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
               </div>
+            </div>
+          <!-- Member Short Information -->
+           <div class="row">
+              <div class="col-12">
+                <div class="member-info-view">
+                  <table class="table table-sm table-stripped">
+                    <tr>
+                      <td style="text-align:left;">Member Since</td>
+                      <td style="text-align:right;">June 8 2019</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="text-align:left;">Preferences</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:left;">
+                        <?php 
+                            $smoking = $this->user['smoking_yn'];
+                            $alcohol = $this->user['alcohol_yn'];
+                            $pets = $this->user['pets_yn'];
+
+                            //smoking preference
+                            if($smoking == 'N'){
+                              echo '<img class="img-responsive img-circle preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" />
+                              <i data-toggle="tooltip" data-placement="right" title="No Smoking Allowed" class="far fa-question-circle"></i></br>';
+                            } else if($smoking == 'Y') {
+                              echo '<img class="img-responsive img-circle preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" />
+                              <i data-toggle="tooltip" data-placement="right" title="Smoking Is Permitted" class="far fa-question-circle"></i></br>';
+                            } else {
+                              echo 'No smoking,</br>';
+                            }
+
+                            //alchohol preference
+                            if($alcohol == 'N'){
+                              echo '<img class="img-responsive img-circle preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" />
+                              <i data-toggle="tooltip" data-placement="right" title="No Drinking Is Allowed" class="far fa-question-circle"></i></br>';
+                            } else if($alcohol == 'Y') {
+                              echo '<img class="img-responsive img-circle preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" />
+                              <i data-toggle="tooltip" data-placement="right" title="Drinking Is Permitted" class="far fa-question-circle"></i></br>';                              
+                            } else {
+                              echo 'No alcohol,</br>';
+                            }
+
+                            //pets preference
+                            if($pets == 'N'){
+                              echo '<img class="img-responsive img-circle preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" />
+                              <i data-toggle="tooltip" data-placement="right" title="No Pets Allowed" class="far fa-question-circle"></i></br>';
+                            } else if($pets == 'Y') {
+                              echo '<img class="img-responsive img-circle preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" />
+                              <i data-toggle="tooltip" data-placement="right" title="Pets Are Allowed" class="far fa-question-circle"></i></br>';                              
+                            } else {
+                              echo 'No pets,</br>';
+                            }
+
+                        ?>
+                        
+                      </td>
+                    </tr>
+                    
+                  </table>
+                </div>
+              </div>
+           </div>
+          <!-- Verification -->
+            <div class="row">
+
             </div>
           </div>
         </div>
@@ -75,7 +140,7 @@
               </div>
               <!-- ACCOUNT --> 
               <div id="dash_account" class="col-12 out">
-                <h5>dashboard > account</h5>
+                <h3 class="display-5">Profile Settings</h3>
               </div>
             </div>
           </div>

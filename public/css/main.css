@@ -38,6 +38,9 @@
     padding: 10px;
 }
 .preference-img{
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
+}
+.preference-img:hover{
+    cursor: pointer;
 }

@@ -90,9 +90,10 @@
                 <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/comfortable.png' />
               </div>
               <div class="description">
-                <h4 class="info-title">Beautiful Gallery</h4>
-                <p class="description">Spend your time generating new ideas. You don't have to think of implementing.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Comfort</h4>
+                <p class="description">
+                  Enjoy great company on your trip that with preferences that suit you.
+                </p>
               </div>
             </div>
           </div>
@@ -102,9 +103,11 @@
                 <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/community.png' />
               </div>
               <div class="description">
-                <h4 class="info-title">New Ideas</h4>
-                <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Community</h4>
+                <p>
+                  Meet interesting people and choose who you're comfortable traveling with.
+                  Every member on our platform has the ability to make reviews and see members ratings.
+                </p>
               </div>
             </div>
           </div>
@@ -114,9 +117,11 @@
                 <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/convenient.png' />
               </div>
               <div class="description">
-                <h4 class="info-title">Statistics</h4>
-                <p>Choose from a veriety of many colors resembling sugar paper pastels.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Convenient</h4>
+                <p>
+                  Find lifts online and choose the trip that most suits your preference and negotiate 
+                  and affordable cost to share.
+                </p>
               </div>
             </div>
           </div>
@@ -126,9 +131,10 @@
                 <img class="perks-img img-responsive img-circle" src='<?php echo URL; ?>public/images/icons/home/cost-effective.png' />
               </div>
               <div class="description">
-                <h4 class="info-title">Delightful design</h4>
-                <p>Find unique and handmade delightful designs related items directly from our sellers.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Cost-Effective</h4>
+                <p>
+                  Share travel costs and reduce CO2 emissions and number of cars on the road.
+                </p>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <div class="section profile-content">
     <div class="container bg-white shadow-sm pb-2">
       <div class="row">
-        <!-- owner image-->
+        <!-- owner -->
         <div class="col-sm-12 col-lg-4 text-center">
           <div class="owner">
             <div class="avatar">
@@ -16,13 +16,8 @@
             </h4>
             <a class="btn btn-outline-default btn-round" href="#" id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
           </div>
-        </div>
-        <!-- end owner image -->
-
-        <!-- owner details -->
-        <div class="col-sm-12 col-lg-8 text-center mr-auto ml-auto py-5">
-          <div class="member-info-view">
-            <table class="table table-sm table-hover">
+          <div class="member-info-view text-center mr-auto ml-auto ">
+          <table class="table table-sm table-hover">
               <tr>
                 <td>Member Since</td>
                 <td>June 8 2019</td>
@@ -77,9 +72,52 @@
                 </td>
               </tr>
             </table>
+            </div>
+        </div>
+        <!-- end owner -->
+
+        <!-- ride cards -->
+        <div class="col-sm-12 col-lg-8 text-center mr-auto ml-auto ">
+          <div class="row max mt-3">
+            <!-- offer a ride -->
+            <div class="col-xs-12 col-md-6">
+              <div class="card card-ride text-center">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-bold mb-2">Own a car?</h6>
+                  <hr/>
+                  <p class="card-text lead">
+                    Post a lift offer to members part of our community who are 
+                    going the same way and set and share the costs for your travels
+                  </p>
+                  <a href="<?php echo URL; ?>dashboard/offerRide" 
+                    class="btn btn-outline-danger btn-round">
+                    OFFER A RIDE
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- find a ride -->
+            <div class="col-xs-12 col-md-6">
+              <div class="card card-ride text-center">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-bold mb-2">Need a ride?</h6>
+                  <hr/>
+                  <p class="card-text lead">
+                    Going somewhere and need a ride? Post a request and allow members driving
+                    to the same destination to find you. You can share the costs for the trip 
+                    and travel in comfort
+                  </p>
+                  <a href="<?php echo URL; ?>dashboard/findRide"
+                    class="btn btn-outline-danger btn-round">
+                    FIND A RIDE
+                  </a>
+                </div>
+              </div> 
+            </div>
           </div>
         </div>
-        <!-- end owner details-->
+        <!-- end cards -->
       </div>
+
     </div>
 </div>

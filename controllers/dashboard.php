@@ -6,16 +6,8 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct();
-        Util::init_session();
-        $session = Util::get_session('loggedin');
-        if ($session['online'] === false) {
-            Util::destroy_session();
-            header('location:' . URL . 'login');
-            exit;
-        } else if (!isset($session)) {
-            header('location:' . URL . 'login');
-            exit;
-        }
+        
+        $this->_handleLogin();
 
         $this->view->js = array(
             'dashboard/js/dashboard.js',
@@ -97,6 +89,19 @@ class Dashboard extends Controller
 #endregion
 
 #region Other Methods
+    private function _handleLogin()
+    {
+        Util::init_session();
+        $session = Util::get_session('loggedin');
+        if ($session['online'] === false) {
+            Util::destroy_session();
+            header('location:' . URL . 'login');
+            exit;
+        } else if (!isset($session)) {
+            header('location:' . URL . 'login');
+            exit;
+        }
+    }
     public function logout()
     {
         Util::destroy_session();

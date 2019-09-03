@@ -5,7 +5,7 @@
         if($session['online'] === true){
 
 ?>
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top bg-danger">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="dashboard" rel="tooltip" title="hikeshare - ridesharing community">hikeshare</a>
@@ -20,28 +20,42 @@
         <div class="collapse navbar-collapse justify-content-end" id="usernav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard">
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard">
                         Home
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Find a ride
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ridesDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Rides
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="ridesDropdown">
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offerRide">Offer Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/findRide">Find a Ride</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewUpcomingRide">View Upcoming Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastRide">View Past Rides</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Offer a ride
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/messages">
+                        Messages <span class="badge badge-warning">4</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-envelope"></i>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="reviewsDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reviews
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="reviewsDropdown">
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/reviewRides">Review Past Rides</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastReviews">View Past Reviews</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Account
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/profile">
+                        Profile
                     </a>
                 </li>
                 <li class="nav-item">

@@ -124,7 +124,6 @@ class Bootstrap
                 break;
 
             default:
-                // die('Something went haywire with the parameters. Please check your bootstrap');
                 $this->_controller->index();
                 break;
         }

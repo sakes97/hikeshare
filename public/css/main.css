@@ -8,32 +8,6 @@
     background-repeat: no-repeat;
 } */
 
-
-#owner-sidebar{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-    background:#f1f1f1;
-}
-#owner-sidebar li a{
-    display: block;
-    text-decoration: none;
-    padding: 9px 16px;
-    color: #000;
-}
-#owner-sidebar li a:hover{
-    background-color: #555;
-    color: #fff;
-}
-.showw{
-    display: block;
-}
-.out{
-    display: none;
-}
 .member-info-view{
     padding: 10px;
 }
@@ -44,3 +18,47 @@
 .preference-img:hover{
     cursor: pointer;
 }
+
+@media (min-width: 992px) {
+    .animate {
+      animation-duration: 0.0s;
+      -webkit-animation-duration: 0.0s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform:translateY(0rem);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+  }
+  
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }

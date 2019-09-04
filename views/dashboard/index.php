@@ -26,7 +26,7 @@
                   <td>
                     Preferences 
                     <br>
-                    <a id="edit_preferences" href="#">Edit Preferences<i class="fas fa-edit"></i></a>
+                    <a id="edit_preferences" href="<?php echo URL; ?>dashboard/profile">Edit Preferences<i class="fas fa-edit"></i></a>
                   </td>
                   <td>
                     <?php 

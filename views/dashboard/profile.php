@@ -130,7 +130,7 @@
               <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6 p-3">
                   <label class="label-control" for="inputBirth">Date of Birth</label>
-                  <input type="text" class="form-control datetimepicker" placeholder=""/>
+                  <input type="text" class="form-control datepicker" name="inputBirth" id="inputBirth" placeholder=""/>
                 </div>
               </div>
               <!-- end date of birth-->

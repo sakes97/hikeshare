@@ -14,7 +14,7 @@
               <?php echo $this->user['firstname'] . ' ' . $this->user['lastname']; ?>
               <br />
             </h4>
-            <a class="btn btn-outline-default btn-round" href="#" id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
+            <a class="btn btn-outline-default btn-round" href="<?php echo URL; ?>dashboard/profile" id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
           </div>
           <div class="member-info-view text-center mr-auto ml-auto ">
             <table class="table table-sm table-hover">

@@ -9,7 +9,7 @@ class Register_Model extends Model
 
     public function register_standard()
     {
-        $userid = Util::generate_userid();
+        $userid = Util::generate_id();
         $query = ('CALL uspRegister(:firstname,:lastname,:pass,:email, :userid)');
         $params = array(
             ':firstname' => $_POST['inputFname'],

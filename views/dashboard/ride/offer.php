@@ -3,7 +3,7 @@
     <h2>Offer a ride</h2>
     <div class="row max py-1">
       <!-- google Maps -->
-      <div class="col-sm-12 col-md-6 shadow-sm">
+      <div id="map" class="col-sm-12 col-md-6 shadow-sm">
 
       </div>
       <!-- end google maps -->
@@ -14,7 +14,7 @@
         <form>
           <!-- from -->
           <div class="form-row">
-            <div class="form-group col-sm-10 col-md-7 p-1">
+            <div class="form-group col-sm-10 col-md-9 p-1">
               <label for="inputFrom">From</label>
               <input type="text" class="form-control" id="inputFrom" name="inputFrom" placeholder="(address/town)">
             </div>
@@ -22,7 +22,7 @@
           <!-- end from -->
           <!-- destination -->
           <div class="form-row">
-            <div class="form-group col-sm-10 col-md-7 p-1">
+            <div class="form-group col-sm-10 col-md-9 p-1">
               <label for="inputDestination">To</label>
               <input type="text" class="form-control" id="inputDestination" name="inputDestination"
                 placeholder="(address/town)">
@@ -60,14 +60,14 @@
               id="inputDate" placeholder=""/>
             </div>
             <div class="form-group col-sm-12 col-md-6 p-1">
-              <label class="label-control" for="inputTIme">Departure Time</label>
+              <label class="label-control" for="inputTime">Departure Time</label>
               <label class="label-control" for="inputTime"></label>
               <input type="text" class="form-control timepicker" name="inputTime" 
               id="inputTime" placeholder=""/>
             </div>
           </div>
           <!-- end travel scheule -->
-          <!-- contribution/seats -->
+          <!-- contribution/available-seats -->
           <div class="form-row">
             <div class="form-group col-sm-12 col-md-6 p-1">
               <label for="inputContribution">Trip Contribution</label>
@@ -75,15 +75,15 @@
               data-number-to-fixed="2" data-number-stepfactor="100"
               name="inputContribution" id="inputContribution">
             </div>
-            <div class="form-group col-sm-12 col-md-3 p-1">
+            <div class="form-group col-sm-12 col-md-4 p-1">
               <label for="inputSeats">Available Seats</label>
               <input class="form-control" type="number" value="3" min="1" name="inputSeats" id="inputSeats">
             </div>
           </div>
-          <!-- end contribution/seats -->
+          <!-- end contribution/available-seats -->
           <!-- pickup spot -->
           <div class="form-row">
-            <div class="form-group col-sm-12 col-md-7 p-1">
+            <div class="form-group col-sm-12 col-md-9 p-1">
               <label for="inputPickUp">Pick Up Spot</label>
               <input class="form-control" type="text" name="inputPickUp" id="inputPickUp" placeholder="Pick Up Spot">
             </div>

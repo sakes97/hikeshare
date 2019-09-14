@@ -32,7 +32,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
 
-<!--   Core JS Files   -->
+<!-- Core JS Files -->
 <script src="<?php echo URL; ?>public/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo URL; ?>public/js/core/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo URL; ?>public/js/core/bootstrap.min.js" type="text/javascript"></script>
@@ -55,7 +55,12 @@
 <script src="<?php echo URL; ?>public/js/paper-kit.min.js?v=2.2.0" type="text/javascript"></script>
 
 
-<!--  Google Maps Plugin    -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+<!-- Google Maps API -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=inpitMap"></script> -->
+
+<!-- Google API's -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"
+async defer></script>
 </body>
 </html>

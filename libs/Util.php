@@ -54,7 +54,7 @@ class Util
         } while ($rnd > $range);
         return $min + $rnd;
     }
-    public static function generate_userid($length = 11)
+    public static function generate_id($length = 11)
     {
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

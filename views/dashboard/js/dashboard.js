@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.datepicker').datetimepicker({
         icons: {
             time: "fa fa-clock-o",
@@ -11,7 +11,8 @@ $(document).ready(function(){
             clear: 'fa fa-trash',
             close: 'fa fa-remove'
         },
-        format: 'DD/MM/YYYY'
+        format: 'DD/MM/YYYY',
+        minDate: new Date()
     });
 
     $('.timepicker').datetimepicker({
@@ -28,4 +29,13 @@ $(document).ready(function(){
         },
         format: 'LT'
     });
+    
 });
+
+function placeSearch(){
+    let inputFrom = document.getElementById('inputFrom');
+    var autocomplete = new google.maps.places.Autocomplete(inputFrom);
+
+    let inputDestination = document.getElementById('inputDestination');
+    autocomplete = new google.maps.places.Autocomplete(inputDestination);
+}

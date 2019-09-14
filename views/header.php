@@ -17,7 +17,11 @@
 
         </title>
 
-        
+
+        <!-- HIKESHARE - GOOGLE API KEY 
+        AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8
+        -->
+
 
         <!--link the bootstrap-->
         <link href="<?php echo URL; ?>public/css/bootstrap.min.css" rel="stylesheet" />

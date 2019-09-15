@@ -154,29 +154,38 @@ if(!isset($_GET['profile_view'])){
                 </div>
                 <div class="form-group col-sm-12 col-md-6 p-3">
                   <label for="inputGender">Gender</label>
-                  <div class="form-check-radio">
+                  <!-- <div class="form-check-radio">
                     <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="inputGender" id="inputFemale" 
                       value="female">
                       Female
                       <span class="form-check-sign"></span>
                     </label>
-                  </div>
-                  <div class="form-check-radio">
+                  </div> -->
+                  <!-- <div class="form-check-radio">
                     <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="inputGender" id="inputMale" 
                       value="Male">
                       Male
                       <span class="form-check-sign"></span>
                     </label>
+                  </div> -->
+                  <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="female_option" name="inputGender">
+                    <label class="custom-control-label" for="female_option">Female</label>
                   </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="male_option" name="inputGender">
+                    <label class="custom-control-label" for="male_option">Male</label>
+                  </div>
+
                 </div>
               </div>
               <!-- end bio/gender -->
 
               <!-- date of birth-->
               <div class="form-row">
-                <div class="form-group col-sm-12 col-md-6 p-3">
+                <div class="form-group col-sm-12 col-md-4 p-3">
                   <label class="label-control" for="inputBirth">Date of Birth</label>
                   <input type="text" class="form-control datepicker" name="inputBirth" id="inputBirth" placeholder=""/>
                 </div>
@@ -186,11 +195,11 @@ if(!isset($_GET['profile_view'])){
 
               <!-- password -->
               <div class="form-row">
-                <div class="form-group col-sm-12 col-md-6 p-3">
+                <div class="form-group col-sm-12 col-md-4 p-3">
                   <label class="label-control" for="inputPassword">Password</label>
                   <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
                 </div>
-                <div class="form-group col-sm-12 col-md-6 p-3">
+                <div class="form-group col-sm-12 col-md-4 p-3">
                   <label class="label-control" for="inputConfirmPassword">Confirm Password</label>
                   <input type="password" class="form-control" id="inputConfirmPassword" name="inputConfirmPassword" placeholder="Confirm Password">
                 </div>

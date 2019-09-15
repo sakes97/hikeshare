@@ -39,3 +39,7 @@ function placeSearch(){
     let inputDestination = document.getElementById('inputDestination');
     autocomplete = new google.maps.places.Autocomplete(inputDestination);
 }
+
+function pageview(val){
+    window.location.href = '?profile_view='+val;
+}

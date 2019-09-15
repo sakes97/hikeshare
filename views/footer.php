@@ -60,7 +60,7 @@
 
 <!-- Google API's -->
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"></script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"
-async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"
+async defer></script> -->
 </body>
 </html>

@@ -1,11 +1,40 @@
+<?php 
+
+$option = $_GET['profile_view'];
+
+if(!isset($_GET['profile_view'])){
+  $option = 2;
+}
+
+?>
 <div class="section profile-content">
   <div class="container">
     <h2>Profile</h2>
+    <!-- infromation form -->
+    <div class="row">
+      <div class="col-4">
+        <select name="profile_view" class="d-inline-block form-control form-control-sm d-inline-block"
+        id="profile_view" onchange="pageview(this.value)">
+          <option value="0" <?php if($option == 0) echo "selected"; ?> >Profile Picture</option>
+          <option value="1" <?php if($option == 1) echo "selected"; ?> >Preferences</option>
+          <option value="2" <?php if($option == 2) echo "selected"; ?> >User Details</option>
+          <option value="3" <?php if($option == 3) echo "selected"; ?> >Car Details</option>
+        </select>
+      </div>
+    </div>
+    <br/>
+    <!-- end information form -->
+
+    <!-- profile-section -->
     <div class="profile-section py-1 mb-1 shadow-sm">
+      
+      <?php
+        if($option == 0){
+      ?>
       <!-- profile picture -->
       <div class="row">
         <div class="col-12 text-center">
-          <h6>Your profile picture</h6>
+          <h6 class="mt-2 pb-0">Your profile picture</h6>
           <div class="owner">
             <div class="avatar">
               <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>"
@@ -16,13 +45,15 @@
           </div>
         </div>
       </div>
-      <hr/>
+      <!-- <hr/> -->
       <!-- end profile picture-->
-
+      <?php
+        } else if ($option == 1) {
+      ?>
       <!-- preferences-->
       <div class="row">
         <div class="col-12 text-center">
-          <h6>Preferences</h6>
+          <h6 class="mt-2 pb-0">Preferences</h6>
           <p class="lead">Click on the icon to select preference</p>
         </div>
         
@@ -63,14 +94,17 @@
           <button class="btn btn-danger btn-round">Set Preferences</button>
         </div>
       </div>
-      <hr/>
+      <!-- <hr/> -->
       <!-- end preferences-->
 
-
+      <?php 
+        } else if ($option == 2) {
+      ?>
       <!-- user details -->
       <div class="row">
         <div class="col-12">
-          <h6 class="text-center">User Details</h6>
+          <h6 class="mt-2 pb-0 text-center">User Details</h6>
+          <!-- user details form -->
           <form>
               <!-- firstname/lastname/email -->
               <div class="form-row">
@@ -156,14 +190,82 @@
               </div>
               <!-- end button -->
 
-            </form>
+          </form>
+          <!-- end user details form --> 
         </div>
 
       </div>
       <!-- end user details-->
+      <?php 
+        } else if ($option == 3) {
+      ?>
+      <!-- car details -->
+      <div class="row">
+      <div class="col-12">
+        <h6 class="mt-2 pb-0 text-center">Car Details</h6>
+        <form>
+          <!-- number plate/registration number -->
+          <div class="form-row">
+            <div class="form-group col-sm-6 col-md-4 p-3">
+              <label for="number_plate">Number Plate</label>
+              <input type="text" class="form-control" id="number_plate" placeholder="number_plate">
+            </div>
+            <div class="form-group col-sm-6 col-md-4 p-3">
+                <label for="registration_number">Registration Number</label>
+                <input type="text" class="form-control" id="registration_number" placeholder="registration_number">
+            </div>
+          </div>
+          <!-- end number plate/registration number -->
+
+          <!-- model/make -->
+          <div class="form-row">
+            <div class="form-group col-sm-6 col-md-4 p-3">
+              <label for="model">Model</label>
+              <input type="text" class="form-control" name="model" id="model">
+            </div>
+            <div class="form-group col-sm-6 col-md-4 p-3">
+              <label for="make">Make</label>
+              <input name="make" id="make" class="form-control" type="text">
+            </div>
+          </div>
+          <!-- end model/make -->
+
+          <!-- number of seats -->
+          <div class="form-row">
+            <div class="form-group col-sm-6 col-md-4 p-3">
+              <label for="number_of_seats">Number Of Seats</label>
+              <input class="form-control" type="number" min="2" max="16" name="number_of_seats" id="number_of_seats">
+            </div>
+          </div>
+          <!-- end number of seats -->
+
+          <!-- colour -->
+          <div class="form-row">
+            <div class="form-group col-sm-6 col-md-4 p-3">
+              <label for="colour">Colour</label>
+              <input type="text" class="form-control" name="colour" id="colour" placeholder="Colour">
+            </div>
+          </div>
+          <!-- end colour -->
+
+          <!-- button -->
+          <div class="text-center pb-3">
+            <input type="submit" class="btn btn-danger btn-round" value="submit">
+          </div>
+          <!-- end button -->
+        </form>
+        </div>
+      </div>
+      <!-- end car details -->
+      <?php 
+        }
+      ?>
+
+
 
       <!-- verifications -->
       <!-- end verifications -->
     </div>
+    <!-- end profile section -->
   </div>
 </div>

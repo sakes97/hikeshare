@@ -36,10 +36,10 @@
 
                         //smoking preference
                         if($smoking == 'N'){
-                          echo '<img class="img-responsive img-circle preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
+                          echo '<img class="img-responsive img-square preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
                           data-toggle="tooltip" data-placement="top" title="No Smoking Allowed"/>';
                         } else if($smoking == 'Y') {
-                          echo '<img class="img-responsive img-circle preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" 
+                          echo '<img class="img-responsive img-square preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" 
                           data-toggle="tooltip" data-placement="top" title="Smoking Is Permitted"/>';
                         } else {
                           echo 'No smoking,';
@@ -47,10 +47,10 @@
 
                         //alchohol preference
                         if($alcohol == 'N'){
-                          echo '<img class="img-responsive img-circle preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
+                          echo '<img class="img-responsive img-square preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
                           data-toggle="tooltip" data-placement="top" title="No Drinking Is Allowed"/>';
                         } else if($alcohol == 'Y') {
-                          echo '<img class="img-responsive img-circle preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" 
+                          echo '<img class="img-responsive img-square preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" 
                           data-toggle="tooltip" data-placement="top" title="Drinking Is Permitted" />';                              
                         } else {
                           echo 'No alcohol,';
@@ -58,10 +58,10 @@
 
                         //pets preference
                         if($pets == 'N'){
-                          echo '<img class="img-responsive img-circle preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
+                          echo '<img class="img-responsive img-square preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
                           data-toggle="tooltip" data-placement="top" title="No Pets Allowed" />';
                         } else if($pets == 'Y') {
-                          echo '<img class="img-responsive img-circle preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" 
+                          echo '<img class="img-responsive img-square preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" 
                           data-toggle="tooltip" data-placement="top" title="Pets Are Allowed" />';                              
                         } else {
                           echo 'No pets';
@@ -87,7 +87,7 @@
                   <hr/>
                   <p class="card-text lead">
                     Post a lift offer to members part of our community who are 
-                    going the same way and set and share the costs for your travels
+                    going the same way and share the costs for your travels
                   </p>
                   <a href="<?php echo URL; ?>dashboard/offerRide" 
                     class="btn btn-outline-danger btn-round">
@@ -103,8 +103,7 @@
                   <h6 class="card-title font-weight-bold mb-2">Need a ride?</h6>
                   <hr/>
                   <p class="card-text lead">
-                    Going somewhere and need a ride? Post a request and allow members driving
-                    to the same destination to find you. You can share the costs for the trip 
+                    Going somewhere and need a ride? Post a request and share the costs for the trip 
                     and travel in comfort
                   </p>
                   <a href="<?php echo URL; ?>dashboard/findRide"

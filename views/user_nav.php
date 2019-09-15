@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-danger">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="dashboard" rel="tooltip" title="hikeshare - ridesharing community">hikeshare</a>
+            <a class="navbar-brand" href="<?php echo URL; ?>dashboard" rel="tooltip" title="hikeshare - ridesharing community">hikeshare</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#usernav" aria-label="Toggle Navigation"
                 aria-controls="usernav" aria-expanded="false">

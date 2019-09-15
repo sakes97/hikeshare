@@ -25,8 +25,7 @@
       animation-fill-mode: both;
       -webkit-animation-fill-mode: both;
     }
-}
-  
+} 
 @keyframes slideIn {
     0% {
       transform: translateY(1rem);
@@ -40,8 +39,7 @@
       transform: translateY(1rem);
       opacity: 0;
     }
-}
-  
+} 
 @-webkit-keyframes slideIn {
     0% {
       -webkit-transform: transform;
@@ -55,10 +53,23 @@
       -webkit-transform: translateY(1rem);
       -webkit-opacity: 0;
     }
-}
-  
+} 
 .slideIn {
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
 }
 
+#car{
+  max-height: 200px;
+  padding:5px;
+}
+.imgInp{  
+  margin-top:10px;
+  background-color:#d3d3d3;  
+}
+.loading{
+   animation:blinkingText ease 2.5s infinite;
+}
+#inputGroupFile01{
+  cursor:pointer;
+}

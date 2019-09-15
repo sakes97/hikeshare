@@ -33,19 +33,33 @@ if(!isset($_GET['profile_view'])){
       ?>
       <!-- profile picture -->
       <div class="row">
-        <div class="col-12 text-center">
-          <h6 class="mt-2 pb-0">Your profile picture</h6>
-          <div class="owner">
-            <div class="avatar">
-              <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>"
-                alt="User Profile Picture" class="img-circle img-no-padding img-responsive img-circle">
-                <br/>
-                <button class="btn btn-danger btn-round">Upload Image</button>
+        <div class="col-12">
+          <h6 class="mt-2 pb-0 text-center">Your profile picture</h6>
+          <form>
+            <!-- image -->
+            <div class="form-row">
+              <div class="form-group col-md-4 mr-auto ml-auto">
+                <div class="owner">
+                  <div class="avatar">
+                    <img id="image-upload" src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>"
+                      alt="User Profile Picture" class="img-circle img-no-padding img-responsive">
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            <!-- end image -->
+            <!-- upload button -->
+            <div class="form-row">
+              <div class="form-group col-5 ml-auto mr-auto">
+                <input type="file" id="inputGroupFile01" class="form-control imgInp custom-file-input" 
+                aria-describedby="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+              </div>
+            </div>
+            <!-- end upload button -->
+          </form>
         </div>
       </div>
-      <!-- <hr/> -->
       <!-- end profile picture-->
       <?php
         } else if ($option == 1) {
@@ -209,14 +223,14 @@ if(!isset($_GET['profile_view'])){
               <div class="form-group col-md-4 p-3 mr-auto ml-auto text-center">
                 <label for="image-upload">Upload Car Image</label>
                 <div id="image_contain">
-                  <img id="image-upload" align="middle" class="img-square"
+                  <img id="image-upload" align="middle" class="img-square img-no-padding img-responsive"
                   src="<?php echo URL; ?>public/images/hikeshare-logo.png" alt="Car Image"
                   title=''/>
                 </div>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-sm-8 col-md-4 mr-auto ml-auto">
+              <div class="form-group col-5 mr-auto ml-auto">
                 <input type="file" id="inputGroupFile01" class="form-control imgInp custom-file-input" 
                 aria-describedby="inputGroupFile01">
                 <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>

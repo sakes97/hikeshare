@@ -154,28 +154,12 @@ if(!isset($_GET['profile_view'])){
                 </div>
                 <div class="form-group col-sm-12 col-md-6 p-3">
                   <label for="inputGender">Gender</label>
-                  <!-- <div class="form-check-radio">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="inputGender" id="inputFemale" 
-                      value="female">
-                      Female
-                      <span class="form-check-sign"></span>
-                    </label>
-                  </div> -->
-                  <!-- <div class="form-check-radio">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="inputGender" id="inputMale" 
-                      value="Male">
-                      Male
-                      <span class="form-check-sign"></span>
-                    </label>
-                  </div> -->
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="female_option" name="inputGender">
+                    <input type="radio" class="custom-control-input" id="female_option" name="inputGender" value="female">
                     <label class="custom-control-label" for="female_option">Female</label>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="male_option" name="inputGender">
+                    <input type="radio" class="custom-control-input" id="male_option" name="inputGender" value="male">
                     <label class="custom-control-label" for="male_option">Male</label>
                   </div>
 

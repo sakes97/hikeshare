@@ -54,13 +54,7 @@
 
 <script src="<?php echo URL; ?>public/js/paper-kit.min.js?v=2.2.0" type="text/javascript"></script>
 
-
-<!-- Google Maps API -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=inpitMap"></script> -->
-
-<!-- Google API's -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"></script> -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=placeSearch"
-async defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=initMap"
+async defer></script>
 </body>
 </html>

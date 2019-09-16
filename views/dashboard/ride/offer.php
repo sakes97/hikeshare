@@ -15,16 +15,16 @@
           <!-- from -->
           <div class="form-row">
             <div class="form-group col-sm-10 col-md-9 p-1">
-              <label for="inputFrom">From</label>
-              <input type="text" class="form-control" id="inputFrom" name="inputFrom" placeholder="(address/town)">
+              <label for="origin-input">From</label>
+              <input type="text" class="form-control" id="origin-input" name="origin-input" placeholder="(address/town)">
             </div>
           </div>
           <!-- end from -->
           <!-- destination -->
           <div class="form-row">
             <div class="form-group col-sm-10 col-md-9 p-1">
-              <label for="inputDestination">To</label>
-              <input type="text" class="form-control" id="inputDestination" name="inputDestination"
+              <label for="destination-input">To</label>
+              <input type="text" class="form-control" id="destination-input" name="destination-input"
                 placeholder="(address/town)">
             </div>
           </div>

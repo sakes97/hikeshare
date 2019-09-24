@@ -17,7 +17,9 @@ class Dashboard_Model extends Model
 
     public function getCars($id)
     {
-
+        $query = 'CALL uspGetCars(:driverid)';
+        $params = array(':driverid'=>$id);
+        return Database::GetAll($query, $params);
     }
 
     public function addCar() 

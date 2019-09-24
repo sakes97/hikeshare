@@ -6,7 +6,7 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->_handleLogin();
 
         $this->view->js = array(
@@ -14,25 +14,25 @@ class Dashboard extends Controller
         );
     }
 
-#region Index
+    #region Index
     public function index()
     {
         $this->view->title = "Dashboard";
         $this->_getUserDetails();
         $this->view->render('dashboard/index', 'user_nav');
     }
-#endregion
+    #endregion
 
-#region Profile
+    #region Profile
     public function profile()
     {
         $this->view->title = "Profile";
         $this->_getUserDetails();
         $this->view->render('dashboard/profile', 'user_nav');
     }
-#endregion
+    #endregion
 
-#region Ride
+    #region Ride
     public function offerRide()
     {
         $this->view->title = "Add a Journey";
@@ -60,9 +60,9 @@ class Dashboard extends Controller
         $this->_getUserDetails();
         $this->view->render('dashboard/ride/view-upcoming-ride', 'user_nav');
     }
-#endregion
+    #endregion
 
-#region Reviews
+    #region Reviews
     public function reviewRides()
     {
         $this->view->title = "Review Past Rides";
@@ -75,18 +75,18 @@ class Dashboard extends Controller
         $this->_getUserDetails();
         $this->view->render('dashboard/reviews/past-reviews', 'user_nav');
     }
-#endregion
+    #endregion
 
-#region Messages
+    #region Messages
     public function messages()
     {
         $this->view->title = "Messages";
         $this->_getUserDetails();
         $this->view->render('dashboard/messages', 'user_nav');
     }
-#endregion
+    #endregion
 
-#region Other Methods
+    #region Other Methods
     private function _handleLogin()
     {
         Util::init_session();

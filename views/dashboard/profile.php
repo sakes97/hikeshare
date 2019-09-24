@@ -10,7 +10,7 @@ if(!isset($_GET['profile_view'])){
 <div class="section profile-content">
   <div class="container">
     <h2>Profile</h2>
-    <!-- infromation form -->
+    <!-- select view -->
     <div class="row">
       <div class="col-xs-4 col-md-3">
         <select name="profile_view" class="form-control form-control-sm"
@@ -23,7 +23,7 @@ if(!isset($_GET['profile_view'])){
       </div>
     </div>
     <br/>
-    <!-- end information form -->
+    <!-- end select view -->
 
     <!-- profile-section -->
     <div class="profile-section py-1 mb-1 shadow-sm">
@@ -31,6 +31,7 @@ if(!isset($_GET['profile_view'])){
       <?php
         if($option == 0){
       ?>
+
       <!-- profile picture -->
       <div class="row">
         <div class="col-12">
@@ -61,9 +62,11 @@ if(!isset($_GET['profile_view'])){
         </div>
       </div>
       <!-- end profile picture-->
+
       <?php
         } else if ($option == 1) {
       ?>
+
       <!-- preferences-->
       <div class="row">
         <div class="col-12 text-center">
@@ -108,12 +111,12 @@ if(!isset($_GET['profile_view'])){
           <button class="btn btn-danger btn-round">Set Preferences</button>
         </div>
       </div>
-      <!-- <hr/> -->
       <!-- end preferences-->
 
       <?php 
         } else if ($option == 2) {
       ?>
+
       <!-- user details -->
       <div class="row">
         <div class="col-12">
@@ -203,14 +206,17 @@ if(!isset($_GET['profile_view'])){
 
       </div>
       <!-- end user details-->
+
       <?php 
         } else if ($option == 3) {
       ?>
+
       <!-- car details -->
       <div class="row">
         <div class="col-12">
           <h6 class="mt-2 pb-0 text-center">Car Details</h6>
-          <form>
+          <form method="post" action="dashboard/addCar">
+            <input type="hidden" name="driverid" id="driverid" value="<?php echo $this->user['userid']; ?>" >
             <!-- car image -->
             <div class="form-row">
               <div class="form-group col-md-4 p-3 mr-auto ml-auto text-center">
@@ -225,7 +231,7 @@ if(!isset($_GET['profile_view'])){
             <div class="form-row">
               <div class="form-group col-5 mr-auto ml-auto">
                 <input type="file" id="inputGroupFile01" class="form-control imgInp custom-file-input" 
-                aria-describedby="inputGroupFile01">
+                aria-describedby="inputGroupFile01" name="inputGroupFile01">
                 <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
               </div>
             </div>
@@ -235,7 +241,7 @@ if(!isset($_GET['profile_view'])){
             <div class="form-row">
               <div class="form-group col-sm-6 col-md-4 p-3 ">
                   <label for="registration_number">Registration Number</label>
-                  <input type="text" class="form-control" id="registration_number" placeholder="Registration Number">
+                  <input type="text" class="form-control" name="registration_number" id="registration_number" placeholder="Registration Number">
               </div>
             </div>
             <!-- end registration number -->
@@ -260,8 +266,8 @@ if(!isset($_GET['profile_view'])){
             <!-- colour -->
             <div class="form-row">
               <div class="form-group col-sm-6 col-md-4 p-3">
-                <label for="colour">Colour</label>
-                <input type="text" class="form-control" name="colour" id="colour" placeholder="Colour">
+                <label for="color">Color</label>
+                <input type="text" class="form-control" name="color" id="color" placeholder="Color">
               </div>
             </div>
             <!-- end colour -->
@@ -284,6 +290,7 @@ if(!isset($_GET['profile_view'])){
         </div>
       </div>
       <!-- end car details -->
+
       <?php 
         }
       ?>

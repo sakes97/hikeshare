@@ -40,28 +40,28 @@ class Dashboard extends Controller
     public function offerRide()
     {
         $this->view->title = "Add a Journey";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/ride/offer', 'user_nav');
     }
 
     public function findRide()
     {
         $this->view->title = "Create Alert";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/ride/lift', 'user_nav');
     }
 
     public function viewPastRide()
     {
         $this->view->title = "Past Rides";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/ride/view-past-ride', 'user_nav');
     }
 
     public function viewUpcomingRide()
     {
         $this->view->title = "Upcoming Rides";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/ride/view-upcoming-ride', 'user_nav');
     }
     #endregion
@@ -70,13 +70,13 @@ class Dashboard extends Controller
     public function reviewRides()
     {
         $this->view->title = "Review Past Rides";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/reviews/review-ride', 'user_nav');
     }
     public function viewPastReviews()
     {
         $this->view->title = "View Past Reviews";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/reviews/past-reviews', 'user_nav');
     }
     #endregion
@@ -85,7 +85,7 @@ class Dashboard extends Controller
     public function messages()
     {
         $this->view->title = "Messages";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/messages', 'user_nav');
     }
     #endregion

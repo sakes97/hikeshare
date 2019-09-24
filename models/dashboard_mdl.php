@@ -14,12 +14,21 @@ class Dashboard_Model extends Model
         return Database::GetRow($query, $params);
     }
 
-
     public function getCars($driverid)
     {
         $query = 'CALL uspGetCars(:driverid)';
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
+    }
+
+    public function getCar($carid,$driverid)
+    {
+        $query = 'CALL uspGetCar(:carid, :driverid)';
+        $params = array(
+            ':carid' => $carid,
+            ':driverid' => $driverid
+        );
+        return Database::GetRow($query,$params);
     }
 
     public function getNumCars($driverid)
@@ -53,8 +62,28 @@ class Dashboard_Model extends Model
         }
     }
 
-    public function updateCar()
-    { }
+    public function updateCar($carid)
+    {
+        $query = 'CALL uspUpdateCar(:carid, :driverid, :reg_num, 
+                :make, :model, :model_year, :color, :seats, :car_image)';
+        $params = array(
+            ':carid' => $carid,
+            ':driverid' => $_POST['driverid'],
+            ':reg_num' => $_POST['registration_number'],
+            ':make' => $_POST['make'],
+            ':model' => $_POST['model'],
+            ':model_year' => $_POST['model_year'],
+            ':color' => $_POST['color'],
+            ':seats' => $_POST['number_of_seats'],
+            ':car_image' => file_get_contents($_FILES['inputGroupFile01']['tmp_name'])
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/viewCars');
+        } else {
+            header('location:' . URL . 'err/updateCar');
+        }
+     }
 
     public function removeCar()
     { }

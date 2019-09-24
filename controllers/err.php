@@ -18,4 +18,10 @@ class Err extends Controller
         $this->view->type = "Add-Car";
         $this->view->render('error/index');
     }
+    public function updateCar()
+    {
+        $this->view->title = "Error - Update Car";
+        $this->view->type = "Update-Car";
+        $this->view->render('error/index');
+    }
 }

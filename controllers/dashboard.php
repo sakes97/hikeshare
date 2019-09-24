@@ -101,12 +101,26 @@ class Dashboard extends Controller
 
     }
 
+    /**
+     * Renders Add Car Page
+     */
     public function add_car()
     {
         $this->view->title = "Add Car";
         $this->_getUserDetails($this->_userid);
         $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/car/add-car','user_nav');
+    }
+
+    /**
+     * Renders Update Car Page 
+     */
+    public function update_Car($carid)
+    {
+        $this->view->title = "Update Car";
+        $this->_getUserDetails($this->_userid);
+        $this->_getCar($carid,$this->_userid);
+        $this->view->render('dashboard/car/update-car', 'user_nav');
     }
 
     private function _getCars($driverid)
@@ -118,10 +132,26 @@ class Dashboard extends Controller
         $this->view->num_of_cars = $this->model->getNumCars($driverid);
     }
 
+    private function _getCar($carid,$driverid)
+    {
+        $this->view->myCar = $this->model->getCar($carid,$driverid);
+    }
+
+    /**
+     * Adds user car to the database
+     */
     public function addCar()
     {
         $this->model->addCar();
     }
+    /**
+     * Updates users car 
+     */
+    public function updateCar($carid)
+    {
+        $this->model->updateCar($carid);
+    }
+
     #endregion 
     #region Other Methods
     private function _handleLogin()

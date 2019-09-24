@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12">
             <h6 class="mt-2 pb-0 text-center">Car Details</h6>
-            <form method="post" action="dashboard/addCar">
+            <form method="post" action="<?php echo URL;?>dashboard/addCar" enctype="multipart/form-data">
                 <input type="hidden" name="driverid" id="driverid" value="<?php echo $this->user['userid']; ?>" >
                 <!-- car image -->
                 <div class="form-row">

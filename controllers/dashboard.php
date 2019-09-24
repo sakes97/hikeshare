@@ -104,6 +104,7 @@ class Dashboard extends Controller
     public function add_car()
     {
         $this->view->title = "Add Car";
+        $this->_getUserDetails($this->_userid);
         $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/car/add-car','user_nav');
     }
@@ -115,6 +116,11 @@ class Dashboard extends Controller
     private function _getNumCars($driverid)
     {
         $this->view->num_of_cars = $this->model->getNumCars($driverid);
+    }
+
+    public function addCar()
+    {
+        $this->model->addCar();
     }
     #endregion 
     #region Other Methods

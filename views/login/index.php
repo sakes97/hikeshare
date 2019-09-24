@@ -46,7 +46,7 @@
               </a>
             </div>
             <p style="padding:5px;" class="lead text-center"> Or </p>
-            <form class="register-form" method="POST" action="login/signin">
+            <form class="register-form" method="POST" action="<?php echo URL;?>login/signin">
               <label>Email</label>
               <input type="text" class="form-control" name="input_username" placeholder="Email">
               <label>Password</label>

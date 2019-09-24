@@ -44,7 +44,7 @@
                 <i class="fab fa-twitter"></i>
               </a>
             </div>
-            <form class="register-form" method="post" action="register/register_standard">
+            <form class="register-form" method="post" action="<?php echo URL;?>register/register_standard">
               <label>Firstname</label>
               <input type="text" name="inputFname" class="form-control" placeholder="Firstname" required>
               <label>Lastname</label>

@@ -32,8 +32,7 @@ class Dashboard_Model extends Model
     public function addCar() 
     {
         $carid = Util::generate_id();
-        $image = $_POST['inputGroupFile01'];
-        $blob = file_get_contents($_FILES[$image]['tmp_name']);
+        $blob = file_get_contents($_FILES['inputGroupFile01']['tmp_name']);
         $query = 'CALL uspAddCar(:carid, :driverid, :reg_num, 
                 :make, :model, :model_year, :color, :seats, :car_image)';
         $params = array(
@@ -54,7 +53,7 @@ class Dashboard_Model extends Model
         }
         else
         {
-            header('location:' . URL . 'error/addCar');
+            header('location:' . URL . 'error/index');
         }
     }
 

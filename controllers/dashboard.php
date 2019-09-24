@@ -97,7 +97,7 @@ class Dashboard extends Controller
     }
     private function _getNumCars($driverid)
     {
-        $this->view->num_cars = $this->model->getNumCars($driverid);
+        $this->view->num_of_cars = $this->model->getNumCars($driverid);
     }
     #endregion 
     #region Other Methods

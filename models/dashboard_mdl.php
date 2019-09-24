@@ -15,11 +15,18 @@ class Dashboard_Model extends Model
     }
 
 
-    public function getCars($id)
+    public function getCars($driverid)
     {
         $query = 'CALL uspGetCars(:driverid)';
-        $params = array(':driverid'=>$id);
+        $params = array(':driverid'=>$driverid);
         return Database::GetAll($query, $params);
+    }
+
+    public function getNumCars($driverid)
+    {
+        $query = 'CALL uspGetNumCars(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetRow($query,$params);
     }
 
     public function addCar() 

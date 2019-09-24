@@ -85,20 +85,6 @@ class Bootstrap
 
     private function _callControllerMethod()
     {
-        // if (isset($this->_url[2])) {
-        //     $this->_controller->{$this->_url[0][1]}($this->_url[0][2]);
-        // } else {
-        //     if (isset($this->_url[1])) {
-        //         if (method_exists($this->_controller, $this->_url[1])) {
-        //             $this->_controller->{$this->_url[1]}();
-        //         } else {
-        //             // echo "error 1";
-        //             $this->err();
-        //         }
-        //     } else {
-        //         $this->_controller->index();
-        //     }
-        // }
         $length = count($this->_url);
         if ($length > 1) {
             if (!method_exists($this->_controller, $this->_url[1])) {

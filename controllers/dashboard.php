@@ -2,6 +2,7 @@
 
 class Dashboard extends Controller
 {
+    private $_userid = null;
 
     public function __construct()
     {
@@ -9,16 +10,17 @@ class Dashboard extends Controller
 
         $this->_handleLogin();
 
+        $this->_userid = $this->_getUserID();
+
         $this->view->js = array(
             'dashboard/js/dashboard.js',
         );
     }
-
     #region Index
     public function index()
     {
         $this->view->title = "Dashboard";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/index', 'user_nav');
     }
     #endregion
@@ -27,7 +29,9 @@ class Dashboard extends Controller
     public function profile()
     {
         $this->view->title = "Profile";
-        $this->_getUserDetails();
+        $this->_getUserDetails($this->_userid);
+        $this->_getCars($this->_userid);
+        $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/profile', 'user_nav');
     }
     #endregion
@@ -86,6 +90,16 @@ class Dashboard extends Controller
     }
     #endregion
 
+    #region Car
+    private function _getCars($driverid)
+    {
+        $this->view->cars = $this->model->getCars($driverid);
+    }
+    private function _getNumCars($driverid)
+    {
+        $this->view->num_cars = $this->model->getNumCars($driverid);
+    }
+    #endregion 
     #region Other Methods
     private function _handleLogin()
     {
@@ -107,10 +121,16 @@ class Dashboard extends Controller
         exit;
     }
 
-    private function _getUserDetails()
+    private function _getUserDetails($userid)
+    {
+        $this->view->user = $this->model->getUserDetails($userid);
+    }
+    
+    private function _getUserID()
     {
         $user_session = Util::get_session('loggedin');
-        $this->view->user = $this->model->getUserDetails($user_session['userid']);
+        $userid = $user_session['userid'];
+        return $userid;
     }
 }
 #endregion

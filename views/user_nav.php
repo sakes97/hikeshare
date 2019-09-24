@@ -43,20 +43,27 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reviewsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="reviewsDropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Reviews
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="reviewsDropdown">
+                    <div class="dropdown-menu dropdown-default" aria-labelledby="reviewsDropdown">
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/reviewRides">Review Past Rides</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastReviews">View Past Reviews</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL; ?>dashboard/profile">
-                        Profile
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" 
+                    aria-expanded="false">
+                        User
                     </a>
+                    <div class="dropdown-menu dropdown-default" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="<?php echo URL;?>dashboard/profile">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo URL;?>dashboard/add_car">Add Car</a>
+                        <a class="dropdown-item" href="<?php echo URL;?>dashboard/viewCars">View Cars</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo URL; ?>dashboard/logout">

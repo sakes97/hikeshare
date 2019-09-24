@@ -50,7 +50,7 @@ class Dashboard_Model extends Model
         $result = Database::Execute($query,$params);
         if ($result)
         {
-            header('location:' . URL . 'dashboard/profile?profile_view=4');
+            header('location:' . URL . 'dashboard/viewCars');
         }
         else
         {

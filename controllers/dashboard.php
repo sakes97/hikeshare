@@ -91,6 +91,23 @@ class Dashboard extends Controller
     #endregion
 
     #region Car
+
+    public function viewCars()
+    {
+        $this->view->title = "View Cars";
+        $this->_getCars($this->_userid);
+        $this->_getNumCars($this->_userid);
+        $this->view->render('dashboard/car/view-cars','user_nav');
+
+    }
+
+    public function add_car()
+    {
+        $this->view->title = "Add Car";
+        $this->_getNumCars($this->_userid);
+        $this->view->render('dashboard/car/add-car','user_nav');
+    }
+
     private function _getCars($driverid)
     {
         $this->view->cars = $this->model->getCars($driverid);

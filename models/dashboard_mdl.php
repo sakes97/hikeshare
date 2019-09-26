@@ -163,6 +163,22 @@ class Dashboard_Model extends Model
             header('location:' . URL . 'err/index');
         }
     }
+    public function updatePreferences($userid)
+    {
+        $query = 'CALL uspUpdatePreferences(:userid, :alcohol_yn, :pets_yn, :smoking_yn)';
+        $params = array(
+            ':userid' => $userid,
+            ':alcohol_yn' => $_POST['alcohol_yn'],
+            ':pets_yn' => $_POST['pets_yn'],
+            ':smoking_yn' => $_POST['smoking_yn']
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/profile?profile_view=1');
+        } else {
+            header('location:' . URL . 'err/index');
+        }
+    }
     #endregion
 
     #endregion

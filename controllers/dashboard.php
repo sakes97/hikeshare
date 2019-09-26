@@ -49,6 +49,11 @@ class Dashboard extends Controller
     {
         $this->model->disableAccount($userid);
     }
+
+    public function updatePreferences($userid)
+    {
+        $this->model->updatePreferences($userid);
+    }
     
     #endregion
 

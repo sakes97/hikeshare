@@ -120,7 +120,7 @@ class Dashboard_Model extends Model
             :dob';
         $params = array(
             ':userid' => $userid,
-            ':firstname' => $_POST['firstname'], 
+            ':firstname' => $_POST['firstname'],
             ':lastname' => $_POST['lastname'],
             ':bio' => $_POST['bio'],
             ':user_password' => $_POST['inputPassword'],
@@ -177,6 +177,58 @@ class Dashboard_Model extends Model
             header('location:' . URL . 'dashboard/profile?profile_view=1');
         } else {
             header('location:' . URL . 'err/index');
+        }
+    }
+    #endregion
+
+    #endregion
+
+    #region Ride
+
+    #region Get Functions
+    public function getOffers($driverid)
+    {
+        $query = 'CALL uspGetOffers(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetAll($query, $params);
+    }
+    public function getPendingOffers($driverid)
+    {
+        $query = 'CALL uspGetPendingOffers(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetAll($query,$params);
+    }
+    #endregion
+
+    #region Execute Functions
+    public function offerRide($driverid)
+    {
+        $rideid = Util::generate_id();
+        $query = 'CALL uspOfferRide(:rideid, :driverid, :carid,
+        :seats_available, :contribution_per_head, :departure_date, :departure_time,
+        :departure_from, :destination, :pick_up_spot, :extra_details, :ride_type)';
+        $params = array(
+            ':rideid' =>$rideid,
+            ':driverid' =>$driverid,
+            ':carid'=> $_POST['car'],
+            ':seats_available' => $_POST['seats_available'],
+            ':contribution_per_head' => $_POST['contribution_per_head'],
+            ':departure_date' =>$_POST['departure_date'],
+            ':departure_time' =>$_POST['departure_time'],
+            ':departure_from' =>$_POST['departure_from'],
+            ':destination' =>$_POST['destination'],
+            ':pick_up_spot' =>$_POST['pick_up_spot'],
+            ':extra_details' =>$_POST['extra_details'],
+            ':ride_type' =>$_POST['ride_type']
+        );
+        $result = Database::Execute($query,$params);
+        if($result)
+        {
+            header("location:" . URL . "dashboard/index");
+        }
+        else
+        {
+            header("location:" . URL . "err/index");
         }
     }
     #endregion

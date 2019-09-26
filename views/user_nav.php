@@ -30,11 +30,11 @@
                         Rides
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="ridesDropdown">
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offerRide">Offer Ride</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/findRide">Find a Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offer_Ride">Offer Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride">Find a Ride</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewUpcomingRide">View Upcoming Ride</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastRide">View Past Rides</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_UpcomingRide">View Upcoming Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_PastRide">View Past Rides</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -48,7 +48,7 @@
                         Reviews
                     </a>
                     <div class="dropdown-menu dropdown-default" aria-labelledby="reviewsDropdown">
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/reviewRides">Review Past Rides</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/review_Rides">Review Past Rides</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastReviews">View Past Reviews</a>
                     </div>

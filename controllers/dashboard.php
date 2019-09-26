@@ -38,6 +38,10 @@ class Dashboard extends Controller
     {
         $this->model->updateUserDetails($userid);
     }
+    public function disableAccount($userid)
+    {
+        $this->model->disableAccount($userid);
+    }
     #endregion
 
     #region Ride

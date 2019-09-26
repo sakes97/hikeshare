@@ -20,6 +20,11 @@ if(!isset($_GET['profile_view'])){
           <option value="2" <?php if($option == 2) echo "selected"; ?> >User Details</option>
         </select>
       </div>
+      <div class="col-xs-4 col-md-3 p-1 mb-2">
+        <a class="btn btn-danger btn-square" href="<?php echo URL; ?>dashboard/disableAccount/<?php echo $this->user['userid']; ?>">
+          Delete Account
+        </a>
+      </div>
     </div>
     <br/>
     <!-- end select view -->

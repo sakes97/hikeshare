@@ -54,6 +54,18 @@ class Dashboard extends Controller
     {
         $this->model->updatePreferences($userid);
     }
+
+    private function _getUserDetails($userid)
+    {
+        $this->view->user = $this->model->getUserDetails($userid);
+    }
+
+    private function _getUserID()
+    {
+        $user_session = Util::get_session('loggedin');
+        $userid = $user_session['userid'];
+        return $userid;
+    }
     
     #endregion
 
@@ -62,6 +74,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Add a Journey";
         $this->_getUserDetails($this->_userid);
+        $this->getDays();
         $this->view->render('dashboard/ride/offer', 'user_nav');
     }
 
@@ -99,6 +112,11 @@ class Dashboard extends Controller
     public function getPendingOffers($driverid)
     {
         $this->model->getPendingOffers($driverid);
+    }
+    
+    public function getDays()
+    {
+        $this->view->days = $this->model->getDays();
     }
     #endregion
 
@@ -202,18 +220,6 @@ class Dashboard extends Controller
         Util::destroy_session();
         header('location:' . URL . 'login');
         exit;
-    }
-
-    private function _getUserDetails($userid)
-    {
-        $this->view->user = $this->model->getUserDetails($userid);
-    }
-
-    private function _getUserID()
-    {
-        $user_session = Util::get_session('loggedin');
-        $userid = $user_session['userid'];
-        return $userid;
     }
 }
 #endregion

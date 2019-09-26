@@ -198,6 +198,11 @@ class Dashboard_Model extends Model
         $params = array(':driverid'=>$driverid);
         return Database::GetAll($query,$params);
     }
+    public function getDays()
+    {
+        $query = 'CALL uspDays()';
+        return Database::GetAll($query);
+    }
     #endregion
 
     #region Execute Functions
@@ -230,6 +235,17 @@ class Dashboard_Model extends Model
         {
             header("location:" . URL . "err/index");
         }
+    }
+
+    public function setSchedule($rideid)
+    {
+        $query = 'CALL uspSetSchedule(:rideid, :dayid, :departure_time, :return_time)';
+        $params = array(
+            ':rideid' => $rideid,
+            ':dayid' => $_POST['day']
+        );
+        $result = Database::Execute($query,$params);
+        return $result;
     }
     #endregion
 

@@ -20,7 +20,12 @@
             <div class="row">
                 <div class="col-12">
                     <h6>User Cars</h6>
-                    <div class="col-xs-12 col-md-3 p-1">
+                    
+                    
+                    <div class="col-xs-12 col-md-3 p-1 mb-2">
+                        <a class="btn btn-outline-default" href="<?php echo URL; ?>dashboard/add_car">
+                            Add A Car
+                        </a>
                     </div>
                     <div class="row">
                     <?php 
@@ -74,7 +79,7 @@
                                     <a class="btn btn-outline-default" href="<?php echo URL; ?>dashboard/update_Car/<?php echo $cars['carid']; ?>">
                                         Update
                                     </a>
-                                    <a class="btn btn-danger" href="<?php echo URL; ?>dashboard/removeCar/carid=<?php echo $cars['carid']; ?>">
+                                    <a class="btn btn-danger" href="<?php echo URL; ?>dashboard/removeCar/<?php echo $cars['carid']; ?>/<?php echo $cars['driverid']; ?>">
                                         Remove
                                     </a>
                                 </div>

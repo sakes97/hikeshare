@@ -144,12 +144,18 @@ class Dashboard extends Controller
     {
         $this->model->addCar();
     }
+    
     /**
      * Updates users car 
      */
     public function updateCar($carid)
     {
         $this->model->updateCar($carid);
+    }
+
+    public function removeCar($carid, $driverid)
+    {
+        $this->model->removeCar($carid, $driverid);
     }
 
     #endregion 

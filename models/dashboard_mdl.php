@@ -85,6 +85,18 @@ class Dashboard_Model extends Model
         }
      }
 
-    public function removeCar()
-    { }
+    public function removeCar($carid, $driverid)
+    { 
+        $query = 'CALL uspRemoveCar(:carid, :driverid)';
+        $params = array(
+            ':carid' => $carid,
+            ':driverid' => $driverid
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/viewCars');
+        } else {
+            header('location:' . URL . 'err/index');
+        }
+    }
 }

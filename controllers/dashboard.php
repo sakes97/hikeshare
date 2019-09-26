@@ -34,6 +34,10 @@ class Dashboard extends Controller
         $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/profile', 'user_nav');
     }
+    public function updateUserDetails($userid)
+    {
+        $this->model->updateUserDetails($userid);
+    }
     #endregion
 
     #region Ride
@@ -159,6 +163,7 @@ class Dashboard extends Controller
     }
 
     #endregion 
+
     #region Other Methods
     private function _handleLogin()
     {

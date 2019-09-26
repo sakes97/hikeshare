@@ -121,7 +121,7 @@ if(!isset($_GET['profile_view'])){
         <div class="col-12">
           <h6 class="mt-2 pb-0 text-center">User Details</h6>
           <!-- user details form -->
-          <form>
+          <form method="post" action="<?php echo URL; ?>dashboard/updateUserDetails/<?php echo $this->user['userid'];?>">
               <!-- firstname/lastname/email -->
               <div class="form-row">
                 <div class="form-group col-sm-6 col-md-4 p-3">

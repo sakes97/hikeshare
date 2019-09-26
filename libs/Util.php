@@ -3,9 +3,9 @@
 class Util
 {
     public function __construct()
-    {}
+    { }
 
-#region Sessions
+    #region Sessions
     public static function init_session()
     {
         @session_start();
@@ -21,7 +21,6 @@ class Util
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
-
     }
 
     public static function destroy_session()
@@ -31,12 +30,12 @@ class Util
     }
 
     public static function handleLogin()
-    {}
+    { }
     public static function handleLogout()
-    {}
-#endregion
+    { }
+    #endregion
 
-#region Generators
+    #region Generators
     private function crypto_rand_secure($min, $max)
     {
         $range = $max - $min;
@@ -68,9 +67,9 @@ class Util
 
         return $token;
     }
-#endregion
+    #endregion
 
-#region Hash
+    #region Hash
     /*
     @param string = $algo The algorithm (md5)
     @param string = $data The data to encode
@@ -83,6 +82,6 @@ class Util
         hash_update($context, $data);
         return hash_final($context);
     }
-#endregion
+    #endregion
 
 }

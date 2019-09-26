@@ -125,16 +125,16 @@ if(!isset($_GET['profile_view'])){
               <!-- firstname/lastname/email -->
               <div class="form-row">
                 <div class="form-group col-sm-6 col-md-4 p-3">
-                  <label for="inputFirstname">Firstname</label>
-                  <input type="text" class="form-control" id="inputFirstname" nam="inputFirstname" placeholder="Firstname">
+                  <label for="firstname">Firstname</label>
+                  <input type="text" class="form-control" id="firstname" nam="firstname" placeholder="Firstname">
                 </div>
                 <div class="form-group col-sm-6 col-md-4 p-3">
-                  <label for="inputLastname">Lastname</label>
-                  <input type="text" class="form-control" id="inputLastname" nam="inputLastname" placeholder="Lastname">
+                  <label for="lastname">Lastname</label>
+                  <input type="text" class="form-control" id="lastname" nam="lastname" placeholder="Lastname">
                 </div>
                 <div class="form-group col-md-4 p-3">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmai" name="inputEmail" placeholder="Email">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                 </div>
               </div>
               <!-- end firstname/lastname/email -->
@@ -142,8 +142,8 @@ if(!isset($_GET['profile_view'])){
               <!-- contact number -->
               <div class="form-row">
                 <div class="form-group col-sm-12 col-md-4 p-3">
-                  <label for="inputContactNumber" class="label-control">Contact Number</label>
-                  <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="Contact Number">
+                  <label for="contact_num" class="label-control">Contact Number</label>
+                  <input type="text" class="form-control" id="contact_num" name="contact_num" placeholder="Contact Number">
                 </div>
               </div>
               <!-- end number-->
@@ -151,17 +151,17 @@ if(!isset($_GET['profile_view'])){
               <!-- bio/gender -->
               <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6 p-3">
-                  <label for="inputBio">Short Bio</label>
-                  <textarea class="form-control" id="inputBio" name="inputBio" rows="3"></textarea>
+                  <label for="bio">Short Bio</label>
+                  <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
                 </div>
                 <div class="form-group col-sm-12 col-md-6 p-3">
-                  <label for="inputGender">Gender</label>
+                  <label for="gender">Gender</label>
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="female_option" name="inputGender" value="female">
+                    <input type="radio" class="custom-control-input" id="female_option" name="gender" value="female">
                     <label class="custom-control-label" for="female_option">Female</label>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="male_option" name="inputGender" value="male">
+                    <input type="radio" class="custom-control-input" id="male_option" name="gender" value="male">
                     <label class="custom-control-label" for="male_option">Male</label>
                   </div>
 
@@ -172,8 +172,8 @@ if(!isset($_GET['profile_view'])){
               <!-- date of birth-->
               <div class="form-row">
                 <div class="form-group col-sm-12 col-md-4 p-3">
-                  <label class="label-control" for="inputBirth">Date of Birth</label>
-                  <input type="text" class="form-control datepicker" name="inputBirth" id="inputBirth" placeholder=""/>
+                  <label class="label-control" for="dob">Date of Birth</label>
+                  <input type="text" class="form-control datepicker" name="dob" id="dob" placeholder=""/>
                 </div>
               </div>
               <!-- end date of birth-->
@@ -185,10 +185,10 @@ if(!isset($_GET['profile_view'])){
                   <label class="label-control" for="inputPassword">Password</label>
                   <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
                 </div>
-                <div class="form-group col-sm-12 col-md-4 p-3">
+                <!-- <div class="form-group col-sm-12 col-md-4 p-3">
                   <label class="label-control" for="inputConfirmPassword">Confirm Password</label>
                   <input type="password" class="form-control" id="inputConfirmPassword" name="inputConfirmPassword" placeholder="Confirm Password">
-                </div>
+                </div> -->
               </div>
               <!-- end password-->
 

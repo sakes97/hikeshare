@@ -7,13 +7,9 @@ class Dashboard_Model extends Model
         parent::__construct();
     }
 
-    public function getUserDetails($id)
-    {
-        $query = 'CALL uspGetUserDetails(:userid)';
-        $params = array(':userid' => $id);
-        return Database::GetRow($query, $params);
-    }
+    #region Car 
 
+    #region Get Functions 
     public function getCars($driverid)
     {
         $query = 'CALL uspGetCars(:driverid)';
@@ -21,14 +17,14 @@ class Dashboard_Model extends Model
         return Database::GetAll($query, $params);
     }
 
-    public function getCar($carid,$driverid)
+    public function getCar($carid, $driverid)
     {
         $query = 'CALL uspGetCar(:carid, :driverid)';
         $params = array(
             ':carid' => $carid,
             ':driverid' => $driverid
         );
-        return Database::GetRow($query,$params);
+        return Database::GetRow($query, $params);
     }
 
     public function getNumCars($driverid)
@@ -37,7 +33,9 @@ class Dashboard_Model extends Model
         $params = array(':driverid' => $driverid);
         return Database::GetRow($query, $params);
     }
+    #endregion
 
+    #region Execute Functions
     public function addCar()
     {
         $carid = Util::generate_id();
@@ -83,10 +81,10 @@ class Dashboard_Model extends Model
         } else {
             header('location:' . URL . 'err/updateCar');
         }
-     }
+    }
 
     public function removeCar($carid, $driverid)
-    { 
+    {
         $query = 'CALL uspRemoveCar(:carid, :driverid)';
         $params = array(
             ':carid' => $carid,
@@ -99,4 +97,59 @@ class Dashboard_Model extends Model
             header('location:' . URL . 'err/index');
         }
     }
+    #endregion
+
+    #endregion 
+
+    #region User Profile
+
+    #region Get Functions
+    public function getUserDetails($id)
+    {
+        $query = 'CALL uspGetUserDetails(:userid)';
+        $params = array(':userid' => $id);
+        return Database::GetRow($query, $params);
+    }
+    #endregion
+
+    #region Execute Functions 
+    public function updateUserDetails($userid)
+    {
+        $query = 'CALL uspUpdateProfileDetails(:userid, :firstname,
+            :lastname, :bio, :user_password, :email, :gender, :contact_num,
+            :dob';
+        $params = array(
+            ':userid' => $userid,
+            ':firstname' => $_POST['firstname'], 
+            ':lastname' => $_POST['lastname'],
+            ':bio' => $_POST['bio'],
+            ':user_password' => $_POST['inputPassword'],
+            ':email' => $_POST['email'],
+            ':gender' => $_POST['gender'],
+            ':contact_num' => $_POST['contact_num'],
+            ':dob' => $_POST['dob']
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/profile');
+        } else {
+            header('location:' . URL . 'err/index');
+        }
+    }
+    public function disableAccount($userid)
+    {
+        $query = 'CALL uspDisableAccount(:userid)';
+        $params = array(
+            ':userid' => $userid
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/logout');
+        } else {
+            header('location:' . URL . 'err/index');
+        }
+    }
+    #endregion
+
+    #endregion
 }

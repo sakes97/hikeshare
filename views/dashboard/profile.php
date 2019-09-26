@@ -12,7 +12,7 @@ if(!isset($_GET['profile_view'])){
     <h2>Profile</h2>
     <!-- select view -->
     <div class="row">
-      <div class="col-xs-4 col-md-3">
+      <div class="col-xs-4 col-md-3 pt-1 mb-1">
         <select name="profile_view" class="form-control form-control-sm"
         id="profile_view" onchange="pageview(this.value)">
           <option value="0" <?php if($option == 0) echo "selected"; ?> >Profile Picture</option>
@@ -20,7 +20,7 @@ if(!isset($_GET['profile_view'])){
           <option value="2" <?php if($option == 2) echo "selected"; ?> >User Details</option>
         </select>
       </div>
-      <div class="col-xs-4 col-md-3 p-1 mb-2">
+      <div class="col-xs-12 col-md-3">
         <a class="btn btn-danger btn-square" href="<?php echo URL; ?>dashboard/disableAccount/<?php echo $this->user['userid']; ?>">
           Delete Account
         </a>
@@ -40,7 +40,7 @@ if(!isset($_GET['profile_view'])){
       <div class="row">
         <div class="col-12">
           <h6 class="mt-2 pb-0 text-center">Your profile picture</h6>
-          <form>
+          <form id="frmPicture" method="post" action="<?php echo URL;?>dashboard/updateProfilePicture/<?php echo $this->user['userid']; ?>" enctype="multipart/form-data">
             <!-- image -->
             <div class="form-row">
               <div class="form-group col-md-4 mr-auto ml-auto">
@@ -53,15 +53,22 @@ if(!isset($_GET['profile_view'])){
               </div>
             </div>
             <!-- end image -->
-            <!-- upload button -->
+            <!-- choose button -->
             <div class="form-row">
               <div class="form-group col-5 ml-auto mr-auto">
                 <input type="file" id="inputGroupFile01" class="form-control imgInp custom-file-input" 
-                aria-describedby="inputGroupFile01">
+                aria-describedby="inputGroupFile01" name="inputGroupFile01">
                 <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
               </div>
             </div>
+            <!-- end choose button -->
+
+            <!-- upload button -->
+            <div class="text-center pb-3">
+              <input form="frmPicture" type="submit" class="btn btn-outline-danger btn-round" value="Upload">
+            </div>
             <!-- end upload button -->
+
           </form>
         </div>
       </div>
@@ -200,7 +207,7 @@ if(!isset($_GET['profile_view'])){
           
               <!-- button -->
               <div class="text-center pb-3">
-                <input type="submit" class="btn btn-danger btn-round" value="submit">
+                <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
               </div>
               <!-- end button -->
 

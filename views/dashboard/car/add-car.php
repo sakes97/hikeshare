@@ -83,7 +83,7 @@
 
                     <!-- button -->
                     <div class="text-center pb-3">
-                    <input type="submit" class="btn btn-danger btn-round" value="submit">
+                    <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
                     </div>
                     <!-- end button -->
                 </form>

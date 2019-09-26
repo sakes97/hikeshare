@@ -34,14 +34,22 @@ class Dashboard extends Controller
         $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/profile', 'user_nav');
     }
+
     public function updateUserDetails($userid)
     {
         $this->model->updateUserDetails($userid);
     }
+
+    public function updateProfilePicture($userid)
+    {
+        $this->model->updateProfilePicture($userid);
+    }
+
     public function disableAccount($userid)
     {
         $this->model->disableAccount($userid);
     }
+    
     #endregion
 
     #region Ride
@@ -105,8 +113,7 @@ class Dashboard extends Controller
         $this->view->title = "View Cars";
         $this->_getCars($this->_userid);
         $this->_getNumCars($this->_userid);
-        $this->view->render('dashboard/car/view-cars','user_nav');
-
+        $this->view->render('dashboard/car/view-cars', 'user_nav');
     }
 
     /**
@@ -117,7 +124,7 @@ class Dashboard extends Controller
         $this->view->title = "Add Car";
         $this->_getUserDetails($this->_userid);
         $this->_getNumCars($this->_userid);
-        $this->view->render('dashboard/car/add-car','user_nav');
+        $this->view->render('dashboard/car/add-car', 'user_nav');
     }
 
     /**
@@ -127,7 +134,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Update Car";
         $this->_getUserDetails($this->_userid);
-        $this->_getCar($carid,$this->_userid);
+        $this->_getCar($carid, $this->_userid);
         $this->view->render('dashboard/car/update-car', 'user_nav');
     }
 
@@ -140,9 +147,9 @@ class Dashboard extends Controller
         $this->view->num_of_cars = $this->model->getNumCars($driverid);
     }
 
-    private function _getCar($carid,$driverid)
+    private function _getCar($carid, $driverid)
     {
-        $this->view->myCar = $this->model->getCar($carid,$driverid);
+        $this->view->myCar = $this->model->getCar($carid, $driverid);
     }
 
     /**
@@ -152,7 +159,7 @@ class Dashboard extends Controller
     {
         $this->model->addCar();
     }
-    
+
     /**
      * Updates users car 
      */
@@ -193,7 +200,7 @@ class Dashboard extends Controller
     {
         $this->view->user = $this->model->getUserDetails($userid);
     }
-    
+
     private function _getUserID()
     {
         $user_session = Util::get_session('loggedin');

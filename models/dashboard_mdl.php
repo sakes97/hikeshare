@@ -136,6 +136,20 @@ class Dashboard_Model extends Model
             header('location:' . URL . 'err/index');
         }
     }
+    public function updateProfilePicture($userid)
+    {
+        $query = 'CALL uspUpdateProfilePicture(:userid, :picture)';
+        $params = array(
+            ':userid' => $userid,
+            ':picture' => file_get_contents($_FILES['inputGroupFile01']['tmp_name'])
+        );
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            header('location:' . URL . 'dashboard/profile?profile_view=0');
+        } else {
+            header('location:' . URL . 'err/index');
+        }
+    }
     public function disableAccount($userid)
     {
         $query = 'CALL uspDisableAccount(:userid)';

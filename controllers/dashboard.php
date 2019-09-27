@@ -35,9 +35,9 @@ class Dashboard extends Controller
         $this->view->render('dashboard/profile', 'user_nav');
     }
 
-    public function updateUserDetails($userid)
+    public function updateProfileDetails($userid)
     {
-        $this->model->updateUserDetails($userid);
+        $this->model->updateProfileDetails($userid);
     }
 
     public function updateProfilePicture($userid)

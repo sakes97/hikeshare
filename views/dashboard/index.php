@@ -35,7 +35,7 @@
                         $pets = $this->user['pets_yn'];
 
                         //smoking preference
-                        if($smoking == 'N'){
+                        if($smoking == 'N' || $smoking == NULL){
                           echo '<img class="img-responsive img-square preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
                           data-toggle="tooltip" data-placement="top" title="No Smoking Allowed"/>';
                         } else if($smoking == 'Y') {
@@ -46,7 +46,7 @@
                         }
 
                         //alchohol preference
-                        if($alcohol == 'N'){
+                        if($alcohol == 'N' || $alcohol == NULL){
                           echo '<img class="img-responsive img-square preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
                           data-toggle="tooltip" data-placement="top" title="No Drinking Is Allowed"/>';
                         } else if($alcohol == 'Y') {
@@ -57,7 +57,7 @@
                         }
 
                         //pets preference
-                        if($pets == 'N'){
+                        if($pets == 'N' || $pets == NULL){
                           echo '<img class="img-responsive img-square preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
                           data-toggle="tooltip" data-placement="top" title="No Pets Allowed" />';
                         } else if($pets == 'Y') {

@@ -113,17 +113,30 @@ class Dashboard_Model extends Model
     #endregion
 
     #region Execute Functions 
-    public function updateUserDetails($userid)
+    public function updateProfileDetails($userid)
     {
         $query = 'CALL uspUpdateProfileDetails(:userid, :firstname,
             :lastname, :bio, :user_password, :email, :gender, :contact_num,
-            :dob';
+            :dob)';
+
+        /**
+         * Check if the user changed the password or not 
+         * -if not send through the existing password
+         * -if they changed it - create a new hashpassword for the password the user entered 
+         */
+        $user = $this->getUserDetails($userid);
+        if ($_POST['inputPassword'] == $user['password']) {
+            $password = $_POST['inputPassword'];
+        } else {
+            $password = Util::create('md5', $_POST['inputPassword'], HASH_PASSWORD_KEY);
+        }
+
         $params = array(
             ':userid' => $userid,
             ':firstname' => $_POST['firstname'],
             ':lastname' => $_POST['lastname'],
             ':bio' => $_POST['bio'],
-            ':user_password' => $_POST['inputPassword'],
+            ':user_password' => $password,
             ':email' => $_POST['email'],
             ':gender' => $_POST['gender'],
             ':contact_num' => $_POST['contact_num'],

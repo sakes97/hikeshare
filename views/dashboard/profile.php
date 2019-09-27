@@ -125,7 +125,7 @@ if(!isset($_GET['profile_view'])){
                                         echo "checked='Checked'";
                                       }
                                     ?>>
-                                <label class="custom-control-label" for="pets_y">Alcohol Allowed</label>
+                                <label class="custom-control-label" for="pets_y">Pet Allowed</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" id="pets_n" name="pets_yn" value="N" <?php 
@@ -133,7 +133,7 @@ if(!isset($_GET['profile_view'])){
                                         echo "checked='Checked'";
                                       }
                                     ?>>
-                                <label class="custom-control-label" for="pets_n">No Alcohol Allowed</label>
+                                <label class="custom-control-label" for="pets_n">No Pets Allowed</label>
                             </div>
                         </div>
                         <!-- end pets -->
@@ -147,7 +147,7 @@ if(!isset($_GET['profile_view'])){
                                         echo "checked='Checked'";
                                       }
                                     ?>>
-                                <label class="custom-control-label" for="smoking_y">Alcohol Allowed</label>
+                                <label class="custom-control-label" for="smoking_y">Smoking Allowed</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" id="smoking_n" name="smoking_yn"
@@ -156,7 +156,7 @@ if(!isset($_GET['profile_view'])){
                                         echo "checked='Checked'";
                                       }
                                     ?>>
-                                <label class="custom-control-label" for="smoking_n">No Alcohol Allowed</label>
+                                <label class="custom-control-label" for="smoking_n">No Smoking Allowed</label>
                             </div>
                         </div>
                         <!-- end smoking -->
@@ -180,22 +180,23 @@ if(!isset($_GET['profile_view'])){
                     <h6 class="mt-2 pb-0 text-center">User Details</h6>
                     <!-- user details form -->
                     <form method="post"
-                        action="<?php echo URL; ?>dashboard/updateUserDetails/<?php echo $this->user['userid'];?>">
+                        action="<?php echo URL; ?>dashboard/updateProfileDetails/<?php echo $this->user['userid'];?>">
                         <!-- firstname/lastname/email -->
                         <div class="form-row">
                             <div class="form-group col-sm-6 col-md-4 p-3">
                                 <label for="firstname">Firstname</label>
-                                <input type="text" class="form-control" id="firstname" nam="firstname"
-                                    placeholder="Firstname">
+                                <input type="text" class="form-control" id="firstname" name="firstname"
+                                    placeholder="Firstname..." value="<?php echo $this->user['firstname']; ?>">
                             </div>
                             <div class="form-group col-sm-6 col-md-4 p-3">
                                 <label for="lastname">Lastname</label>
-                                <input type="text" class="form-control" id="lastname" nam="lastname"
-                                    placeholder="Lastname">
+                                <input type="text" class="form-control" id="lastname" name="lastname"
+                                    placeholder="Lastname..." value="<?php echo $this->user['lastname']; ?>">
                             </div>
                             <div class="form-group col-md-4 p-3">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Email Address..." value="<?php echo $this->user['email']; ?>">
                             </div>
                         </div>
                         <!-- end firstname/lastname/email -->
@@ -205,7 +206,7 @@ if(!isset($_GET['profile_view'])){
                             <div class="form-group col-sm-12 col-md-4 p-3">
                                 <label for="contact_num" class="label-control">Contact Number</label>
                                 <input type="text" class="form-control" id="contact_num" name="contact_num"
-                                    placeholder="Contact Number">
+                                    placeholder="Contact Number..." value="<?php echo $this->user['contact_num']; ?>">
                             </div>
                         </div>
                         <!-- end number-->
@@ -214,18 +215,31 @@ if(!isset($_GET['profile_view'])){
                         <div class="form-row">
                             <div class="form-group col-sm-12 col-md-6 p-3">
                                 <label for="bio">Short Bio</label>
-                                <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+                                <textarea class="form-control" id="bio" name="bio" rows="3"
+                                    placeholder="Short Descriptive Bio..."><?php
+                                        if($this->user['bio'] != NULL || isset($this->user['bio'])){
+                                            echo $this->user['bio'];
+                                        }
+                                     ?></textarea>
                             </div>
                             <div class="form-group col-sm-12 col-md-6 p-3">
                                 <label for="gender">Gender</label>
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="female_option" name="gender"
-                                        value="female">
+                                        value="female" <?php
+                                            if($this->user['gender'] == "female"){
+                                                echo "checked=checked";
+                                            }
+                                        ?>>
                                     <label class="custom-control-label" for="female_option">Female</label>
                                 </div>
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="male_option" name="gender"
-                                        value="male">
+                                        value="male" <?php
+                                            if($this->user['gender'] == "male"){
+                                                echo "checked=checked";
+                                            }
+                                        ?>>
                                     <label class="custom-control-label" for="male_option">Male</label>
                                 </div>
 
@@ -237,7 +251,8 @@ if(!isset($_GET['profile_view'])){
                         <div class="form-row">
                             <div class="form-group col-sm-12 col-md-4 p-3">
                                 <label class="label-control" for="dob">Date of Birth</label>
-                                <input type="text" class="form-control datepicker" name="dob" id="dob" placeholder="" />
+                                <input type="text" class="form-control datepicker" name="dob" id="dob" placeholder=""
+                                    value="<?php echo $this->user['dob'];?>" />
                             </div>
                         </div>
                         <!-- end date of birth-->
@@ -248,12 +263,8 @@ if(!isset($_GET['profile_view'])){
                             <div class="form-group col-sm-12 col-md-4 p-3">
                                 <label class="label-control" for="inputPassword">Password</label>
                                 <input type="password" class="form-control" id="inputPassword" name="inputPassword"
-                                    placeholder="Password">
+                                    placeholder="Password" value="<?php echo $this->user['password']; ?>">
                             </div>
-                            <!-- <div class="form-group col-sm-12 col-md-4 p-3">
-                  <label class="label-control" for="inputConfirmPassword">Confirm Password</label>
-                  <input type="password" class="form-control" id="inputConfirmPassword" name="inputConfirmPassword" placeholder="Confirm Password">
-                </div> -->
                         </div>
                         <!-- end password-->
 

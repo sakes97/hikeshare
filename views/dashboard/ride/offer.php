@@ -44,7 +44,22 @@
                                     value="R">
                                 <label class="custom-control-label" for="regular_option">Regular</label>
                             </div>
-
+                        </div>
+                        <div class="form-group col-sm-12 col-md-12 p-1">
+                            <label>Schedule Days</label>
+                            <br />
+                            <?php 
+                                foreach($this->days as $day){
+                            ?>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="<?php echo $day['dow']; ?>"
+                                    name="days_checklist[]" value="<?php echo $day['dayid']; ?>">
+                                <label class="custom-control-label" for="<?php echo $day['dow']; ?>">
+                                    <?php echo $day['dow']; ?></label>
+                            </div>
+                            <?php 
+                                }
+                            ?>
                         </div>
                     </div>
                     <!-- end trip frequency -->

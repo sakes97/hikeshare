@@ -89,7 +89,7 @@
                     Post a lift offer to members part of our community who are 
                     going the same way and share the costs for your travels
                   </p>
-                  <a href="<?php echo URL; ?>dashboard/offerRide" 
+                  <a href="<?php echo URL; ?>dashboard/offer_Ride" 
                     class="btn btn-outline-danger btn-round">
                     OFFER A RIDE
                   </a>
@@ -106,7 +106,7 @@
                     Going somewhere and need a ride? Post a request and share the costs for the trip 
                     and travel in comfort
                   </p>
-                  <a href="<?php echo URL; ?>dashboard/findRide"
+                  <a href="<?php echo URL; ?>dashboard/find_Ride"
                     class="btn btn-outline-danger btn-round">
                     FIND A RIDE
                   </a>

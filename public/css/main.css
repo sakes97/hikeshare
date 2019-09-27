@@ -63,6 +63,10 @@
   max-height: 200px;
   padding:5px;
 }
+.offer_add_car_modal{
+  max-height: 100px !important;
+  padding:5px !important;
+}
 .imgInp{  
   margin-top:10px;
   background-color:#d3d3d3;  

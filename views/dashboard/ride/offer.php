@@ -4,7 +4,6 @@
         <div class="row max py-1">
             <!-- google Maps -->
             <div id="map" class="col-sm-12 col-md-6 shadow-sm">
-
             </div>
             <!-- end google maps -->
 
@@ -94,22 +93,23 @@
                                 ?>
                                 <label for="car_for_ride">Choose:</label>
                                 <select name="car_for_ride" class="form-control form-control-sm" id="car_for_ride">
-                                <?php 
+                                    <?php 
                                         foreach($this->cars as $cars){
                                 ?>
                                     <option id="<?php echo $cars['carid'];?>" value="<?php echo $cars['carid'];?>">
                                         <?php echo $cars['make']; ?>
                                     </option>
-                                <?php
+                                    <?php
                                         }
-                                ?>                        
+                                ?>
                                 </select>
                                 <?php
                                     } else {
                                 ?>
-                                <a class="btn btn-default btn-square" href="#">
+                                <button type="button" data-toggle="modal" class="btn btn-default btn-square"
+                                    data-target="#addCarModal">
                                     Add Car
-                                </a>
+                                </button>
                                 <?php 
                                     }
                                 ?>
@@ -155,6 +155,80 @@
             </div>
         </div>
         <!-- end trip details -->
+
+
+        <div class="modal fade" id="addCarModal" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-register">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6 class="text-muted text-center">Add Car</h6>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <!-- car image -->
+                            <div class="form-group mr-auto ml-auto text-center">
+                                <div id="image_contain">
+                                    <img id="image-upload" align="middle"
+                                        class="img-square img-no-padding img-responsive offer_add_car_modal"
+                                        src="<?php echo URL; ?>public/images/hikeshare-logo.png" alt="Car Image"
+                                        title='' />
+                                </div>
+                            </div>
+                            <div class="form-group col-12">
+                                <input type="file" id="inputGroupFile01" class="form-control imgInp custom-file-input"
+                                    aria-describedby="inputGroupFile01" name="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                            </div>
+                            <!-- end car image -->
+
+                            <!-- registration number -->
+                            <div class="form-group col-12">
+                                <label for="registration_number">Registration Number</label>
+                                <input type="text" class="form-control" name="registration_number"
+                                    id="registration_number" placeholder="Registration Number">
+                            </div>
+                            <!-- end registration number -->
+
+                            <!-- make/model/model-year -->
+                            <div class="form-group col-12">
+                                <label for="make">Make</label>
+                                <input name="make" id="make" class="form-control" type="text" placeholder="Make">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="model">Model</label>
+                                <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="model_year" class="label-control">Model Year</label>
+                                <input type="text" class="form-control datepicker_year" name="model_year"
+                                    id="model_year" placeholder="Model Year">
+                            </div>
+                            <!-- end make/model/model-year -->
+
+                            <!-- colour -->
+                            <div class="form-group col-12">
+                                <label for="color">Color</label>
+                                <input type="text" class="form-control" name="color" id="color" placeholder="Color">
+                            </div>
+                            <!-- end colour -->
+
+                            <!-- number of seats -->
+                            <div class="form-group col-12">
+                                <label for="number_of_seats">Number Of Seats (Excluding Driver Seat)</label>
+                                <input class="form-control" type="number" min="1" max="16" name="number_of_seats"
+                                    id="number_of_seats">
+                            </div>
+                            <!-- end number of seats -->
+                            <div class="text-center pb-3">
+                                <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>

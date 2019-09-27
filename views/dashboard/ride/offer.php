@@ -112,8 +112,8 @@
                                 </button>
                                 <span class="p-1">
                                     <i class="fas fa-question-circle tooltip_icon" data-toggle="tooltip"
-                                    data-placement="right" 
-                                    title="Car needs to be added before ride can be made"></i>
+                                        data-placement="right"
+                                        title="Car needs to be added before ride can be made"></i>
                                 </span>
                                 <?php 
                                     }
@@ -190,45 +190,42 @@
                             <!-- end car image -->
 
                             <!-- registration number -->
-                            <div class="form-group col-12">
-                                <label for="registration_number">Registration Number</label>
-                                <input type="text" class="form-control" name="registration_number"
-                                    id="registration_number" placeholder="Registration Number">
+                            <div class="form-row">
+                                <div class="form-group col-sx-12 col-md-8">
+                                    <label for="registration_number">Registration Number</label>
+                                    <input type="text" class="form-control" name="registration_number"
+                                        id="registration_number" placeholder="Registration Number">
+                                </div>
                             </div>
                             <!-- end registration number -->
 
-                            <!-- make/model/model-year -->
-                            <div class="form-group col-12">
-                                <label for="make">Make</label>
-                                <input name="make" id="make" class="form-control" type="text" placeholder="Make">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="make">Make</label>
+                                    <input name="make" id="make" class="form-control" type="text" placeholder="Make">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="model">Model</label>
+                                    <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+                                </div>
                             </div>
-                            <div class="form-group col-12">
-                                <label for="model">Model</label>
-                                <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+                            <div class="form-row">
+                                <div class="form-group col-xs-12 col-md-4">
+                                    <label for="model_year" class="label-control">Model Year</label>
+                                    <input type="text" class="form-control datepicker_year" name="model_year"
+                                        id="model_year" placeholder="Model Year">
+                                </div>
+                                <div class="form-group col-xs-12 col-md-8">
+                                    <label for="number_of_seats">Number Of Seats (Excluding Driver Seat)</label>
+                                    <input class="form-control" type="number" min="1" max="16" name="number_of_seats"
+                                        id="number_of_seats">
+                                </div>
                             </div>
-                            <div class="form-group col-12">
-                                <label for="model_year" class="label-control">Model Year</label>
-                                <input type="text" class="form-control datepicker_year" name="model_year"
-                                    id="model_year" placeholder="Model Year">
-                            </div>
-                            <!-- end make/model/model-year -->
 
-                            <!-- colour -->
-                            <div class="form-group col-12">
-                                <label for="color">Color</label>
-                                <input type="text" class="form-control" name="color" id="color" placeholder="Color">
-                            </div>
-                            <!-- end colour -->
-
-                            <!-- number of seats -->
-                            <div class="form-group col-12">
-                                <label for="number_of_seats">Number Of Seats (Excluding Driver Seat)</label>
-                                <input class="form-control" type="number" min="1" max="16" name="number_of_seats"
-                                    id="number_of_seats">
-                            </div>
-                            <!-- end number of seats -->
-                            <div class="text-center pb-3">
-                                <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
+                            <div class="form-row">
+                                <div class="mr-auto ml-auto pb-3">
+                                    <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
+                                </div>
                             </div>
                         </form>
                     </div>

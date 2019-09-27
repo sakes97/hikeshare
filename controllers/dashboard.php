@@ -75,6 +75,8 @@ class Dashboard extends Controller
         $this->view->title = "Add a Journey";
         $this->_getUserDetails($this->_userid);
         $this->getDays();
+        $this->_getCars($this->_userid);
+        $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/ride/offer', 'user_nav');
     }
 
@@ -174,6 +176,7 @@ class Dashboard extends Controller
     {
         $this->view->cars = $this->model->getCars($driverid);
     }
+
     private function _getNumCars($driverid)
     {
         $this->view->num_of_cars = $this->model->getNumCars($driverid);

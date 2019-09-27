@@ -11,7 +11,7 @@
             <!-- enter Trip Details -->
             <div class="col-sm-12 col-md-6">
                 <h6>Enter Your Trip Details</h6>
-                <form>
+                <form method="post" action="<?php echo URL; ?>dashboard/offerRide/<?php echo $this->user['userid']; ?>">
                     <!-- from -->
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-9 p-1">
@@ -36,16 +36,16 @@
                             <label for="ride_type">Trip frequency</label>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" id="once_option" name="ride_type"
-                                    value="O">
+                                    value="O" checked onclick="scheduleHide();">
                                 <label class="custom-control-label" for="once_option">Once-Off</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" id="regular_option" name="ride_type"
-                                    value="R">
+                                    value="R" onclick="scheduleShow();">
                                 <label class="custom-control-label" for="regular_option">Regular</label>
                             </div>
                         </div>
-                        <div class="form-group col-sm-12 col-md-12 p-1">
+                        <div class="form-group col-sm-12 col-md-12 p-1" id="rideDays" style="display:none;">
                             <label>Schedule Days</label>
                             <br />
                             <?php 
@@ -66,19 +66,56 @@
                     <!-- travel schedule -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
-                            <label class="label-control" for="inputDate">Departure Date</label>
+                            <label id="lblDepartureDate" class="label-control" for="inputDate">Departure Date</label>
                             <input type="text" class="form-control datepicker" name="inputDate" id="inputDate"
-                                placeholder="" />
+                                placeholder="Choose the date..." />
                         </div>
-                        <div class="form-group col-sm-12 col-md-6 p-1">
-                            <label class="label-control" for="inputTime">Departure Time</label>
-                            <label class="label-control" for="inputTime"></label>
-                            <input type="text" class="form-control timepicker" name="inputTime" id="inputTime"
-                                placeholder="" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12 col-md-6 p-1" id="dvDepartureTime">
+                            <label id="lblDepartureTime" class="label-control" for="inputTime">Departure Time</label>
+                            <input type="text" class="form-control timepicker" name="departure_time" id="departure_time"
+                                placeholder="Departure Time" />
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 p-1" id="dvReturnTime" style="display:none;">
+                            <label id="lblReturnTime" class="label-control" for="return_time">Return Time</label>
+                            <input type="text" class="form-control timepicker" name="return_time" id="return_time"
+                                placeholder="Return Time" />
                         </div>
                     </div>
                     <!-- end travel scheule -->
                     <!-- contribution/available-seats -->
+                    <div class="form-row">
+                        <div class="form-group col-sm-12 col-md-6 p-1">
+                            <div class="form-group col-sm-12 col-md-10 p-1">
+                                <?php
+
+                                    if($this->num_of_cars['NUM_OF_CARS'] > 0){
+                                ?>
+                                <label for="car_for_ride">Choose:</label>
+                                <select name="car_for_ride" class="form-control form-control-sm" id="car_for_ride">
+                                <?php 
+                                        foreach($this->cars as $cars){
+                                ?>
+                                    <option id="<?php echo $cars['carid'];?>" value="<?php echo $cars['carid'];?>">
+                                        <?php echo $cars['make']; ?>
+                                    </option>
+                                <?php
+                                        }
+                                ?>                        
+                                </select>
+                                <?php
+                                    } else {
+                                ?>
+                                <a class="btn btn-default btn-square" href="#">
+                                    Add Car
+                                </a>
+                                <?php 
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
                             <label for="inputContribution">Trip Contribution</label>

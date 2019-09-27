@@ -223,11 +223,13 @@ class Dashboard_Model extends Model
     {
         $rideid = Util::generate_id();
 
+        $schedule = array();
         if (isset($_POST['ride_type'])) {
             if ($_POST['ride_type'] == "R") {
-                if (!empty($_POST['schedule_checklist'])) {
-                    foreach ($_POST['schedule_checklist'] as $day) {
-                        $this->setSchedule($rideid, $day);
+                if (!empty($_POST['days_checklist'])) {
+                    foreach ($_POST['days_checklist'] as $day) {
+                        // $this->setSchedule($rideid, $day);
+                        array_push($schedule,$day);
                     }
                 }
             }
@@ -253,12 +255,15 @@ class Dashboard_Model extends Model
             ':ride_type' => $_POST['ride_type']
         );
 
-        $result = Database::Execute($query, $params);
-        if ($result) {
-            header("location:" . URL . "dashboard/index");
-        } else {
-            header("location:" . URL . "err/index");
-        }
+        print_r($schedule);
+        print_r($params);
+        
+        // $result = Database::Execute($query, $params);
+        // if ($result) {
+        //     header("location:" . URL . "dashboard/index");
+        // } else {
+        //     header("location:" . URL . "err/index");
+        // }
     }
 
     public function setSchedule($rideid, $dayid)

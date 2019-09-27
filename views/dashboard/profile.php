@@ -251,7 +251,7 @@ if(!isset($_GET['profile_view'])){
                         <div class="form-row">
                             <div class="form-group col-sm-12 col-md-4 p-3">
                                 <label class="label-control" for="dob">Date of Birth</label>
-                                <input type="text" class="form-control datepicker" name="dob" id="dob" placeholder=""
+                                <input type="text" class="form-control datepicker_profile" name="dob" id="dob" placeholder=""
                                     value="<?php echo $this->user['dob'];?>" />
                             </div>
                         </div>
@@ -271,7 +271,7 @@ if(!isset($_GET['profile_view'])){
 
                         <!-- button -->
                         <div class="text-center pb-3">
-                            <input type="submit" class="btn btn-outline-danger btn-round" value="submit">
+                            <input type="submit" class="btn btn-outline-danger btn-round" value="Update Profile">
                         </div>
                         <!-- end button -->
 

@@ -210,13 +210,13 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-xs-12 col-md-4">
+                                <div class="form-group col-xs-12 col-md-5">
                                     <label for="model_year" class="label-control">Model Year</label>
                                     <input type="text" class="form-control datepicker_year" name="model_year"
                                         id="model_year" placeholder="Model Year">
                                 </div>
-                                <div class="form-group col-xs-12 col-md-8">
-                                    <label for="number_of_seats">Number Of Seats (Excluding Driver Seat)</label>
+                                <div class="form-group col-xs-12 col-md-7">
+                                    <label for="number_of_seats">No. Seats (Excl. Driver Seat)</label>
                                     <input class="form-control" type="number" min="1" max="16" name="number_of_seats"
                                         id="number_of_seats">
                                 </div>

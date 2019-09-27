@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2019 at 08:13 PM
+-- Generation Time: Sep 27, 2019 at 09:55 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -76,16 +76,17 @@ select *
 from user
 where user.userid = userid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `userid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `pick_up_spot` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_as` CHAR(1), IN `ride_type` CHAR(1))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `userid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `pick_up_spot` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_as` CHAR(1), IN `ride_type` CHAR(1), IN `date_posted` DATETIME, IN `return_time` TIME)  NO SQL
 INSERT INTO ride (
     ride.rideid, ride.userid, ride.carid, ride.seats_available, 
     ride.contribution_per_head, ride.departure_date, ride.departure_time,
-    ride.departure_from, ride.destination, ride.pick_up_spot, ride.extra_details, ride.ride_as, ride.ride_type, ride.status
-
+    ride.return_time, ride.departure_from, ride.destination, ride.pick_up_spot, ride.extra_details, ride.ride_as, ride.ride_type, ride.status,
+     ride.date_posted
 )
+
 VALUES (
-    rideid, userid, carid, seats_available, contribution_per_head, departure_date, departure_time, departure_from, destination, pick_up_spot,
-    extra_details, 'D', ride_type, 'P'
+    rideid, userid, carid, seats_available, contribution_per_head, departure_date, departure_time, return_time,departure_from, destination, pick_up_spot,
+    extra_details, 'D', ride_type, 'P', date_posted
  )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRegister` (IN `firstname` TEXT, IN `lastname` TEXT, IN `pass` CHAR(64), IN `email` VARCHAR(320), IN `userid` VARCHAR(11), IN `picture` LONGBLOB)  NO SQL
@@ -97,9 +98,9 @@ VALUES (userid, firstname, lastname, pass, email, 'Y', 'U', picture)$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRemoveCar` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 DELETE FROM car WHERE car.carid = carid AND car.driverid = driverid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetSchedule` (IN `rideid` VARCHAR(11), IN `dayid` INT, IN `departure_time` TIME, IN `return_time` TIME)  NO SQL
-INSERT INTO schedule (schedule.rideid, schedule.dayid, schedule.departure_time, schedule.return_time)
-VALUES (rideid, dayid, departure_time, return_time)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetSchedule` (IN `rideid` VARCHAR(11), IN `dayid` INT)  NO SQL
+INSERT INTO schedule (schedule.rideid, schedule.dayid)
+VALUES (rideid, dayid)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSignIn` (IN `email` VARCHAR(320), IN `pass` INT(64))  NO SQL
 SELECT * 
@@ -274,13 +275,15 @@ CREATE TABLE `ride` (
   `contribution_per_head` double NOT NULL,
   `departure_date` date NOT NULL,
   `departure_time` time NOT NULL,
+  `return_time` time DEFAULT NULL,
   `departure_from` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `destination` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `pick_up_spot` longtext COLLATE utf8mb4_unicode_ci,
   `extra_details` longtext COLLATE utf8mb4_unicode_ci,
   `ride_as` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ride_type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL
+  `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_posted` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -305,9 +308,7 @@ CREATE TABLE `ridegroup` (
 CREATE TABLE `schedule` (
   `scheduleid` int(11) NOT NULL,
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dayid` int(11) NOT NULL,
-  `departure_time` time DEFAULT NULL,
-  `return_time` time DEFAULT NULL
+  `dayid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

@@ -14,7 +14,7 @@
     height: 45px;
     width: 45px;
 }
-.preference-img:hover{
+.preference-img:hover,.tooltip_icon{
     cursor: pointer;
 }
 

@@ -110,6 +110,11 @@
                                     data-target="#addCarModal">
                                     Add Car
                                 </button>
+                                <span class="p-1">
+                                    <i class="fas fa-question-circle tooltip_icon" data-toggle="tooltip"
+                                    data-placement="right" 
+                                    title="Car needs to be added before ride can be made"></i>
+                                </span>
                                 <?php 
                                     }
                                 ?>

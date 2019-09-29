@@ -79,20 +79,52 @@
             <!-- end owner -->
 
             <!-- ride cards -->
-            <div class="col-sm-12 col-lg-8 text-center mr-auto ml-auto ">
+            <div class="col-sm-12 col-lg-8">
                 <?php 
-            if($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0){
-          ?>
+                    if($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0){
+                ?>
                 <div class="row max mt-3">
-                  <?php 
-                    foreach($this->myOffers as $myOffers){
-                      print_r($myOffers);
+                    <div class="card">
+                        <h6>Pending Offers</h6>
+                        <hr>
+                        <?php 
+                    foreach($this->pendingOffers as $pendingOffers){
+                    ?>
+                        <div class="col-12 m-1">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>Destination:</td>
+                                        <td><?php echo $pendingOffers['destination'];?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>When:</td>
+                                        <td><?php echo $pendingOffers['departure_date'];?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Poste:</td>
+                                        <td><?php echo $pendingOffers['date_posted'];?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <?php 
                     }
-                  ?>
+                    ?>
+                    </div>
                 </div>
                 <?php 
-            }
-          ?>
+                    
+                    }else {
+                ?>
+                <div class="row  max mt-3">
+                    <h1>No Pending Offers</h1>
+                </div>
+                <?php 
+                    }
+                ?>
                 <div class="row max mt-3">
                     <!-- offer a ride -->
                     <div class="col-xs-12 col-md-6">

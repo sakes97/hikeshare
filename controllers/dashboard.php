@@ -21,8 +21,8 @@ class Dashboard extends Controller
     {
         $this->view->title = "Dashboard";
         $this->_getUserDetails($this->_userid);
-        $this->view->myPendingOffers = $this->getPendingOffers($this->_userid);
-        $this->view->NUM_OF_PENDING_OFFERS = $this->getNumOfPendingOffers($this->_userid);
+        $this->getNumOfPendingOffers($this->_userid);
+        $this->_getPendingOffers($this->_userid);
         $this->view->render('dashboard/index', 'user_nav');
     }
     #endregion
@@ -113,9 +113,9 @@ class Dashboard extends Controller
         $this->model->getOffers($driverid);
     }
     
-    public function getPendingOffers($driverid)
+    private function _getPendingOffers($driverid)
     {
-        $this->model->getPendingOffers($driverid);
+        $this->view->pendingOffers = $this->model->getPendingOffers($driverid);
     }
     
     public function getDays()
@@ -124,7 +124,7 @@ class Dashboard extends Controller
     }
     public function getNumOfPendingOffers($driverid)
     {
-        $this->model->getNumOfPendingOffers($driverid); 
+        $this->view->NUM_OF_PENDING_OFFERS = $this->model->getNumOfPendingOffers($driverid); 
     }
     public function getTripSchedule($rideid)
     {

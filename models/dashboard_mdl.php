@@ -220,7 +220,7 @@ class Dashboard_Model extends Model
     {
         $query = 'CALL uspGetNumOfPendingOffers(:driverid)';
         $params = array(':driverid'=>$driverid);
-        return Database::GetAll($query, $params);
+        return Database::GetRow($query, $params);
     }
 
     public function getTripSchedule($rideid)

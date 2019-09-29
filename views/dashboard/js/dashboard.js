@@ -62,7 +62,7 @@ $(document).ready(function () {
       clear: 'fa fa-trash',
       close: 'fa fa-remove'
     },
-    format: 'LT'
+    format: 'HH:mm'
   });
 
 

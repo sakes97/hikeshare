@@ -242,7 +242,7 @@ class Dashboard_Model extends Model
                     foreach ($_POST['days_checklist'] as $day) {
                         $this->setSchedule($rideid, $day);
                     }
-                    $return_time = substr($_POST['return_time'], 0, 5);
+                    $return_time = $_POST['return_time'];
                 }
             }
         }
@@ -258,7 +258,7 @@ class Dashboard_Model extends Model
             ':seats_available' => $_POST['seats_available'],
             ':contribution_per_head' => sprintf("%.2f",$_POST['contribution_per_head']),
             ':departure_date' => $_POST['departure_date'],
-            ':departure_time' => substr($_POST['departure_time'], 0,5),
+            ':departure_time' => $_POST['departure_time'],
             ':departure_from' => $_POST['origin-input'],
             ':destination' => $_POST['destination-input'],
             ':extra_details' => $_POST['extra_details'],
@@ -270,8 +270,7 @@ class Dashboard_Model extends Model
         
         $result = Database::Execute($query, $params);
         if ($result) {
-            print_r($params);
-            print_r($result);
+            header("location:" . URL . "dashboard/index");
         } else {
             header("location:" . URL . "err/index");
         }

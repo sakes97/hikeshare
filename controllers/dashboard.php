@@ -21,6 +21,8 @@ class Dashboard extends Controller
     {
         $this->view->title = "Dashboard";
         $this->_getUserDetails($this->_userid);
+        $this->view->myPendingOffers = $this->getPendingOffers($this->_userid);
+        $this->view->NUM_OF_PENDING_OFFERS = $this->getNumOfPendingOffers($this->_userid);
         $this->view->render('dashboard/index', 'user_nav');
     }
     #endregion
@@ -119,6 +121,14 @@ class Dashboard extends Controller
     public function getDays()
     {
         $this->view->days = $this->model->getDays();
+    }
+    public function getNumOfPendingOffers($driverid)
+    {
+        $this->model->getNumOfPendingOffers($driverid); 
+    }
+    public function getTripSchedule($rideid)
+    {
+        $this->model->getTripSchedule($rideid);
     }
     #endregion
 

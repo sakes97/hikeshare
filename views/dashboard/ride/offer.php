@@ -51,7 +51,7 @@
                                 foreach($this->days as $day){
                             ?>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" id="<?php echo $day['dow']; ?>"
+                                <input type="checkbox" class="custom-control-input days_check" id="<?php echo $day['dow']; ?>"
                                     name="days_checklist[]" value="<?php echo $day['dayid']; ?>">
                                 <label class="custom-control-label" for="<?php echo $day['dow']; ?>">
                                     <?php echo $day['dow']; ?></label>
@@ -65,21 +65,22 @@
                     <!-- travel schedule -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
-                            <label id="lblDepartureDate" class="label-control" for="inputDate">Departure Date</label>
-                            <input type="text" class="form-control datepicker" name="inputDate" id="inputDate"
-                                placeholder="Choose the date..." />
+                            <label id="lblDepartureDate" class="label-control" for="departure_date">Departure Date</label>
+                            <input type="text" class="form-control datepicker" name="departure_date" id="departure_date"
+                                placeholder="Choose the date..." onkeypress="return false;"/>
                         </div>
                     </div>
+                    <!-- time -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1" id="dvDepartureTime">
                             <label id="lblDepartureTime" class="label-control" for="inputTime">Departure Time</label>
                             <input type="text" class="form-control timepicker" name="departure_time" id="departure_time"
-                                placeholder="Departure Time" />
+                                placeholder="Departure Time" onkeypress="return false;">
                         </div>
                         <div class="form-group col-sm-12 col-md-6 p-1" id="dvReturnTime" style="display:none;">
                             <label id="lblReturnTime" class="label-control" for="return_time">Return Time</label>
                             <input type="text" class="form-control timepicker" name="return_time" id="return_time"
-                                placeholder="Return Time" />
+                                placeholder="Return Time" onkeypress="return false;"/>
                         </div>
                     </div>
                     <!-- end travel scheule -->
@@ -123,32 +124,23 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
-                            <label for="inputContribution">Trip Contribution</label>
+                            <label for="contribution_per_head">Trip Contribution</label>
                             <input class="form-control" type="number" value="100" min="0" step="0.01"
-                                data-number-to-fixed="2" data-number-stepfactor="100" name="inputContribution"
-                                id="inputContribution">
+                                data-number-to-fixed="2" data-number-stepfactor="100" name="contribution_per_head"
+                                id="contribution_per_head">
                         </div>
                         <div class="form-group col-sm-12 col-md-4 p-1">
-                            <label for="inputSeats">Available Seats</label>
-                            <input class="form-control" type="number" value="3" min="1" name="inputSeats"
-                                id="inputSeats">
+                            <label for="seats_available">Available Seats</label>
+                            <input class="form-control" type="number" value="3" min="1" name="seats_available"
+                                id="seats_available">
                         </div>
                     </div>
                     <!-- end contribution/available-seats -->
-                    <!-- pickup spot -->
-                    <div class="form-row">
-                        <div class="form-group col-sm-12 col-md-9 p-1">
-                            <label for="inputPickUp">Pick Up Spot</label>
-                            <input class="form-control" type="text" name="inputPickUp" id="inputPickUp"
-                                placeholder="Pick Up Spot">
-                        </div>
-                    </div>
-                    <!-- end pickup spot-->
                     <!-- extra details -->
                     <div class="form-row">
                         <div class="form-group col-12 p-1">
-                            <label for="inputExtraDetails">Extra Details/Instructions (optional) </label>
-                            <textarea class="form-control" id="inputExtraDetails" name="inputExtraDetails"
+                            <label for="extra_details">Extra Details/Instructions (optional) </label>
+                            <textarea class="form-control" id="extra_details" name="extra_details"
                                 rows="4"></textarea>
                         </div>
                     </div>
@@ -161,7 +153,7 @@
         </div>
         <!-- end trip details -->
 
-
+        <!-- Add Car Modal -->
         <div class="modal fade" id="addCarModal" tabindex="-1" role="dialog" aria-hidden="false">
             <div class="modal-dialog modal-register">
                 <div class="modal-content">
@@ -232,5 +224,6 @@
                 </div>
             </div>
         </div>
+        <!-- end Add Car Modal -->
     </div>
 </div>

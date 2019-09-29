@@ -216,54 +216,65 @@ class Dashboard_Model extends Model
         $query = 'CALL uspDays()';
         return Database::GetAll($query);
     }
+    public function getNumOfPendingOffers($driverid)
+    {
+        $query = 'CALL uspGetNumOfPendingOffers(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetAll($query, $params);
+    }
+
+    public function getTripSchedule($rideid)
+    {
+        $query = 'CALL uspGetTripSchedule(:rideid)';
+        $params = array(':rideid' => $rideid);
+        return Database::GetAll($query,$params);
+    }
     #endregion
 
     #region Execute Functions
     public function offerRide($driverid)
     {
         $rideid = Util::generate_id();
-
-        $schedule = array();
+        $return_time = NULL; 
         if (isset($_POST['ride_type'])) {
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
                     foreach ($_POST['days_checklist'] as $day) {
-                        // $this->setSchedule($rideid, $day);
-                        array_push($schedule,$day);
+                        $this->setSchedule($rideid, $day);
                     }
+                    $return_time = substr($_POST['return_time'], 0, 5);
                 }
             }
         }
 
         $query = 'CALL uspOfferRide(:rideid, :driverid, :carid,
-        :seats_available, :contribution_per_head, :departure_date, :departure_time, :return_time,
-        :departure_from, :destination, :pick_up_spot, :extra_details, :ride_type)';
+        :seats_available, :contribution_per_head, :departure_date, :departure_time,
+        :departure_from, :destination, :extra_details, :ride_type, :date_posted, :return_time)';
 
         $params = array(
             ':rideid' => $rideid,
             ':driverid' => $driverid,
-            ':carid' => $_POST['car'],
+            ':carid' => $_POST['car_for_ride'],
             ':seats_available' => $_POST['seats_available'],
-            ':contribution_per_head' => $_POST['contribution_per_head'],
+            ':contribution_per_head' => sprintf("%.2f",$_POST['contribution_per_head']),
             ':departure_date' => $_POST['departure_date'],
-            ':departure_time' => $_POST['departure_time'],
-            ':return_time' => $_POST['return_time'],
-            ':departure_from' => $_POST['departure_from'],
-            ':destination' => $_POST['destination'],
-            ':pick_up_spot' => $_POST['pick_up_spot'],
+            ':departure_time' => substr($_POST['departure_time'], 0,5),
+            ':departure_from' => $_POST['origin-input'],
+            ':destination' => $_POST['destination-input'],
             ':extra_details' => $_POST['extra_details'],
-            ':ride_type' => $_POST['ride_type']
+            ':ride_type' => $_POST['ride_type'],
+            ':date_posted' => date('Y-m-d H:i:s', time()),
+            ':return_time' => $return_time
         );
-
-        print_r($schedule);
-        print_r($params);
+    
         
-        // $result = Database::Execute($query, $params);
-        // if ($result) {
-        //     header("location:" . URL . "dashboard/index");
-        // } else {
-        //     header("location:" . URL . "err/index");
-        // }
+        $result = Database::Execute($query, $params);
+        if ($result) {
+            print_r($params);
+            print_r($result);
+        } else {
+            header("location:" . URL . "err/index");
+        }
     }
 
     public function setSchedule($rideid, $dayid)

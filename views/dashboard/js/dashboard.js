@@ -12,11 +12,11 @@ $(document).ready(function () {
       clear: 'fa fa-trash',
       close: 'fa fa-remove'
     },
-    format: 'YYYY/MM/DD',
+    format: 'YYYY-MM-DD',
     minDate: new Date()
   });
 
-  //datetimepicker - year/month/day
+  //datetimepicker - year/month/day - PROFILE
   $('.datepicker_profile').datetimepicker({
     icons: {
       time: "fa fa-clock-o",

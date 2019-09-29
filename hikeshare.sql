@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2019 at 10:40 PM
+-- Generation Time: Sep 29, 2019 at 11:37 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -72,13 +72,9 @@ FROM user
 WHERE user.userid = driverid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPendingOffers` (IN `driverid` VARCHAR(11))  NO SQL
-SELECT *, day.dayid, day.dow
-FROM ride, schedule, day
-WHERE ride.userid = driverid and ride.status = 'P'
-	  AND 
-	  schedule.rideid = ride.rideid 
-      AND 
-   	  schedule.dayid = day.dayid$$
+SELECT *
+FROM ride
+WHERE ride.userid = driverid and ride.status = 'P'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripSchedule` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.rideid, day.dayid, day.dow
@@ -304,6 +300,13 @@ CREATE TABLE `ride` (
   `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_posted` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ride`
+--
+
+INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `status`, `date_posted`) VALUES
+('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-09-29', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', 'P', '2019-09-29 22:43:47');
 
 -- --------------------------------------------------------
 

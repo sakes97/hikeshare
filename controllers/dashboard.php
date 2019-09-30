@@ -93,6 +93,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Past Rides";
         $this->_getUserDetails($this->_userid);
+        $this->_getOffers($this->_userid);
         $this->view->render('dashboard/ride/view-past-rides', 'user_nav');
     }
 
@@ -108,9 +109,9 @@ class Dashboard extends Controller
         $this->model->offerRide($driverid);
     }
 
-    public function getOffers($driverid)
+    private function _getOffers($driverid)
     {
-        $this->model->getOffers($driverid);
+        $this->view->offers = $this->model->getOffers($driverid);
     }
     
     private function _getPendingOffers($driverid)

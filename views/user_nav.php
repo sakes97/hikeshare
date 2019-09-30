@@ -42,16 +42,10 @@
                         Messages <span class="badge badge-warning">4</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reviewsDropdown"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Reviews
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/review_past_rides">
+                    Reviews
                     </a>
-                    <div class="dropdown-menu dropdown-default" aria-labelledby="reviewsDropdown">
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/review_Rides">Review Past Rides</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/viewPastReviews">View Past Reviews</a>
-                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" 

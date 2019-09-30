@@ -93,7 +93,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Past Rides";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/ride/view-past-ride', 'user_nav');
+        $this->view->render('dashboard/ride/view-past-rides', 'user_nav');
     }
 
     public function view_UpcomingRide()
@@ -133,17 +133,23 @@ class Dashboard extends Controller
     #endregion
 
     #region Reviews
-    public function review_Rides()
+    public function review_past_rides()
     {
         $this->view->title = "Review Past Rides";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/reviews/review-ride', 'user_nav');
+        $this->view->render('dashboard/reviews/review-past-rides', 'user_nav');
     }
-    public function viewPastReviews()
+    public function view_Review()
     {
-        $this->view->title = "View Past Reviews";
+        $this->view->title = "View Review";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/reviews/past-reviews', 'user_nav');
+        $this->view->render('dashboard/reviews/view-review', 'user_nav');
+    }
+    public function review_ride()
+    {
+        $this->view->title = "Review Ride";
+        $this->_getUserDetails($this->_userid);
+        $this->view->render('dashboard/reviews/review-ride', 'user_nav');
     }
     #endregion
 

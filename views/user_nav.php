@@ -33,8 +33,8 @@
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offer_Ride">Offer Ride</a>
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride">Find a Ride</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_UpcomingRide">View Upcoming Ride</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_PastRide">View Past Rides</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_UpcomingRides">View Upcoming Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/view_PastRides">View Past Rides</a>
                     </div>
                 </li>
                 <li class="nav-item">

@@ -89,19 +89,19 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/lift', 'user_nav');
     }
 
-    public function view_PastRide()
+    public function view_PastRides()
     {
         $this->view->title = "Past Rides";
         $this->_getUserDetails($this->_userid);
-        $this->_getOffers($this->_userid);
         $this->view->render('dashboard/ride/view-past-rides', 'user_nav');
     }
 
-    public function view_UpcomingRide()
+    public function view_UpcomingRides()
     {
         $this->view->title = "Upcoming Rides";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/ride/view-upcoming-ride', 'user_nav');
+        $this->_getOffers($this->_userid);
+        $this->view->render('dashboard/ride/view-upcoming-rides', 'user_nav');
     }
 
     public function offerRide($driverid)

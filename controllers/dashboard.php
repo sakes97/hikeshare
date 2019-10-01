@@ -21,7 +21,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Dashboard";
         $this->_getUserDetails($this->_userid);
-        $this->getNumOfPendingOffers($this->_userid);
+        $this->_getNumOfPendingOffers($this->_userid);
         $this->_getPendingOffers($this->_userid);
         $this->view->render('dashboard/index', 'user_nav');
     }
@@ -89,21 +89,30 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/lift', 'user_nav');
     }
 
-    public function view_PastRides()
+    public function View_Ride_History()
     {
-        $this->view->title = "Past Rides";
+        $this->view->title = "Ride History";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/ride/view-past-rides', 'user_nav');
-    }
-
-    public function view_UpcomingRides()
-    {
-        $this->view->title = "Upcoming Rides";
-        $this->_getUserDetails($this->_userid);
+        
+        /**
+         * offers
+         */
+        //upcoming offers
+        $this->_getPendingOffers($this->_userid);
+        $this->_getNumOfPendingOffers($this->_userid);
+        //past offers
+        $this->_getPastOffers($this->_userid);
+        $this->_getNumOfPastOffers($this->_userid);
+        //all offers
         $this->_getOffers($this->_userid);
-        $this->view->render('dashboard/ride/view-upcoming-rides', 'user_nav');
+        
+        /**
+         * bookings
+         */
+        
+        //render view 
+        $this->view->render('dashboard/ride/ride-history', 'user_nav');
     }
-
     public function offerRide($driverid)
     {
         $this->model->offerRide($driverid);
@@ -113,21 +122,29 @@ class Dashboard extends Controller
     {
         $this->view->offers = $this->model->getOffers($driverid);
     }
+
+    private function _getPastOffers($driverid)
+    {
+        $this->pastOffers = $this->model->getPastOffers($driverid);
+    }
     
     private function _getPendingOffers($driverid)
     {
         $this->view->pendingOffers = $this->model->getPendingOffers($driverid);
     }
-    
     public function getDays()
     {
         $this->view->days = $this->model->getDays();
     }
-    public function getNumOfPendingOffers($driverid)
+    private function _getNumOfPendingOffers($driverid)
     {
         $this->view->NUM_OF_PENDING_OFFERS = $this->model->getNumOfPendingOffers($driverid); 
     }
-    public function getTripSchedule($rideid)
+    private function _getNumOfPastOffers($driverid)
+    {
+        $this->view->NUM_OF_PAST_OFFERS = $this->model->getNumOfPastOffers($driverid); 
+    }
+    private function _getTripSchedule($rideid)
     {
         $this->model->getTripSchedule($rideid);
     }
@@ -241,5 +258,5 @@ class Dashboard extends Controller
         header('location:' . URL . 'login');
         exit;
     }
+    #endregion
 }
-#endregion

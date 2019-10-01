@@ -66,6 +66,19 @@ $(document).ready(function () {
   });
 
 
+  //dropdown-tab active toggle
+  $('.dropdown-tabs').on('shown.bs.tab', 'a', function (e) {
+    if (e.currentTarget) {
+      $(e.currentTarget).removeClass('active');
+    }
+  });
+
+
+  $("ul.dropdown-tabs a").click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+
   $("#inputGroupFile01").change(function (event) {
     RecurFadeIn();
     readURL(this);
@@ -112,13 +125,13 @@ function pageview(val) {
 }
 
 
-function scheduleShow(){
+function scheduleShow() {
   //Ride_Type = Regular
   document.getElementById('rideDays').style.display = 'block';
   document.getElementById('lblDepartureDate').innerText = 'Start Date';
   document.getElementById('dvReturnTime').style.display = 'block';
 }
-function scheduleHide(){
+function scheduleHide() {
   //Ride_Type = Once-off
   document.getElementById('rideDays').style.display = 'none';
   document.getElementById('lblDepartureDate').innerText = 'Departure Date';

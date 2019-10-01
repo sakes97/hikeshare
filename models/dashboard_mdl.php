@@ -211,6 +211,12 @@ class Dashboard_Model extends Model
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
     }
+    public function getPastOffers($driverid)
+    {
+        $query = 'CALL uspGetPastOffers(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetAll($query,$params);
+    }
     public function getDays()
     {
         $query = 'CALL uspDays()';
@@ -219,6 +225,12 @@ class Dashboard_Model extends Model
     public function getNumOfPendingOffers($driverid)
     {
         $query = 'CALL uspGetNumOfPendingOffers(:driverid)';
+        $params = array(':driverid'=>$driverid);
+        return Database::GetRow($query, $params);
+    }
+    public function getNumOfPastOffers($driverid)
+    {
+        $query = 'CALL uspGetNumOfPastOffers(:driverid)';
         $params = array(':driverid'=>$driverid);
         return Database::GetRow($query, $params);
     }
@@ -285,6 +297,12 @@ class Dashboard_Model extends Model
         );
         $result = Database::Execute($query, $params);
         return $result;
+    }
+
+    public function expireOffers()
+    {
+        $query = 'CALL uspExpireOffers()';
+        return Database::Execute($query);
     }
     #endregion
 

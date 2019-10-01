@@ -14,8 +14,7 @@ define('DB_USERNAME','root');
 define('DB_PASSWORD','scrkre37');
 #endregion------
 
-
 #region Paths Constants
-define('URL','http://localhost:80/myphp/hikeshare/');
+define('URL','http://localhost:8080/myphp/hikeshare/');
 define('LIBS', 'libs/');
 #endregion------

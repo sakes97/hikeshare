@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2019 at 11:37 PM
+-- Generation Time: Oct 01, 2019 at 11:47 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -41,6 +41,13 @@ UPDATE user as u
 SET u.active = 'N'
 WHERE u.userid = userid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspExpireOffers` ()  NO SQL
+UPDATE ride 
+SET ride.status = 'Expired' 
+WHERE ride.status = 'Pending' 
+	AND 
+    ride.departure_date < CURRENT_DATE()$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllUsers` ()  NO SQL
 select * 
 from user 
@@ -61,20 +68,37 @@ SELECT COUNT(*) AS NUM_OF_CARS
 FROM car
 WHERE car.driverid = driverid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumOfPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
+SELECT COUNT(*) as NUM_OF_PAST_OFFERS
+FROM ride
+WHERE ride.userid = driverid and ride.status = 'Expired'
+and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumOfPendingOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT COUNT(*) as NUM_OF_PENDING_OFFERS
 FROM ride
-WHERE ride.userid = driverid and ride.status = 'P'$$
+WHERE ride.userid = driverid and ride.status = 'Pending'
+and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffers` (IN `driverid` VARCHAR(11))  NO SQL
+SELECT *, COUNT(ride.rideid) as NUM_OF_OFFERS
+FROM ride 
+WHERE ride.userid = driverid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *
-FROM user 
-WHERE user.userid = driverid$$
+FROM ride 
+WHERE ride.userid = driverid 
+	and 
+    	ride.status = 'Expired' 
+    and 
+    	ride.departure_date < current_date()$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPendingOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *
 FROM ride
-WHERE ride.userid = driverid and ride.status = 'P'$$
+WHERE ride.userid = driverid and ride.status = 'Pending'
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripSchedule` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.rideid, day.dayid, day.dow
@@ -102,7 +126,7 @@ INSERT INTO ride (
 
 VALUES (
     rideid, driverid, carid, seats_available, contribution_per_head, departure_date, departure_time, return_time,departure_from, destination,
-    extra_details, 'D', ride_type, 'P', date_posted
+    extra_details, 'D', ride_type, 'Pending', date_posted
  )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRegister` (IN `firstname` TEXT, IN `lastname` TEXT, IN `pass` CHAR(64), IN `email` VARCHAR(320), IN `userid` VARCHAR(11), IN `picture` LONGBLOB)  NO SQL
@@ -297,7 +321,7 @@ CREATE TABLE `ride` (
   `extra_details` longtext COLLATE utf8mb4_unicode_ci,
   `ride_as` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ride_type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_posted` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -306,7 +330,7 @@ CREATE TABLE `ride` (
 --
 
 INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `status`, `date_posted`) VALUES
-('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-09-29', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', 'P', '2019-09-29 22:43:47');
+('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-10-10', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', 'Pending', '2019-09-29 22:43:47');
 
 -- --------------------------------------------------------
 

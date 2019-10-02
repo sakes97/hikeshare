@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2019 at 11:47 AM
+-- Generation Time: Oct 02, 2019 at 05:26 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -116,17 +116,18 @@ select *
 from user
 where user.userid = userid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(1), IN `date_posted` DATETIME, IN `return_time` TIME)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(2), IN `date_posted` DATETIME, IN `return_time` TIME, IN `return_trip` CHAR(1))  NO SQL
 INSERT INTO ride (
     ride.rideid, ride.userid, ride.carid, ride.seats_available, 
     ride.contribution_per_head, ride.departure_date, ride.departure_time,
-    ride.return_time, ride.departure_from, ride.destination, ride.extra_details, ride.ride_as, ride.ride_type, ride.status,
-     ride.date_posted
+    ride.return_time, ride.departure_from, ride.destination,
+    ride.extra_details, ride.ride_as, ride.ride_type, ride.return_trip ,ride.status,
+     ride.date_posted, ride.return_time
 )
 
 VALUES (
     rideid, driverid, carid, seats_available, contribution_per_head, departure_date, departure_time, return_time,departure_from, destination,
-    extra_details, 'D', ride_type, 'Pending', date_posted
+    extra_details, 'D', ride_type, return_trip,'Pending', date_posted, return_time
  )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRegister` (IN `firstname` TEXT, IN `lastname` TEXT, IN `pass` CHAR(64), IN `email` VARCHAR(320), IN `userid` VARCHAR(11), IN `picture` LONGBLOB)  NO SQL
@@ -320,7 +321,8 @@ CREATE TABLE `ride` (
   `destination` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `extra_details` longtext COLLATE utf8mb4_unicode_ci,
   `ride_as` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ride_type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ride_type` char(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `return_trip` char(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_posted` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -329,8 +331,8 @@ CREATE TABLE `ride` (
 -- Dumping data for table `ride`
 --
 
-INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `status`, `date_posted`) VALUES
-('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-10-10', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', 'Pending', '2019-09-29 22:43:47');
+INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`) VALUES
+('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-10-10', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', NULL, 'Pending', '2019-09-29 22:43:47');
 
 -- --------------------------------------------------------
 

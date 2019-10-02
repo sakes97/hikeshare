@@ -73,6 +73,10 @@ $(document).ready(function () {
     }
   });
 
+  //Activate regular switches
+  if ($("[data-toggle='switch']").length != 0) {
+    $("[data-toggle='switch']").bootstrapSwitch();
+  }
 
   $("ul.dropdown-tabs a").click(function (e) {
     e.preventDefault();

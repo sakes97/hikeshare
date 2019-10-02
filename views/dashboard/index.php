@@ -1,12 +1,11 @@
 <div class="section profile-content">
-    <div class="container bg-white shadow-sm pb-2">
+    <div class="container bg-white shadow-sm pb-2 border-bottom-0">
         <div class="row">
             <!-- owner -->
             <div class="col-sm-12 col-lg-4 text-center">
                 <div class="owner">
                     <div class="avatar">
-                        <img src="<?php echo 'data:image/jpeg;base64,'.base64_encode($this->user['picture']);?>"
-                            alt="User Profile Picture" class="img-circle img-no-padding img-responsive img-circle">
+                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($this->user['picture']); ?>" alt="User Profile Picture" class="img-circle img-no-padding img-responsive img-circle">
                     </div>
                 </div>
                 <div class="name">
@@ -14,8 +13,7 @@
                         <?php echo $this->user['firstname'] . ' ' . $this->user['lastname']; ?>
                         <br />
                     </h4>
-                    <a class="btn btn-outline-default btn-round" href="<?php echo URL; ?>dashboard/profile"
-                        id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
+                    <a class="btn btn-outline-default btn-round" href="<?php echo URL; ?>dashboard/profile" id="edit_profile">Edit Profile <i class="fas fa-edit"></i></a>
                 </div>
                 <div class="member-info-view text-center mr-auto ml-auto ">
                     <table class="table table-sm table-hover">
@@ -31,46 +29,44 @@
                                     Preferences<i class="fas fa-edit"></i></a>
                             </td>
                             <td>
-                                <?php 
-                        $smoking = $this->user['smoking_yn'];
-                        $alcohol = $this->user['alcohol_yn'];
-                        $pets = $this->user['pets_yn'];
+                                <?php
+                                $smoking = $this->user['smoking_yn'];
+                                $alcohol = $this->user['alcohol_yn'];
+                                $pets = $this->user['pets_yn'];
 
-                        //smoking preference
-                        if($smoking == 'N' || $smoking == NULL){
-                          echo '<img class="img-responsive img-square preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
-                          data-toggle="tooltip" data-placement="top" title="No Smoking Allowed"/>';
-                        } else if($smoking == 'Y') {
-                          echo '<img class="img-responsive img-square preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" 
-                          data-toggle="tooltip" data-placement="top" title="Smoking Is Permitted"/>';
-                        } else {
-                          echo 'No smoking,';
-                        }
+                                //smoking preference
+                                if ($smoking == 'N' || $smoking == NULL) {
+                                    echo '<img class="img-responsive img-square preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
+                                    data-toggle="tooltip" data-placement="top" title="No Smoking Allowed"/>';
+                                } else if ($smoking == 'Y') {
+                                    echo '<img class="img-responsive img-square preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" 
+                                    data-toggle="tooltip" data-placement="top" title="Smoking Is Permitted"/>';
+                                } else {
+                                    echo 'No smoking,';
+                                }
 
-                        //alchohol preference
-                        if($alcohol == 'N' || $alcohol == NULL){
-                          echo '<img class="img-responsive img-square preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
-                          data-toggle="tooltip" data-placement="top" title="No Drinking Is Allowed"/>';
-                        } else if($alcohol == 'Y') {
-                          echo '<img class="img-responsive img-square preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" 
-                          data-toggle="tooltip" data-placement="top" title="Drinking Is Permitted" />';                              
-                        } else {
-                          echo 'No alcohol,';
-                        }
+                                //alchohol preference
+                                if ($alcohol == 'N' || $alcohol == NULL) {
+                                    echo '<img class="img-responsive img-square preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
+                                    data-toggle="tooltip" data-placement="top" title="No Drinking Is Allowed"/>';
+                                } else if ($alcohol == 'Y') {
+                                    echo '<img class="img-responsive img-square preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" 
+                                    data-toggle="tooltip" data-placement="top" title="Drinking Is Permitted" />';
+                                } else {
+                                    echo 'No alcohol,';
+                                }
 
-                        //pets preference
-                        if($pets == 'N' || $pets == NULL){
-                          echo '<img class="img-responsive img-square preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
-                          data-toggle="tooltip" data-placement="top" title="No Pets Allowed" />';
-                        } else if($pets == 'Y') {
-                          echo '<img class="img-responsive img-square preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" 
-                          data-toggle="tooltip" data-placement="top" title="Pets Are Allowed" />';                              
-                        } else {
-                          echo 'No pets';
-                        }
-
-                    ?>
-
+                                //pets preference
+                                if ($pets == 'N' || $pets == NULL) {
+                                    echo '<img class="img-responsive img-square preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
+                                    data-toggle="tooltip" data-placement="top" title="No Pets Allowed" />';
+                                } else if ($pets == 'Y') {
+                                    echo '<img class="img-responsive img-square preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" 
+                                    data-toggle="tooltip" data-placement="top" title="Pets Are Allowed" />';
+                                } else {
+                                    echo 'No pets';
+                                }
+                                ?>
                             </td>
                         </tr>
                     </table>
@@ -80,54 +76,45 @@
 
             <!-- ride cards -->
             <div class="col-sm-12 col-lg-8">
-                <?php 
-                    if($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0){
-                ?>
-                <div class="row max mt-3">
-                    <div class="card">
-                        <h6>Pending Offers</h6>
-                        <hr>
-                        <?php 
-                    foreach($this->pendingOffers as $pendingOffers){
-                    ?>
+                <?php if ($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0) { ?>
+                    <div class="row max mt-3">
                         <div class="col-12 m-1">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <td>Destination:</td>
-                                        <td><?php echo $pendingOffers['destination'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>When:</td>
-                                        <td><?php echo $pendingOffers['departure_date'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date Poste:</td>
-                                        <td><?php echo $pendingOffers['date_posted'];?></td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <h6 class="p-3">Pending Offers</h6>
+                            <?php foreach ($this->pendingOffers as $pendingOffers) { ?>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-hover">
+                                                <tr>
+                                                    <td>Destination:</td>
+                                                    <td><?php echo $pendingOffers['destination']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>When:</td>
+                                                    <td><?php echo $pendingOffers['departure_date']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Poste:</td>
+                                                    <td><?php echo $pendingOffers['date_posted']; ?></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
-
-
-                        <?php 
-                    }
-                    ?>
                     </div>
-                </div>
-                <?php 
-                    
-                    }else {
-                ?>
-                <div class="row  max mt-3">
-                    <h1>No Pending Offers</h1>
-                </div>
-                <?php 
-                    }
-                ?>
+                <?php } else { ?>
+                    <div class="row  max mt-3">
+                        <h1>No Pending Offers</h1>
+                    </div>
+                <?php } ?>
+                <!--Action Cards:Ride-->
+                <!--large screens-->
                 <div class="row max mt-3">
+                    <!--large screens-->
                     <!-- offer a ride -->
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-6 d-none d-md-block">
                         <div class="card card-ride text-center">
                             <div class="card-body">
                                 <h6 class="card-title font-weight-bold mb-2">Own a car?</h6>
@@ -136,15 +123,14 @@
                                     Post a lift offer to members part of our community who are
                                     going the same way and share the costs for your travels
                                 </p>
-                                <a href="<?php echo URL; ?>dashboard/offer_Ride"
-                                    class="btn btn-outline-danger btn-round">
+                                <a href="<?php echo URL; ?>dashboard/offer_Ride" class="btn btn-outline-danger btn-round">
                                     OFFER A RIDE
                                 </a>
                             </div>
                         </div>
                     </div>
                     <!-- find a ride -->
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-6 d-none d-md-block">
                         <div class="card card-ride text-center">
                             <div class="card-body">
                                 <h6 class="card-title font-weight-bold mb-2">Need a ride?</h6>
@@ -153,10 +139,31 @@
                                     Going somewhere and need a ride? Post a request and share the costs for the trip
                                     and travel in comfort
                                 </p>
-                                <a href="<?php echo URL; ?>dashboard/find_Ride"
-                                    class="btn btn-outline-danger btn-round">
+                                <a href="<?php echo URL; ?>dashboard/find_Ride" class="btn btn-outline-danger btn-round">
                                     FIND A RIDE
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--small screens-->
+                    <div class="col-12 d-sm-block d-md-none">
+                        <div class="card card-ride text-center">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold mb-2">Going Somewhere ?</h6>
+                                <hr />
+                                <p class="card-text lead">
+                                    Lessen your costs by offering lifts to our members and offer a ride<br>
+                                    <a href="<?php echo URL; ?>dashboard/offer_Ride" class="btn btn-outline-danger btn-round">
+                                    OFFER A RIDE
+                                    </a>
+                                </p>
+                                <hr />
+                                <p class="card-text">
+                                    Post a request and share costs for the trip while travelling in comfort<br>
+                                    <a href="<?php echo URL; ?>dashboard/find_Ride" class="btn btn-outline-danger btn-round">
+                                    FIND A RIDE
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -248,6 +248,7 @@ class Dashboard_Model extends Model
     {
         $rideid = Util::generate_id();
         $return_time = NULL; 
+        $return_city = NULL;
         if (isset($_POST['ride_type'])) {
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
@@ -261,7 +262,8 @@ class Dashboard_Model extends Model
 
         $query = 'CALL uspOfferRide(:rideid, :driverid, :carid,
         :seats_available, :contribution_per_head, :departure_date, :departure_time,
-        :departure_from, :destination, :extra_details, :ride_type, :date_posted, :return_time)';
+        :departure_from, :destination, :extra_details, :ride_type, :date_posted, :return_time,
+        :return_city, :return_trip)';
 
         $params = array(
             ':rideid' => $rideid,
@@ -276,7 +278,9 @@ class Dashboard_Model extends Model
             ':extra_details' => $_POST['extra_details'],
             ':ride_type' => $_POST['ride_type'],
             ':date_posted' => date('Y-m-d H:i:s', time()),
-            ':return_time' => $return_time
+            ':return_time' => $return_time,
+            ':return_city' => $return_city,
+            ':return_trip' => $_POST['']
         );
     
         

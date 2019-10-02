@@ -72,16 +72,26 @@ $(document).ready(function () {
       $(e.currentTarget).removeClass('active');
     }
   });
-
-  //Activate regular switches
-  if ($("[data-toggle='switch']").length != 0) {
-    $("[data-toggle='switch']").bootstrapSwitch();
-  }
-
   $("ul.dropdown-tabs a").click(function (e) {
     e.preventDefault();
     $(this).tab('show');
   });
+
+  /**
+   * Bootstrap switch toggler
+   * 
+   */
+  $('#return_trip_switch').on('change.bootstrapSwitch', function (e, state) {
+    if(e.target.checked == true){
+      var inputVal = "Y";
+      $("#return_trip").val(inputVal);
+    }else if(e.target.checked == false){
+      var inputVal = "N";
+      $("#return_trip").val(inputVal);
+    }
+  });
+
+
 
   $("#inputGroupFile01").change(function (event) {
     RecurFadeIn();

@@ -56,9 +56,11 @@
                     <!-- return -->
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-4 p-1">
-                            <label for="return_trip">Will You Be Returning?</label>
-                            <input type="checkbox" data-toggle="switch" checked="" data-on-color="danger" data-off-color="primary" data-on-text="YES" data-off-text="NO">
-                            <span class="toggle"></span>
+                            <label>Will You Be Returning?</label>
+                            <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="YES" data-off-text="NO"
+                            id="return_trip_switch">
+                            <span class="toggle switch-toggler"></span>
+                            <input type="hidden" value="N" name="return_trip" id="return_trip">
                         </div>
                     </div>
                     <!-- end return -->

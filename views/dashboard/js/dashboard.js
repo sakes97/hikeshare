@@ -81,6 +81,7 @@ $(document).ready(function () {
    * Bootstrap switch toggler
    * 
    */
+  //offer
   $('#return_trip_switch').on('change.bootstrapSwitch', function (e, state) {
     if(e.target.checked == true){
       var inputVal = "Y";
@@ -90,8 +91,6 @@ $(document).ready(function () {
       $("#return_trip").val(inputVal);
     }
   });
-
-
 
   $("#inputGroupFile01").change(function (event) {
     RecurFadeIn();

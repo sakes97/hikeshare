@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <!-- end destination -->
-                    <!-- return -->
+                    <!-- return switch -->
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-4 p-1">
                             <label>Will You Be Returning?</label>
@@ -63,7 +63,7 @@
                             <input type="hidden" value="N" name="return_trip" id="return_trip">
                         </div>
                     </div>
-                    <!-- end return -->
+                    <!-- end return switch -->
                     <!-- travel schedule -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">

@@ -84,9 +84,9 @@ class Dashboard extends Controller
 
     public function find_Ride()
     {
-        $this->view->title = "Create Alert";
+        $this->view->title = "Find a ride";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/ride/lift', 'user_nav');
+        $this->view->render('dashboard/ride/find-a-ride', 'user_nav');
     }
 
     public function View_Ride_History()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2019 at 05:26 PM
+-- Generation Time: Oct 03, 2019 at 06:56 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -80,6 +80,11 @@ FROM ride
 WHERE ride.userid = driverid and ride.status = 'Pending'
 and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffer` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
+SELECT *
+FROM ride 
+WHERE ride.rideid = rideid and ride.userid = driverid$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *, COUNT(ride.rideid) as NUM_OF_OFFERS
 FROM ride 
@@ -152,10 +157,15 @@ WHERE user.email = email
       and 
       user.active = 'Y'$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCar` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `reg_num` VARCHAR(20), IN `make` TEXT, IN `model` TEXT, IN `model_year` YEAR, IN `color` TEXT, IN `seats` INT, IN `car_image` LONGBLOB)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCar` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `reg_num` VARCHAR(20), IN `make` TEXT, IN `model` TEXT, IN `model_year` YEAR, IN `color` TEXT, IN `seats` INT)  NO SQL
 UPDATE car 
-SET car.reg_num = reg_num, car.make = make, car.model = model, car.model_year = model_year, car.color = color, car.seats = seats, car.car_image = car_image   
+SET car.reg_num = reg_num, car.make = make, car.model = model, car.model_year = model_year, car.color = color, car.seats = seats
 WHERE car.carid = carid AND car.driverid = driverid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCarImage` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `car_image` LONGBLOB)  NO SQL
+UPDATE car
+SET car.car_image = car_image
+WHERE car.driverid = driverid and car.carid = carid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdatePreferences` (IN `userid` VARCHAR(11), IN `alcohol_yn` VARCHAR(1), IN `pets_yn` VARCHAR(1), IN `smoking_yn` VARCHAR(1))  NO SQL
 UPDATE user 

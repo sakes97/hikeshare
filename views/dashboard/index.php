@@ -76,57 +76,97 @@
 
             <!-- ride cards -->
             <div class="col-sm-12 col-lg-8">
+                <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                        <div class="nav-tabs-navigation pb-0 mb-0">
+                            <div class="nav-tabs-wrapper">
+                                <ul id="tabs" class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
+                                            Lifts Offered
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#ridesBooked">
+                                            Ride Bookings
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php if ($this->NUM_OF_ACTIVE_OFFERS['NUM_OF_ACTIVE_OFFERS'] > 0) { ?>
-                    <div class="row max mt-3">
-                        <div class="col-12 m-1">
-                            <h6 class="p-3">Your Ride Offers</h6>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless">
-                                            <thead>
-                                                <th>From</th>
-                                                <th>To</th>
-                                                <th>When</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($this->activeOffers as $offer) { ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo $offer['departure_from']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $offer['destination']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $offer['departure_date']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $offer['status']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-default btn-square btn-sm" 
-                                                                href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid']; ?>/<?php echo $offer['userid']; ?>?as=driver-view-offer">
-                                                                View Details
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
-                                            </tbody>
-                                        </table>
+                    <div id="dash-tab-content" class="tab-content">
+                        <!--lift content-->
+                        <div class="tab-pane active" id="liftsOffered" role="tabpanel">
+                            <div class="row max mt-3">
+                                <div class="col-12 m-1">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>When</th>
+                                                        <th>Status</th>
+                                                        <th>Actions</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($this->activeOffers as $offer) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php echo $offer['departure_from']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $offer['destination']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $offer['departure_date']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $offer['status']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid']; ?>/<?php echo $offer['userid']; ?>?as=driver-view-offer">
+                                                                        View Details
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--bookings content-->
+                        <div class="tab-pane" id="ridesBooked" role="tabpanel">
+                            <p>These are the rides you booked</p>
+                        </div>
                     </div>
+
                 <?php } else { ?>
-                    <div class="row  max mt-3">
-                        <h1>No Ride Offers</h1>
+                    <div class="dash-tab-content" class="tab-content">
+                        <!--lift content-->
+                        <div class="tab-pane active" id="liftsOffered" role="tabpanel">
+                            <div class="row  max mt-3">
+                                <h4>No Ride Offers</h4>
+                            </div>
+                        </div>
+                        <!--bookings content-->
+                        <div class="tab-pane" id="ridesBooked" role="tabpanel">
+                            <p>These are the rides you booked</p>
+                        </div>
                     </div>
                 <?php } ?>
-                <!--Action Cards:Ride-->
+
+
+
+                <!--OFFER CARDS-->
                 <!--large screens-->
                 <div class="row max mt-3">
                     <!--large screens-->

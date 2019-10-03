@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2019 at 06:56 PM
+-- Generation Time: Oct 04, 2019 at 01:28 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -48,6 +48,14 @@ WHERE ride.status = 'Pending'
 	AND 
     ride.departure_date < CURRENT_DATE()$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetActiveOffers` (IN `driverid` VARCHAR(11))  NO SQL
+SELECT *
+FROM ride
+WHERE ride.userid = driverid and ride.status = 'Active'
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    
+ORDER BY ride.departure_date ASC$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllUsers` ()  NO SQL
 select * 
 from user 
@@ -68,22 +76,23 @@ SELECT COUNT(*) AS NUM_OF_CARS
 FROM car
 WHERE car.driverid = driverid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumOfActiveOffers` (IN `driverid` VARCHAR(11))  NO SQL
+SELECT COUNT(*) as NUM_OF_ACTIVE_OFFERS
+FROM ride
+WHERE ride.userid = driverid and ride.status = 'Active'
+and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumOfPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT COUNT(*) as NUM_OF_PAST_OFFERS
 FROM ride
 WHERE ride.userid = driverid and ride.status = 'Expired'
 and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumOfPendingOffers` (IN `driverid` VARCHAR(11))  NO SQL
-SELECT COUNT(*) as NUM_OF_PENDING_OFFERS
-FROM ride
-WHERE ride.userid = driverid and ride.status = 'Pending'
-and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffer` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 SELECT *
-FROM ride 
-WHERE ride.rideid = rideid and ride.userid = driverid$$
+FROM ride, car 
+WHERE ride.rideid = rideid and ride.userid = driverid
+	and ride.carid = car.carid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *, COUNT(ride.rideid) as NUM_OF_OFFERS
@@ -98,12 +107,6 @@ WHERE ride.userid = driverid
     	ride.status = 'Expired' 
     and 
     	ride.departure_date < current_date()$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPendingOffers` (IN `driverid` VARCHAR(11))  NO SQL
-SELECT *
-FROM ride
-WHERE ride.userid = driverid and ride.status = 'Pending'
-	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripSchedule` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.rideid, day.dayid, day.dow
@@ -127,12 +130,12 @@ INSERT INTO ride (
     ride.contribution_per_head, ride.departure_date, ride.departure_time,
     ride.return_time, ride.departure_from, ride.destination,
     ride.extra_details, ride.ride_as, ride.ride_type, ride.return_trip ,ride.status,
-     ride.date_posted, ride.return_time
+     ride.date_posted
 )
 
 VALUES (
     rideid, driverid, carid, seats_available, contribution_per_head, departure_date, departure_time, return_time,departure_from, destination,
-    extra_details, 'D', ride_type, return_trip,'Pending', date_posted, return_time
+    extra_details, 'D', ride_type, return_trip,'Active', date_posted
  )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRegister` (IN `firstname` TEXT, IN `lastname` TEXT, IN `pass` CHAR(64), IN `email` VARCHAR(320), IN `userid` VARCHAR(11), IN `picture` LONGBLOB)  NO SQL
@@ -342,7 +345,9 @@ CREATE TABLE `ride` (
 --
 
 INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`) VALUES
-('kbmAxyPacFe', '8', '5HQbCiPCQrg', 3, 100.33, '2019-10-10', '22:37:00', NULL, 'dsfadsf', 'dsfsdfa', 'dsfsdf', 'D', 'O', NULL, 'Pending', '2019-09-29 22:43:47');
+('0IryayW1pLR', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-15', '14:28:00', NULL, 'Port Elizabeth ', 'Durban', 'Please be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:29:05'),
+('EH85FjVEisk', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-14', '13:40:00', NULL, 'Port Elizabeth', 'Grahamstown', 'Please Don\'t be late', 'D', 'O', 'N', 'Active', '2019-10-03 23:40:29'),
+('ENEWG8ulniQ', '8', '5HQbCiPCQrg', 3, 250, '2019-10-12', '10:26:00', NULL, 'Port Elizabeth', 'East London', 'Must be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:26:22');
 
 -- --------------------------------------------------------
 

@@ -63,7 +63,7 @@ class Dashboard_Model extends Model
     public function updateCar($carid)
     {
         $query = 'CALL uspUpdateCar(:carid, :driverid, :reg_num, 
-                :make, :model, :model_year, :color, :seats, :car_image)';
+                :make, :model, :model_year, :color, :seats)';
         $params = array(
             ':carid' => $carid,
             ':driverid' => $_POST['driverid'],
@@ -82,7 +82,24 @@ class Dashboard_Model extends Model
             header('location:' . URL . 'err/updateCar');
         }
     }
-
+    public function updateCarImage($carid, $driverid)
+    {
+        $query = 'CALL uspUpdateCarImage(:carid, :driverid, :car_image)';
+        $params = array(
+            ':carid' => $carid,
+            ':driverid' => $driverid,
+            ':car_image' => file_get_contents($_FILES['inputGroupFile01']['tmp_name'])
+        );
+        $result = Database::Execute($query,$params);
+        if($result)
+        {
+            header('location:' . URL . 'dashboard/update_Car/'.$carid);
+        }
+        else
+        {
+            header('location:' . URL . 'err/index');
+        }
+    }
     public function removeCar($carid, $driverid)
     {
         $query = 'CALL uspRemoveCar(:carid, :driverid)';

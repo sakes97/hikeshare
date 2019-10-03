@@ -243,6 +243,11 @@ class Dashboard extends Controller
         $this->model->updateCar($carid);
     }
 
+    public function updateCarImage($carid, $driverid)
+    {
+        $this->model->updateCarImage($carid, $driverid);
+    }
+
     public function removeCar($carid, $driverid)
     {
         $this->model->removeCar($carid, $driverid);

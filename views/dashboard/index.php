@@ -76,50 +76,49 @@
 
             <!-- ride cards -->
             <div class="col-sm-12 col-lg-8">
-                <?php if ($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0) { ?>
+                <?php if ($this->NUM_OF_ACTIVE_OFFERS['NUM_OF_ACTIVE_OFFERS'] > 0) { ?>
                     <div class="row max mt-3">
                         <div class="col-12 m-1">
                             <h6 class="p-3">Your Ride Offers</h6>
-                            <?php foreach ($this->pendingOffers as $pendingOffers) { ?>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless">
-                                                <thead>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>When</th>
-                                                    <th>Status</th>
-                                                    <th>Actions</th>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($this->pendingOffers as $offer) { ?>
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $offer['departure_from']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $offer['destination']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $offer['departure_date']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $offer['status']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>">
-                                                                    View Details
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>When</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($this->activeOffers as $offer) { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $offer['departure_from']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $offer['destination']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $offer['departure_date']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $offer['status']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn btn-default btn-square btn-sm" 
+                                                                href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid']; ?>/<?php echo $offer['userid']; ?>?as=driver-view-offer">
+                                                                View Details
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            </div>
                         </div>
                     </div>
                 <?php } else { ?>

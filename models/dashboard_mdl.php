@@ -222,9 +222,9 @@ class Dashboard_Model extends Model
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
     }
-    public function getPendingOffers($driverid)
+    public function getActiveOffers($driverid)
     {
-        $query = 'CALL uspGetPendingOffers(:driverid)';
+        $query = 'CALL uspGetActiveOffers(:driverid)';
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
     }
@@ -239,9 +239,9 @@ class Dashboard_Model extends Model
         $query = 'CALL uspDays()';
         return Database::GetAll($query);
     }
-    public function getNumOfPendingOffers($driverid)
+    public function getNumOfActiveOffers($driverid)
     {
-        $query = 'CALL uspGetNumOfPendingOffers(:driverid)';
+        $query = 'CALL uspGetNumOfActiveOffers(:driverid)';
         $params = array(':driverid'=>$driverid);
         return Database::GetRow($query, $params);
     }
@@ -274,7 +274,6 @@ class Dashboard_Model extends Model
     {
         $rideid = Util::generate_id();
         $return_time = NULL; 
-        $return_city = NULL;
         if (isset($_POST['ride_type'])) {
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
@@ -288,8 +287,7 @@ class Dashboard_Model extends Model
 
         $query = 'CALL uspOfferRide(:rideid, :driverid, :carid,
         :seats_available, :contribution_per_head, :departure_date, :departure_time,
-        :departure_from, :destination, :extra_details, :ride_type, :date_posted, :return_time,
-        :return_city, :return_trip)';
+        :departure_from, :destination, :extra_details, :ride_type, :date_posted, :return_time, :return_trip)';
 
         $params = array(
             ':rideid' => $rideid,
@@ -305,8 +303,7 @@ class Dashboard_Model extends Model
             ':ride_type' => $_POST['ride_type'],
             ':date_posted' => date('Y-m-d H:i:s', time()),
             ':return_time' => $return_time,
-            ':return_city' => $return_city,
-            ':return_trip' => $_POST['']
+            ':return_trip' => $_POST['return_trip']
         );
     
         
@@ -316,6 +313,7 @@ class Dashboard_Model extends Model
         } else {
             header("location:" . URL . "err/index");
         }
+        // print_r($params);
     }
 
     public function setSchedule($rideid, $dayid)

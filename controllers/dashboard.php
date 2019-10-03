@@ -21,8 +21,8 @@ class Dashboard extends Controller
     {
         $this->view->title = "Dashboard";
         $this->_getUserDetails($this->_userid);
-        $this->_getNumOfPendingOffers($this->_userid);
-        $this->_getPendingOffers($this->_userid);
+        $this->_getNumOfActiveOffers($this->_userid);
+        $this->_getActiveOffers($this->_userid);
         $this->view->render('dashboard/index', 'user_nav');
     }
     #endregion
@@ -98,8 +98,8 @@ class Dashboard extends Controller
          * offers
          */
         //upcoming offers
-        $this->_getPendingOffers($this->_userid);
-        $this->_getNumOfPendingOffers($this->_userid);
+        $this->_getActiveOffers($this->_userid);
+        $this->_getNumOfActiveOffers($this->_userid);
         //past offers
         $this->_getPastOffers($this->_userid);
         $this->_getNumOfPastOffers($this->_userid);
@@ -135,17 +135,17 @@ class Dashboard extends Controller
         $this->pastOffers = $this->model->getPastOffers($driverid);
     }
     
-    private function _getPendingOffers($driverid)
+    private function _getActiveOffers($driverid)
     {
-        $this->view->pendingOffers = $this->model->getPendingOffers($driverid);
+        $this->view->activeOffers = $this->model->getActiveOffers($driverid);
     }
     public function getDays()
     {
         $this->view->days = $this->model->getDays();
     }
-    private function _getNumOfPendingOffers($driverid)
+    private function _getNumOfActiveOffers($driverid)
     {
-        $this->view->NUM_OF_PENDING_OFFERS = $this->model->getNumOfPendingOffers($driverid); 
+        $this->view->NUM_OF_ACTIVE_OFFERS = $this->model->getNumOfActiveOffers($driverid); 
     }
     private function _getNumOfPastOffers($driverid)
     {

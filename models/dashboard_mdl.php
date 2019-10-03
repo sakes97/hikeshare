@@ -241,6 +241,15 @@ class Dashboard_Model extends Model
         $params = array(':rideid' => $rideid);
         return Database::GetAll($query,$params);
     }
+    public function getOffer($rideid, $driverid)
+    {
+        $query = 'CALL uspGetOffer(:rideid, :driverid)';
+        $params = array(
+            ':rideid' => $rideid,
+            ':driverid' => $driverid
+        );
+        return Database::GetRow($query,$params);
+    }
     #endregion
 
     #region Execute Functions

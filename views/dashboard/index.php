@@ -79,24 +79,42 @@
                 <?php if ($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0) { ?>
                     <div class="row max mt-3">
                         <div class="col-12 m-1">
-                            <h6 class="p-3">Pending Offers</h6>
+                            <h6 class="p-3">Your Ride Offers</h6>
                             <?php foreach ($this->pendingOffers as $pendingOffers) { ?>
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-borderless table-hover">
-                                                <tr>
-                                                    <td>Destination:</td>
-                                                    <td><?php echo $pendingOffers['destination']; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>When:</td>
-                                                    <td><?php echo $pendingOffers['departure_date']; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Date Poste:</td>
-                                                    <td><?php echo $pendingOffers['date_posted']; ?></td>
-                                                </tr>
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>When</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($this->pendingOffers as $offer) { ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $offer['departure_from']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $offer['destination']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $offer['departure_date']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $offer['status']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>">
+                                                                    View Details
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -106,7 +124,7 @@
                     </div>
                 <?php } else { ?>
                     <div class="row  max mt-3">
-                        <h1>No Pending Offers</h1>
+                        <h1>No Ride Offers</h1>
                     </div>
                 <?php } ?>
                 <!--Action Cards:Ride-->
@@ -154,14 +172,14 @@
                                 <p class="card-text lead">
                                     Lessen your costs by offering lifts to our members and offer a ride<br>
                                     <a href="<?php echo URL; ?>dashboard/offer_Ride" class="btn btn-outline-danger btn-round">
-                                    OFFER A RIDE
+                                        OFFER A RIDE
                                     </a>
                                 </p>
                                 <hr />
                                 <p class="card-text">
                                     Post a request and share costs for the trip while travelling in comfort<br>
                                     <a href="<?php echo URL; ?>dashboard/find_Ride" class="btn btn-outline-danger btn-round">
-                                    FIND A RIDE
+                                        FIND A RIDE
                                     </a>
                                 </p>
                             </div>
@@ -171,6 +189,5 @@
             </div>
             <!-- end cards -->
         </div>
-
     </div>
 </div>

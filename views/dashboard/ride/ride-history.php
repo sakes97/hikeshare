@@ -102,14 +102,13 @@
                                     <!--smaller screens-->
                                     <div class="col-12 d-sm-block d-md-none">
                                         <?php if ($this->NUM_OF_PENDING_OFFERS['NUM_OF_PENDING_OFFERS'] > 0) {  ?>
-                                            <table class="table">
+                                            <table class="table table-borderless">
                                                 <?php foreach ($this->pendingOffers as $offer) { ?>
                                                     <tr>
                                                         <td>
                                                             <?php echo $offer['departure_from']; ?>
                                                             -
                                                             <?php echo $offer['destination']; ?>
-                                                            </hr>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -125,7 +124,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="dropdown">
-                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                     Dropdown button
                                                                 </button>
                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -134,6 +133,7 @@
                                                                     <a class="dropdown-item" href="#">Something else here</a>
                                                                 </div>
                                                             </div>
+                                                            <hr/>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

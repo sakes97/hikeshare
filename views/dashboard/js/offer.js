@@ -4,17 +4,37 @@ $(document).ready(function() {
     $("#rideDays").hide();
     $("#lblDepartureDate").text("Departure Date");
     $("#dvReturnTime").hide();
+
+    if($("#return_trip_switch").is(":checked")){
+      $("#dvReturnTime").show();
+      $("#dvReturnDate").show();
+    }else{
+      $("#dvReturnTime").hide();
+      $("#dvReturnDate").hide();
+    }
+
+
   });
+
+
   $("#once_option").on("click", function() {
     $("#rideDays").hide();
     $("#lblDepartureDate").text("Departure Date");
     $("#departure_date").attr("placeholder", "Choose Departure Date...");
-    $("#dvReturnTime").hide();
+
+    if($("#return_trip_switch").is(":checked")){
+      $("#dvReturnTime").show();
+    }else{
+      $("#dvReturnTime").hide();
+    }
+
     $("#dvReturnSwitch").show();
     $("#return_trip").val("N");
     $("#origin-input").attr("placeholder","Enter your current city...");
     $("#destination-input").attr("placeholder","Enter your destination city...");
   });
+
+
   $("#regular_option").on("click", function() {
     $("#rideDays").show();
     $("#lblDepartureDate").text("Start Date");

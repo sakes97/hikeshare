@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 01:28 AM
+-- Generation Time: Oct 04, 2019 at 01:04 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -347,7 +347,9 @@ CREATE TABLE `ride` (
 INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`) VALUES
 ('0IryayW1pLR', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-15', '14:28:00', NULL, 'Port Elizabeth ', 'Durban', 'Please be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:29:05'),
 ('EH85FjVEisk', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-14', '13:40:00', NULL, 'Port Elizabeth', 'Grahamstown', 'Please Don\'t be late', 'D', 'O', 'N', 'Active', '2019-10-03 23:40:29'),
-('ENEWG8ulniQ', '8', '5HQbCiPCQrg', 3, 250, '2019-10-12', '10:26:00', NULL, 'Port Elizabeth', 'East London', 'Must be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:26:22');
+('ENEWG8ulniQ', '8', '5HQbCiPCQrg', 3, 250, '2019-10-12', '10:26:00', NULL, 'Port Elizabeth', 'East London', 'Must be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:26:22'),
+('LyM0NCApEfC', '8', '5HQbCiPCQrg', 3, 100, '2019-11-04', '12:56:00', NULL, 'East London', 'Port Elizabeth', 'Please be punctual', 'D', 'O', 'Y', 'Active', '2019-10-04 12:56:16'),
+('OHMe3DBrLrj', '8', '5HQbCiPCQrg', 3, 100, '2019-11-13', '15:56:00', NULL, 'Port Elizabeth', 'East London', 'Please be punctual', 'D', 'O', 'd', 'Active', '2019-10-04 12:56:16');
 
 -- --------------------------------------------------------
 

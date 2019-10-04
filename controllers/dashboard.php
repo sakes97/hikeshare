@@ -13,7 +13,11 @@ class Dashboard extends Controller
         $this->_userid = $this->_getUserID();
 
         $this->view->js = array(
-            'dashboard/js/dashboard.js',
+            'dashboard/js/datetimepickers.js',
+            'dashboard/js/general.js',
+            'dashboard/js/map.js',
+            'dashboard/js/offer.js',
+            'dashboard/js/profile.js'
         );
     }
     #region Index

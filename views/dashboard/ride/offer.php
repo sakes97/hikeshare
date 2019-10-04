@@ -16,11 +16,11 @@
                         <div class="form-group col-sm-10 col-md-6 p-1">
                             <label for="ride_type">Trip frequency</label>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="once_option" name="ride_type" value="O" checked onclick="scheduleHide();">
+                                <input type="radio" class="custom-control-input" id="once_option" name="ride_type" value="O" checked>
                                 <label class="custom-control-label" for="once_option">Once-Off</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="regular_option" name="ride_type" value="R" onclick="scheduleShow();">
+                                <input type="radio" class="custom-control-input" id="regular_option" name="ride_type" value="R">
                                 <label class="custom-control-label" for="regular_option">Regular</label>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                     </div>
                     <!-- end destination -->
                     <!-- return switch -->
-                    <div class="form-row">
+                    <div class="form-row" id="dvReturnSwitch">
                         <div class="form-group col-sm-10 col-md-4 p-1">
                             <label>Will You Be Returning?</label>
                             <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="YES" data-off-text="NO"
@@ -68,7 +68,11 @@
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
                             <label id="lblDepartureDate" class="label-control" for="departure_date">Departure Date</label>
-                            <input type="text" class="form-control datepicker" name="departure_date" id="departure_date" placeholder="Choose the date..." onkeypress="return false;" />
+                            <input type="text" class="form-control datepicker" name="departure_date" id="departure_date" placeholder="Choose departure date..." onkeypress="return false;" />
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 p-1" id="dvReturnDate" style="display:none;">
+                            <label id="lblReturnDate" class="label-control" for="return_date">Return Date</label>
+                            <input type="text" class="form-control datepicker" name="return_date" id="return_date" placeholder="Choose return date..." onkeypress="return false;" />
                         </div>
                     </div>
                     <!-- time -->
@@ -93,28 +97,20 @@
                                     ?>
                                     <label for="car_for_ride">Choose:</label>
                                     <select name="car_for_ride" class="form-control form-control-sm" id="car_for_ride">
-                                        <?php
-                                            foreach ($this->cars as $cars) {
-                                                ?>
+                                        <?php foreach ($this->cars as $cars) { ?>
                                             <option id="<?php echo $cars['carid']; ?>" value="<?php echo $cars['carid']; ?>">
                                                 <?php echo $cars['make']; ?>
                                             </option>
-                                        <?php
-                                            }
-                                            ?>
+                                        <?php } ?>
                                     </select>
-                                <?php
-                                } else {
-                                    ?>
+                                <?php } else { ?>
                                     <button type="button" data-toggle="modal" class="btn btn-default btn-square" data-target="#addCarModal">
                                         Add Car
                                     </button>
                                     <span class="p-1">
                                         <i class="fas fa-question-circle tooltip_icon" data-toggle="tooltip" data-placement="right" title="Car needs to be added before ride can be made"></i>
                                     </span>
-                                <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -125,7 +121,7 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-4 p-1">
                             <label for="seats_available">Available Seats</label>
-                            <input class="form-control" type="number" value="3" min="1" name="seats_available" id="seats_available">
+                            <input class="form-control" type="number" value="" min="1" name="seats_available" id="seats_available">
                         </div>
                     </div>
                     <!-- end contribution/available-seats -->

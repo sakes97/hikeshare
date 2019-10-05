@@ -274,13 +274,12 @@ class Dashboard_Model extends Model
     {
         $rideid = Util::generate_id();
         $return_time = NULL; 
-        $s = array();
+        // $s = array();
         if (isset($_POST['ride_type'])) {
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
                     foreach ($_POST['days_checklist'] as $day) {
-                        // $this->setSchedule($rideid, $day);
-                        array_push($s,$day);
+                        $this->setSchedule($rideid, $day);
                     }
                     $return_time = $_POST['return_time'];
                 }
@@ -319,7 +318,6 @@ class Dashboard_Model extends Model
         } else {
             header("location:" . URL . "err/index");
         }
-        // print_r($params);
     }
     private function _returnOffer($driverid)
     {

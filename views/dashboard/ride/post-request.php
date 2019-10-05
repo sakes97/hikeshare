@@ -9,7 +9,7 @@
             <!-- enter Trip Details -->
             <div class="col-sm-12 col-md-6">
                 <h6>Enter Your Trip Details</h6>
-                <form method="post" action="<?php echo URL; ?>dashboard/offerRide/<?php echo $this->user['userid']; ?>">
+                <form method="post" action="<?php echo URL; ?>dashboard/postRideRequest/<?php echo $this->user['userid']; ?>">
 
                     <!-- trip frequency -->
                     <div class="form-row">

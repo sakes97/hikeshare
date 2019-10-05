@@ -137,9 +137,15 @@ class Dashboard extends Controller
         }
         $this->view->render('dashboard/ride/view-offer-details', 'user_nav');
     }
+
     public function offerRide($driverid)
     {
         $this->model->offerRide($driverid);
+    }
+
+    public function postRideRequest($passengerid)
+    {
+        $this->model->postRideRequest($passengerid);
     }
 
     private function _getOffers($driverid)
@@ -156,26 +162,32 @@ class Dashboard extends Controller
     {
         $this->view->activeOffers = $this->model->getActiveOffers($driverid);
     }
+
     private function _getDays()
     {
         $this->view->days = $this->model->getDays();
     }
+
     private function _getNumOfActiveOffers($driverid)
     {
         $this->view->NUM_OF_ACTIVE_OFFERS = $this->model->getNumOfActiveOffers($driverid); 
     }
+
     private function _getNumOfPastOffers($driverid)
     {
         $this->view->NUM_OF_PAST_OFFERS = $this->model->getNumOfPastOffers($driverid); 
     }
+
     private function _getTripSchedule($rideid)
     {
         $this->view->trip_schedule = $this->model->getTripSchedule($rideid);
     }
+
     private function _getOffer($rideid, $driverid)
     {
         $this->view->rideOffer = $this->model->getOffer($rideid, $driverid);
     }
+
     private function _getReturn($rideid)
     {
         $this->view->return_trip = $this->model->getReturn($rideid);

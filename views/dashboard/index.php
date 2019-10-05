@@ -147,12 +147,10 @@
                     </div>
 
                 <?php } else { ?>
-                    <div class="dash-tab-content" class="tab-content">
+                    <div id="dash-tab-content" class="tab-content">
                         <!--lift content-->
                         <div class="tab-pane active" id="liftsOffered" role="tabpanel">
-                            <div class="row  max mt-3">
-                                <h4>No Ride Offers</h4>
-                            </div>
+                            <p>no rides offered</p>
                         </div>
                         <!--bookings content-->
                         <div class="tab-pane" id="ridesBooked" role="tabpanel">

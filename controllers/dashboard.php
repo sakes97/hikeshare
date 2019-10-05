@@ -117,11 +117,16 @@ class Dashboard extends Controller
         //render view 
         $this->view->render('dashboard/ride/ride-history', 'user_nav');
     }
-    public function View_Offer_Details($rideid, $driverid)
+    public function View_Offer_Details($rideid, $driverid, $ride_type)
     {
         $this->view->title = "Offer Details";
         $this->_getUserDetails($this->_userid);
         $this->_getOffer($rideid,$driverid);
+        $this->_getReturn($rideid);
+        if($ride_type == 'R')
+        {
+            $this->_getTripSchedule($rideid);
+        }
         $this->view->render('dashboard/ride/view-offer-details', 'user_nav');
     }
     public function offerRide($driverid)
@@ -157,11 +162,15 @@ class Dashboard extends Controller
     }
     private function _getTripSchedule($rideid)
     {
-        $this->model->getTripSchedule($rideid);
+        $this->view->trip_schedule = $this->model->getTripSchedule($rideid);
     }
     private function _getOffer($rideid, $driverid)
     {
         $this->view->rideOffer = $this->model->getOffer($rideid, $driverid);
+    }
+    private function _getReturn($rideid)
+    {
+        $this->view->return_trip = $this->model->getReturn($rideid);
     }
     
     #endregion

@@ -110,7 +110,6 @@
                                                         <th>From</th>
                                                         <th>To</th>
                                                         <th>When</th>
-                                                        <th>Status</th>
                                                         <th>Actions</th>
                                                     </thead>
                                                     <tbody>
@@ -126,10 +125,8 @@
                                                                     <?php echo $offer['departure_date']; ?>
                                                                 </td>
                                                                 <td>
-                                                                    <?php echo $offer['status']; ?>
-                                                                </td>
-                                                                <td>
-                                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $offer['rideid']; ?>/<?php echo $offer['userid']; ?>?as=driver-view-offer">
+                                                                    <a class="btn btn-default btn-square btn-sm" 
+                                                                    href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?as=driver-view-offer">
                                                                         View Details
                                                                     </a>
                                                                 </td>

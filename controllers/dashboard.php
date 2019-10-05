@@ -80,7 +80,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Add a Journey";
         $this->_getUserDetails($this->_userid);
-        $this->getDays();
+        $this->_getDays();
         $this->_getCars($this->_userid);
         $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/ride/offer', 'user_nav');
@@ -91,6 +91,14 @@ class Dashboard extends Controller
         $this->view->title = "Find a ride";
         $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/ride/find-a-ride', 'user_nav');
+    }
+
+    public function frmPostRequest()
+    {
+        $this->view->title = "Post a request";
+        $this->_getUserDetails($this->_userid);
+        $this->_getDays();
+        $this->view->render('dashboard/ride/post-request', 'user_nav');
     }
 
     public function View_Ride_History()
@@ -148,7 +156,7 @@ class Dashboard extends Controller
     {
         $this->view->activeOffers = $this->model->getActiveOffers($driverid);
     }
-    public function getDays()
+    private function _getDays()
     {
         $this->view->days = $this->model->getDays();
     }

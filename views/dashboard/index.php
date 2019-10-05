@@ -77,7 +77,7 @@
             <!-- ride cards -->
             <div class="col-sm-12 col-lg-8">
                 <div class="row">
-                    <div class="col-sm-6 col-md-5">
+                    <div class="col-sm-12 col-md-12">
                         <div class="nav-tabs-navigation pb-0 mb-0">
                             <div class="nav-tabs-wrapper">
                                 <ul id="tabs" class="nav nav-tabs" role="tablist">
@@ -161,8 +161,6 @@
                     </div>
                 <?php } ?>
 
-
-
                 <!--OFFER CARDS-->
                 <!--large screens-->
                 <div class="row max mt-3">
@@ -178,7 +176,10 @@
                                     going the same way and share the costs for your travels
                                 </p>
                                 <a href="<?php echo URL; ?>dashboard/offer_Ride" class="btn btn-outline-danger btn-round">
-                                    OFFER A RIDE
+                                    POST A RIDE
+                                </a>
+                                <a href="#" class="btn btn-outline-danger btn-round">
+                                    FIND REQUESTS
                                 </a>
                             </div>
                         </div>
@@ -193,6 +194,9 @@
                                     Going somewhere and need a ride? Post a request and share the costs for the trip
                                     and travel in comfort
                                 </p>
+                                <a href="<?php echo URL;?>dashboard/frmPostRequest" class="btn btn-outline-danger btn-round">
+                                    POST A REQUEST
+                                </a>
                                 <a href="<?php echo URL; ?>dashboard/find_Ride" class="btn btn-outline-danger btn-round">
                                     FIND A RIDE
                                 </a>

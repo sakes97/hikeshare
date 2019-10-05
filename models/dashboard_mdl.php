@@ -222,29 +222,34 @@ class Dashboard_Model extends Model
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
     }
+
     public function getActiveOffers($driverid)
     {
         $query = 'CALL uspGetActiveOffers(:driverid)';
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
     }
+
     public function getPastOffers($driverid)
     {
         $query = 'CALL uspGetPastOffers(:driverid)';
         $params = array(':driverid'=>$driverid);
         return Database::GetAll($query,$params);
     }
+
     public function getDays()
     {
         $query = 'CALL uspDays()';
         return Database::GetAll($query);
     }
+
     public function getNumOfActiveOffers($driverid)
     {
         $query = 'CALL uspGetNumOfActiveOffers(:driverid)';
         $params = array(':driverid'=>$driverid);
         return Database::GetRow($query, $params);
     }
+
     public function getNumOfPastOffers($driverid)
     {
         $query = 'CALL uspGetNumOfPastOffers(:driverid)';
@@ -258,6 +263,7 @@ class Dashboard_Model extends Model
         $params = array(':rideid' => $rideid);
         return Database::GetAll($query,$params);
     }
+
     public function getOffer($rideid, $driverid)
     {
         $query = 'CALL uspGetOffer(:rideid, :driverid)';
@@ -267,11 +273,19 @@ class Dashboard_Model extends Model
         );
         return Database::GetRow($query,$params);
     }
+
     public function getReturn($rideid)
     {
         $query = 'CALL uspGetReturn(:rideid)';
         $params = array(':rideid'=>$rideid);
         return Database::GetRow($query,$params);
+    }
+
+    public function getPassengerActivePosts($passengerid)
+    {
+        $query = 'CALL uspGetPassengerActivePosts(:passengerid)';
+        $params = array(':passengerid' => $passengerid);
+        return Database::GetAll($query, $params);
     }
     #endregion
 

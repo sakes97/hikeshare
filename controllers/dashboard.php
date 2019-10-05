@@ -19,14 +19,25 @@ class Dashboard extends Controller
             'dashboard/js/offer.js',
             'dashboard/js/profile.js'
         );
+
     }
     #region Index
     public function index()
     {
+        //view title
         $this->view->title = "Dashboard";
+
+        //get user details 
         $this->_getUserDetails($this->_userid);
+        
+        //as driver
         $this->_getNumOfActiveOffers($this->_userid);
         $this->_getActiveOffers($this->_userid);
+
+        //as passenger
+        $this->_getPassengerActivePosts($this->_userid);
+
+        //render view
         $this->view->render('dashboard/index', 'user_nav');
     }
     #endregion
@@ -125,6 +136,7 @@ class Dashboard extends Controller
         //render view 
         $this->view->render('dashboard/ride/ride-history', 'user_nav');
     }
+
     public function View_Offer_Details($rideid, $driverid, $ride_type)
     {
         $this->view->title = "Offer Details";
@@ -161,6 +173,11 @@ class Dashboard extends Controller
     private function _getActiveOffers($driverid)
     {
         $this->view->activeOffers = $this->model->getActiveOffers($driverid);
+    }
+
+    private function _getPassengerActivePosts($passengerid)
+    {
+        $this->view->active_pass_post = $this->model->getPassengerActivePosts($passengerid);
     }
 
     private function _getDays()

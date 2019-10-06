@@ -47,7 +47,8 @@
                     </a>
                 </div>
                 <div class="col-1 m-1">
-                    <a class="btn btn-default btn-square" href="#">
+                    <a class="btn btn-default btn-square" 
+                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip'];?>/<?php echo $this->rideOffer['rideid'];?>/<?php echo $this->rideOffer['driverid'];?>">
                         Delete
                     </a>
                 </div>

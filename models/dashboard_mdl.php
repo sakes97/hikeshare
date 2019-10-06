@@ -476,10 +476,10 @@ class Dashboard_Model extends Model
         return Database::Execute($query);
     }
 
-    public function deleteTravel($ride_type, $rideid, $userid)
+    public function deleteTravel($return_trip, $rideid, $userid)
     {
         $result = NULL;
-        if($ride_type == 'Y')
+        if($return_trip == 'Y')
         {
             $ride_and_return  = $this->getTripAndReturn($userid, $rideid);
             foreach($ride_and_return as $r){
@@ -492,12 +492,14 @@ class Dashboard_Model extends Model
             }
             if($result){
                 header("location:" . URL . "dashboard/index");
+                exit;
             }
             else{
                 header("location:" . URL . "err/index");
+                exit('error from deleteTravel(3) method : Return Trip = Y portion');
             }
         } 
-        else if ($ride_type == 'N' || $ride_type == 'd')
+        else if ($return_trip == 'N' || $return_trip == 'd')
         {
             $query = 'CALL uspDeleteRide(:rideid, :userid)';
             $params = array(

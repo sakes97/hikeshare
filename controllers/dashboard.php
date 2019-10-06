@@ -210,9 +210,9 @@ class Dashboard extends Controller
         $this->view->return_trip = $this->model->getReturn($rideid);
     }
 
-    public function deleteTravel($ride_type, $rideid, $userid)
+    public function deleteTravel($return_trip, $rideid, $userid)
     {
-        $this->model->deleteTravel($ride_type, $rideid, $userid);
+        $this->model->deleteTravel($return_trip, $rideid, $userid);
     }
     private function _getTripAndReturn($userid, $rideid)
     {

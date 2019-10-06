@@ -1,8 +1,8 @@
 <div class="section profile-content">
-    <div class="container bg-white shadow-sm pb-2 border-bottom-0">
+    <div class="container-fluid bg-white shadow-sm pb-2 border-bottom-0">
         <div class="row">
             <!-- owner -->
-            <div class="col-sm-12 col-lg-4 text-center">
+            <div class="col-sm-12 col-lg-3 text-center">
                 <div class="owner">
                     <div class="avatar">
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($this->user['picture']); ?>" alt="User Profile Picture" class="img-circle img-no-padding img-responsive img-circle">
@@ -75,7 +75,7 @@
             <!-- end owner -->
 
             <!-- ride cards -->
-            <div class="col-sm-12 col-lg-8">
+            <div class="col-sm-12 col-lg-9">
                 
                 
                 <?php if(count($this->activeOffers) > 0 || count($this->active_pass_post) > 0) { ?>
@@ -128,10 +128,25 @@
                                                                         <?php echo $offer['departure_date']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <a class="btn btn-default btn-square btn-sm" 
-                                                                        href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?as=driver-view-offer">
-                                                                            View Details
-                                                                        </a>
+                                                                        <div class="dropdown-container">
+                                                                            <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                Actions
+                                                                            </button>
+                                                                            <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                <a class="dropdown-item" 
+                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?as=driver-view-offer">
+                                                                                    View Details
+                                                                                </a>
+                                                                                <a class="dropdown-item" href="#">
+                                                                                    Edit
+                                                                                </a>
+                                                                                <a class="dropdown-item" 
+                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>">
+                                                                                    Delete
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             <?php } ?>

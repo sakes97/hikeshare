@@ -209,7 +209,15 @@ class Dashboard extends Controller
     {
         $this->view->return_trip = $this->model->getReturn($rideid);
     }
-    
+
+    public function deleteTravel($ride_type, $rideid, $userid)
+    {
+        $this->model->deleteTravel($ride_type, $rideid, $userid);
+    }
+    private function _getTripAndReturn($userid, $rideid)
+    {
+        $this->view->returnTrip = $this->model->getTripAndReturn($userid, $rideid);
+    }
     #endregion
 
     #region Reviews

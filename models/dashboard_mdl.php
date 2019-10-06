@@ -281,6 +281,16 @@ class Dashboard_Model extends Model
         return Database::GetRow($query,$params);
     }
 
+    public function getTripAndReturn($userid, $rideid)
+    {
+        $query = 'CALL uspGetTripAndReturn(:userid, :rideid)';
+        $params = array(
+            ':userid' => $userid,
+            ':rideid' => $rideid
+        );
+        return Database::GetAll($query, $params);
+    }
+
     public function getPassengerActivePosts($passengerid)
     {
         $query = 'CALL uspGetPassengerActivePosts(:passengerid)';
@@ -464,6 +474,47 @@ class Dashboard_Model extends Model
     {
         $query = 'CALL uspExpireOffers()';
         return Database::Execute($query);
+    }
+
+    public function deleteTravel($ride_type, $rideid, $userid)
+    {
+        $result = NULL;
+        if($ride_type == 'Y')
+        {
+            $ride_and_return  = $this->getTripAndReturn($userid, $rideid);
+            foreach($ride_and_return as $r){
+                $query = 'CALL uspDeleteRide(:rideid, :userid)';
+                $params = array(
+                    ':rideid' => $r['rideid'],
+                    ':userid' => $r['userid']
+                );
+                $result = Database::Execute($query, $params);        
+            }
+            if($result){
+                header("location:" . URL . "dashboard/index");
+            }
+            else{
+                header("location:" . URL . "err/index");
+            }
+        } 
+        else if ($ride_type == 'N' || $ride_type == 'd')
+        {
+            $query = 'CALL uspDeleteRide(:rideid, :userid)';
+            $params = array(
+                ':rideid' => $rideid,
+                ':userid' => $userid
+            );
+            $result = Database::Execute($query, $params);
+            if($result)
+            {
+                header("location:" . URL . "dashboard/index");
+            }
+            else
+            {
+                header("location:" . URL . "err/index");
+            }
+        }
+
     }
     #endregion
 

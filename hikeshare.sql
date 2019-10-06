@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 01:04 PM
+-- Generation Time: Oct 06, 2019 at 02:20 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -52,6 +52,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetActiveOffers` (IN `driverid` 
 SELECT *
 FROM ride
 WHERE ride.userid = driverid and ride.status = 'Active'
+	and ride.ride_as = 'D'
 	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
     
 ORDER BY ride.departure_date ASC$$
@@ -99,6 +100,17 @@ SELECT *, COUNT(ride.rideid) as NUM_OF_OFFERS
 FROM ride 
 WHERE ride.userid = driverid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPassengerActivePosts` (IN `passengerid` VARCHAR(11))  NO SQL
+SELECT *
+FROM ride 
+WHERE ride.userid = passengerid and 
+ 	
+    ride.status = 'Active' and ride.ride_as = 'P'
+    
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    
+ORDER BY ride.departure_date ASC$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *
 FROM ride 
@@ -107,6 +119,12 @@ WHERE ride.userid = driverid
     	ride.status = 'Expired' 
     and 
     	ride.departure_date < current_date()$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetReturn` (IN `rideid` VARCHAR(11))  NO SQL
+SELECT *
+FROM ride
+WHERE ride.returnid = rideid 
+	and ride.return_trip = 'd'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripSchedule` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.rideid, day.dayid, day.dow
@@ -124,19 +142,35 @@ select *
 from user
 where user.userid = userid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(2), IN `date_posted` DATETIME, IN `return_time` TIME, IN `return_trip` CHAR(1))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(2), IN `date_posted` DATETIME, IN `return_time` TIME, IN `return_trip` CHAR(1), IN `returnid` VARCHAR(11))  NO SQL
 INSERT INTO ride (
     ride.rideid, ride.userid, ride.carid, ride.seats_available, 
     ride.contribution_per_head, ride.departure_date, ride.departure_time,
     ride.return_time, ride.departure_from, ride.destination,
     ride.extra_details, ride.ride_as, ride.ride_type, ride.return_trip ,ride.status,
-     ride.date_posted
+     ride.date_posted, ride.returnid
 )
 
 VALUES (
     rideid, driverid, carid, seats_available, contribution_per_head, departure_date, departure_time, return_time,departure_from, destination,
-    extra_details, 'D', ride_type, return_trip,'Active', date_posted
+    extra_details, 'D', ride_type, return_trip,'Active', date_posted, returnid
  )$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspPostRideRequest` (IN `rideid` VARCHAR(11), IN `passengerid` VARCHAR(11), IN `departure_date` DATE, IN `departure_time` TIME, IN `return_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(2), IN `return_trip` CHAR, IN `date_posted` DATETIME, IN `returnid` VARCHAR(11))  NO SQL
+INSERT INTO ride
+(
+    ride.rideid, ride.userid, ride.departure_date, ride.departure_time, 
+    ride.return_time, ride.departure_from, ride.destination,
+    ride.extra_details, ride.ride_as, ride.ride_type, ride.return_trip,
+   	ride.status, ride.date_posted, ride.returnid 
+)
+VALUES
+(
+    rideid, passengerid, departure_date, departure_time,
+    return_time, departure_from, destination,
+    extra_details, 'P', ride_type, return_trip,
+    'Active', date_posted, returnid
+)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRegister` (IN `firstname` TEXT, IN `lastname` TEXT, IN `pass` CHAR(64), IN `email` VARCHAR(320), IN `userid` VARCHAR(11), IN `picture` LONGBLOB)  NO SQL
 INSERT INTO user 
@@ -324,9 +358,9 @@ CREATE TABLE `review` (
 CREATE TABLE `ride` (
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `carid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seats_available` int(11) NOT NULL,
-  `contribution_per_head` double NOT NULL,
+  `carid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seats_available` int(11) DEFAULT NULL,
+  `contribution_per_head` double DEFAULT NULL,
   `departure_date` date NOT NULL,
   `departure_time` time NOT NULL,
   `return_time` time DEFAULT NULL,
@@ -337,19 +371,25 @@ CREATE TABLE `ride` (
   `ride_type` char(2) COLLATE utf8mb4_unicode_ci NOT NULL,
   `return_trip` char(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_posted` datetime DEFAULT NULL
+  `date_posted` datetime DEFAULT NULL,
+  `returnid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ride`
 --
 
-INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`) VALUES
-('0IryayW1pLR', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-15', '14:28:00', NULL, 'Port Elizabeth ', 'Durban', 'Please be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:29:05'),
-('EH85FjVEisk', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-14', '13:40:00', NULL, 'Port Elizabeth', 'Grahamstown', 'Please Don\'t be late', 'D', 'O', 'N', 'Active', '2019-10-03 23:40:29'),
-('ENEWG8ulniQ', '8', '5HQbCiPCQrg', 3, 250, '2019-10-12', '10:26:00', NULL, 'Port Elizabeth', 'East London', 'Must be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:26:22'),
-('LyM0NCApEfC', '8', '5HQbCiPCQrg', 3, 100, '2019-11-04', '12:56:00', NULL, 'East London', 'Port Elizabeth', 'Please be punctual', 'D', 'O', 'Y', 'Active', '2019-10-04 12:56:16'),
-('OHMe3DBrLrj', '8', '5HQbCiPCQrg', 3, 100, '2019-11-13', '15:56:00', NULL, 'Port Elizabeth', 'East London', 'Please be punctual', 'D', 'O', 'd', 'Active', '2019-10-04 12:56:16');
+INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`, `returnid`) VALUES
+('0IryayW1pLR', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-15', '14:28:00', NULL, 'Port Elizabeth ', 'Durban', 'Please be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:29:05', NULL),
+('aoGXU1PFaEX', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-31', '15:30:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Urgent Please', 'P', 'O', 'N', 'Active', '2019-10-06 01:55:42', NULL),
+('CCMpTtEasQ0', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-16', '10:00:00', NULL, 'JHB', 'EL', 'Really need the lift please', 'P', 'O', 'Y', 'Active', '2019-10-06 02:01:32', NULL),
+('EH85FjVEisk', '8', 'HZmWJP4W2ui', 3, 100, '2019-10-14', '13:40:00', NULL, 'Port Elizabeth', 'Grahamstown', 'Please Don\'t be late', 'D', 'O', 'N', 'Active', '2019-10-03 23:40:29', NULL),
+('ENEWG8ulniQ', '8', '5HQbCiPCQrg', 3, 250, '2019-10-12', '10:26:00', NULL, 'Port Elizabeth', 'East London', 'Must be punctual', 'D', 'O', 'N', 'Active', '2019-10-03 23:26:22', NULL),
+('Hu77oPMCKbt', '8', '5HQbCiPCQrg', 2, 100, '2019-11-15', '06:00:00', '16:00:00', '6 Tomlinson Street, Mosel, Uitenhage', 'NMMU', NULL, 'D', 'R', 'U', 'Active', '2019-10-05 12:06:54', NULL),
+('Ik83TKpHar9', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-11-04', '07:00:00', '18:30:00', '55 Ivana Street, Summerstrand, Port Elizabeth', 'University Way, NMMU', 'Need a lift club to university and back. If anyone can help me out please do.', 'P', 'R', 'U', 'Active', '2019-10-06 02:03:22', NULL),
+('LyM0NCApEfC', '8', '5HQbCiPCQrg', 3, 100, '2019-11-04', '12:56:00', NULL, 'East London', 'Port Elizabeth', 'Please be punctual', 'D', 'O', 'Y', 'Active', '2019-10-04 12:56:16', NULL),
+('OHMe3DBrLrj', '8', '5HQbCiPCQrg', 3, 100, '2019-11-13', '15:56:00', NULL, 'Port Elizabeth', 'East London', 'Please be punctual', 'D', 'O', 'd', 'Active', '2019-10-04 12:56:16', 'LyM0NCApEfC'),
+('Z8ZQ3tzHUnV', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-20', '12:30:00', NULL, 'EL', 'JHB', 'Really need the lift please', 'P', 'O', 'd', 'Active', '2019-10-06 02:01:32', 'CCMpTtEasQ0');
 
 -- --------------------------------------------------------
 
@@ -375,6 +415,19 @@ CREATE TABLE `schedule` (
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dayid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`scheduleid`, `rideid`, `dayid`) VALUES
+(1, 'Hu77oPMCKbt', 1),
+(2, 'Hu77oPMCKbt', 3),
+(3, 'Hu77oPMCKbt', 7),
+(4, 'Ik83TKpHar9', 1),
+(5, 'Ik83TKpHar9', 2),
+(6, 'Ik83TKpHar9', 3),
+(7, 'Ik83TKpHar9', 4);
 
 -- --------------------------------------------------------
 
@@ -490,7 +543,7 @@ ALTER TABLE `ridegroup`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `scheduleid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `scheduleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

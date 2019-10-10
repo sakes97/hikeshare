@@ -527,14 +527,12 @@ class Dashboard_Model extends Model
             }
             if($result){
                 header("location:" . URL . "dashboard/index");
-                exit;
             }
             else{
-                header("location:" . URL . "err/index");
-                exit('error from deleteTravel(@3) method : Return Trip = Y portion');
+                header("location:" . URL . "err/index?delete-return-trip-fail");
             }
         } 
-        else if ($return_trip == 'N' || $ride_type == 'R')
+        else if ($return_trip == 'N' || $ride_type == 'R' || $return_trip == 'd')
         {
             $query = 'CALL uspDeleteRide(:rideid, :userid)';
             $params = array(

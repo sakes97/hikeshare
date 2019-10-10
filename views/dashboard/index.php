@@ -218,7 +218,7 @@
                                                                                     Edit
                                                                                 </a>
                                                                                 <a class="dropdown-item" 
-                                                                                href="#">
+                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $request['return_trip'];?>/<?php echo $request['rideid'];?>/<?php echo $request['userid'];?>/<?php echo $request['ride_type'];?>">
                                                                                     Delete
                                                                                 </a>
                                                                             </div>

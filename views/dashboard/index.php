@@ -139,6 +139,10 @@
                                                                                 href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?view=view-offer-post">
                                                                                     View Details
                                                                                 </a>
+                                                                                <a class="dropdown-item" 
+                                                                                href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>?role=driver">
+                                                                                    Check Matches
+                                                                                </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit
                                                                                 </a>
@@ -205,6 +209,10 @@
                                                                                 <a class="dropdown-item" 
                                                                                 href="<?php echo URL;?>dashboard/frmViewBooking/<?php echo $request['userid'];?>/<?php echo $request['rideid'];?>/<?php echo $request['ride_type'];?>/<?php echo $request['return_trip'];?>?view=view-booking-post">
                                                                                     View Details
+                                                                                </a>
+                                                                                <a class="dropdown-item" 
+                                                                                href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
+                                                                                    Check Matches
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit

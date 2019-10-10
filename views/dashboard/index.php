@@ -143,7 +143,7 @@
                                                                                     Edit
                                                                                 </a>
                                                                                 <a class="dropdown-item" 
-                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>">
+                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
                                                                                     Delete
                                                                                 </a>
                                                                             </div>

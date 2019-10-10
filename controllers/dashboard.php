@@ -165,6 +165,13 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/view-booking-details', 'user_nav');
     }
 
+    public function frmResults($from, $to)
+    {
+        $this->view->title = "Matching Results";
+        $this->_search_Any($from, $to);
+        $this->view->render('dashboard/ride/results', 'user_nav');
+    }
+
     public function offerRide($driverid)
     {
         $this->model->offerRide($driverid);
@@ -230,14 +237,20 @@ class Dashboard extends Controller
         $this->view->return_trip = $this->model->getReturn($rideid);
     }
 
-    public function deleteTravel($return_trip, $rideid, $userid)
+    public function deleteTravel($return_trip, $rideid, $userid, $ride_type)
     {
-        $this->model->deleteTravel($return_trip, $rideid, $userid);
+        $this->model->deleteTravel($return_trip, $rideid, $userid, $ride_type);
     }
     private function _getTripAndReturn($userid, $rideid)
     {
         $this->view->returnTrip = $this->model->getTripAndReturn($userid, $rideid);
     }
+
+    private function _search_Any($from, $to)
+    {
+        $this->view->res_any = $this->model->search_Any($from, $to);
+    }
+
     #endregion
 
     #region Reviews

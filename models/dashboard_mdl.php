@@ -307,6 +307,16 @@ class Dashboard_Model extends Model
         );
         return Database::GetRow($query, $params);
     }
+
+    public function search_Any($from, $to)
+    {
+        $query = 'CALL uspSearch_Any(:departure_from, :destination)';
+        $params = array(
+            ':departure_from' => $from,
+            ':destination' => $to
+        );
+        return Database::GetAll($query, $params);
+    }
     #endregion
 
     #region Execute Functions
@@ -354,12 +364,27 @@ class Dashboard_Model extends Model
         );
     
         
-        $result = Database::Execute($query, $params);
-        if ($result) {
-            header("location:" . URL . "dashboard/index");
-        } else {
-            header("location:" . URL . "err/index");
+        // $result = Database::Execute($query, $params);
+        
+        Database::Execute($query, $params);
+
+        if(!empty($this->getOffer($rideid, $driverid)))
+        {
+            $from = $_POST['origin-input'];
+            $to = $_POST['destination-input'];
+
+            header("location:" . URL . 'dashboard/frmResults/'.$from.'/'.$to.'?role=driver');
         }
+        else
+        {
+            header("location:" . URL . "err/index?offer-fail");
+        }
+
+        // if ($result) {
+        //     header("location:" . URL . "dashboard/index");
+        // } else {
+        //     header("location:" . URL . "err/index");
+        // }
     }
 
     public function postRideRequest($passengerid)
@@ -486,7 +511,7 @@ class Dashboard_Model extends Model
         return Database::Execute($query);
     }
 
-    public function deleteTravel($return_trip, $rideid, $userid)
+    public function deleteTravel($return_trip, $rideid, $userid, $ride_type)
     {
         $result = NULL;
         if($return_trip == 'Y')
@@ -506,16 +531,17 @@ class Dashboard_Model extends Model
             }
             else{
                 header("location:" . URL . "err/index");
-                exit('error from deleteTravel(3) method : Return Trip = Y portion');
+                exit('error from deleteTravel(@3) method : Return Trip = Y portion');
             }
         } 
-        else if ($return_trip == 'N' || $return_trip == 'd')
+        else if ($return_trip == 'N' || $ride_type == 'R')
         {
             $query = 'CALL uspDeleteRide(:rideid, :userid)';
             $params = array(
                 ':rideid' => $rideid,
                 ':userid' => $userid
             );
+            $this->_deleteSchedule($rideid);
             $result = Database::Execute($query, $params);
             if($result)
             {
@@ -527,6 +553,13 @@ class Dashboard_Model extends Model
             }
         }
 
+    }
+    
+    private function _deleteSchedule($rideid)
+    {
+        $query = 'CALL uspDeleteSchedule(:rideid)';
+        $params = array(':rideid' => $rideid);
+        Database::Execute($query,$params);
     }
     #endregion
 

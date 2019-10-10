@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-1 m-1">
                     <a class="btn btn-default btn-square" 
-                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip'];?>/<?php echo $this->rideOffer['rideid'];?>/<?php echo $this->rideOffer['driverid'];?>">
+                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip'];?>/<?php echo $this->rideOffer['rideid'];?>/<?php echo $this->rideOffer['driverid'];?>/<?php echo $this->rideOffer['ride_type'];?>">
                         Delete
                     </a>
                 </div>
@@ -58,6 +58,7 @@
                     </a>
                 </div>
             </div>
+
             <!--trip schedule-->
             <div class="row">
                 <?php if ($this->rideOffer['ride_type'] == 'R') { ?>
@@ -92,6 +93,7 @@
                     </div>
                 <?php  } ?>
             </div>
+
             <!--who will be driving-->
             <div class="row pt-1">
                 <div class="col-12">
@@ -103,6 +105,7 @@
                     <p><?php echo $this->rideOffer['make']; ?></p>
                 </div>
             </div>
+
             <!--preferences-->
             <div class="row pt-1">
                 <div class="col-12">
@@ -147,6 +150,7 @@
                         ?>
                 </div>
             </div>
+
             <!--share buttons-->
             <div class="row pt-1">
                 <div class="col-12">
@@ -168,6 +172,7 @@
                     </button>
                 </div>
             </div>
+
         <?php } ?>
     </div>
 </div>

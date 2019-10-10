@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-1 m-1">
                     <a class="btn btn-default btn-square" 
-                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>">
+                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
                         Delete
                     </a>
                 </div>

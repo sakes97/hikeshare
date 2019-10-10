@@ -1,12 +1,6 @@
-/* .masthead{
-    height: 100vh;
-    min-height: 500px;
-    background-image: url("../img/ra3_2x.png");
-    background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
+::-webkit-scrollbar { 
+  width: 0px!important;
+}
 .member-info-view{
     padding: 10px;
 }

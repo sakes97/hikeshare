@@ -109,7 +109,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-borderless">
+                                                    <table class="table table-borderless table-sm">
                                                         <thead>
                                                             <th>From</th>
                                                             <th>To</th>
@@ -191,7 +191,7 @@
                                                 
                                                 <div class="table-responsive">
 
-                                                    <table class="table table-borderless">
+                                                    <table class="table table-borderless table-sm">
                                                         <thead>
                                                             <th>From</th>
                                                             <th>To</th>

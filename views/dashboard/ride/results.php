@@ -86,11 +86,9 @@
                                     <?php echo $any['departure_date']; ?>
                                 </td>
                                 <td>
-                                    <a class="btn btn-default btn-square btn-sm" href="#">
+                                    <button class="btn btn-default btn-square btn-sm" type="button" data-toggle="modal" data-target="#seats_for">
                                         Request
-                                    </a>
-                                </td>
-                                <td>
+                                    </button>
                                     <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $any['rideid']; ?>/<?php echo $any['userid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-offer-post&as=p">
                                         View Details
                                     </a>
@@ -105,5 +103,30 @@
             <?php } ?>
 
         <?php } ?>
+
+
+        <!-- seats for modal --> 
+        <div class="modal fade" id="seats_for" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-register">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6>Send A Request To Share</h6>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="#">
+                            <div class="form-row">
+                                <div class="form-group col-12 mr-auto ml-auto text-center">
+                                    <label>Please Select Number Of Seats</label>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

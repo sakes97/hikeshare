@@ -93,7 +93,6 @@ class Dashboard extends Controller
         $this->_getUserDetails($this->_userid);
         $this->_getDays();
         $this->_getCars($this->_userid);
-        $this->_getNumCars($this->_userid);
         $this->view->render('dashboard/ride/offer', 'user_nav');
     }
 

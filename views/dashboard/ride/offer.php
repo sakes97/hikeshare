@@ -93,7 +93,7 @@
                             <div class="form-group col-sm-12 col-md-10 p-1">
                                 <?php
 
-                                if ($this->num_of_cars['NUM_OF_CARS'] > 0) {
+                                if (count($this->cars) > 0) {
                                     ?>
                                     <label for="car_for_ride">Choose:</label>
                                     <select name="car_for_ride" class="form-control form-control-sm" id="car_for_ride">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-4 p-1">
                             <label for="seats_available">Available Seats</label>
-                            <input class="form-control" type="number" value="" min="1" name="seats_available" id="seats_available">
+                            <input class="form-control" type="number" value="3" min="1" name="seats_available" id="seats_available">
                         </div>
                     </div>
                     <!-- end contribution/available-seats -->

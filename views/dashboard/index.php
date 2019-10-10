@@ -86,12 +86,12 @@
                                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
-                                                Lifts Offered
+                                                Lifts I'm Offering
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#ridesBooked">
-                                                Ride Bookings
+                                                Rides I've Requested
                                             </a>
                                         </li>
                                     </ul>
@@ -114,6 +114,8 @@
                                                             <th>From</th>
                                                             <th>To</th>
                                                             <th>When</th>
+                                                            <th>Seats Left</th>
+                                                            <th>Requests</th>
                                                             <th>Actions</th>
                                                         </thead>
                                                         <tbody>
@@ -129,6 +131,12 @@
                                                                         <?php echo $offer['departure_date']; ?>
                                                                     </td>
                                                                     <td>
+                                                                        <?php echo $offer['seats_available']; ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        0
+                                                                    </td>
+                                                                    <td>
                                                                         <div class="dropdown-container">
                                                                             <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
                                                                                 aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
@@ -142,6 +150,9 @@
                                                                                 <a class="dropdown-item" 
                                                                                 href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>?role=driver">
                                                                                     Find Matches
+                                                                                </a>
+                                                                                <a class="dropdown-item" href="#">
+                                                                                    View Requests
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit
@@ -185,6 +196,7 @@
                                                             <th>From</th>
                                                             <th>To</th>
                                                             <th>When</th>
+                                                            <th>Offers</th>
                                                             <th>Actions</th>
                                                         </thead>
                                                         <tbody>
@@ -198,6 +210,9 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php echo $request['departure_date']; ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        0
                                                                     </td>
                                                                     <td>
                                                                         <div class="dropdown-container">

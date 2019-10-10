@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2019 at 10:40 AM
+-- Generation Time: Oct 10, 2019 at 11:24 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -139,6 +139,11 @@ WHERE ride.userid = driverid
     and 
     	ride.departure_date < current_date()$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequest` (IN `requestid` VARCHAR(11))  NO SQL
+SELECT *
+FROM request
+WHERE request.requestid = requestid$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetReturn` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT *
 FROM ride
@@ -206,6 +211,10 @@ VALUES (userid, firstname, lastname, pass, email, 'Y', 'U', picture)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRemoveCar` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 DELETE FROM car WHERE car.carid = carid AND car.driverid = driverid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequest` (IN `requestid` VARCHAR(11), IN `rideid` VARCHAR(11), IN `userid` VARCHAR(11), IN `date_requested` DATETIME, IN `seats_for` INT)  NO SQL
+INSERT INTO request (requestid, rideid, userid, date_requested, seats_for, request_status)
+VALUES (requestid, rideid, userid, date_requested, seats_for, 'Awaiting Response')$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSearch_Any` (IN `departure_from` LONGTEXT, IN `destination` LONGTEXT)  NO SQL
 SELECT ride.*, user.*
@@ -369,9 +378,9 @@ CREATE TABLE `request` (
   `requestid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `seats_for` int(11) NOT NULL,
-  `status` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `status` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

@@ -140,7 +140,6 @@ class Dashboard extends Controller
     public function View_Offer_Details($rideid, $driverid, $ride_type)
     {
         $this->view->title = "Offer Details";
-        $this->_getUserDetails($this->_userid);
         $this->_getOffer($rideid,$driverid);
         $this->_getReturn($rideid);
         if($ride_type == 'R')

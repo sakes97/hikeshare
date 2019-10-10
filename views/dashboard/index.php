@@ -141,7 +141,7 @@
                                                                                 </a>
                                                                                 <a class="dropdown-item" 
                                                                                 href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>?role=driver">
-                                                                                    Check Matches
+                                                                                    Find Matches
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit
@@ -212,7 +212,7 @@
                                                                                 </a>
                                                                                 <a class="dropdown-item" 
                                                                                 href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
-                                                                                    Check Matches
+                                                                                    Find Matches
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit

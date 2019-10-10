@@ -40,6 +40,15 @@
                 </div>
             <?php } ?>
             <!--action buttons-->
+            <?php if(isset($_GET['as']) && $_GET['as'] == 'p' ) { ?>
+                <div class="row pt-2">
+                    <div class="col-5 m-1">
+                        <a class="btn btn-default btn-square btn-sm" href="#">
+                            Request A Lift
+                        </a>
+                    </div>
+                </div>
+            <?php } else { ?>
             <div class="row pt-2">
                 <div class="col-1 m-1">
                     <a class="btn btn-default btn-square" href="#">
@@ -58,7 +67,7 @@
                     </a>
                 </div>
             </div>
-
+            <?php } ?>
             <!--trip schedule-->
             <div class="row">
                 <?php if ($this->rideOffer['ride_type'] == 'R') { ?>
@@ -98,7 +107,7 @@
             <div class="row pt-1">
                 <div class="col-12">
                     <h4>Who will be driving?</h4>
-                    <p><?php echo $this->user['firstname']; ?></p>
+                    <p><?php echo $this->rideOffer['firstname']; ?></p>
                 </div>
                 <div class="col-12">
                     <h4>Vehicle</h4>
@@ -109,11 +118,11 @@
             <!--preferences-->
             <div class="row pt-1">
                 <div class="col-12">
-                    <h4><?php echo $this->user['firstname'] . "'s"; ?> Rules</h4>
+                    <h4><?php echo $this->rideOffer['firstname'] . "'s"; ?> Rules</h4>
                     <?php
-                        $smoking = $this->user['smoking_yn'];
-                        $alcohol = $this->user['alcohol_yn'];
-                        $pets = $this->user['pets_yn'];
+                        $smoking = $this->rideOffer['smoking_yn'];
+                        $alcohol = $this->rideOffer['alcohol_yn'];
+                        $pets = $this->rideOffer['pets_yn'];
 
                         //smoking preference
                         if ($smoking == 'N' || $smoking == NULL) {

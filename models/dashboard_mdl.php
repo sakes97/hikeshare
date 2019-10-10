@@ -614,6 +614,13 @@ class Dashboard_Model extends Model
         Database::Execute($query, $params);
     }
 
+    private function _setBooked($rideid)
+    {
+        $query = 'CALL uspSetBooked(:rideid)';
+        $params = array(':rideid' => $rideid);
+        Database::Execute($query,$params);
+    }
+
     public function requestResponse($requestid, $rideid, $answer)
     {
         $query = 'CALL uspRequestResponse(:requestid, :rideid, :answer)';

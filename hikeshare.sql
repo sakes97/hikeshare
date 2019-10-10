@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2019 at 11:24 AM
+-- Generation Time: Oct 10, 2019 at 10:59 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -68,10 +68,28 @@ WHERE ride.userid = driverid and ride.status = 'Active'
     
 ORDER BY ride.departure_date ASC$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllRequestCount` ()  NO SQL
+SELECT COUNT(*) as REQUEST_COUNT
+FROM ride, request 
+WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
+	and request.request_status = 'Awaiting Response'
+    and ride.status = 'Active'
+    and 
+    ride.departure_date >= current_date()$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllUsers` ()  NO SQL
 select * 
 from user 
 where user.active = 'Y' and user.role = 'U'$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAwaitingRequests` ()  NO SQL
+SELECT request.*, ride.*
+FROM ride, request 
+WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
+	and request.request_status = 'Awaiting Response'
+    and ride.status = 'Active'
+    and 
+    ride.departure_date >= current_date()$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBooking` (IN `passengerid` VARCHAR(11), IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.*, user.*
@@ -139,16 +157,27 @@ WHERE ride.userid = driverid
     and 
     	ride.departure_date < current_date()$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequest` (IN `requestid` VARCHAR(11))  NO SQL
-SELECT *
-FROM request
-WHERE request.requestid = requestid$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequestCount` (IN `rideid` VARCHAR(11))  NO SQL
+SELECT COUNT(*) as REQUEST_COUNT
+FROM request 
+WHERE request.rideid = rideid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetReturn` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT *
 FROM ride
 WHERE ride.returnid = rideid 
 	and ride.return_trip = 'd'$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRidesRequests` (IN `rideid` VARCHAR(11))  NO SQL
+SELECT request.requestid, request.rideid, request.matching_rideid, request.userid, request.date_requested, request.seats_for, request.request_status, ride.ride_type, ride.ride_as, ride.date_posted, ride.return_trip, ride.departure_from, ride.destination, ride.departure_date,
+user.firstname, user.lastname
+
+FROM request, ride, user 
+
+WHERE request.rideid = rideid
+	and 
+    ride.rideid = request.matching_rideid
+    and user.userid = request.userid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripAndReturn` (IN `userid` VARCHAR(11), IN `rideid` VARCHAR(11))  NO SQL
 SELECT * 
@@ -216,6 +245,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequest` (IN `requestid` VARCHAR
 INSERT INTO request (requestid, rideid, userid, date_requested, seats_for, request_status)
 VALUES (requestid, rideid, userid, date_requested, seats_for, 'Awaiting Response')$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequestResponse` (IN `requestid` VARCHAR(11), IN `rideid` VARCHAR(11), IN `answer` TEXT)  NO SQL
+UPDATE request 
+SET request.request_status = answer
+WHERE request.requestid = requestid and request.rideid = rideid$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSearch_Any` (IN `departure_from` LONGTEXT, IN `destination` LONGTEXT)  NO SQL
 SELECT ride.*, user.*
 FROM ride, user
@@ -228,6 +262,11 @@ WHERE
         and 
         ride.destination LIKE CONCAT('%', destination, '%')
     )$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetBooked` (IN `rideid` VARCHAR(11))  NO SQL
+UPDATE ride
+SET ride.status = 'Booked'
+WHERE ride.rideid = rideid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetSchedule` (IN `rideid` VARCHAR(11), IN `dayid` INT)  NO SQL
 INSERT INTO schedule (schedule.rideid, schedule.dayid)
@@ -270,6 +309,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateProfilePicture` (IN `useri
 UPDATE user 
 SET user.picture = picture 
 WHERE user.userid = userid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateSeatCount` (IN `rideid` VARCHAR(11), IN `seats` INT)  NO SQL
+UPDATE ride 
+SET ride.seats_available = (ride.seats_available - seats)
+WHERE ride.rideid = rideid$$
 
 DELIMITER ;
 
@@ -377,11 +421,19 @@ CREATE TABLE `report` (
 CREATE TABLE `request` (
   `requestid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `matching_rideid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
+  `date_requested` datetime NOT NULL,
   `seats_for` int(11) NOT NULL,
-  `status` text COLLATE utf8mb4_unicode_ci
+  `request_status` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`requestid`, `rideid`, `matching_rideid`, `userid`, `date_requested`, `seats_for`, `request_status`) VALUES
+('ha6i7mXv112', 'QpYvOmJQgET', 'aoGXU1PFaEX', '5DFcJzbMjbi', '2019-10-10 20:32:43', 3, 'Awaiting Response');
 
 -- --------------------------------------------------------
 
@@ -571,7 +623,7 @@ ALTER TABLE `ridegroup`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `scheduleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `scheduleid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

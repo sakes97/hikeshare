@@ -41,27 +41,37 @@
                     </div>
                 </div>
             <?php } ?>
-
-            <!--action buttons-->
-            <div class="row pt-2">
-                <div class="col-1 m-1">
-                    <a class="btn btn-default btn-square btn-sm" href="#">
-                        Edit
-                    </a>
+            <?php if (isset($_GET['as']) && $_GET['as'] == 'd') { ?>
+                <div class="row pt-2">
+                    <div class="col-4 m-1">
+                        <a class="btn btn-default btn-square btn-sm" href="#">
+                            Offer ride
+                        </a>
+                    </div>
                 </div>
-                <div class="col-1 m-1">
-                    <a class="btn btn-default btn-square btn-sm" 
-                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
-                        Delete
-                    </a>
+            <?php } else { ?>
+                <!--action buttons-->
+                <div class="row pt-2">
+                    <div class="col-1 m-1">
+                        <a class="btn btn-default btn-square btn-sm" href="#">
+                            Edit
+                        </a>
+                    </div>
+                    <div class="col-1 m-1">
+                        <a class="btn btn-default btn-square btn-sm" 
+                        href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
+                            Delete
+                        </a>
+                    </div>
+                    <div class="col-2 m-1">
+                        <a class="btn btn-default btn-square btn-sm" 
+                            href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
+                            Find Matches
+                        </a>
+                    </div>
                 </div>
-                <div class="col-2 m-1">
-                    <a class="btn btn-default btn-square btn-sm" 
-                        href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
-                        Find Matches
-                    </a>
-                </div>
-            </div>
+            <?php } ?>
+            
 
             <!--travel details-->
             <div class="row">

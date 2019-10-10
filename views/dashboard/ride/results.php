@@ -15,6 +15,38 @@
                 if (count($this->res_any) > 0) {
                     ?>
                 <p>Matching Results (<?php echo count($this->res_any); ?>)</p>
+                <table class="table table-borderless table-sm">
+                    <thead>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>When</th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->res_any as $any) { ?>
+                            <tr>
+                                <td>
+                                    <?php echo $any['departure_from']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $any['destination']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $any['departure_date']; ?>
+                                </td>
+                                <td>
+                                    <a class="btn btn-default btn-square btn-sm" href="#">
+                                        Offer ride
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid'];?>/<?php echo $any['rideid'];?>/<?php echo $any['ride_type'];?>/<?php echo $any['return_trip'];?>?view=view-booking-post&as=d">
+                                        View Details
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             <?php } else { ?>
                 <p>Currently no matching trips</p>
                 <a href="<?php echo URL; ?>/dashboard/index">Home</a>

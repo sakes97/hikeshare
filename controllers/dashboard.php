@@ -250,6 +250,15 @@ class Dashboard extends Controller
         $this->view->res_any = $this->model->search_Any($from, $to);
     }
 
+    public function getRequest($requestid)
+    {
+        $this->view->request = $this->model->getRequest($requestid);
+    }
+    public function request($tripid,$userid)
+    {
+        $this->model->request($tripid,$userid);
+    }
+
     #endregion
 
     #region Reviews

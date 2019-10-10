@@ -317,6 +317,13 @@ class Dashboard_Model extends Model
         );
         return Database::GetAll($query, $params);
     }
+
+    public function getRequest($requestid)
+    {
+        $query = 'CALL uspGetRequest(:requestid)';
+        $params = array(':requestid'=>$requestid);
+        return Database::GetRow($query,$params);
+    }
     #endregion
 
     #region Execute Functions
@@ -558,6 +565,21 @@ class Dashboard_Model extends Model
         $query = 'CALL uspDeleteSchedule(:rideid)';
         $params = array(':rideid' => $rideid);
         Database::Execute($query,$params);
+    }
+
+    public function request($tripid,$userid)
+    {   
+        $reqid = Util::generate_id();
+        $query = 'CALL uspRequest(:requestid, :rideid, :userid, :date_requested, :seats_for)';
+        $params = array(
+            ':requestid'=>$reqid,
+            ':rideid'=>$tripid,
+            ':userid'=>$userid,
+            ':date_requested'=>date('Y-m-d H:i:s', time()),
+            ':seats_for'=>$_POST['seats_for']
+        );
+        Database::Execute($query, $params);
+
     }
     #endregion
 

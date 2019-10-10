@@ -108,6 +108,10 @@
                                     <div class="col-12 m-1">
                                         <div class="card">
                                             <div class="card-body">
+                                                <p>
+                                                    No. Of Passenger Requests (<?php echo $this->count_all_requests['REQUEST_COUNT'];?>) 
+                                                    <a class="btn btn-sm btn-square btn-default" href="<?php echo URL;?>dashboard/frmViewRequests">View</a>
+                                                </p>
                                                 <div class="table-responsive">
                                                     <table class="table table-borderless table-sm">
                                                         <thead>
@@ -115,7 +119,6 @@
                                                             <th>To</th>
                                                             <th>When</th>
                                                             <th>Seats Left</th>
-                                                            <th>Requests</th>
                                                             <th>Actions</th>
                                                         </thead>
                                                         <tbody>
@@ -134,9 +137,6 @@
                                                                         <?php echo $offer['seats_available']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        0
-                                                                    </td>
-                                                                    <td>
                                                                         <div class="dropdown-container">
                                                                             <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
                                                                                 aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
@@ -150,9 +150,6 @@
                                                                                 <a class="dropdown-item" 
                                                                                 href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>?role=driver">
                                                                                     Find Matches
-                                                                                </a>
-                                                                                <a class="dropdown-item" href="#">
-                                                                                    View Requests
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
                                                                                     Edit

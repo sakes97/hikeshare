@@ -34,6 +34,7 @@ class Dashboard extends Controller
         //as driver
         $this->_getNumOfActiveOffers($this->_userid);
         $this->_getActiveOffers($this->_userid);
+        $this->_getAllRequestCount();
 
         //as passenger
         $this->_getPassengerActivePosts($this->_userid);
@@ -143,6 +144,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Offer Details";
         $this->_getOffer($rideid,$driverid);
+        $this->_getRidesRequests($rideid);
         $this->_getReturn($rideid);
         if($ride_type == 'R')
         {
@@ -181,6 +183,13 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/notification', 'user_nav');
     }
 
+    public function frmViewRequests()
+    {
+        $this->view->title = "Requests";
+        $this->_getAwaitingRequests();
+        $this->view->render('dashboard/ride/requests', 'user_nav');
+    }
+
     //gets and executes
     public function offerRide($driverid)
     {
@@ -190,6 +199,11 @@ class Dashboard extends Controller
     public function postRideRequest($passengerid)
     {
         $this->model->postRideRequest($passengerid);
+    }
+
+    private function _getAwaitingRequests()
+    {
+        $this->view->awaiting_requests = $this->model->getAwaitingRequests();
     }
 
     private function _getOffers($driverid)
@@ -265,9 +279,25 @@ class Dashboard extends Controller
     {
         $this->view->request = $this->model->getRequest($requestid);
     }
+
+    private function _getRidesRequests($rideid)
+    {
+        $this->view->rides_requests = $this->model->getRidesRequests($rideid);
+    }
+    
     public function request($tripid=null,$userid=null)
     {
         $this->model->request($tripid,$userid);
+    }
+
+    private function _getRequestCount($rideid)
+    {
+        $this->view->request_count = $this->model->getRequestCount($rideid);
+    }
+
+    private function _getAllRequestCount()
+    {
+        $this->view->count_all_requests = $this->model->getAllRequestCount();
     }
 
     #endregion

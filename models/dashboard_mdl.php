@@ -318,18 +318,30 @@ class Dashboard_Model extends Model
         return Database::GetAll($query, $params);
     }
 
-    public function getRequest($requestid)
+    public function getRidesRequests($rideid)
     {
-        $query = 'CALL uspGetRequest(:requestid)';
-        $params = array(':requestid'=>$requestid);
-        return Database::GetRow($query,$params);
+        $query = 'CALL uspGetRidesRequests(:rideid)';
+        $params = array(':rideid'=>$rideid);
+        return Database::GetAll($query,$params);
     }
 
     public function getRequestCount($rideid)
     {
         $query = 'CALL uspGetRequestCount($rideid)';
         $params = array(':rideid'=>$rideid);
-        return Database::Execute($query,$params);
+        return Database::GetRow($query,$params);
+    }
+
+    public function getAllRequestCount()
+    {
+        $query = 'CALL uspGetAllRequestCount()';
+        return Database::GetRow($query);
+    }
+
+    public function getAwaitingRequests()
+    {
+        $query = 'CALL uspGetAwaitingRequests()';
+        return Database::GetAll($query);
     }
     #endregion
 

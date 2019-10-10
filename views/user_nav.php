@@ -6,7 +6,7 @@
 
 ?>
 <nav class="navbar navbar-expand-lg fixed-top bg-danger">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="<?php echo URL; ?>dashboard" rel="tooltip" title="hikeshare - ridesharing community">hikeshare</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 

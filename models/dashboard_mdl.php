@@ -324,6 +324,13 @@ class Dashboard_Model extends Model
         $params = array(':requestid'=>$requestid);
         return Database::GetRow($query,$params);
     }
+
+    public function getRequestCount($rideid)
+    {
+        $query = 'CALL uspGetRequestCount($rideid)';
+        $params = array(':rideid'=>$rideid);
+        return Database::Execute($query,$params);
+    }
     #endregion
 
     #region Execute Functions
@@ -371,8 +378,6 @@ class Dashboard_Model extends Model
         );
     
         
-        // $result = Database::Execute($query, $params);
-        
         Database::Execute($query, $params);
 
         if(!empty($this->getOffer($rideid, $driverid)))
@@ -386,12 +391,6 @@ class Dashboard_Model extends Model
         {
             header("location:" . URL . "err/index?offer-fail");
         }
-
-        // if ($result) {
-        //     header("location:" . URL . "dashboard/index");
-        // } else {
-        //     header("location:" . URL . "err/index");
-        // }
     }
 
     public function postRideRequest($passengerid)
@@ -567,9 +566,14 @@ class Dashboard_Model extends Model
         Database::Execute($query,$params);
     }
 
-    public function request($tripid,$userid)
+    public function request($tripid=null,$userid=null)
     {   
         $reqid = Util::generate_id();
+        if(isset($_POST['rideid']) && isset($_POST['userid'])){
+            $tripid = $_POST['rideid'];
+            $userid = $_POST['userid'];
+        }
+
         $query = 'CALL uspRequest(:requestid, :rideid, :userid, :date_requested, :seats_for)';
         $params = array(
             ':requestid'=>$reqid,
@@ -580,6 +584,34 @@ class Dashboard_Model extends Model
         );
         Database::Execute($query, $params);
 
+        if(!empty($this->getRequest($reqid))){
+            header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+        }else{
+            header('location:' . URL . 'err/index?request=fail&as=passenger');
+        }
+
+    }
+
+    private function _updateSeatCount($rideid, $seats)
+    {
+        $query = 'CALL uspUpdateSeatCount(:rideid, :seats)';
+        $params = array(
+            ':rideid' => $rideid,
+            ':seats' =>$seats
+        );
+        Database::Execute($query, $params);
+    }
+
+    public function requestResponse($requestid, $rideid, $answer)
+    {
+        $query = 'CALL uspRequestResponse(:requestid, :rideid, :answer)';
+        $params = array(
+            ':requestid' => $requestid, 
+            ':rideid' => $rideid,
+            ':answer' => $answer
+        );
+        Database::Execute($query, $params);
+        header('location:' . URL . 'dashboard/index');
     }
     #endregion
 

@@ -17,7 +17,8 @@ class Dashboard extends Controller
             'dashboard/js/general.js',
             'dashboard/js/map.js',
             'dashboard/js/offer.js',
-            'dashboard/js/profile.js'
+            'dashboard/js/profile.js',
+            'dashboard/js/request.js'
         );
 
     }
@@ -87,6 +88,8 @@ class Dashboard extends Controller
     #endregion
 
     #region Ride
+
+    //view rendering
     public function offer_Ride()
     {
         $this->view->title = "Add a Journey";
@@ -166,10 +169,19 @@ class Dashboard extends Controller
     public function frmResults($from, $to)
     {
         $this->view->title = "Matching Results";
+        $this->_getUserDetails($this->_userid);
         $this->_search_Any($from, $to);
         $this->view->render('dashboard/ride/results', 'user_nav');
     }
 
+    public function frmNoti()
+    {
+        $this->view->title = "Notification";
+
+        $this->view->render('dashboard/ride/notification', 'user_nav');
+    }
+
+    //gets and executes
     public function offerRide($driverid)
     {
         $this->model->offerRide($driverid);
@@ -253,7 +265,7 @@ class Dashboard extends Controller
     {
         $this->view->request = $this->model->getRequest($requestid);
     }
-    public function request($tripid,$userid)
+    public function request($tripid=null,$userid=null)
     {
         $this->model->request($tripid,$userid);
     }

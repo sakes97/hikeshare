@@ -297,6 +297,16 @@ class Dashboard_Model extends Model
         $params = array(':passengerid' => $passengerid);
         return Database::GetAll($query, $params);
     }
+
+    public function getBooking($passengerid, $rideid)
+    {
+        $query = 'CALL uspGetBooking(:passengerid, :rideid)';
+        $params = array(
+            ':passengerid' => $passengerid,
+            ':rideid' => $rideid
+        );
+        return Database::GetRow($query, $params);
+    }
     #endregion
 
     #region Execute Functions

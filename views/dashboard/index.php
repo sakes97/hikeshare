@@ -74,7 +74,7 @@
             </div>
             <!-- end owner -->
 
-            <!-- ride cards -->
+            <!-- rides -->
             <div class="col-sm-12 col-lg-9">
                 
                 
@@ -99,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div id="dash-tab-content" class="tab-content">
                         <!--lift content-->
                         <?php if (count($this->activeOffers) > 0) { ?>
@@ -135,7 +136,7 @@
                                                                             </button>
                                                                             <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
                                                                                 <a class="dropdown-item" 
-                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?as=driver-view-offer">
+                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?view=view-offer-post">
                                                                                     View Details
                                                                                 </a>
                                                                                 <a class="dropdown-item" href="#">
@@ -183,22 +184,37 @@
                                                             <th>Actions</th>
                                                         </thead>
                                                         <tbody>
-                                                            <?php foreach ($this->active_pass_post as $req) { ?>
+                                                            <?php foreach ($this->active_pass_post as $request) { ?>
                                                                 <tr>
                                                                     <td>
-                                                                        <?php echo $req['departure_from']; ?>
+                                                                        <?php echo $request['departure_from']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?php echo $req['destination']; ?>
+                                                                        <?php echo $request['destination']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?php echo $req['departure_date']; ?>
+                                                                        <?php echo $request['departure_date']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <a class="btn btn-default btn-square btn-sm" 
-                                                                        href="#">
-                                                                            View Details
-                                                                        </a>
+                                                                        <div class="dropdown-container">
+                                                                            <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                Actions
+                                                                            </button>
+                                                                            <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                <a class="dropdown-item" 
+                                                                                href="<?php echo URL;?>dashboard/frmViewBooking/<?php echo $request['userid'];?>/<?php echo $request['rideid'];?>/<?php echo $request['ride_type'];?>/<?php echo $request['return_trip'];?>?view=view-booking-post">
+                                                                                    View Details
+                                                                                </a>
+                                                                                <a class="dropdown-item" href="#">
+                                                                                    Edit
+                                                                                </a>
+                                                                                <a class="dropdown-item" 
+                                                                                href="#">
+                                                                                    Delete
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             <?php } ?>
@@ -218,6 +234,7 @@
                                 <p>You have not posted any ride requests</p>
                             </div>
                         <?php } ?>
+
                     </div>
                 <?php } ?>
 

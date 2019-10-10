@@ -150,6 +150,21 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/view-offer-details', 'user_nav');
     }
 
+    public function frmViewBooking($pID, $rideid, $ride_type, $return_trip)
+    {
+        $this->view->title = "View Booking Details";
+        $this->_getBooking($pID,$rideid);
+        if($ride_type == 'R')
+        {
+            $this->_getTripSchedule($rideid);
+        }
+        if($return_trip == 'Y')
+        {
+            $this->_getReturn($rideid);
+        }
+        $this->view->render('dashboard/ride/view-booking-details', 'user_nav');
+    }
+
     public function offerRide($driverid)
     {
         $this->model->offerRide($driverid);
@@ -203,6 +218,11 @@ class Dashboard extends Controller
     private function _getOffer($rideid, $driverid)
     {
         $this->view->rideOffer = $this->model->getOffer($rideid, $driverid);
+    }
+
+    private function _getBooking($passengerid, $rideid)
+    {
+        $this->view->booking = $this->model->getBooking($passengerid, $rideid);
     }
 
     private function _getReturn($rideid)

@@ -424,7 +424,8 @@ class Dashboard extends Controller
             'dashboard/js/offer.js',
             'dashboard/js/profile.js',
             'dashboard/js/request.js',
-            'dashboard/js/messages.js'
+            'dashboard/js/messages.js',
+            'dashboard/js/ride-details.js'
         );
     }
     #endregion

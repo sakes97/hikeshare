@@ -1,64 +1,77 @@
 <div class="section profile-content">
     <div class="container">
+
         <h3>Offer Details</h3>
+
         <?php if ($_GET['view'] == "view-offer-post") { ?>
 
             <div class="row">
-                <div class="col-12">
-                    <img class="img-responsive" style="width:100%;" src="<?php echo URL; ?>public/images/dummy.png" alt="Dummy Map">
+
+
+                <div id="map" class="col-6">
+                    <img class="img-responsive" style="width:100%; height:100%;" src="<?php echo URL; ?>public/images/dummy.png" alt="Dummy Map">
                 </div>
-            </div>
 
-            <div class="row">
-                <?php if (count($this->rides_requests) > 0) { ?>
-                    
-                    <div class="col-xs-12 col-md-6">
-                        <div class="table-responsive">
-                            
-                            <table class="table table-borderless table-sm">
-                                <thead>
-                                    <th colspan="4" class="text-center">
-                                        Passenger Requesting To Share Your Ride
-                                    </th>
-                                </thead>
-                                <thead>
-                                    <th>Passenger</th>
-                                    <th>Travel</th>
-                                    <th>Seats</th>
-                                    <th>Response</th>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($this->rides_requests as $requests) { ?>
-                                    <tr>
-                                        <td><?php echo $requests['firstname']. " " . $requests['lastname']; ?></td>
-                                        <td><?php echo $requests['departure_from'] . " ". $requests['destination'];?></td>
-                                        <td><?php echo $requests['seats_for'];?></td>
-                                        <td>
-                                            <a class="btn btn-round btn-outline-danger btn-sm" href="#">
-                                                <i class="fas fa-check-circle"></i>
-                                            </a>
-                                            <a class="btn btn-round btn-outline-danger btn-sm" href="#">
-                                                <i class="fas fa-times-circle"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
 
-                    <div class="col-xs-12 col-md-6 border-left">
+                <div id="details" class="col-6">
+
+                    <?php if (count($this->rides_requests) < 0) { ?>
+                        
+                        <!-- request details-->
                         <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <th colspan="4" class="text-center">
+                                                Passenger Requesting To Share Your Ride
+                                            </th>
+                                        </thead>
+                                        <thead>
+                                            <th>Passenger</th>
+                                            <th>Travel</th>
+                                            <th>Seats</th>
+                                            <th>Response</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($this->rides_requests as $requests) { ?>
+                                            <tr>
+                                                <td><?php echo $requests['firstname']. " " . $requests['lastname']; ?></td>
+                                                <td><?php echo $requests['departure_from'] . " ". $requests['destination'];?></td>
+                                                <td><?php echo $requests['seats_for'];?></td>
+                                                <td>
+                                                    <a class="btn btn-round btn-outline-danger btn-sm" href="#">
+                                                        <i class="fas fa-check-circle"></i>
+                                                    </a>
+                                                    <a class="btn btn-round btn-outline-danger btn-sm" href="#">
+                                                        <i class="fas fa-times-circle"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--from/to-->
+                        <div class="row">
+
                             <div class="col-12 text-center">
                                 <h5>Your Rides Details</h5>
                             </div>
-                            <div class="col-md-5">
+
+                            <div class="col-md-6">
                                 <h5>From:<?php echo $this->rideOffer['departure_from']; ?></h5>
                             </div>
-                            <div class="col-md-5">
+
+                            <div class="col-md-6">
                                 <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
                             </div>
+
                             <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
                                 <div class="col-12">
                                     <p>Return trip will be on
@@ -69,10 +82,13 @@
                                     </p>
                                 </div>
                             <?php } ?>
+
                         </div>
 
-                        <?php if (($this->rideOffer['ride_type'] == 'R') && (isset($this->trip_schedule) || !empty($this->trip_schedule))) { ?>
-                            <div class="row pt-2">
+                        <!-- days of the week -->
+                        <div class="row">
+
+                            <?php if (($this->rideOffer['ride_type'] == 'R') && (isset($this->trip_schedule) || !empty($this->trip_schedule))) { ?>
                                 <div class="col-12">
                                     <h5>Schedule:</h5>
                                     <p>
@@ -83,24 +99,23 @@
                                         ?>
                                     </p>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                        
+                        </div>
 
-                        <!--action buttons-->
-                        <?php if (isset($_GET['as']) && $_GET['as'] == 'p') { ?>
+                        <!-- buttons --> 
+                        <div class="row">
+                            <?php if (isset($_GET['as']) && $_GET['as'] == 'p') { ?>
 
-                            <div class="row pt-2">
-                                <div class="col-5 m-1">
+                                <div class="col-12">
                                     <a class="btn btn-default btn-square btn-sm" href="#">
                                         Request A Lift
                                     </a>
                                 </div>
-                            </div>
 
-                        <?php } else { ?>
+                            <?php } else { ?>
 
-                            <div class="row pt-2">
-                                <div class="col-12 m-1">
+                                <div class="col-12">
                                     <a class="btn btn-default btn-square btn-sm" href="#">
                                         Edit
                                     </a>
@@ -111,11 +126,11 @@
                                         Delete
                                     </a>
                                 </div>
-                            </div>
 
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
 
-                        <!--trip schedule-->
+                        <!-- date and time -->
                         <div class="row">
                             <?php if ($this->rideOffer['ride_type'] == 'R') { ?>
                                 <!--date -->
@@ -136,22 +151,22 @@
                                     </p>
                                 </div>
                             <?php } else if ($this->rideOffer['ride_type'] == 'O') { ?>
-                                <div class="col-4 mt-3">
-                                    <i class="far fa-calendar-alt fa-5x"></i><br>
-                                    <p>
-                                        <?php echo date("D, dS F Y", strtotime($this->rideOffer['departure_date'])); ?>
-                                    </p>
-                                </div>
-                                <!-- time-->
-                                <div class="col-4 mt-3">
-                                    <i class="far fa-clock fa-5x"></i>
-                                    <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
-                                </div>
+                                    <div class="col-4 mt-3">
+                                        <i class="far fa-calendar-alt fa-5x"></i><br>
+                                        <p>
+                                            <?php echo date("D, dS F Y", strtotime($this->rideOffer['departure_date'])); ?>
+                                        </p>
+                                    </div>
+                                    <!-- time-->
+                                    <div class="col-4 mt-3">
+                                        <i class="far fa-clock fa-5x"></i>
+                                        <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
+                                    </div>
                             <?php  } ?>
                         </div>
 
                         <!--who will be driving-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4>Who will be driving?</h4>
                                 <p><?php echo $this->rideOffer['firstname']; ?></p>
@@ -163,7 +178,7 @@
                         </div>
 
                         <!--preferences-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4><?php echo $this->rideOffer['firstname'] . "'s"; ?> Rules</h4>
                                 <?php
@@ -208,7 +223,7 @@
                         </div>
 
                         <!--share buttons-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4>Share this journey</h4>
                             </div>
@@ -229,17 +244,20 @@
                             </div>
                         </div>
 
-                    </div>
+                        
+                                        
+                    
 
 
-                <?php } else {?>
 
-                    <div class="col-12">
-                        <div class="row pt-3">
-                            <div class="col-md-4">
+                    <?php } else {?>
+
+                        <!-- from-to-->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
                                 <h5>From:<?php echo $this->rideOffer['departure_from']; ?></h5>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-12 col-md-6">
                                 <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
                             </div>
                             <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
@@ -253,17 +271,18 @@
                                 </div>
                             <?php } ?>
                         </div>
-
+                        
+                        <!-- days of the week -->
                         <?php if (($this->rideOffer['ride_type'] == 'R') && (isset($this->trip_schedule) || !empty($this->trip_schedule))) { ?>
-                            <div class="row pt-2">
+                            <div class="row">
                                 <div class="col-12">
                                     <h5>Schedule:</h5>
                                     <p>
                                         <?php
-                                                foreach ($this->trip_schedule as $day) {
-                                                    echo $day['dow'];
-                                                }
-                                                ?>
+                                            foreach ($this->trip_schedule as $day) {
+                                                echo $day['dow'];
+                                            }
+                                        ?>
                                     </p>
                                 </div>
                             </div>
@@ -271,31 +290,31 @@
 
                         <!--action buttons-->
                         <?php if (isset($_GET['as']) && $_GET['as'] == 'p') { ?>
-                            <div class="row pt-2">
-                                <div class="col-5 m-1">
+
+                            <div class="row">
+                                <div class="col-12">
                                     <a class="btn btn-default btn-square btn-sm" href="#">
                                         Request A Lift
                                     </a>
                                 </div>
                             </div>
+
                         <?php } else { ?>
+
                             <div class="row pt-2">
-                                <div class="col-1 m-1">
+                                <div class="col-12">
                                     <a class="btn btn-default btn-square btn-sm" href="#">
                                         Edit
                                     </a>
-                                </div>
-                                <div class="col-1 m-1">
                                     <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
                                         Delete
                                     </a>
-                                </div>
-                                <div class="col-2 m-1">
                                     <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $rideOffer['departure_from']; ?>/<?php echo $rideOffer['destination']; ?>?role=driver">
                                         Find Matches
                                     </a>
                                 </div>
                             </div>
+
                         <?php } ?>
 
                         <!--trip schedule-->
@@ -319,14 +338,14 @@
                                     </p>
                                 </div>
                             <?php } else if ($this->rideOffer['ride_type'] == 'O') { ?>
-                                <div class="col-3 mt-3">
+                                <div class="col-4 mt-3">
                                     <i class="far fa-calendar-alt fa-5x"></i><br>
                                     <p>
                                         <?php echo date("D, dS F Y", strtotime($this->rideOffer['departure_date'])); ?>
                                     </p>
                                 </div>
                                 <!-- time-->
-                                <div class="col-2 mt-3">
+                                <div class="col-4 mt-3">
                                     <i class="far fa-clock fa-5x"></i>
                                     <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
                                 </div>
@@ -334,7 +353,7 @@
                         </div>
 
                         <!--who will be driving-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4>Who will be driving?</h4>
                                 <p><?php echo $this->rideOffer['firstname']; ?></p>
@@ -346,7 +365,7 @@
                         </div>
 
                         <!--preferences-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4><?php echo $this->rideOffer['firstname'] . "'s"; ?> Rules</h4>
                                 <?php
@@ -391,7 +410,7 @@
                         </div>
 
                         <!--share buttons-->
-                        <div class="row pt-1">
+                        <div class="row">
                             <div class="col-12">
                                 <h4>Share this journey</h4>
                             </div>
@@ -412,15 +431,15 @@
                             </div>
                         </div>
 
-                    </div>
+                    <?php } ?>
 
-                <?php } ?>
+                </div>
+
 
             </div>
 
-
-
-
         <?php } ?>
+
+        
     </div>
 </div>

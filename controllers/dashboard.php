@@ -20,7 +20,6 @@ class Dashboard extends Controller
             'dashboard/js/profile.js',
             'dashboard/js/request.js'
         );
-
     }
     #region Index
     public function index()
@@ -188,6 +187,14 @@ class Dashboard extends Controller
         $this->view->title = "Requests";
         $this->_getAwaitingRequests();
         $this->view->render('dashboard/ride/requests', 'user_nav');
+    }
+
+    public function frmMessage()
+    {
+        $this->view->title = "Message";
+        
+        $this->view->css = 'public/css/message.css';
+        $this->view->render('dashboard/message/message','user_nav');
     }
 
     //gets and executes

@@ -12,14 +12,7 @@ class Dashboard extends Controller
 
         $this->_userid = $this->_getUserID();
 
-        $this->view->js = array(
-            'dashboard/js/datetimepickers.js',
-            'dashboard/js/general.js',
-            'dashboard/js/map.js',
-            'dashboard/js/offer.js',
-            'dashboard/js/profile.js',
-            'dashboard/js/request.js'
-        );
+        $this->_loadJS();
     }
     #region Index
     public function index()
@@ -189,12 +182,12 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/requests', 'user_nav');
     }
 
-    public function frmMessage()
+    public function frmMessages()
     {
         $this->view->title = "Message";
         
         $this->view->css = 'public/css/message.css';
-        $this->view->render('dashboard/message/message','user_nav');
+        $this->view->render('dashboard/messages/messages','user_nav');
     }
 
     //gets and executes
@@ -421,6 +414,18 @@ class Dashboard extends Controller
         Util::destroy_session();
         header('location:' . URL . 'login');
         exit;
+    }
+    private function _loadJS()
+    {
+        $this->view->js = array(
+            'dashboard/js/datetimepickers.js',
+            'dashboard/js/general.js',
+            'dashboard/js/map.js',
+            'dashboard/js/offer.js',
+            'dashboard/js/profile.js',
+            'dashboard/js/request.js',
+            'dashboard/js/messages.js'
+        );
     }
     #endregion
 }

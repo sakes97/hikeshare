@@ -37,7 +37,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL; ?>dashboard/frmMessage?view=conv-all">
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/frmMessages?view=conv-all">
                         Messages <span class="badge badge-warning">4</span>
                     </a>
                 </li>

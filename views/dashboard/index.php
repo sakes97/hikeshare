@@ -119,6 +119,7 @@
                                                             <th>To</th>
                                                             <th>When</th>
                                                             <th>Seats Left</th>
+                                                            <th>No. Requests</th>
                                                             <th>Actions</th>
                                                         </thead>
                                                         <tbody>
@@ -135,6 +136,9 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php echo $offer['seats_available']; ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $offer['request_count']; ?>
                                                                     </td>
                                                                     <td>
                                                                         <div class="dropdown-container">
@@ -209,7 +213,7 @@
                                                                         <?php echo $request['departure_date']; ?>
                                                                     </td>
                                                                     <td>
-                                                                        0
+                                                                        <?php echo $request['offer_count']; ?>
                                                                     </td>
                                                                     <td>
                                                                         <div class="dropdown-container">

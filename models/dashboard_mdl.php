@@ -578,7 +578,7 @@ class Dashboard_Model extends Model
         Database::Execute($query,$params);
     }
 
-    public function request($tripid=null,$userid=null)
+    public function request($tripid=null,$userid=null, $matching_rideid=null)
     {   
         $reqid = Util::generate_id();
         if(isset($_POST['rideid']) && isset($_POST['userid'])){
@@ -586,11 +586,12 @@ class Dashboard_Model extends Model
             $userid = $_POST['userid'];
         }
 
-        $query = 'CALL uspRequest(:requestid, :rideid, :userid, :date_requested, :seats_for)';
+        $query = 'CALL uspRequest(:requestid, :rideid, :matching_rideid, :userid, :date_requested, :seats_for)';
         $params = array(
             ':requestid'=>$reqid,
             ':rideid'=>$tripid,
             ':userid'=>$userid,
+            ':matching_rideid'=>$matching_rideid,
             ':date_requested'=>date('Y-m-d H:i:s', time()),
             ':seats_for'=>$_POST['seats_for']
         );
@@ -621,7 +622,32 @@ class Dashboard_Model extends Model
         Database::Execute($query,$params);
     }
 
-    public function requestResponse($requestid, $rideid, $answer)
+    public function requestResponse($requestid, $rideid, $answer, array $user)
+    {
+        if($answer == "Accepted")
+        {
+            switch($user['user_type']){
+                case 'D':
+                    $this->_handleRequestResponse($requestid,$rideid,$answer);
+                    $this->_updateSeatCount($rideid, $user['seats']);
+                    $offer = $this->getOffer($rideid, $user['userid']);
+                    if($offer['seats_available'] < 1)
+                        $this->_setBooked($rideid);
+                break;
+
+                case 'P':
+                    $this->_handleRequestResponse($requestid,$rideid,$answer);
+                    $this->_setBooked($rideid);
+                break;
+            }
+        }
+        else if($answer == "Declined")
+        {
+            $this->_handleRequestResponse($requestid,$rideid,$answer);
+        }
+    }
+
+    private function _handleRequestResponse($requestid, $rideid, $answer)
     {
         $query = 'CALL uspRequestResponse(:requestid, :rideid, :answer)';
         $params = array(
@@ -630,7 +656,6 @@ class Dashboard_Model extends Model
             ':answer' => $answer
         );
         Database::Execute($query, $params);
-        header('location:' . URL . 'dashboard/index');
     }
     #endregion
 

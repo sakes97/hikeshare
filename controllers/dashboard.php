@@ -182,14 +182,6 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/requests', 'user_nav');
     }
 
-    public function frmMessages()
-    {
-        $this->view->title = "Message";
-        
-        $this->view->css = 'public/css/message.css';
-        $this->view->render('dashboard/messages/messages','user_nav');
-    }
-
     //gets and executes
     public function offerRide($driverid)
     {
@@ -285,9 +277,9 @@ class Dashboard extends Controller
         $this->view->rides_requests = $this->model->getRidesRequests($rideid);
     }
     
-    public function request($tripid=null,$userid=null)
+    public function request($tripid=null,$userid=null,$matching_rideid=null)
     {
-        $this->model->request($tripid,$userid);
+        $this->model->request($tripid,$userid,$matching_rideid);
     }
 
     private function _getRequestCount($rideid)
@@ -298,6 +290,11 @@ class Dashboard extends Controller
     private function _getAllRequestCount()
     {
         $this->view->count_all_requests = $this->model->getAllRequestCount();
+    }
+
+    public function requestResponse($requestid, $rideid, $answer, array $user)
+    {
+        $this->model->requestResponse($requestid, $rideid, $answer, $user);
     }
 
     #endregion
@@ -324,11 +321,12 @@ class Dashboard extends Controller
     #endregion
 
     #region Messages
-    public function messages()
+    public function frmMessages()
     {
-        $this->view->title = "Messages";
-        $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/messages', 'user_nav');
+        $this->view->title = "Message";
+        
+        $this->view->css = 'public/css/message.css';
+        $this->view->render('dashboard/messages/messages','user_nav');
     }
     #endregion
 

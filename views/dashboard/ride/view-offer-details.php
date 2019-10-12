@@ -15,7 +15,7 @@
 
                 <div id="details" class="col-6">
 
-                    <?php if (count($this->rides_requests) < 0) { ?>
+                    <?php if (count($this->rides_requests) > 0) { ?>
                         
                         <!-- request details-->
                         <div class="row">
@@ -25,7 +25,7 @@
                                     <table class="table table-borderless">
                                         <thead>
                                             <th colspan="4" class="text-center">
-                                                Passenger Requesting To Share Your Ride
+                                                Passengers Requesting To Share Your Ride
                                             </th>
                                         </thead>
                                         <thead>

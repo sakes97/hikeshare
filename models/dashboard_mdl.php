@@ -622,28 +622,38 @@ class Dashboard_Model extends Model
         Database::Execute($query,$params);
     }
 
-    public function requestResponse($requestid, $rideid, $answer, array $user)
+    public function requestResponse($requestid, $rideid, $answer, $usertype, $seats=null, $userid=null, $matching_rideid=null)
     {
         if($answer == "Accepted")
         {
-            switch($user['user_type']){
+            $this->_handleRequestResponse($requestid,$rideid,$answer);
+            switch($usertype){
                 case 'D':
-                    $this->_handleRequestResponse($requestid,$rideid,$answer);
-                    $this->_updateSeatCount($rideid, $user['seats']);
-                    $offer = $this->getOffer($rideid, $user['userid']);
+                    $this->_updateSeatCount($rideid, $seats);
+                    $offer = $this->getOffer($rideid, $userid);
                     if($offer['seats_available'] < 1)
+                    {
+                        //set the drivers ride to booked
                         $this->_setBooked($rideid);
+
+                        //if not null, set the passengers ride to booked
+                        if($matching_rideid != null)
+                            $this->_setBooked($matching_rideid);
+                    }
+                    header('location:' . URL . 'dashboard/frmNoti?as=d&view=response-noti&status=Accepted');
                 break;
 
                 case 'P':
                     $this->_handleRequestResponse($requestid,$rideid,$answer);
                     $this->_setBooked($rideid);
+                    header('location:' . URL . 'dashboard/frmNoti?as=p&view=offer-noti&status=Accepted');
                 break;
             }
         }
         else if($answer == "Declined")
         {
             $this->_handleRequestResponse($requestid,$rideid,$answer);
+            echo "<meta http-equiv='refresh' content='0'>";
         }
     }
 

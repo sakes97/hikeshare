@@ -292,9 +292,9 @@ class Dashboard extends Controller
         $this->view->count_all_requests = $this->model->getAllRequestCount();
     }
 
-    public function requestResponse($requestid, $rideid, $answer, array $user)
+    public function requestResponse($requestid, $rideid, $answer, $usertype,$seats=null,$userid=null, $matching_rideid=null)
     {
-        $this->model->requestResponse($requestid, $rideid, $answer, $user);
+        $this->model->requestResponse($requestid, $rideid, $answer, $usertype, $seats,$userid, $matching_rideid);
     }
 
     #endregion

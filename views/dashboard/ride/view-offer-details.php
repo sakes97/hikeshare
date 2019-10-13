@@ -41,7 +41,8 @@
                                                 <td><?php echo $requests['departure_from'] . " ". $requests['destination'];?></td>
                                                 <td><?php echo $requests['seats_for'];?></td>
                                                 <td>
-                                                    <a class="btn btn-round btn-outline-danger btn-sm" href="#">
+                                                    <a class="btn btn-round btn-outline-danger btn-sm" 
+                                                    href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>">
                                                         <i class="fas fa-check-circle"></i>
                                                     </a>
                                                     <a class="btn btn-round btn-outline-danger btn-sm" href="#">

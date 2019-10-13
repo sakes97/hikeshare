@@ -15,8 +15,9 @@
 
                 <div id="details" class="col-6">
 
-                    <?php if (count($this->rides_requests) > 0) { ?>
+                    <?php if (count($this->rides_requests) > 0 || count($this->passengers) > 0) { ?>
                         
+                        <?php if (count($this->rides_requests) > 0) { ?>
                         <!-- request details-->
                         <div class="row">
                             <div class="col-12">
@@ -31,7 +32,7 @@
                                         <thead>
                                             <th>Passenger</th>
                                             <th>Travel</th>
-                                            <th>Seats</th>
+                                            <th>Seats Requested</th>
                                             <th>Response</th>
                                         </thead>
                                         <tbody>
@@ -53,10 +54,10 @@
                                             <?php } ?>
                                         </tbody>
                                     </table>
-
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
 
                         <!--from/to-->
                         <div class="row">
@@ -176,6 +177,25 @@
                                 <h4>Vehicle</h4>
                                 <p><?php echo $this->rideOffer['make']; ?></p>
                             </div>
+                            <?php if(count($this->passengers) > 0) { ?>
+                                <div class="col-12">
+                                    <h4>Passengers</h4>
+                                    <?php foreach($this->passengers as $acPas) { ?>
+                                        <p>
+                                            <?php echo $acPas['firstname'] . ' ' . $acPas['lastname']; ?>
+                                            <span>
+                                                <a class="btn btn-outline-danger btn-round btn-sm m-2" 
+                                                href="<?php echo URL;?>/frmMessages/<?php echo $this->rideOffer['userid'];?>/<?php echo $acPas['userid'];?>/<?php echo $rideOffer['rideid'];?>?view=user-chat">
+                                                    Message
+                                                </a>
+                                                <a class="btn btn-outline-danger btn-round btn-sm m-2" href="#">
+                                                    View Profile
+                                                </a>
+                                            </span>
+                                        </p>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
                         </div>
 
                         <!--preferences-->
@@ -251,7 +271,7 @@
 
 
 
-                    <?php } else {?>
+                    <?php } else if(count($this->rides_requests) < 1 ) {?>
 
                         <!-- from-to-->
                         <div class="row">

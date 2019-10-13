@@ -141,6 +141,7 @@ class Dashboard extends Controller
         $this->_getOffer($rideid,$driverid);
         $this->_getRidesRequests($rideid);
         $this->_getReturn($rideid);
+        $this->_getTripsPassengers($rideid);
         if($ride_type == 'R')
         {
             $this->_getTripSchedule($rideid);
@@ -306,6 +307,11 @@ class Dashboard extends Controller
     {
         $this->view->bookedTrips = $this->model->getBookedTrips($userid);
     }
+
+    private function _getTripsPassengers($rideid)
+    {
+        $this->view->passengers = $this->model->getTripsPassengers($rideid);
+    }
     #endregion
 
     #region Reviews
@@ -330,7 +336,7 @@ class Dashboard extends Controller
     #endregion
 
     #region Messages
-    public function frmMessages()
+    public function frmMessages($driverid=null,$passengerid=null,$rideid=null)
     {
         $this->view->title = "Message";
         

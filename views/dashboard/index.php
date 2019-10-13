@@ -79,20 +79,21 @@
                 
                 
                 <?php if(count($this->activeOffers) > 0 || count($this->active_pass_post) > 0) { ?>
-                    <!-- wrapper nav-->
+                    
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
+                            <!-- wrapper nav-->
                             <div class="nav-tabs-navigation pb-0 mb-0">
                                 <div class="nav-tabs-wrapper">
                                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
-                                                Lifts I'm Offering
+                                                Lifts I'm Offering As A Driver
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#ridesBooked">
-                                                Rides I've Requested
+                                                Rides I've Requested As A Passenger
                                             </a>
                                         </li>
                                     </ul>
@@ -159,7 +160,9 @@
                                                                                             <?php echo $offer['request_count']; ?>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <?php echo $offer['status'];?>
+                                                                                            <button class="btn btn-sm btn-square btn-success">
+                                                                                                <?php echo $offer['status'];?>
+                                                                                            </button>
                                                                                         </td>
                                                                                         <td>
                                                                                             <div class="dropdown-container">
@@ -233,9 +236,6 @@
                                                                                         <a class="dropdown-item" 
                                                                                         href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post">
                                                                                             View Details
-                                                                                        </a>
-                                                                                        <a class="dropdown-item" href="#">
-                                                                                            View Passengers
                                                                                         </a>
                                                                                         <a class="dropdown-item" 
                                                                                         href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">

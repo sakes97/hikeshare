@@ -1,1 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+
+.chat .messages{
+    border: 1px solid;
+    width: 250px;
+    height: 250px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.chat .message a{
+    color:slategray;
+
+}
+
+.chat .message p{
+    margin: 5px 0; 
+}
+.chat .entry{
+    width: 260px;
+    height: 40px;
+    padding: 5px;
+    margin-top: 5px;
+    font:1em Arial;
+}
+

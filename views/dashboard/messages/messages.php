@@ -24,6 +24,15 @@
                 <div class="col-12">
 
                     <h5>Your conversation with user</h5>
+
+                    <div class="chat">
+                        <div class="messages">
+                        </div>
+
+                        <textarea class="entry" placeholder="type here and hit return"></textarea>
+
+
+                    </div>
                     
                 </div>
             </div>

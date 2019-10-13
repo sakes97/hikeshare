@@ -185,7 +185,7 @@
                                             <?php echo $acPas['firstname'] . ' ' . $acPas['lastname']; ?>
                                             <span>
                                                 <a class="btn btn-outline-danger btn-round btn-sm m-2" 
-                                                href="<?php echo URL;?>/frmMessages/<?php echo $this->rideOffer['userid'];?>/<?php echo $acPas['userid'];?>/<?php echo $rideOffer['rideid'];?>?view=user-chat">
+                                                href="<?php echo URL;?>dashboard/frmMessages?view=user-chat">
                                                     Message
                                                 </a>
                                                 <a class="btn btn-outline-danger btn-round btn-sm m-2" href="#">

@@ -336,12 +336,23 @@ class Dashboard extends Controller
     #endregion
 
     #region Messages
-    public function frmMessages($driverid=null,$passengerid=null,$rideid=null)
+    public function frmMessages()
     {
         $this->view->title = "Message";
-        
+        $this->_getUsersConversations($this->_userid);
         $this->view->css = 'public/css/message.css';
         $this->view->render('dashboard/messages/messages','user_nav');
+    }
+
+    //gets/executes 
+    private function _getUsersConversation($userid)
+    {
+        $this->view->conversations = $this->model->getUsersConversations($userid);
+    }
+
+    private function _getMessages($conversationid)
+    {
+        $this->view->messages = $this->model->getMessages($conversationid);
     }
     #endregion
 

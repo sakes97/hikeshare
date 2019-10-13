@@ -684,4 +684,27 @@ class Dashboard_Model extends Model
     #endregion
 
     #endregion
+
+    #region Messages 
+
+    #region GETS
+    public function getUsersConversations($userid)
+    {
+        $query = 'CALL uspGetUsersConversations(:userid)';
+        $params = array(":userid"=>$userid);
+        return Database::GetAll($query, $params);
+    }
+
+    public function getMessages($conversationid)
+    {
+        $query = 'CALL uspGetMessages(:conversationid)';
+        $params = array(':conversationid' => $conversationid);
+        return Database::GetAll($query, $params);
+    }
+    #endregion
+
+    #region EXECUTES
+    #endregion
+
+    #endregion 
 }

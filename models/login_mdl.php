@@ -23,11 +23,9 @@ class Login_Model extends Model
             );
             Util::init_session();
             Util::set_session('loggedin',$arr);
-            header('location:' . URL . 'dashboard');
-            exit;
+            header('location:' . URL . 'dashboard/index');
         }else {
-            header('location:' . URL . 'login');
-            exit;
+            header('location:' . URL . 'login/index?login=fail');
         }
     }
 

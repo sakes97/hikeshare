@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2019 at 02:50 AM
+-- Generation Time: Oct 13, 2019 at 06:45 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -96,8 +96,21 @@ WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
     and 
     ride.departure_date >= current_date()$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips` (IN `userid` VARCHAR(11))  NO SQL
+SELECT ride.*, count(request.rideid) as passengers 
+FROM ride
+LEFT JOIN request ON request.rideid = ride.rideid
+WHERE
+	ride.userid = userid and ride.status = 'Booked'
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    and (ride.seats_available = 0 or ride.seats_available = NULL)
+    
+    
+GROUP BY ride.rideid    
+ORDER BY ride.departure_date ASC$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBooking` (IN `passengerid` VARCHAR(11), IN `rideid` VARCHAR(11))  NO SQL
-SELECT ride.*, user.*
+SELECT ride.*, user.* 
 FROM ride, user
 WHERE ride.rideid = rideid 
 	and ride.userid = passengerid
@@ -132,7 +145,9 @@ and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE(
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffer` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 SELECT ride.*, user.*, car.*
-FROM ride, car, user 
+
+FROM ride, car, user
+
 WHERE ride.rideid = rideid and ride.userid = driverid
 	and ride.carid = car.carid
     and user.userid = driverid$$
@@ -184,14 +199,17 @@ FROM request, ride, user
 WHERE request.rideid = rideid
 	and 
     ride.rideid = request.matching_rideid
-    and user.userid = request.userid$$
+    and user.userid = request.userid
+    and request.request_status = 'Awaiting Response'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripAndReturn` (IN `userid` VARCHAR(11), IN `rideid` VARCHAR(11))  NO SQL
 SELECT * 
 FROM ride 
 WHERE (ride.rideid = rideid or ride.returnid = rideid)
  and ride.userid = userid
- and (ride.departure_date > current_date() or ride.departure_date = current_date())$$
+ and (ride.departure_date > current_date() or ride.departure_date = current_date())
+ 
+ORDER BY ride.departure_date ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripSchedule` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.rideid, day.dayid, day.dow
@@ -203,6 +221,13 @@ WHERE
     AND 
     
     (schedule.dayid = day.dayid)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetTripsPassengers` (IN `rideid` VARCHAR(11))  NO SQL
+SELECT user.*
+FROM user, ride, request 
+WHERE user.userid = request.userid 
+and ride.rideid = request.rideid
+and request.request_status = 'Accepted'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetUserDetails` (IN `userid` INT(11))  NO SQL
 select * 
@@ -384,14 +409,15 @@ INSERT INTO `day` (`dayid`, `dow`) VALUES
 --
 
 CREATE TABLE `message` (
-  `messageid` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `conversationid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rideid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `requestid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message_text` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message_time` time NOT NULL,
-  `message_date` date NOT NULL,
-  `read_receipt` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL
+  `sent_datetime` datetime NOT NULL,
+  `read_datetime` datetime DEFAULT NULL,
+  `read_receipt` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -561,7 +587,7 @@ ALTER TABLE `day`
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`messageid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `report`
@@ -614,7 +640,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `messageid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ridegroup`

@@ -10,6 +10,9 @@
                         <div class="col-12">
                             <h1>Driver has accepted users request</h1>
                             <h3>Message user to start a conversation</h3>
+                            <a href="<?php echo URL;?>dashboard/frmMessages" class="btn btn-default btn-sm">
+                                Message
+                            </a>
                         </div>
                     </div>
 

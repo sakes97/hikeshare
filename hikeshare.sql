@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2019 at 10:59 PM
+-- Generation Time: Oct 13, 2019 at 02:50 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -60,12 +60,17 @@ WHERE ride.status = 'Pending'
     ride.departure_date < CURRENT_DATE()$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetActiveOffers` (IN `driverid` VARCHAR(11))  NO SQL
-SELECT *
+SELECT ride.*, count(request.rideid) as request_count 
 FROM ride
-WHERE ride.userid = driverid and ride.status = 'Active'
+LEFT JOIN request ON request.rideid = ride.rideid
+WHERE
+	ride.userid = driverid and ride.status = 'Active'
 	and ride.ride_as = 'D'
 	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    and ride.seats_available > 0
     
+    
+GROUP BY ride.rideid    
 ORDER BY ride.departure_date ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllRequestCount` ()  NO SQL
@@ -138,14 +143,16 @@ FROM ride
 WHERE ride.userid = driverid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPassengerActivePosts` (IN `passengerid` VARCHAR(11))  NO SQL
-SELECT *
-FROM ride 
+SELECT ride.*,
+   COUNT(request.rideid) as offer_count
+FROM ride
+LEFT JOIN request ON request.rideid = ride.rideid 
 WHERE ride.userid = passengerid and 
  	
     ride.status = 'Active' and ride.ride_as = 'P'
     
 	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
-    
+GROUP BY ride.rideid
 ORDER BY ride.departure_date ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
@@ -241,9 +248,9 @@ VALUES (userid, firstname, lastname, pass, email, 'Y', 'U', picture)$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRemoveCar` (IN `carid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 DELETE FROM car WHERE car.carid = carid AND car.driverid = driverid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequest` (IN `requestid` VARCHAR(11), IN `rideid` VARCHAR(11), IN `userid` VARCHAR(11), IN `date_requested` DATETIME, IN `seats_for` INT)  NO SQL
-INSERT INTO request (requestid, rideid, userid, date_requested, seats_for, request_status)
-VALUES (requestid, rideid, userid, date_requested, seats_for, 'Awaiting Response')$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequest` (IN `requestid` VARCHAR(11), IN `rideid` VARCHAR(11), IN `matching_rideid` VARCHAR(11), IN `userid` VARCHAR(11), IN `date_requested` DATETIME, IN `seats_for` INT)  NO SQL
+INSERT INTO request (requestid, rideid, matching_rideid, userid, date_requested, seats_for, request_status)
+VALUES (requestid, rideid, matching_rideid, userid, date_requested, seats_for, 'Awaiting Response')$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspRequestResponse` (IN `requestid` VARCHAR(11), IN `rideid` VARCHAR(11), IN `answer` TEXT)  NO SQL
 UPDATE request 
@@ -261,7 +268,9 @@ WHERE
         ride.departure_from LIKE CONCAT('%', departure_from, '%')
         and 
         ride.destination LIKE CONCAT('%', destination, '%')
-    )$$
+    )
+    AND 
+    	ride.status = 'Active'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetBooked` (IN `rideid` VARCHAR(11))  NO SQL
 UPDATE ride
@@ -313,7 +322,7 @@ WHERE user.userid = userid$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateSeatCount` (IN `rideid` VARCHAR(11), IN `seats` INT)  NO SQL
 UPDATE ride 
 SET ride.seats_available = (ride.seats_available - seats)
-WHERE ride.rideid = rideid$$
+WHERE ride.rideid = rideid and ride.status = 'Active'$$
 
 DELIMITER ;
 
@@ -347,20 +356,6 @@ INSERT INTO `car` (`carid`, `driverid`, `reg_num`, `make`, `model`, `model_year`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
---
-
-CREATE TABLE `chat` (
-  `chatid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `requestid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL,
-  `time` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `day`
 --
 
@@ -389,9 +384,10 @@ INSERT INTO `day` (`dayid`, `dow`) VALUES
 --
 
 CREATE TABLE `message` (
-  `messageid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `messageid` int(11) NOT NULL,
   `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rideid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rideid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `requestid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message_text` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `message_time` time NOT NULL,
   `message_date` date NOT NULL,
@@ -433,7 +429,7 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`requestid`, `rideid`, `matching_rideid`, `userid`, `date_requested`, `seats_for`, `request_status`) VALUES
-('ha6i7mXv112', 'QpYvOmJQgET', 'aoGXU1PFaEX', '5DFcJzbMjbi', '2019-10-10 20:32:43', 3, 'Awaiting Response');
+('ha6i7mXv112', 'QpYvOmJQgET', 'aoGXU1PFaEX', '5DFcJzbMjbi', '2019-10-10 20:32:43', 3, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -480,8 +476,9 @@ CREATE TABLE `ride` (
 --
 
 INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`, `returnid`) VALUES
-('aoGXU1PFaEX', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-31', '15:30:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Urgent Please', 'P', 'O', 'N', 'Active', '2019-10-06 01:55:42', NULL),
-('QpYvOmJQgET', '8', '5HQbCiPCQrg', 3, 100, '2019-10-31', '09:13:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Flexible', 'D', 'O', 'N', 'Active', '2019-10-10 09:14:07', NULL);
+('aoGXU1PFaEX', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-31', '15:30:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Urgent Please', 'P', 'O', 'N', 'Booked', '2019-10-06 01:55:42', NULL),
+('njelMnrZSTC', '8', '5HQbCiPCQrg', 3, 100, '2019-10-23', '00:00:00', NULL, 'Pretoria ', 'Port Elizabeth', 'Please be punctual ', 'D', 'O', 'N', 'Active', '2019-10-12 23:04:01', NULL),
+('QpYvOmJQgET', '8', '5HQbCiPCQrg', 0, 100, '2019-10-31', '09:13:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Flexible', 'D', 'O', 'N', 'Booked', '2019-10-10 09:14:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -555,16 +552,16 @@ ALTER TABLE `car`
   ADD PRIMARY KEY (`carid`);
 
 --
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`chatid`);
-
---
 -- Indexes for table `day`
 --
 ALTER TABLE `day`
   ADD PRIMARY KEY (`dayid`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`messageid`);
 
 --
 -- Indexes for table `report`
@@ -612,6 +609,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `messageid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ridegroup`

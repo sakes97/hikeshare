@@ -11,7 +11,7 @@ class Dashboard_Model extends Model
 
     #region Get Functions 
     public function getCars($driverid)
-    {
+    { 
         $query = 'CALL uspGetCars(:driverid)';
         $params = array(':driverid' => $driverid);
         return Database::GetAll($query, $params);
@@ -342,6 +342,13 @@ class Dashboard_Model extends Model
     {
         $query = 'CALL uspGetAwaitingRequests()';
         return Database::GetAll($query);
+    }
+
+    public function getBookedTrips($userid)
+    {
+        $query = 'CALL uspGetBookedTrips(:userid)';
+        $params = array(':userid'=>$userid);
+        return Database::GetAll($query,$params);
     }
     #endregion
 

@@ -31,6 +31,9 @@ class Dashboard extends Controller
         //as passenger
         $this->_getPassengerActivePosts($this->_userid);
 
+        //as both 
+        $this->_getBookedTrips($this->_userid);
+
         //render view
         $this->view->render('dashboard/index', 'user_nav');
     }
@@ -299,6 +302,10 @@ class Dashboard extends Controller
         $this->model->requestResponse($requestid, $rideid, $answer, $usertype, $seats,$userid, $matching_rideid);
     }
 
+    private function _getBookedTrips($userid)
+    {
+        $this->view->bookedTrips = $this->model->getBookedTrips($userid);
+    }
     #endregion
 
     #region Reviews

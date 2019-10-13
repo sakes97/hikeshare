@@ -1,7 +1,7 @@
 <div class="section profile-content">
     <div class="container">
-        <?php if ($_GET['role'] == 'driver') { ?>
-            <!-- view as a driver -->
+        <!-- driver -->
+        <?php if ($_GET['role'] == 'driver') { ?>            
             <h3>matching results for this driver</h3>
             <?php
                 /**
@@ -45,11 +45,131 @@
                         <?php } ?>
                     </tbody>
                 </table>
+
+
             <?php } else { ?>
-                <p>Currently no matching trips</p>
-                <a href="<?php echo URL; ?>/dashboard/index">Home</a>
+
+                <div class="row">
+                
+                    <div id="results-map" class="col-md-6 shadow-sm">
+                        <p>Map</p>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <!-- one way -->
+                        <?php if($this->rideOffer['return_trip'] == 'N') { ?>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-md">
+                                        <thead>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>When</th>
+                                            <th>Seats Avail.</th>
+                                        </thead>
+                                        <tbody>
+                                            <td>
+                                                <?php echo $this->rideOffer['departure_from'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['destination'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['departure_date'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['seats_available'];?>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                    <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    Currently no matching trips. Once there are matching trips they will be listed to you.
+                                </p>
+                                <p>
+                                    Return <span><a href="<?php echo URL; ?>/dashboard/index">Home</a></span> 
+                                </p>
+                            </div>
+
+                        <!-- two way -->
+                        <?php } else if($this->rideOffer['return_trip'] == 'Y') { ?>
+
+
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>When</th>
+                                            <th>Seats Avail.</th>
+                                        </thead>
+                                        <tbody>
+                                            <td>
+                                                <?php echo $this->returnTrip[0]['departure_from'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[0]['destination'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[0]['departure_date'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[0]['seats_available'];?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h5>Return Trip</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>When</th>
+                                            <th>Seats Avail.</th>
+                                        </thead>
+                                        <tbody>
+                                            <td>
+                                                <?php echo $this->returnTrip[1]['departure_from'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[1]['destination'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[1]['departure_date'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->returnTrip[1]['seats_available'];?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                            </div>
+
+
+                            <div class="row">
+                                <p>
+                                    Currently no matching trips. Once there are matching trips they will be listed to you.
+                                </p>
+                                <p>
+                                    Return <span><a href="<?php echo URL; ?>/dashboard/index">Home</a></span> 
+                                </p>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+
+
             <?php } ?>
 
+
+        <!-- passenger -->
         <?php } else if ($_GET['role'] == 'passenger') { ?>
             <!-- view as a passsenger -->
             <h3>matching results for this passenger</h3>
@@ -108,7 +228,7 @@
         <?php } ?>
 
 
-        <!-- seats for modal --> 
+        <!-- seats_for modal --> 
         <div class="modal fade" id="seats_for" tabindex="-1" role="dialog" aria-hidden="false">
             <div class="modal-dialog modal-register">
                 <div class="modal-content">

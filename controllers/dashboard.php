@@ -160,10 +160,12 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/view-booking-details', 'user_nav');
     }
 
-    public function frmResults($from, $to)
+    public function frmResults($from, $to, $rideid)
     {
         $this->view->title = "Matching Results";
         $this->_getUserDetails($this->_userid);
+        $this->_getOffer($rideid, $this->_userid);
+        $this->_getTripAndReturn($this->_userid,$rideid);
         $this->_search_Any($from, $to);
         $this->view->render('dashboard/ride/results', 'user_nav');
     }

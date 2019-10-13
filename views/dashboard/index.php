@@ -173,7 +173,7 @@
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>?role=driver">
+                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>/<?php echo $offer['rideid'];?>?role=driver">
                                                                                                         Find Matches
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" href="#">

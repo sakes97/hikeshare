@@ -337,12 +337,15 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+
                     <!--booking content-->
                     <div class="tab-pane" id="ridesBooked" role="tabpanel">
                         <p>These are the rides you booked</p>
                     </div>
+
+
                 </div>
             </div>
         </div>

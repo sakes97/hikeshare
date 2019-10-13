@@ -98,12 +98,13 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             <!--sub nav-->
                             <div id="sub-tab-nav" class="tab-content">
                                 
                                 <!--driver content-->
                                 <div class="tab-pane active" id="liftsOffered" role="tabpanel">
+                                    <!--nav-->
                                     <ul id="sub-lift-nav" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#offeringDriver">
@@ -116,7 +117,9 @@
                                             </a>
                                         </li>
                                     </ul>
+                                    <!--content-->
                                     <div id="driver-inner-tab" class="tab-content">
+                                        <!--offering-->
                                         <div class="tab-pane active" id="offeringDriver" role="tabpanel">
                                             <?php if (count($this->activeOffers) > 0) { ?>          
                                                     <div class="row">
@@ -135,7 +138,7 @@
                                                                                 <th>When</th>
                                                                                 <th>Seats Left</th>
                                                                                 <th>No. Requests</th>
-                                                                                <th>Actions</th>
+                                                                                <th colspan="2">Status</th>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <?php foreach ($this->activeOffers as $offer) { ?>
@@ -154,6 +157,9 @@
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php echo $offer['request_count']; ?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $offer['status'];?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <div class="dropdown-container">
@@ -193,6 +199,7 @@
                                                     <p>No lifts offered</p>
                                             <?php } ?>
                                         </div>
+                                        <!--booked-->
                                         <div class="tab-pane" id="bookedDriver" role="tabpanel">
                                             <p>nothing for booked driver yet</p>
                                         </div>
@@ -201,6 +208,7 @@
 
                                 <!--passenger content-->
                                 <div class="tab-pane" id="ridesBooked" role="tabpanel">
+                                    <!--nav-->
                                     <ul id="sub-lift-nav" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#requestingPassenger">
@@ -213,7 +221,9 @@
                                             </a>
                                         </li>
                                     </ul>
+                                    <!--content-->
                                     <div id="passenger-inner-tab" class="tab-content">
+                                        <!--requesting-->
                                         <div class="tab-pane active" id="requestingPassenger" role="tabpanel">
                                             <?php if (count($this->active_pass_post) > 0) {?>
                                                     <div class="row">
@@ -230,7 +240,7 @@
                                                                                 <th>To</th>
                                                                                 <th>When</th>
                                                                                 <th>Offers</th>
-                                                                                <th>Actions</th>
+                                                                                <th colspan="2">Status</th>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <?php foreach ($this->active_pass_post as $request) { ?>
@@ -246,6 +256,9 @@
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php echo $request['offer_count']; ?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $request['status'];?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <div class="dropdown-container">
@@ -288,6 +301,7 @@
                                                     <p>You have not posted any ride requests</p>
                                             <?php } ?>
                                         </div>
+                                        <!--booked-->
                                         <div class="tab-pane" id="bookedPassenger" role="tabpanel">
                                             <p>nothing for booked passenger yet</p>
                                         </div>

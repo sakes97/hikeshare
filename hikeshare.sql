@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2019 at 06:45 PM
+-- Generation Time: Oct 14, 2019 at 03:15 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -126,6 +126,13 @@ SELECT *
 FROM car 
 WHERE car.driverid = driverid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetMessages` (IN `conversationid` VARCHAR(11))  NO SQL
+SELECT * 
+FROM message 
+WHERE message.conversationid = conversationid 
+
+ORDER BY message.sent_datetime ASC$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetNumCars` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT COUNT(*) AS NUM_OF_CARS
 FROM car
@@ -144,7 +151,7 @@ WHERE ride.userid = driverid and ride.status = 'Not Active'
 and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOffer` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
-SELECT ride.*, user.*, car.*
+SELECT ride.*, user.firstname, user.lastname, user.alcohol_yn, user.smoking_yn, user.pets_yn, car.*
 
 FROM ride, car, user
 
@@ -234,6 +241,16 @@ select *
 from user
 where user.userid = userid$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetUsersConversations` (IN `userid` VARCHAR(11))  NO SQL
+SELECT message.*, 
+		user.*
+FROM message
+LEFT JOIN user ON message.recipientid = user.userid
+where (message.senderid = userid or (message.recipientid = userid or message.read_receipt = 'Not Read') ) 
+
+Group by message.conversationid
+Order by message.sent_datetime desc$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspOfferRide` (IN `rideid` VARCHAR(11), IN `driverid` VARCHAR(11), IN `carid` VARCHAR(11), IN `seats_available` INT, IN `contribution_per_head` DOUBLE, IN `departure_date` DATE, IN `departure_time` TIME, IN `departure_from` LONGTEXT, IN `destination` LONGTEXT, IN `extra_details` LONGTEXT, IN `ride_type` CHAR(2), IN `date_posted` DATETIME, IN `return_time` TIME, IN `return_trip` CHAR(1), IN `returnid` VARCHAR(11))  NO SQL
 INSERT INTO ride (
     ride.rideid, ride.userid, ride.carid, ride.seats_available, 
@@ -296,6 +313,10 @@ WHERE
     )
     AND 
     	ride.status = 'Active'$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSendMessage` (IN `conversationid` VARCHAR(11), IN `senderid` VARCHAR(11), IN `recipientid` VARCHAR(11), IN `msg` LONGTEXT)  NO SQL
+INSERT INTO message (message.conversationid, message.senderid, message.msg, message.sent_datetime, message.read_receipt, message.recipient)
+VALUES (conversationid, senderid, msg, CURRENT_TIMESTAMP, 'Not Read',recipientid)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspSetBooked` (IN `rideid` VARCHAR(11))  NO SQL
 UPDATE ride
@@ -411,14 +432,23 @@ INSERT INTO `day` (`dayid`, `dow`) VALUES
 CREATE TABLE `message` (
   `id` int(11) NOT NULL,
   `conversationid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rideid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `requestid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message_text` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `senderid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msg` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `sent_datetime` datetime NOT NULL,
   `read_datetime` datetime DEFAULT NULL,
-  `read_receipt` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `read_receipt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recipientid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `conversationid`, `senderid`, `msg`, `sent_datetime`, `read_datetime`, `read_receipt`, `recipientid`) VALUES
+(1, 'fsaerrwi21j', '8', 'Hey', '2019-10-14 00:07:38', '2019-10-14 00:09:49', 'Read', '5DFcJzbMjbi'),
+(2, 'fsaerrwi21j', '5DFcJzbMjbi', 'Hello there', '2019-10-14 00:09:49', '2019-10-14 00:27:57', 'Read', '8'),
+(3, 'fsaerrwi21j', '8', 'How you doing?', '2019-10-14 00:27:57', NULL, 'Not Read', '5DFcJzbMjbi'),
+(4, 'SDF34ASFEEW', '8', 'Hello', '2019-10-14 00:27:57', NULL, 'Not Read', '5DFcJzbMjbi');
 
 -- --------------------------------------------------------
 
@@ -640,7 +670,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ridegroup`

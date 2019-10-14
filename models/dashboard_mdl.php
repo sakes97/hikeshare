@@ -344,9 +344,9 @@ class Dashboard_Model extends Model
         return Database::GetAll($query);
     }
 
-    public function getBookedTrips($userid)
+    public function getDriverBookedTrips($userid)
     {
-        $query = 'CALL uspGetBookedTrips(:userid)';
+        $query = 'CALL uspGetDriverBookedTrips(:userid)';
         $params = array(':userid'=>$userid);
         return Database::GetAll($query,$params);
     }
@@ -355,6 +355,20 @@ class Dashboard_Model extends Model
     {
         $query = 'CALL uspGetTripsPassengers(:rideid)';
         $params = array(':rideid' => $rideid);
+        return Database::GetAll($query, $params);
+    }
+
+    public function getRequests($userid)
+    {
+        $query = 'CALL uspGetRequests(:userid)';
+        $params = array(':userid'=>$userid);
+        return Database::GetAll($query, $params);
+    }
+
+    public function getPassengerBookedTrips($userid)
+    {
+        $query = 'CALL uspGetPassengerBookedTrips(:userid)';
+        $params = array(':userid' => $userid);
         return Database::GetAll($query, $params);
     }
     #endregion

@@ -27,12 +27,13 @@ class Dashboard extends Controller
         $this->_getNumOfActiveOffers($this->_userid);
         $this->_getActiveOffers($this->_userid);
         $this->_getAllRequestCount();
+        $this->_getDriverBookedTrips($this->_userid);
 
         //as passenger
-        $this->_getPassengerActivePosts($this->_userid);
-
-        //as both 
-        $this->_getBookedTrips($this->_userid);
+        $pUserid = $this->_getUserID();
+        $this->_getPassengerActivePosts($pUserid);
+        $this->_getRequests($pUserid);
+        $this->_getPassengerBookedTrips($pUserid);
 
         //render view
         $this->view->render('dashboard/index', 'user_nav');
@@ -303,14 +304,24 @@ class Dashboard extends Controller
         $this->model->requestResponse($requestid, $rideid, $answer, $usertype, $seats,$userid, $matching_rideid);
     }
 
-    private function _getBookedTrips($userid)
+    private function _getDriverBookedTrips($userid)
     {
-        $this->view->bookedTrips = $this->model->getBookedTrips($userid);
+        $this->view->driverBookedTrips = $this->model->getDriverBookedTrips($userid);
     }
 
     private function _getTripsPassengers($rideid)
     {
         $this->view->passengers = $this->model->getTripsPassengers($rideid);
+    }
+
+    private function _getRequests($userid)
+    {
+        $this->view->pas_req = $this->model->getRequests($userid);
+    }
+
+    private function _getPassengerBookedTrips($userid)
+    {
+        $this->view->pasBookedTrips = $this->model->getPassengerBookedTrips($userid);
     }
     #endregion
 

@@ -78,7 +78,7 @@
             <div class="col-sm-12 col-lg-9">
                 
                 
-                <?php if(count($this->activeOffers) > 0 || count($this->active_pass_post) > 0) { ?>
+                <?php if(count($this->activeOffers) > 0 || (count($this->active_pass_post) > 0) || count($this->pas_req) > 0) { ?>
                     
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
@@ -118,6 +118,7 @@
                                             </a>
                                         </li>
                                     </ul>
+
                                     <!--content-->
                                     <div id="driver-inner-tab" class="tab-content">
                                         <!--offering-->
@@ -127,10 +128,10 @@
                                                         <div class="col-12">
                                                             <div class="card">
                                                                 <div class="card-body">
-                                                                    <p>
+                                                                    <!-- <p>
                                                                         No. Of Passenger Requests (<?php echo $this->count_all_requests['REQUEST_COUNT'];?>) 
                                                                         <a class="btn btn-sm btn-square btn-default" href="<?php echo URL;?>dashboard/frmViewRequests">View</a>
-                                                                    </p>
+                                                                    </p> -->
                                                                     <div class="table-responsive">
                                                                         <table class="table table-borderless table-sm">
                                                                             <thead>
@@ -204,56 +205,61 @@
                                         </div>
                                         <!--booked-->
                                         <div class="tab-pane" id="bookedDriver" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-borderless table-sm">
-                                                                    <thead>
-                                                                        <th>From</th>
-                                                                        <th>To</th>
-                                                                        <th colspan="2">When</th>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php foreach($this->bookedTrips as $trip) { ?>
-                                                                            <td>
-                                                                                <?php echo $trip['departure_from'];?>
-                                                                            </td>
-                                                                            <td>
-                                                                                <?php echo $trip['destination'];?>
-                                                                            </td>
-                                                                            <td>
-                                                                                <?php echo $trip['departure_date'];?>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div class="dropdown-container">
-                                                                                    <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
-                                                                                        aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
-                                                                                        Actions
-                                                                                    </button>
-                                                                                    <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
-                                                                                        <a class="dropdown-item" 
-                                                                                        href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post">
-                                                                                            View Details
-                                                                                        </a>
-                                                                                        <a class="dropdown-item" 
-                                                                                        href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
-                                                                                            Delete
-                                                                                        </a>
+                                            <?php if(count($this->driverBookedTrips) > 0) { ?>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-borderless table-sm">
+                                                                        <thead>
+                                                                            <th>From</th>
+                                                                            <th>To</th>
+                                                                            <th colspan="2">When</th>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php foreach($this->driverBookedTrips as $trip) { ?>
+                                                                                <td>
+                                                                                    <?php echo $trip['departure_from'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['destination'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['departure_date'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="dropdown-container">
+                                                                                        <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                            aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                            Actions
+                                                                                        </button>
+                                                                                        <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                            <a class="dropdown-item" 
+                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post">
+                                                                                                View Details
+                                                                                            </a>
+                                                                                            <a class="dropdown-item" 
+                                                                                            href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
+                                                                                                Delete
+                                                                                            </a>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        <?php } ?>
-                                                                    </tbody>
-                                                                </table>
+                                                                                </td>
+                                                                            <?php } ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <?php } else { ?>
+                                                <p>No lifts booked</p>
+                                            <?php } ?>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <!--passenger content-->
@@ -353,7 +359,64 @@
                                         </div>
                                         <!--booked-->
                                         <div class="tab-pane" id="bookedPassenger" role="tabpanel">
-                                            <p>nothing for booked passenger yet</p>
+                                            <?php if(count($this->pasBookedTrips) > 0) {?>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-borderless table-sm">
+                                                                        <thead>
+                                                                            <th>Driver</th>
+                                                                            <th>From</th>
+                                                                            <th>To</th>
+                                                                            <th>When</th>
+                                                                            <th>Contribution</th>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php foreach($this->pasBookedTrips as $trip) { ?>
+                                                                                <td>
+                                                                                    <?php echo $trip['driver_name'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['departure_from'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['destination'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['departure_date'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip['contribution_per_head'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="dropdown-container">
+                                                                                        <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                            aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                            Actions
+                                                                                        </button>
+                                                                                        <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                            <a class="dropdown-item" 
+                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post">
+                                                                                                View Details
+                                                                                            </a>
+                                                                                            <a class="dropdown-item" 
+                                                                                            href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
+                                                                                                Delete
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            <?php } ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } else {echo 'empty';} ?>
                                         </div>
                                     </div>
                                 </div>

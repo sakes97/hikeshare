@@ -336,16 +336,17 @@ class Dashboard extends Controller
     #endregion
 
     #region Messages
-    public function frmMessages()
+    public function frmMessages($senderid=NULL, $recipientid=NULL, $conversationid=NULL)
     {
         $this->view->title = "Message";
         $this->_getUsersConversations($this->_userid);
+        $this->_getMessages($conversationid);
         $this->view->css = 'public/css/message.css';
         $this->view->render('dashboard/messages/messages','user_nav');
     }
 
     //gets/executes 
-    private function _getUsersConversation($userid)
+    private function _getUsersConversations($userid)
     {
         $this->view->conversations = $this->model->getUsersConversations($userid);
     }
@@ -354,6 +355,12 @@ class Dashboard extends Controller
     {
         $this->view->messages = $this->model->getMessages($conversationid);
     }
+
+    public function sendMessage($conversationid, $senderid, $recipientid, $msg)
+    {
+        $this->model->sendMessage($conversationid, $senderid, $recipientid, $msg);
+    }
+
     #endregion
 
     #region Car

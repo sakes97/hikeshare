@@ -2,7 +2,7 @@
 
 .chat .messages{
     border: 1px solid;
-    width: 250px;
+    width: 800px;
     height: 250px;
     padding: 10px;
     overflow-y: scroll;

@@ -165,7 +165,7 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/view-booking-details', 'user_nav');
     }
 
-    public function frmResults($from, $to, $rideid)
+    public function frmResults($from, $to, $rideid=null)
     {
         $this->view->title = "Matching Results";
         $this->_getUserDetails($this->_userid);
@@ -466,7 +466,7 @@ class Dashboard extends Controller
             'dashboard/js/map.js',
             'dashboard/js/offer.js',
             'dashboard/js/profile.js',
-            'dashboard/js/request.js',
+            'dashboard/js/results.js',
             'dashboard/js/messages.js',
             'dashboard/js/ride-details.js'
         );

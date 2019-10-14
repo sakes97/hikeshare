@@ -9,7 +9,7 @@
 
 
                 <div id="map" class="col-6">
-                    <img class="img-responsive" style="width:100%; height:100%;" src="<?php echo URL; ?>public/images/dummy.png" alt="Dummy Map">
+                    <img  src="" alt="Dummy Map">
                 </div>
 
 

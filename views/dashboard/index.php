@@ -173,7 +173,7 @@
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?view=view-offer-post">
+                                                                                                    href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?view=view-offer-post&as=d">
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
@@ -236,7 +236,7 @@
                                                                                         </button>
                                                                                         <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
                                                                                             <a class="dropdown-item" 
-                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post">
+                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post&as=d">
                                                                                                 View Details
                                                                                             </a>
                                                                                             <a class="dropdown-item" 

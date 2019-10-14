@@ -154,6 +154,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "View Booking Details";
         $this->_getBooking($pID,$rideid);
+        $this->_getRidesRequests($rideid);
         if($ride_type == 'R')
         {
             $this->_getTripSchedule($rideid);

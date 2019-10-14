@@ -57,7 +57,7 @@
 
                     <div class="col-sm-12 col-md-6">
                         <!-- one way -->
-                        <?php if($this->rideOffer['return_trip'] == 'N') { ?>
+                        <?php if($this->rideOffer['return_trip'] == 'N' || $this->rideOffer['return_trip'] == 'd') { ?>
 
                             <!-- trip details -->
                             <div class="row">

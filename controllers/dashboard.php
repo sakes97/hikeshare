@@ -171,6 +171,7 @@ class Dashboard extends Controller
         $this->_getUserDetails($this->_userid);
         $this->_getOffer($rideid, $this->_userid);
         $this->_getTripAndReturn($this->_userid,$rideid);
+        $this->_getTripSchedule($rideid);
         $this->_search_Any($from, $to);
         $this->view->render('dashboard/ride/results', 'user_nav');
     }

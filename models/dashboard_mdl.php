@@ -425,7 +425,7 @@ class Dashboard_Model extends Model
             $from = $_POST['origin-input'];
             $to = $_POST['destination-input'];
 
-            header("location:" . URL . 'dashboard/frmResults/'.$from.'/'.$to.'?role=driver');
+            header("location:" . URL . 'dashboard/frmResults/'.$from.'/'.$to.'/'. $rideid .'?role=driver');
         }
         else
         {

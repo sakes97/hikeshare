@@ -58,6 +58,8 @@
                     <div class="col-sm-12 col-md-6">
                         <!-- one way -->
                         <?php if($this->rideOffer['return_trip'] == 'N') { ?>
+
+                            <!-- trip details -->
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table table-md">
@@ -85,6 +87,9 @@
                                     <a class="btn btn-danger btn-sm" href="#">Delete</a>
                                 </div>
                             </div>
+
+
+                            <!-- return home-->
                             <div class="row">
                                 <p>
                                     Currently no matching trips. Once there are matching trips they will be listed to you.
@@ -97,7 +102,7 @@
                         <!-- two way -->
                         <?php } else if($this->rideOffer['return_trip'] == 'Y') { ?>
 
-
+                            <!-- trip details -->
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table">
@@ -151,7 +156,7 @@
                                 <a class="btn btn-danger btn-sm" href="#">Delete</a>
                             </div>
 
-
+                            <!-- return home-->
                             <div class="row">
                                 <p>
                                     Currently no matching trips. Once there are matching trips they will be listed to you.
@@ -160,6 +165,74 @@
                                     Return <span><a href="<?php echo URL; ?>/dashboard/index">Home</a></span> 
                                 </p>
                             </div>
+
+                        <!-- regular (lift club) -->
+                        <?php } else if($this->rideOffer['return_trip'] == 'U') { ?>
+
+                            <!-- trip details -->
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-md">
+                                        <thead>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>When</th>
+                                            <th>Seats Avail.</th>
+                                        </thead>
+                                        <tbody>
+                                            <td>
+                                                <?php echo $this->rideOffer['departure_from'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['destination'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['departure_date'];?>
+                                            </td>
+                                            <td>
+                                                <?php echo $this->rideOffer['seats_available'];?>
+                                            </td>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th colspan="4">Schedule</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+
+                                                    <?php 
+
+                                                        $count = count($this->trip_schedule);
+                                                        foreach($this->trip_schedule as $ts){
+                                                            $count--;
+                                                            if($count>0)
+                                                                echo $ts['dow'] . ', ';
+                                                            else 
+                                                                echo $ts['dow'];
+                                                            
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <br>
+                                    <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                                </div>
+
+                                
+                            </div>
+
+                            <!-- return home-->
+                            <div class="row">
+                                <p>
+                                    Currently no matching trips. Once there are matching trips they will be listed to you.
+                                </p>
+                                <p>
+                                    Return <span><a href="<?php echo URL; ?>/dashboard/index">Home</a></span> 
+                                </p>
+                            </div>
+
                         <?php } ?>
                     </div>
                 </div>
@@ -258,5 +331,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

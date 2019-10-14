@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2019 at 03:15 AM
+-- Generation Time: Oct 14, 2019 at 07:10 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -96,19 +96,6 @@ WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
     and 
     ride.departure_date >= current_date()$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips` (IN `userid` VARCHAR(11))  NO SQL
-SELECT ride.*, count(request.rideid) as passengers 
-FROM ride
-LEFT JOIN request ON request.rideid = ride.rideid
-WHERE
-	ride.userid = userid and ride.status = 'Booked'
-	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
-    and (ride.seats_available = 0 or ride.seats_available = NULL)
-    
-    
-GROUP BY ride.rideid    
-ORDER BY ride.departure_date ASC$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBooking` (IN `passengerid` VARCHAR(11), IN `rideid` VARCHAR(11))  NO SQL
 SELECT ride.*, user.* 
 FROM ride, user
@@ -125,6 +112,20 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetCars` (IN `driverid` VARCHAR(
 SELECT *
 FROM car 
 WHERE car.driverid = driverid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetDriverBookedTrips` (IN `userid` VARCHAR(11))  NO SQL
+SELECT ride.*, count(request.rideid) as passengers 
+FROM ride
+LEFT JOIN request ON request.rideid = ride.rideid
+WHERE
+	ride.userid = userid and ride.status = 'Booked'
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    and (ride.seats_available = 0 or ride.seats_available = NULL)
+    and ride.ride_as = 'D'
+    
+    
+GROUP BY ride.rideid    
+ORDER BY ride.departure_date ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetMessages` (IN `conversationid` VARCHAR(11))  NO SQL
 SELECT * 
@@ -177,6 +178,21 @@ WHERE ride.userid = passengerid and
 GROUP BY ride.rideid
 ORDER BY ride.departure_date ASC$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPassengerBookedTrips` (IN `userid` VARCHAR(11))  NO SQL
+SELECT ride.*, CONCAT(user.firstname,' ', user.lastname) as driver_name,
+	request.*
+FROM ride, request, user
+WHERE
+	(ride.rideid = request.rideid
+    and ride.userid = user.userid)
+    and (request.userid = userid and request.request_status = 'Accepted')
+	and (ride.departure_date > CURRENT_DATE() or ride.departure_date = CURRENT_DATE() )
+    and ride.ride_as = 'D'
+    
+    
+GROUP BY ride.userid    
+ORDER BY ride.departure_date ASC$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPastOffers` (IN `driverid` VARCHAR(11))  NO SQL
 SELECT *
 FROM ride 
@@ -190,6 +206,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequestCount` (IN `rideid` VA
 SELECT COUNT(*) as REQUEST_COUNT
 FROM request 
 WHERE request.rideid = rideid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequests` (IN `userid` VARCHAR(11))  NO SQL
+SELECT request.*
+FROM request
+WHERE request.userid = userid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetReturn` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT *

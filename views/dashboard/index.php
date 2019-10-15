@@ -177,7 +177,7 @@
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>/<?php echo $offer['rideid'];?>?role=driver">
+                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $offer['departure_from'];?>/<?php echo $offer['destination'];?>/<?php echo $offer['rideid'];?>?role=driver&for=<?php echo $offer['rideid'];?>">
                                                                                                         Find Matches
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" href="#">
@@ -324,11 +324,11 @@
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmViewBooking/<?php echo $request['userid'];?>/<?php echo $request['rideid'];?>/<?php echo $request['ride_type'];?>/<?php echo $request['return_trip'];?>?view=view-booking-post">
+                                                                                                    href="<?php echo URL;?>dashboard/frmViewBooking/<?php echo $request['userid'];?>/<?php echo $request['rideid'];?>/<?php echo $request['ride_type'];?>/<?php echo $request['return_trip'];?>?view=view-booking-post&as=p">
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
+                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger&for=<?php echo $request['rideid'];?>">
                                                                                                         Find Matches
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" href="#">

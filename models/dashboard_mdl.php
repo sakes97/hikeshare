@@ -371,6 +371,13 @@ class Dashboard_Model extends Model
         $params = array(':userid' => $userid);
         return Database::GetAll($query, $params);
     }
+
+    public function getRequest($requestid)
+    {
+        $query = 'CALL uspGetRequest(:requestid)';
+        $params = array(':requestid'=>$requestid);
+        return Database::GetRow($query, $params);
+    }
     #endregion
 
     #region Execute Functions
@@ -609,27 +616,50 @@ class Dashboard_Model extends Model
     public function request($tripid=null,$userid=null, $matching_rideid=null)
     {   
         $reqid = Util::generate_id();
+
         if(isset($_POST['rideid']) && isset($_POST['userid'])){
+            //when a passenger requests a lift 
             $tripid = $_POST['rideid'];
             $userid = $_POST['userid'];
-        }
 
-        $query = 'CALL uspRequest(:requestid, :rideid, :matching_rideid, :userid, :date_requested, :seats_for)';
-        $params = array(
-            ':requestid'=>$reqid,
-            ':rideid'=>$tripid,
-            ':userid'=>$userid,
-            ':matching_rideid'=>$matching_rideid,
-            ':date_requested'=>date('Y-m-d H:i:s', time()),
-            ':seats_for'=>$_POST['seats_for']
-        );
-        Database::Execute($query, $params);
+            $query = 'CALL uspRequest(:requestid, :rideid, :matching_rideid, :userid, :date_requested, :seats_for)';
+            $params = array(
+                ':requestid'=>$reqid,
+                ':rideid'=>$tripid,
+                ':userid'=>$userid,
+                ':matching_rideid'=>$matching_rideid,
+                ':date_requested'=>date('Y-m-d H:i:s', time()),
+                ':seats_for'=>$_POST['seats_for']
+            );
+            Database::Execute($query, $params);
 
-        if(!empty($this->getRequest($reqid))){
-            header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+            if(!empty($this->getRequest($reqid))){
+                header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+            }else{
+                header('location:' . URL . 'err/index?request=fail&as=passenger');
+            }
+
         }else{
-            header('location:' . URL . 'err/index?request=fail&as=passenger');
+            //when a driver offers a lift
+            $query = 'CALL uspRequest(:requestid, :rideid, :matching_rideid, :userid, :date_requested, :seats_for)';
+            $params = array(
+                ':requestid'=>$reqid,
+                ':rideid'=>$tripid,
+                ':userid'=>$userid,
+                ':matching_rideid'=>$matching_rideid,
+                ':date_requested'=>date('Y-m-d H:i:s', time()),
+                ':seats_for'=> 1
+            );
+            Database::Execute($query, $params);
+
+            if(!empty($this->getRequest($reqid))){
+                header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+            }else{
+                header('location:' . URL . 'err/index?request=fail&as=driver');
+            }
         }
+
+        
 
     }
 

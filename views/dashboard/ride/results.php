@@ -20,6 +20,7 @@
                         <th>From</th>
                         <th>To</th>
                         <th>When</th>
+                        <th colspan="2">Status</th>
                     </thead>
                     <tbody>
                         <?php foreach ($this->res_any as $any) { ?>
@@ -34,10 +35,16 @@
                                     <?php echo $any['departure_date']; ?>
                                 </td>
                                 <td>
-                                    <a class="btn btn-default btn-square btn-sm" href="#">
+                                    <a class="btn btn-sm btn-square btn-success">
+                                        <?php echo $any['status'];?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-default btn-square btn-sm" 
+                                    href="<?php echo URL;?>dashboard/request/<?php echo $any['rideid'];?>/<?php echo $this->user['userid'];?>/<?php echo $_GET['for'];?>">
                                         Offer ride
                                     </a>
-                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid'];?>/<?php echo $any['rideid'];?>/<?php echo $any['ride_type'];?>/<?php echo $any['return_trip'];?>?view=view-booking-post&as=d">
+                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid'];?>/<?php echo $any['rideid'];?>/<?php echo $any['ride_type'];?>/<?php echo $any['return_trip'];?>?view=view-booking-post&as=d&for=<?php echo $_GET['for'];?>">
                                         View Details
                                     </a>
                                 </td>

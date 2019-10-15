@@ -301,9 +301,9 @@ class Dashboard extends Controller
         $this->view->count_all_requests = $this->model->getAllRequestCount();
     }
 
-    public function requestResponse($requestid, $rideid, $answer, $usertype,$seats=null,$userid=null, $matching_rideid=null)
+    public function requestResponse($requestid, $rideid, $answer, $usertype,$seats=null,$userid=null, $matching_rideid=null,$passengerid=null)
     {
-        $this->model->requestResponse($requestid, $rideid, $answer, $usertype, $seats,$userid, $matching_rideid);
+        $this->model->requestResponse($requestid, $rideid, $answer, $usertype, $seats,$userid, $matching_rideid,$passengerid);
     }
 
     private function _getDriverBookedTrips($userid)

@@ -378,6 +378,8 @@ class Dashboard_Model extends Model
         $params = array(':requestid'=>$requestid);
         return Database::GetRow($query, $params);
     }
+
+    
     #endregion
 
     #region Execute Functions
@@ -680,7 +682,7 @@ class Dashboard_Model extends Model
         Database::Execute($query,$params);
     }
 
-    public function requestResponse($requestid, $rideid, $answer, $usertype, $seats=null, $userid=null, $matching_rideid=null)
+    public function requestResponse($requestid, $rideid, $answer, $usertype, $seats=null, $userid=null, $matching_rideid=null, $passengerid=null)
     {
         if($answer == "Accepted")
         {
@@ -692,18 +694,37 @@ class Dashboard_Model extends Model
                     if($offer['seats_available'] < 1)
                     {
                         //set the drivers ride to booked
-                        $this->_setBooked($rideid);
-
-                        //if not null, set the passengers ride to booked
-                        if($matching_rideid != null)
-                            $this->_setBooked($matching_rideid);
+                        $this->_setBooked($rideid);    
                     }
+                
+                    //if not null, set the passengers ride to booked
+                    if($matching_rideid != null)
+                        $this->_setBooked($matching_rideid);
+
+                    $this->_addPassenger($rideid, $userid,$offer['userid']);
+                    
                     header('location:' . URL . 'dashboard/frmNoti?as=d&view=response-noti&status=Accepted');
                 break;
 
                 case 'P':
+                    //set request status to answer
                     $this->_handleRequestResponse($requestid,$rideid,$answer);
+                    
+                    //update drivers rides seat count 
+                    $this->_updateSeatCount($matching_rideid, $seats);
+
+                    $offer = $this->getOffer($matching_rideid, $userid);
+                    if($offer['seats_available'] < 1)
+                    {
+                        //set the drivers ride to booked
+                        $this->_setBooked($matching_rideid);    
+                    }
+
+                    //update passenger ride/lift request status to booked 
                     $this->_setBooked($rideid);
+
+                    $this->_addPassenger($matching_rideid, $passengerid, $userid);
+
                     header('location:' . URL . 'dashboard/frmNoti?as=p&view=offer-noti&status=Accepted');
                 break;
             }
@@ -724,6 +745,16 @@ class Dashboard_Model extends Model
             ':answer' => $answer
         );
         Database::Execute($query, $params);
+    }
+    private function _addPassenger($rideid, $passengerid, $driverid)
+    {
+        $query = 'CALL uspAddPassenger(:rideid, :passengerid, :driverid)';
+        $params = array(
+            ':rideid'=>$rideid, 
+            ':passengerid'=>$passengerid, 
+            ':driverid'=>$driverid
+        );
+        Database::Execute($query,$params);
     }
     #endregion
 

@@ -17,55 +17,12 @@
 
                     <div id="details" class="col-6">
 
-
-
-                        <!-- request details-->
-                        <?php if (count($this->rides_requests) > 0) { ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="table-responsive">
-                                    
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <th colspan="4" class="text-center">
-                                                Passengers Requesting To Share Your Ride
-                                            </th>
-                                        </thead>
-                                        <thead>
-                                            <th>Driver</th>
-                                            <th>Travel</th>
-                                            <th>No. Seats Offered</th>
-                                            <th>Response</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($this->rides_requests as $requests) { ?>
-                                            <tr>
-                                                <td><?php echo $requests['firstname']. " " . $requests['lastname']; ?></td>
-                                                <td><?php echo $requests['departure_from'] . " - ". $requests['destination'];?></td>
-                                                <td><?php echo $requests['seats_for'];?></td>
-                                                <td>
-                                                    <a class="btn btn-round btn-outline-danger btn-sm" 
-                                                    href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>">
-                                                        <i class="fas fa-check-circle"></i>
-                                                    </a>
-                                                    <a class="btn btn-round btn-outline-danger btn-sm" href="#">
-                                                        <i class="fas fa-times-circle"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <?php } ?>
                         
                         <!-- from/to-->
                         <div class="row">
 
                             <div class="col-12">
-                                <h5>Your Trips Details</h5>
+                                <h5>Request Details</h5>
                             </div>
 
                             <div class="col-md-6">
@@ -106,34 +63,6 @@
                                             }
                                         ?>
                                     </p>
-                                </div>
-                            <?php } ?>
-
-                        </div>
-
-                        <!-- buttons -->
-                        <div class="row">
-                        
-                            <?php if (isset($_GET['as']) && $_GET['as'] == 'd') { ?>
-                                <div class="col-12">
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                    href="<?php echo URL;?>dashboard/request/<?php echo $this->booking['rideid'];?>/<?php echo $this->user['userid'];?>/<?php echo $_GET['for'];?>">
-                                        Offer ride
-                                    </a>
-                                </div>
-                            <?php } else { ?>
-                                <div class="col-1">
-                                    <a class="btn btn-default btn-square btn-sm" href="#">
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
-                                        Delete
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                        href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
-                                        Find Matches
-                                    </a>
                                 </div>
                             <?php } ?>
 
@@ -221,32 +150,19 @@
                                     ?>
                             </div>
                         </div>
-
-                        <!--share buttons-->
+                        <br>
+                        
+                        <!-- buttons -->
                         <div class="row">
+                        
                             <div class="col-12">
-                                <h4>Share this journey</h4>
+                                <a class="btn btn-default btn-square btn-sm" 
+                                href="<?php echo URL;?>dashboard/request/<?php echo $this->booking['rideid'];?>/<?php echo $this->user['userid'];?>/<?php echo $_GET['for'];?>">
+                                    Offer ride
+                                </a>
                             </div>
-                            <div class="col-1">
-                                <button class="btn btn-neutral btn-facebook btn-just-icon" type="button">
-                                    <i class="fab fa-facebook-square"></i>
-                                </button>
-                            </div>
-                            <div class="col-1">
-                                <button class="btn btn-neutral btn-google btn-just-icon" type="button">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </button>
-                            </div>
-                            <div class="col-1">
-                                <button class="btn btn-neutral btn-twitter btn-just-icon" type="button">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                            </div>
+
                         </div>
-
-
-
-
 
                     </div>
 
@@ -291,7 +207,7 @@
                                                 <td><?php echo $requests['seats_for'];?></td>
                                                 <td>
                                                     <a class="btn btn-round btn-outline-danger btn-sm" 
-                                                    href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>">
+                                                    href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $requests['rideid'];?>/Accepted/P/<?php echo $requests['seats_for'];?>/<?php echo $requests['userid'];?>/<?php echo $requests['matching_rideid'];?>/<?php echo $this->booking['userid'];?>">
                                                         <i class="fas fa-check-circle"></i>
                                                     </a>
                                                     <a class="btn btn-round btn-outline-danger btn-sm" href="#">
@@ -359,29 +275,19 @@
 
                         <!-- buttons -->
                         <div class="row">
-                        
-                            <?php if (isset($_GET['as']) && $_GET['as'] == 'd') { ?>
-                                <div class="col-12">
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                    href="<?php echo URL;?>dashboard/request/<?php echo $this->booking['rideid'];?>/<?php echo $this->user['userid'];?>/<?php echo $_GET['for'];?>">
-                                        Offer ride
-                                    </a>
-                                </div>
-                            <?php } else { ?>
-                                <div class="col-1">
-                                    <a class="btn btn-default btn-square btn-sm" href="#">
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
-                                        Delete
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                        href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
-                                        Find Matches
-                                    </a>
-                                </div>
-                            <?php } ?>
+                            <div class="col-12">
+                                <a class="btn btn-default btn-square btn-sm" href="#">
+                                    Edit
+                                </a>
+                                <a class="btn btn-default btn-square btn-sm" 
+                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
+                                    Delete
+                                </a>
+                                <a class="btn btn-default btn-square btn-sm" 
+                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
+                                    Find Matches
+                                </a>
+                            </div>
 
                         </div>
 

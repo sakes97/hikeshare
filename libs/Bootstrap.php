@@ -93,6 +93,14 @@ class Bootstrap
         }
 
         switch ($length) {
+            case 10:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5], $this->_url[6], $this->_url[7], $this->_url[8], $this->_url[9], $this->_url[10]);
+                break;
+
+            case 10:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5], $this->_url[6], $this->_url[7], $this->_url[8], $this->_url[9]);
+                break;
+
             case 9:
                 $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5], $this->_url[6], $this->_url[7], $this->_url[8]);
                 break;

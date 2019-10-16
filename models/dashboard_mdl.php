@@ -633,6 +633,8 @@ class Dashboard_Model extends Model
             //when a passenger requests a lift 
             $tripid = $_POST['rideid'];
             $userid = $_POST['userid'];
+            if(isset($_POST['matching_rideid']))
+                $matching_rideid = $_POST['matching_rideid'];
 
             $query = 'CALL uspRequest(:requestid, :rideid, :matching_rideid, :userid, :date_requested, :seats_for)';
             $params = array(

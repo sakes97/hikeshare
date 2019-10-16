@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <?php } ?>
-
+                            
                             <!--from/to-->
                             <div class="row">
 
@@ -305,13 +305,11 @@
                                     <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
                                         Delete
                                     </a>
-                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $rideOffer['departure_from']; ?>/<?php echo $rideOffer['destination']; ?>?role=driver">
+                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $this->rideOffer['departure_from']; ?>/<?php echo $this->rideOffer['destination']; ?>?role=driver">
                                         Find Matches
                                     </a>
                                 </div>
                             </div>
-
-
 
                             <!--trip schedule-->
                             <div class="row">
@@ -368,6 +366,7 @@
                                 <div class="col-12">
                                     <h4>Vehicle</h4>
                                     <p><?php echo $this->rideOffer['make']; ?></p>
+                                    <p>Seats left: <?php echo $this->rideOffer['seats_available'];?></p>
                                 </div>
                             </div>
 
@@ -413,28 +412,6 @@
                                             echo 'No pets';
                                         }
                                         ?>
-                                </div>
-                            </div>
-
-                            <!--share buttons-->
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4>Share this journey</h4>
-                                </div>
-                                <div class="col-1">
-                                    <button class="btn btn-neutral btn-facebook btn-just-icon" type="button">
-                                        <i class="fab fa-facebook-square"></i>
-                                    </button>
-                                </div>
-                                <div class="col-1">
-                                    <button class="btn btn-neutral btn-google btn-just-icon" type="button">
-                                        <i class="fab fa-google-plus-g"></i>
-                                    </button>
-                                </div>
-                                <div class="col-1">
-                                    <button class="btn btn-neutral btn-twitter btn-just-icon" type="button">
-                                        <i class="fab fa-twitter"></i>
-                                    </button>
                                 </div>
                             </div>
 
@@ -514,14 +491,14 @@
                                     </p>
                                 </div>
                             <?php } else if ($this->rideOffer['ride_type'] == 'O') { ?>
-                                    <div class="col-4 mt-3">
+                                    <div class="col-5 mt-3">
                                         <i class="far fa-calendar-alt fa-5x"></i><br>
                                         <p>
                                             <?php echo date("D, dS F Y", strtotime($this->rideOffer['departure_date'])); ?>
                                         </p>
                                     </div>
                                     <!-- time-->
-                                    <div class="col-4 mt-3">
+                                    <div class="col-5 mt-3">
                                         <i class="far fa-clock fa-5x"></i>
                                         <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
                                     </div>
@@ -634,7 +611,15 @@
                                         ?>
                             </div>
                         </div>
-                            
+                        
+
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-sm btn-square btn-default">
+                                    Request
+                                </button>
+                            </div>
+                        </div>
 
 
                     </div>

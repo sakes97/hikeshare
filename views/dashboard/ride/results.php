@@ -18,6 +18,7 @@
                 <div class="table-responsive">
                     <table class="table table-borderless table-sm">
                         <thead>
+                            <th>Passenger</th>
                             <th>From</th>
                             <th>To</th>
                             <th>When</th>
@@ -26,6 +27,9 @@
                         <tbody>
                             <?php foreach ($this->res_any as $any) { ?>
                                 <tr>
+                                    <td>
+                                        <?php echo $any['firstname'] . ' ' . $any['lastname'];?>
+                                    </td>
                                     <td>
                                         <?php echo $any['departure_from']; ?>
                                     </td>
@@ -269,14 +273,18 @@
                 <p>Matching Results (<?php echo count($this->res_any); ?>)</p>
                 <table class="table table-borderless table-md">
                     <thead>
+                        <th>Driver</th>
                         <th>From</th>
                         <th>To</th>
                         <th>When</th>
-                        <th>Seats Available</th>
+                        <th>Seats Avail.</th>
                     </thead>
                     <tbody>
                         <?php foreach ($this->res_any as $any) { ?>
                             <tr>
+                                <td>
+                                    <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
+                                </td>
                                 <td>
                                     <?php echo $any['departure_from']; ?>
                                 </td>
@@ -324,6 +332,7 @@
                         <form method="post" action="<?php echo URL;?>dashboard/request">
                             <input type="hidden" name="rideid" id="input_rideid" value="">
                             <input type="hidden" name="userid" id="input_userid" value="<?php echo $this->user['userid'];?>">
+                            <input type="hidden" name="matching_rideid" id="input_matching_rideid" value="<?php echo $_GET['for'];?>">
                             <div class="form-row">
                                 <div class="form-group ml-auto mr-auto">
                                     <label for="seats_for">Please Select Number Of Seats</label>

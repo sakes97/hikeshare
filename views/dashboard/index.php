@@ -220,40 +220,42 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php foreach($this->upcomingBkdTrips_D as $trip_D) { ?>
-                                                                                <td>
-                                                                                    <?php echo $trip_D['departure_from'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_D['destination'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_D['departure_date'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_D['contribution_per_head']; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <!-- <div class="dropdown-container">
-                                                                                        <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
-                                                                                            aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
-                                                                                            Actions
-                                                                                        </button>
-                                                                                        <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
-                                                                                            <a class="dropdown-item" 
-                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['driverid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post&as=d">
-                                                                                                View Details
-                                                                                            </a>
-                                                                                            <a class="dropdown-item" 
-                                                                                            href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
-                                                                                                Delete
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div> -->
-                                                                                    <a class="btn btn-sm btn-square btn-default" 
-                                                                                    href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip_D['rideid'];?>/<?php echo $trip_D['driverid'];?>/O?view=view-offer-post&as=d">
-                                                                                        View Details
-                                                                                    </a>
-                                                                                </td>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <?php echo $trip_D['departure_from'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_D['destination'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_D['departure_date'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_D['contribution_per_head']; ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <!-- <div class="dropdown-container">
+                                                                                            <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                                aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                                Actions
+                                                                                            </button>
+                                                                                            <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                                <a class="dropdown-item" 
+                                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['driverid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post&as=d">
+                                                                                                    View Details
+                                                                                                </a>
+                                                                                                <a class="dropdown-item" 
+                                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
+                                                                                                    Delete
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div> -->
+                                                                                        <a class="btn btn-sm btn-square btn-default" 
+                                                                                        href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip_D['rideid'];?>/<?php echo $trip_D['driverid'];?>/O?view=view-offer-post&as=d">
+                                                                                            View Details
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
                                                                             <?php } ?>
                                                                         </tbody>
                                                                     </table>
@@ -383,43 +385,45 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php foreach($this->upcomingBkdTrips_P as $trip_P) { ?>
-                                                                                <td>
-                                                                                    <?php echo $trip_P['driver_name'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_P['departure_from'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_P['destination'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_P['departure_date'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $trip_P['contribution_per_head'];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <!-- <div class="dropdown-container">
-                                                                                        <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
-                                                                                            aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
-                                                                                            Actions
-                                                                                        </button>
-                                                                                        <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
-                                                                                            <a class="dropdown-item" 
-                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post&as=p">
-                                                                                                View Details
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <?php echo $trip_P['driver_name'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_P['departure_from'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_P['destination'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_P['departure_date'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $trip_P['contribution_per_head'];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <!-- <div class="dropdown-container">
+                                                                                            <button class="btn btn-default btn-square btn-sm dropdown-toggle" data-toggle="dropdown" role="button"
+                                                                                                aria-haspopup="true" aria-expanded="false" id="IndexActionMenu">
+                                                                                                Actions
+                                                                                            </button>
+                                                                                            <div class="dropdown-menu" aria-labelledby="IndexActionMenu" role="menu">
+                                                                                                <a class="dropdown-item" 
+                                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip['rideid'];?>/<?php echo $trip['userid'];?>/<?php echo $trip['ride_type'];?>?view=view-offer-post&as=p">
+                                                                                                    View Details
+                                                                                                </a>
+                                                                                                <a class="dropdown-item" 
+                                                                                                href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
+                                                                                                    Delete
+                                                                                                </a>
+                                                                                            </div> -->
+                                                                                            <a class="btn btn-sm btn-square btn-default" 
+                                                                                                href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip_P['rideid'];?>/<?php echo $trip_P['driverid'];?>/O?view=view-offer-post&as=p">
+                                                                                                    View Details
                                                                                             </a>
-                                                                                            <a class="dropdown-item" 
-                                                                                            href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $offer['return_trip'];?>/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>">
-                                                                                                Delete
-                                                                                            </a>
-                                                                                        </div> -->
-                                                                                        <a class="btn btn-sm btn-square btn-default" 
-                                                                                            href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $trip_P['rideid'];?>/<?php echo $trip_P['driverid'];?>/O?view=view-offer-post&as=p">
-                                                                                                View Details
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </td>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
                                                                             <?php } ?>
                                                                         </tbody>
                                                                     </table>

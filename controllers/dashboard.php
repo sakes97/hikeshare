@@ -141,6 +141,7 @@ class Dashboard extends Controller
 
     public function View_Offer_Details($rideid, $driverid, $ride_type)
     {
+        $this->_getUserDetails($this->_userid);
         $this->view->title = "Offer Details";
         $this->_getOffer($rideid,$driverid);
         $this->_getRidesRequests($rideid);
@@ -464,17 +465,14 @@ class Dashboard extends Controller
         if ($session['online'] === false) {
             Util::destroy_session();
             header('location:' . URL . 'login');
-            exit;
         } else if (!isset($session)) {
             header('location:' . URL . 'login');
-            exit;
         }
     }
     public function logout()
     {
         Util::destroy_session();
         header('location:' . URL . 'login');
-        exit;
     }
     private function _loadJS()
     {

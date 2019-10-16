@@ -78,7 +78,7 @@
                                 <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
                                     <div class="col-12">
                                         <p>Return trip will be on
-                                            <?php echo date("D, S F Y", strtotime($this->return_trip['departure_date'])); ?>
+                                            <?php echo date("D, dS F Y", strtotime($this->return_trip['departure_date'])); ?>
                                             , at
                                             <?php echo date("H:i a", strtotime($this->return_trip['departure_time'])); ?>
                                             <a href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $this->return_trip['rideid']; ?>/<?php echo $this->return_trip['userid']; ?>/<?php echo $this->return_trip['ride_type']; ?>?as=driver-view-offer">View Details</a>
@@ -267,10 +267,6 @@
                             </div>
 
                             
-                                            
-                        
-
-
 
                         <?php } else if(count($this->rides_requests) < 1 ) {?>
 
@@ -282,16 +278,6 @@
                                 <div class="col-sm-12 col-md-6">
                                     <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
                                 </div>
-                                <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
-                                    <div class="col-12">
-                                        <p>Return trip will be on
-                                            <?php echo date("D, S F Y", strtotime($this->return_trip['departure_date'])); ?>
-                                            , at
-                                            <?php echo date("H:i a", strtotime($this->return_trip['departure_time'])); ?>
-                                            <a href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $this->return_trip['rideid']; ?>/<?php echo $this->return_trip['userid']; ?>/<?php echo $this->return_trip['ride_type']; ?>?as=driver-view-offer">View Details</a>
-                                        </p>
-                                    </div>
-                                <?php } ?>
                             </div>
                             
                             <!-- days of the week -->
@@ -311,33 +297,21 @@
                             <?php } ?>
 
                             <!--action buttons-->
-                            <?php if (isset($_GET['as']) && $_GET['as'] == 'p') { ?>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <a class="btn btn-default btn-square btn-sm" href="#">
-                                            Request A Lift
-                                        </a>
-                                    </div>
+                            <div class="row pt-2">
+                                <div class="col-12">
+                                    <a class="btn btn-default btn-square btn-sm" href="#">
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
+                                        Delete
+                                    </a>
+                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $rideOffer['departure_from']; ?>/<?php echo $rideOffer['destination']; ?>?role=driver">
+                                        Find Matches
+                                    </a>
                                 </div>
+                            </div>
 
-                            <?php } else { ?>
 
-                                <div class="row pt-2">
-                                    <div class="col-12">
-                                        <a class="btn btn-default btn-square btn-sm" href="#">
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
-                                            Delete
-                                        </a>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $rideOffer['departure_from']; ?>/<?php echo $rideOffer['destination']; ?>?role=driver">
-                                            Find Matches
-                                        </a>
-                                    </div>
-                                </div>
-
-                            <?php } ?>
 
                             <!--trip schedule-->
                             <div class="row">
@@ -372,6 +346,17 @@
                                         <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
                                     </div>
                                 <?php  } ?>
+                                <!-- when return trip will be if there is one -->
+                                <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
+                                    <div class="col-12">
+                                        <p>Return trip will be on
+                                            <?php echo date("D, dS F Y", strtotime($this->return_trip['departure_date'])); ?>
+                                            , at
+                                            <?php echo date("H:i a", strtotime($this->return_trip['departure_time'])); ?>
+                                            <a href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $this->return_trip['rideid']; ?>/<?php echo $this->return_trip['userid']; ?>/<?php echo $this->return_trip['ride_type']; ?>?view=view-offer-post&as=d">View Details</a>
+                                        </p>
+                                    </div>
+                                <?php } ?>
                             </div>
 
                             <!--who will be driving-->
@@ -485,16 +470,7 @@
                                 <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
                             </div>
 
-                            <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
-                                <div class="col-12">
-                                    <p>Return trip will be on
-                                        <?php echo date("D, S F Y", strtotime($this->return_trip['departure_date'])); ?>
-                                        , at
-                                        <?php echo date("H:i a", strtotime($this->return_trip['departure_time'])); ?>
-                                        <a href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $this->return_trip['rideid']; ?>/<?php echo $this->return_trip['userid']; ?>/<?php echo $this->return_trip['ride_type']; ?>?as=driver-view-offer">View Details</a>
-                                    </p>
-                                </div>
-                            <?php } ?>
+                            
 
                         </div>
 
@@ -550,6 +526,16 @@
                                         <p><?php echo date("H:i a", strtotime($this->rideOffer['departure_time'])); ?></p>
                                     </div>
                             <?php  } ?>
+                            <?php if (($this->rideOffer['return_trip'] == 'Y')  && (!empty($this->return_trip))) { ?>
+                                <div class="col-12">
+                                    <p>Return trip will be on
+                                        <?php echo date("D, dS F Y", strtotime($this->return_trip['departure_date'])); ?>
+                                        , at
+                                        <?php echo date("H:i a", strtotime($this->return_trip['departure_time'])); ?>
+                                        <a href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $this->return_trip['rideid']; ?>/<?php echo $this->return_trip['userid']; ?>/<?php echo $this->return_trip['ride_type']; ?>?view=view-offer-post&as=p">View Details</a>
+                                    </p>
+                                </div>
+                            <?php } ?>
                         </div>
 
                         <!--who will be driving-->
@@ -563,6 +549,9 @@
                                     <span class="p-3">
                                         <a href="#" class="btn btn-outline-danger btn-sm btn-round">
                                             Message 
+                                         </a>
+                                         <a href="#" class="btn btn-outline-danger btn-sm btn-round">
+                                             View Profile
                                          </a>
                                     </span>
                                 </p>

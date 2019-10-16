@@ -215,7 +215,8 @@
                                                                         <thead>
                                                                             <th>From</th>
                                                                             <th>To</th>
-                                                                            <th colspan="2">When</th>
+                                                                            <th>When</th>
+                                                                            <th>Contribution</th>
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php foreach($this->upcomingBkdTrips_D as $trip_D) { ?>
@@ -227,6 +228,9 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <?php echo $trip_D['departure_date'];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $trip_D['contribution_per_head']; ?>
                                                                                 </td>
                                                                                 <td>
                                                                                     <!-- <div class="dropdown-container">

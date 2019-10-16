@@ -379,6 +379,16 @@ class Dashboard_Model extends Model
         return Database::GetRow($query, $params);
     }
 
+    public function getBookedTrips_O($rideid=null, $passengerid=null,$driverid=null)
+    {
+        $query='CALL uspGetBookedTrips_O(:rideid, :passengerid, :driverid)';
+        $params = array(
+            ':rideid'=>$rideid,
+            ':passengerid'=>$passengerid,
+            ':driverid'=>$driverid
+        );
+        return Database::GetAll($query,$params);
+    }
     
     #endregion
 
@@ -746,6 +756,7 @@ class Dashboard_Model extends Model
         );
         Database::Execute($query, $params);
     }
+
     private function _addPassenger($rideid, $passengerid, $driverid)
     {
         $query = 'CALL uspAddPassenger(:rideid, :passengerid, :driverid)';

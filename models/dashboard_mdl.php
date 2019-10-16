@@ -713,7 +713,7 @@ class Dashboard_Model extends Model
                     if($matching_rideid != null)
                         $this->_setBooked($matching_rideid);
 
-                    $this->_addPassenger($rideid, $userid,$offer['userid']);
+                    $this->_addPassenger($rideid, $passengerid,$offer['userid']);
                     
                     header('location:' . URL . 'dashboard/frmNoti?as=d&view=response-noti&status=Accepted');
                 break;

@@ -44,7 +44,7 @@
                                                     <td><?php echo $requests['seats_for'];?></td>
                                                     <td>
                                                         <a class="btn btn-round btn-outline-danger btn-sm" 
-                                                        href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>">
+                                                        href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>/<?php echo $requests['userid'] ?>">
                                                             <i class="fas fa-check-circle"></i>
                                                         </a>
                                                         <a class="btn btn-round btn-outline-danger btn-sm" href="#">
@@ -122,7 +122,7 @@
                                         <a class="btn btn-default btn-square btn-sm" href="#">
                                             Edit
                                         </a>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $rideOffer['departure_from']; ?>/<?php echo $rideOffer['destination']; ?>?role=driver">
+                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $this->rideOffer['departure_from']; ?>/<?php echo $this->rideOffer['destination']; ?>?role=driver">
                                             Find Matches
                                         </a>
                                         <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
@@ -168,7 +168,7 @@
                                 <?php  } ?>
                             </div>
 
-                            <!--who will be driving-->
+                            <!--who will be driving and passengers -->
                             <div class="row">
                                 <div class="col-12">
                                     <h4>Who will be driving?</h4>
@@ -180,7 +180,7 @@
                                 </div>
                                 <?php if(count($this->passengers) > 0) { ?>
                                     <div class="col-12">
-                                        <h4>Passengers</h4>
+                                        <h4>Passengers (<?php echo count($this->passengers);?>)</h4>
                                         <?php foreach($this->passengers as $acPas) { ?>
                                             <p>
                                                 <?php echo $acPas['firstname'] . ' ' . $acPas['lastname']; ?>
@@ -536,7 +536,8 @@
                                 
                             </div>
                         </div>
-                            
+                        
+                        <!-- vehicle and passengers -->
                         <div class="row">
                             <div class="col-12">
                                 <h4>Vehicle</h4>
@@ -544,17 +545,18 @@
                             </div>
                             <?php if(count($this->passengers) > 0) { ?>
                                 <div class="col-12">
-                                    <h4>Passengers</h4>
+                                    <h4>Passengers (<?php echo count($this->passengers);?>)</h4>
                                     <?php foreach($this->passengers as $acPas) { ?>
                                         <p>
                                             <?php echo $acPas['firstname'] . ' ' . $acPas['lastname']; ?>
                                             <span>
                                                 <?php  if ($acPas['userid'] !== $this->user['userid']) { ?>
                                                 
-                                                    <a class="btn btn-outline-danger btn-round btn-sm m-2" 
+                                                    <!-- <a class="btn btn-outline-danger btn-round btn-sm m-2" 
                                                     href="<?php echo URL;?>dashboard/frmMessages?view=user-chat">
                                                         Message
-                                                    </a>
+                                                    </a> -->
+
                                                     <a class="btn btn-outline-danger btn-round btn-sm m-2" href="#">
                                                         View Profile
                                                     </a>

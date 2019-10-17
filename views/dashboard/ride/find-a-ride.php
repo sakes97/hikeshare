@@ -195,24 +195,19 @@
                         <h6>View user details</h6>
                     </div>
                     <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table table-borderless table-sm">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Name:
-                                        </td>
-                                        <td id="txtFNAME"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Lastname:
-                                        </td>
-                                        <td id="txtLNAME"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <img src="<?php echo URL;?>public/images/kaci-baum-2.jpg" class="img-circle img-no-padding img-responsive img-circle">
+                                <p class="text-center" id="txtName"></p>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <h6>User rating</h6>
+                                <p>5.9</p>
+                                <h6>Bio</h6>
+                                <p id="txtBio"></p>
+                            </div>
                         </div>
+                        <hr>
                     </div>
                 </div>
             </div>
@@ -229,10 +224,21 @@
                         <h6>Message User</h6>
                     </div>
                     <div class="modal-body">
-                        <p>Message User</p>
-                        <button class="btn btn-sm btn-rounded btn-danger" type="button">
-                            Send Message
-                        </button>
+                        <form id="msgForm" method="post" action="<?php echo URL;?>dashboard/xhrSendMessage/<?php echo $this->user['userid'];?>">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label data-error="wrong" data-success="right" for="msgText">Your message</label>
+                                    <textarea type="text" id="msgText" name="msgText" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row p-1 m-1">
+                                <div class="mx-auto">
+                                    <button type="button" class="btn btn-sm btn-round btn-danger" id="btnSendMessage"> 
+                                        Send message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

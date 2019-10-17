@@ -9,7 +9,7 @@
                 <div class="col-sm-12 col-md-6 mt-1 border-right">
                     <h6>Where are you heading?</h6>
                     <form method="post" action="<?php echo URL;?>dashboard/find_Ride?role=p&action=search-ride">
-                        <!-- <input type="hidden" name="action" value="find-a-ride"/> -->
+                        <!--origin & destination input-->
                         <div class="form-row">
                             <div class="form-group col-sm-10 col-md-6 p-1">
                                 <label for="origin-input">From</label>
@@ -32,12 +32,75 @@
                                 >
                             </div>
                         </div>
-                        <!-- <div class="form-row" id="dv_lift_departure">
-                            <div class="form-group col-sm-8 col-md-6 p-1">
+                        
+                        <!--filter-->
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <div class="custom-control custom-checkbox">
+                                    <label class="custom-control-label" for="checkFilter">Filter</label>
+                                    <input type="checkbox" class="custom-control-input" id="checkFilter">
+                                    <input type="hidden" name="filter_data" value="N" id="filter_data">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- date -->
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="any_date_switch">Any Date</label>
+                                <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="YES" data-off-text="NO"
+                                id="any_date_switch">
+                                <span class="toggle switch-toggler"></span>
+                                <input type="hidden" value="N" name="any_date" id="any_date">
+                            </div>
+
+                            <div class="form-group col-sm-8 col-md-6">
                                 <label id="lift_departure_date" for="departure_date">Departure Date</label>
                                 <input type="text" class="form-control datepicker" name="departure_date" id="departure_date" placeholder="<?php echo date('Y-m-d');?>" onkeypress="return false;" />
                             </div>
-                        </div> -->
+                        </div>
+
+                        <!-- regular/ schedule --> 
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="once_regular_switch">Frequency</label>
+                                <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="Once" data-off-text="Regular"
+                                id="once_regular_switch">
+                                <span class="toggle switch-toggler"></span>
+                                <!-- O = Once - off / R = Regular (lift club) -->
+                                <input type="hidden" value="O" name="ride_type" id="ride_type">
+                            </div>
+                        </div>
+                        <!-- days of the week if regular trip --> 
+                        <div class="form-row">
+                            <div class="form-group col-sm-12 col-md-12 p-1">
+                                <label>Schedule Days</label>
+                                <br />
+                                <?php foreach ($this->days as $day) { ?>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input days_check" id="<?php echo $day['dow']; ?>" name="days_checklist[]" value="<?php echo $day['dayid']; ?>">
+                                        <label class="custom-control-label" for="<?php echo $day['dow']; ?>">
+                                            <?php echo $day['dow']; ?></label>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <!-- return trip --> 
+                        <div class="form-row">
+                            <label for="returning_switch">Looking for driver that will be returning?</label>
+                            <input type="checkbox" data-toggle="switch" data-on-color="danger" data-off-color="secondary" data-on-text="Yes" data-off-text="No" 
+                            id="returning_switch">
+                            <span class="toggle switch-toggler"></span>
+                            <!-- Y = Return trips / N = One-way --> 
+                            <input type="hidden" value="N" name="return_trip" id="return_trip">
+                        </div>
+
+                        
+                        
+                        
+                        
+                        <!-- submit-->
                         <div class="form-row">
                             <div class="form-group col-sm-12 col-md-4 p-1">
                                 <button class="btn btn-outline-warning btn-round" type="submit">
@@ -45,6 +108,8 @@
                                 </button>
                             </div>
                         </div>
+
+
                     </form>
                 </div>
                 <!--results matches-->

@@ -18,7 +18,6 @@ $(document).ready(function(){
             data: 'id='+userid,
             dataType: 'json'
         }).done(function(data){
-            alert("success");
             $("#txtFNAME").text(data.firstname);
             $("#txtLNAME").text(data.lastname);
             console.log(data);

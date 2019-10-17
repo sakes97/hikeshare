@@ -36,7 +36,8 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <!-- end trip frequency -->
+
+
                     <!-- from -->
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-9 p-1">
@@ -44,7 +45,7 @@
                             <input type="text" class="form-control" id="origin-input" name="origin-input" placeholder="Enter your current city...">
                         </div>
                     </div>
-                    <!-- end from -->
+
                     <!-- destination -->
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-9 p-1">
@@ -52,7 +53,8 @@
                             <input type="text" class="form-control" id="destination-input" name="destination-input" placeholder="Enter destination city...">
                         </div>
                     </div>
-                    <!-- end destination -->
+
+
                     <!-- return switch -->
                     <div class="form-row" id="dvReturnSwitch">
                         <div class="form-group col-sm-10 col-md-4 p-1">
@@ -63,7 +65,9 @@
                             <input type="hidden" value="N" name="return_trip" id="return_trip">
                         </div>
                     </div>
-                    <!-- end return switch -->
+                    
+
+
                     <!-- travel schedule -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
@@ -75,6 +79,9 @@
                             <input type="text" class="form-control datepicker" name="return_date" id="return_date" placeholder="Choose return date..." onkeypress="return false;" />
                         </div>
                     </div>
+
+
+                    
                     <!-- time -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1" id="dvDepartureTime">
@@ -86,8 +93,10 @@
                             <input type="text" class="form-control timepicker" name="return_time" id="return_time" placeholder="Return Time" onkeypress="return false;" />
                         </div>
                     </div>
-                    <!-- end travel scheule -->
-                    <!-- contribution/available-seats -->
+
+
+
+                    <!-- select car -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
                             <div class="form-group col-sm-12 col-md-10 p-1">
@@ -114,6 +123,9 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- contribution/seats -->
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-md-6 p-1">
                             <label for="contribution_per_head">Trip Contribution</label>
@@ -124,7 +136,8 @@
                             <input class="form-control" type="number" value="3" min="1" name="seats_available" id="seats_available">
                         </div>
                     </div>
-                    <!-- end contribution/available-seats -->
+
+
                     <!-- extra details -->
                     <div class="form-row">
                         <div class="form-group col-12 p-1">
@@ -132,10 +145,14 @@
                             <textarea class="form-control" id="extra_details" name="extra_details" rows="4"></textarea>
                         </div>
                     </div>
-                    <!-- end extra details -->
+
+
+
                     <div class="form-row">
                         <button type="submit" class="btn btn-danger btn-round">OFFER RIDE</button>
                     </div>
+
+
                 </form>
             </div>
         </div>

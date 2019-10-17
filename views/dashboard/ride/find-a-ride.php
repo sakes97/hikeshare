@@ -82,9 +82,11 @@
                                                 <a href="#" class="btn btn-sm btn-round btn-outline-danger m-1">
                                                     Message
                                                 </a>
-                                                <a href="#" class="btn btn-sm btn-round btn-outline-danger  m-1">
+                                                <button class="btn btn-sm btn-round btn-outline-danger  m-1"
+                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#view_user_modal"
+                                                    data-id="<?php echo $res['userid'];?>" >
                                                     View profile
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -111,7 +113,6 @@
 
 
         <?php } ?>
-
 
     </div>
 </div>

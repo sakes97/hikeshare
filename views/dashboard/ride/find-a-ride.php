@@ -63,9 +63,9 @@
                                 </thead>
                                 <tbody>
                                     <?php if(!empty($this->res_any) && count($this->res_any) > 0) { 
-                                            $this->res_any = array_filter($this->res_any, function($input){
-                                                return $input['ride_as'] == 'D';
-                                            });
+                                            // $this->res_any = array_filter($this->res_any, function($input){
+                                            //     return $input['ride_as'] == 'D';
+                                            // });
                                     ?>
                                         <?php foreach($this->res_any as $res) { ?>
                                         <tr>
@@ -111,7 +111,6 @@
 
 
         <?php } ?>
-
 
 
     </div>

@@ -85,6 +85,31 @@ class Dashboard extends Controller
         return $userid;
     }
     
+    public function xhrLoadUser()
+    {
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            $id = $_POST['id'];
+            $profile = $this->model->getUserDetails($id);
+            if(isset($profile) && !empty($profile))
+            {
+                $data = array();
+                $data['userid'] = $profile['userid'];
+                $data['firstname'] = $profile['firstname'];
+                $data['lastname'] = $profile['lastname'];
+                $data['bio'] = $profile['bio'];
+                $data['email'] = $profile['email'];
+                $data['gender'] =$profile['gender'];
+                $data['dob'] = $profile['dob'];
+                // $data['picture'] = $profile['picture'];
+                $data['date_joined']= $profile['date_joined'];
+                $data['alcohol_yn'] =$profile['alcohol_yn'];
+                $data['pets_yn'] = $profile['pets_yn'];
+                $data['smoking_yn'] = $profile['smoking_yn'];
+            
+                echo json_encode($data);
+            }
+        }
+    }
     #endregion
 
     #region Ride

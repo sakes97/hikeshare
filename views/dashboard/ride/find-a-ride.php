@@ -83,7 +83,7 @@
                                                     Message
                                                 </a>
                                                 <button class="btn btn-sm btn-round btn-outline-danger  m-1"
-                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#view_user_modal"
+                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
                                                     data-id="<?php echo $res['userid'];?>" >
                                                     View profile
                                                 </button>
@@ -113,6 +113,42 @@
 
 
         <?php } ?>
+
+
+        <!-- seats_for modal --> 
+        <div class="modal fade" id="View_User" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-register">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6>View user details</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Name:
+                                        </td>
+                                        <td id="txtFNAME"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Lastname:
+                                        </td>
+                                        <td id="txtLNAME"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </div>

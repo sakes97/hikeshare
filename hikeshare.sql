@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2019 at 07:09 AM
+-- Generation Time: Oct 17, 2019 at 06:55 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -591,13 +591,16 @@ CREATE TABLE `ride` (
 --
 
 INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contribution_per_head`, `departure_date`, `departure_time`, `return_time`, `departure_from`, `destination`, `extra_details`, `ride_as`, `ride_type`, `return_trip`, `status`, `date_posted`, `returnid`) VALUES
+('49tzS2tl6wM', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-11-06', '12:48:00', NULL, 'Cape Town', 'Durban', '', 'P', 'O', 'Y', 'Active', '2019-10-17 03:48:37', NULL),
 ('4RK43P3nhL5', '8', 'HZmWJP4W2ui', 4, 100, '2019-10-18', '13:36:00', NULL, 'Dwesi', 'Uitenhage', '', 'D', 'O', 'd', 'Active', '2019-10-15 00:36:23', 'ckfEEuV51Bw'),
 ('aoGXU1PFaEX', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-31', '15:30:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Urgent Please', 'P', 'O', 'N', 'Booked', '2019-10-06 01:55:42', NULL),
 ('ckfEEuV51Bw', '8', 'HZmWJP4W2ui', 0, 100, '2019-10-16', '14:36:00', NULL, 'Uitenhage', 'Dwesi', '', 'D', 'O', 'Y', 'Booked', '2019-10-15 00:36:23', NULL),
 ('dkGebrS8C6p', '7', NULL, NULL, NULL, '2019-10-16', '13:47:00', NULL, 'Uitenhage', 'Dwesi', '', 'P', 'O', 'N', 'Booked', '2019-10-16 06:47:50', NULL),
+('EDnxdQgMsf0', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-23', '14:06:00', NULL, 'Pretoria	', 'Port Elizabeth	', '', 'P', 'O', 'N', 'Active', '2019-10-17 02:06:27', NULL),
 ('HgZDAVSjKtS', '8', '5HQbCiPCQrg', 3, 100, '2019-11-01', '07:30:00', '16:30:00', '6 Tomlinson Street, Mosel, Uitenhage', 'NMMU', 'Will be travelling to and from the university during the exams period ', 'D', 'R', 'U', 'Active', '2019-10-15 00:38:59', NULL),
 ('KnMmglTU2nd', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-16', '10:45:00', NULL, 'Uitenhage', 'Dwesi', '', 'P', 'O', 'N', 'Booked', '2019-10-16 05:46:00', NULL),
-('njelMnrZSTC', '8', '5HQbCiPCQrg', 3, 100, '2019-10-23', '00:00:00', NULL, 'Pretoria ', 'Port Elizabeth', 'Please be punctual ', 'D', 'O', 'N', 'Active', '2019-10-12 23:04:01', NULL),
+('njelMnrZSTC', '8', '5HQbCiPCQrg', 3, 100, '2019-10-23', '00:00:00', NULL, 'Pretoria', 'Port Elizabeth', 'Please be punctual ', 'D', 'O', 'N', 'Active', '2019-10-12 23:04:01', NULL),
+('nmq6pmSh79O', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-11-15', '14:48:00', NULL, 'Durban', 'Cape Town', '', 'P', 'O', 'd', 'Active', '2019-10-17 03:48:37', '49tzS2tl6wM'),
 ('QpYvOmJQgET', '8', '5HQbCiPCQrg', 0, 100, '2019-10-31', '09:13:00', NULL, 'Graaf-Rienet', 'Uitenhage', 'Flexible', 'D', 'O', 'N', 'Booked', '2019-10-10 09:14:07', NULL),
 ('vjMFnNwfgo1', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-15', '09:05:00', NULL, 'JHB', 'EL', '', 'P', 'O', 'N', 'Booked', '2019-10-15 01:06:07', NULL),
 ('z8dfNHUbLp6', '8', 'HZmWJP4W2ui', 2, 100, '2019-10-15', '12:28:00', NULL, 'JHB', 'EL', '', 'D', 'O', 'N', 'Active', '2019-10-15 00:28:17', NULL);

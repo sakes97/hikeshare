@@ -1,12 +1,15 @@
 <div class="section profile-content">
     <div class="container shadow-sm">
         <h4>Find a ride</h4>
+        
+        <?php if($_GET['role'] == 'p') { ?>
+
         <!--large screens view-->
         <div class="row">
             <!--user enter details-->
             <div class="col-sm-12 col-md-6 mt-1 border-right">
                 <h6>Where are you heading?</h6>
-                <form>
+                <form method="post" action="<?php echo URL;?>dashboard/">
                     <div class="form-row">
                         <div class="form-group col-sm-10 col-md-6 p-1">
                             <label for="origin-input">From</label>
@@ -41,8 +44,7 @@
                             <td>Driver Name</td>
                             <td>Rating</td>
                             <td>Car</td>
-                            <td>Action
-                            <td>
+                            <td>Action<td>
                         </tr>
                         <tr>
                         </tr>
@@ -50,5 +52,20 @@
                 </div>
             </div>
         </div>
+
+
+
+
+        <?php } else if($_GET['role'] == 'd') { ?>
+
+            <div class="row">
+
+            </div>
+
+
+        <?php } ?>
+
+
+
     </div>
 </div>

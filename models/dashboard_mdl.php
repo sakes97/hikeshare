@@ -310,12 +310,15 @@ class Dashboard_Model extends Model
 
     public function search_Any()
     {
-        $query = 'CALL uspSearch_Any(:departure_from, :destination)';
-        $params = array(
-            ':departure_from' => $_GET['from'],
-            ':destination' => $_GET['to']
-        );
-        return Database::GetAll($query, $params);
+        if(isset($_GET['from']) && isset($_GET['to']))
+        {
+            $query = 'CALL uspSearch_Any(:departure_from, :destination)';
+            $params = array(
+                ':departure_from' => $_GET['from'],
+                ':destination' => $_GET['to']
+            );
+            return Database::GetAll($query, $params);
+        }
     }
 
     public function getRidesRequests($rideid)

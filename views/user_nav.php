@@ -31,7 +31,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="ridesDropdown">
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offer_Ride">Offer Ride</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride">Find a Ride</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride?role=p">Find a driver</a>
+                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride?role=d">Find a passenger</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/View_Ride_History">View Ride History</a>
                     </div>

@@ -103,6 +103,7 @@ class Dashboard extends Controller
     {
         $this->view->title = "Find a ride";
         $this->_getUserDetails($this->_userid);
+        $this->_search_Any();
         $this->view->render('dashboard/ride/find-a-ride', 'user_nav');
     }
 

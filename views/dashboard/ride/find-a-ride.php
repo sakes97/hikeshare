@@ -34,7 +34,7 @@
                         </div>
                         
                         <!--filter-->
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="form-group col-12">
                                 <div class="custom-control custom-checkbox">
                                     <label class="custom-control-label" for="checkFilter">Filter</label>
@@ -42,10 +42,10 @@
                                     <input type="hidden" name="filter_data" value="N" id="filter_data">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <!-- date -->
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="any_date_switch">Any Date</label>
                                 <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="YES" data-off-text="NO"
@@ -58,21 +58,23 @@
                                 <label id="lift_departure_date" for="departure_date">Departure Date</label>
                                 <input type="text" class="form-control datepicker" name="departure_date" id="departure_date" placeholder="<?php echo date('Y-m-d');?>" onkeypress="return false;" />
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- regular/ schedule --> 
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="once_regular_switch">Frequency</label>
                                 <input type="checkbox" data-toggle="switch"  data-on-color="danger" data-off-color="secondary" data-on-text="Once" data-off-text="Regular"
                                 id="once_regular_switch">
-                                <span class="toggle switch-toggler"></span>
+                                <span class="toggle switch-toggler"></span> -->
                                 <!-- O = Once - off / R = Regular (lift club) -->
-                                <input type="hidden" value="O" name="ride_type" id="ride_type">
+                                <!-- <input type="hidden" value="O" name="ride_type" id="ride_type">
                             </div>
-                        </div>
+                        </div> -->
+
+                        
                         <!-- days of the week if regular trip --> 
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="form-group col-sm-12 col-md-12 p-1">
                                 <label>Schedule Days</label>
                                 <br />
@@ -84,17 +86,17 @@
                                     </div>
                                 <?php } ?>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- return trip --> 
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <label for="returning_switch">Looking for driver that will be returning?</label>
                             <input type="checkbox" data-toggle="switch" data-on-color="danger" data-off-color="secondary" data-on-text="Yes" data-off-text="No" 
                             id="returning_switch">
-                            <span class="toggle switch-toggler"></span>
+                            <span class="toggle switch-toggler"></span> -->
                             <!-- Y = Return trips / N = One-way --> 
-                            <input type="hidden" value="N" name="return_trip" id="return_trip">
-                        </div>
+                            <!-- <input type="hidden" value="N" name="return_trip" id="return_trip">
+                        </div> -->
 
                         
                         
@@ -144,9 +146,11 @@
                                                 {car_name}
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-round btn-outline-danger m-1">
+                                                <button class="btn btn-sm btn-round btn-outline-danger m-1"
+                                                    type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
+                                                    data-id="<?php echo $res['userid'];?>" >
                                                     Message
-                                                </a>
+                                                </button>
                                                 <button class="btn btn-sm btn-round btn-outline-danger  m-1"
                                                     type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
                                                     data-id="<?php echo $res['userid'];?>" >
@@ -182,7 +186,7 @@
 
         <!-- seats_for modal --> 
         <div class="modal fade" id="View_User" tabindex="-1" role="dialog" aria-hidden="false">
-            <div class="modal-dialog modal-register">
+            <div class="modal-dialog modal-profile">
                 <div class="modal-content">
                     <div class="modal-header no-border-header text-center">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -209,6 +213,26 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- message modal --> 
+        <div class="modal fade" id="Message_User" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-message">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6>Message User</h6>
+                    </div>
+                    <div class="modal-body">
+                        <p>Message User</p>
+                        <button class="btn btn-sm btn-rounded btn-danger" type="button">
+                            Send Message
+                        </button>
                     </div>
                 </div>
             </div>

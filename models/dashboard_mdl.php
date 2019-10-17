@@ -320,11 +320,11 @@ class Dashboard_Model extends Model
                 }
 
 
-            }else if($_GET['action'] == "find-a-ride"){
+            }else if($_GET['action'] == "search-ride"){
 
-                if(isset($_POST['from']) && isset($_GET['to']))
+                if(isset($_POST['origin-input']) && isset($_POST['destination-input']))
                 {
-                    return $this->_s_any($_POST['from'], $_POST['to']);
+                    return $this->_s_any($_POST['origin-input'], $_POST['destination-input']);
                 }
 
             }

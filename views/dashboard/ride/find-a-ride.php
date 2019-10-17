@@ -52,7 +52,7 @@
                     <h6>Matching Rides</h6>
                     <?php if(isset($this->res_any)) { ?>
                         <div class="table-responsive">
-                            <table class="table table-borderless">
+                            <table class="table table-borderless table-sm">
                                 <thead class="border-bottom">
                                     <tr>
                                         <td>Driver Name</td>
@@ -62,7 +62,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if(!empty($this->res_any) && count($this->res_any) > 0) { ?>
+                                    <?php if(!empty($this->res_any) && count($this->res_any) > 0) { 
+                                            $this->res_any = array_filter($this->res_any, function($input){
+                                                return $input['ride_as'] == 'D';
+                                            });
+                                    ?>
                                         <?php foreach($this->res_any as $res) { ?>
                                         <tr>
                                             <td>

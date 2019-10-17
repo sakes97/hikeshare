@@ -308,12 +308,12 @@ class Dashboard_Model extends Model
         return Database::GetRow($query, $params);
     }
 
-    public function search_Any($from, $to)
+    public function search_Any()
     {
         $query = 'CALL uspSearch_Any(:departure_from, :destination)';
         $params = array(
-            ':departure_from' => $from,
-            ':destination' => $to
+            ':departure_from' => $_GET['from'],
+            ':destination' => $_GET['to']
         );
         return Database::GetAll($query, $params);
     }

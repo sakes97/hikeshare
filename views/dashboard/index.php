@@ -338,7 +338,7 @@
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger&for=<?php echo $request['rideid'];?>">
+                                                                                                    href="<?php echo URL;?>dashboard/frmResults?role=passenger&for=<?php echo $request['rideid'];?>&from=<?php echo $request['departure_from'];?>&to=<?php echo $request['destination'];?>">
                                                                                                         Find Matches
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" href="#">

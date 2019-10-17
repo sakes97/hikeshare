@@ -170,14 +170,14 @@ class Dashboard extends Controller
         $this->view->render('dashboard/ride/view-booking-details', 'user_nav');
     }
 
-    public function frmResults($from, $to, $rideid=null)
+    public function frmResults($rideid=null)
     {
         $this->view->title = "Matching Results";
         $this->_getUserDetails($this->_userid);
         $this->_getOffer($rideid, $this->_userid);
         $this->_getTripAndReturn($this->_userid,$rideid);
         $this->_getTripSchedule($rideid);
-        $this->_search_Any($from, $to);
+        $this->_search_Any();
         $this->view->render('dashboard/ride/results', 'user_nav');
     }
 
@@ -275,9 +275,9 @@ class Dashboard extends Controller
         $this->view->returnTrip = $this->model->getTripAndReturn($userid, $rideid);
     }
 
-    private function _search_Any($from, $to)
+    private function _search_Any()
     {
-        $this->view->res_any = $this->model->search_Any($from, $to);
+        $this->view->res_any = $this->model->search_Any();
     }
 
     public function getRequest($requestid)

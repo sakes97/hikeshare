@@ -310,15 +310,36 @@ class Dashboard_Model extends Model
 
     public function search_Any()
     {
-        if(isset($_GET['from']) && isset($_GET['to']))
-        {
-            $query = 'CALL uspSearch_Any(:departure_from, :destination)';
-            $params = array(
-                ':departure_from' => $_GET['from'],
-                ':destination' => $_GET['to']
-            );
-            return Database::GetAll($query, $params);
+        if(isset($_GET['action'])){
+
+            if($_GET['action'] == "find-match"){
+
+                if(isset($_GET['from']) && isset($_GET['to']))
+                {
+                    return $this->_s_any($_GET['from'], $_GET['to']);
+                }
+
+
+            }else if($_GET['action'] == "find-a-ride"){
+
+                if(isset($_POST['from']) && isset($_GET['to']))
+                {
+                    return $this->_s_any($_POST['from'], $_POST['to']);
+                }
+
+            }
         }
+        
+    }
+
+    private function _s_any($from, $to)
+    {
+        $query = 'CALL uspSearch_Any(:departure_from, :destination)';
+        $params = array(
+            ':departure_from' => $from,
+            ':destination' => $to
+        );
+        return Database::GetAll($query, $params);
     }
 
     public function getRidesRequests($rideid)
@@ -425,13 +446,13 @@ class Dashboard_Model extends Model
             ':rideid' => $rideid,
             ':driverid' => $driverid,
             ':carid' => $_POST['car_for_ride'],
-            ':seats_available' => $_POST['seats_available'],
-            ':contribution_per_head' => sprintf("%.2f",$_POST['contribution_per_head']),
+            ':seats_available' => filter_var($_POST['seats_available'], FILTER_SANITIZE_NUMBER_INT),
+            ':contribution_per_head' => filter_var(sprintf("%.2f",$_POST['contribution_per_head']), FILTER_SANITIZE_NUMBER_FLOAT),
             ':departure_date' => $_POST['departure_date'],
             ':departure_time' => $_POST['departure_time'],
-            ':departure_from' => $_POST['origin-input'],
-            ':destination' => $_POST['destination-input'],
-            ':extra_details' => $_POST['extra_details'],
+            ':departure_from' =>filter_var($_POST['origin-input'], FILTER_SANITIZE_STRING),
+            ':destination' => filter_var($_POST['destination-input'], FILTER_SANITIZE_STRING),
+            ':extra_details' => filter_var($_POST['extra_details'], FILTER_SANITIZE_STRING),
             ':ride_type' => $_POST['ride_type'],
             ':date_posted' => date('Y-m-d H:i:s', time()),
             ':return_time' => $return_time,
@@ -486,9 +507,9 @@ class Dashboard_Model extends Model
             ':departure_date' => $_POST['departure_date'],
             ':departure_time' => $_POST['departure_time'],
             ':return_time' => $return_time,
-            ':departure_from' => $_POST['origin-input'],
-            ':destination' => $_POST['destination-input'],
-            ':extra_details' => $_POST['extra_details'],
+            ':departure_from' => filter_var($_POST['origin-input'], FILTER_SANITIZE_STRING),
+            ':destination' => filter_var($_POST['destination-input'], FILTER_SANITIZE_STRING),
+            ':extra_details' => filter_var($_POST['extra_details'], FILTER_SANITIZE_STRING),
             ':ride_type' => $_POST['ride_type'],
             ':return_trip' => $_POST['return_trip'],
             ':date_posted' => date('Y-m-d H:i:s', time()),
@@ -518,13 +539,13 @@ class Dashboard_Model extends Model
             ':rideid' => $rideid,
             ':driverid' => $driverid,
             ':carid' => $_POST['car_for_ride'],
-            ':seats_available' => $_POST['seats_available'],
-            ':contribution_per_head' => sprintf("%.2f",$_POST['contribution_per_head']),
+            ':seats_available' => filter_var($_POST['seats_available'], FILTER_SANITIZE_NUMBER_INT),
+            ':contribution_per_head' => filter_var(sprintf("%.2f",$_POST['contribution_per_head']), FILTER_SANITIZE_NUMBER_FLOAT),
             ':departure_date' => $_POST['return_date'],
             ':departure_time' => $_POST['return_time'],
-            ':departure_from' => $_POST['destination-input'],
-            ':destination' => $_POST['origin-input'],
-            ':extra_details' => $_POST['extra_details'],
+            ':departure_from' => filter_var($_POST['destination-input'], FILTER_SANITIZE_STRING),
+            ':destination' => filter_var($_POST['origin-input'], FILTER_SANITIZE_STRING),
+            ':extra_details' => filter_var($_POST['extra_details'], FILTER_SANITIZE_STRING),
             ':ride_type' => $_POST['ride_type'],
             ':date_posted' => date('Y-m-d H:i:s', time()),
             ':return_time' => NULL,

@@ -10,7 +10,7 @@
                 <!--as driver -->
                 <div class="row">
 
-                    <div id="map" class="col-6">
+                    <div id="map" class="col-6 shadow-sm">
                         <img  src="" alt="Dummy Map">
                     </div>
 
@@ -175,7 +175,7 @@
                 <!-- as passenger -->
                 <div class="row">
 
-                    <div id="map" class="col-6">
+                    <div id="map" class="col-6 shadow-sm">
                         <img  src="" alt="Dummy Map">
                     </div>
 

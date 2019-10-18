@@ -325,6 +325,8 @@ class Dashboard_Model extends Model
                 if(isset($_POST['origin-input']) && isset($_POST['destination-input']))
                 {
                     return $this->_s_any($_POST['origin-input'], $_POST['destination-input']);
+                }else if(isset($_GET['from']) && isset($_GET['to'])){
+                    return $this->_s_any($_GET['from'],$_GET['to']);
                 }
 
             }
@@ -414,6 +416,19 @@ class Dashboard_Model extends Model
         return Database::GetAll($query,$params);
     }
 
+    public function getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null)
+    {
+        $query = 'CALL uspGetBookedTrips_R(:rideid, :passengerid, :driverid)';
+        $params = array(
+            ':rideid' => $rideid,
+            ':passengerid' => $passengerid,
+            ':driverid' => $driverid
+        );
+
+        return Database::GetAll($query, $params);
+        
+    }
+
     public function getRequestsByUser($userid)
     {
         $query = 'CALL uspGetRequestsByUser(:userid)';
@@ -474,11 +489,11 @@ class Dashboard_Model extends Model
             $from = $_POST['origin-input'];
             $to = $_POST['destination-input'];
 
-            header("location:" . URL . 'dashboard/frmResults/'.$from.'/'.$to.'/'. $rideid .'?role=driver');
+            header("location:" . URL . 'dashboard/frmResults/'.$rideid.'?action=search-ride&role=driver&from='.$from.'&to='.$to);
         }
         else
         {
-            header("location:" . URL . "err/index?offer-fail");
+            header("location:" . URL . "err/index?offer=fail");
         }
     }
 

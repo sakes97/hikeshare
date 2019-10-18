@@ -139,7 +139,7 @@
                                                                                 <th>To</th>
                                                                                 <th>When</th>
                                                                                 <th>Seats Left</th>
-                                                                                <th>No. Requests</th>
+                                                                                <th>Total Requests</th>
                                                                                 <th colspan="2">Status</th>
                                                                             </thead>
                                                                             <tbody>
@@ -158,7 +158,15 @@
                                                                                             <?php echo $offer['seats_available']; ?>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <?php echo $offer['request_count']; ?>
+                                                                                            <?php if($offer['request_count'] > 0) {?>
+                                                                                                <a href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $offer['rideid'];?>/<?php echo $offer['userid'];?>/<?php echo $offer['ride_type'];?>?view=view-offer-post&as=d">
+                                                                                                    <span class="badge badge-warning">
+                                                                                                        <?php echo $offer['request_count']; ?>
+                                                                                                    </span>
+                                                                                                </a>
+                                                                                            <?php } else { ?>
+                                                                                                <?php echo $offer['request_count'];?>
+                                                                                            <?php } ?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <button class="btn btn-sm btn-square btn-primary">
@@ -305,7 +313,7 @@
                                                                                 <th>From</th>
                                                                                 <th>To</th>
                                                                                 <th>When</th>
-                                                                                <th>Offers</th>
+                                                                                <th>No. Offers</th>
                                                                                 <th colspan="2">Status</th>
                                                                             </thead>
                                                                             <tbody>

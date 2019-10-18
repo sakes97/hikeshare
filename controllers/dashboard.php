@@ -26,17 +26,21 @@ class Dashboard extends Controller
         //as driver
         $this->_getNumOfActiveOffers($this->_userid);
         $this->_getActiveOffers($this->_userid);
+        
         $this->_getAllRequestCount();
+        
         $this->_getBookedTrips_O_D(NULL,NULL,$this->_userid);
         $this->_getBookedTrips_O_P(null,$this->_userid,null);
 
+
         //as passenger
         $pUserid = $this->_getUserID();
+        
         $this->_getPassengerActivePosts($pUserid);
         $this->_getRequests($pUserid);
+        
         $this->_getBookedTrips_O_P(null,$pUserid,null);
         $this->_getBookedTrips_O_D(null,null,$pUserid);
-        
 
         //render view
         $this->view->render('dashboard/index', 'user_nav');
@@ -358,6 +362,16 @@ class Dashboard extends Controller
         $this->view->upcomingBkdTrips_D = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
     }
 
+    private function _getBookedTrips_R_D($rideid=null, $passengerid=null, $driverid=null)
+    {
+        $this->view->upcomingBkd_R_D = $this->model->getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null);
+    }
+
+    private function _getBookedTrips_R_P($rideid=null, $passengerid=null, $driverid=null)
+    {
+        $this->view->upcomingBkd_R_P = $this->model->getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null);
+    }
+    
     private function _getRequestsByUser($userid)
     {
         $this->view->users_requests = $this->model->getRequestsByUser($userid);

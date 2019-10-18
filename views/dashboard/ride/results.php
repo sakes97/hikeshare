@@ -338,7 +338,7 @@
                             <div class="form-row">
                                 <div class="form-group ml-auto mr-auto">
                                     <label for="seats_for">Please Select Number Of Seats</label>
-                                    <input id="maxNumberTarget" placeholder="1" name="seats_for" type="number" min="???" max="???" class="form-control form-control-sm text-center">
+                                    <input id="maxNumberTarget" name="seats_for" type="number" min="???" max="???" class="form-control form-control-sm text-center">
                                 </div>
                             </div>
                             <div class="form-row">

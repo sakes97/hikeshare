@@ -161,7 +161,7 @@
                                                                                             <?php echo $offer['request_count']; ?>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <button class="btn btn-sm btn-square btn-success">
+                                                                                            <button class="btn btn-sm btn-square btn-primary">
                                                                                                 <?php echo $offer['status'];?>
                                                                                             </button>
                                                                                         </td>
@@ -324,7 +324,9 @@
                                                                                             <?php echo $request['offer_count']; ?>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <?php echo $request['status'];?>
+                                                                                            <button class="btn btn-sm btn-square btn-primary">  
+                                                                                                <?php echo $request['status'];?>
+                                                                                            </button>
                                                                                         </td>
                                                                                         <td>
                                                                                             <div class="dropdown-container">

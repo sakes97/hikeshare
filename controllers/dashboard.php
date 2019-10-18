@@ -148,23 +148,11 @@ class Dashboard extends Controller
     {
         $this->view->title = "Ride History";
         $this->_getUserDetails($this->_userid);
-        
-        /**
-         * offers
-         */
-        //upcoming offers
-        $this->_getActiveOffers($this->_userid);
-        $this->_getNumOfActiveOffers($this->_userid);
-        //past offers
+
         $this->_getPastOffers($this->_userid);
-        $this->_getNumOfPastOffers($this->_userid);
-        //all offers
-        $this->_getOffers($this->_userid);
         
-        /**
-         * bookings
-         */
-        
+
+
         //render view 
         $this->view->render('dashboard/ride/ride-history', 'user_nav');
     }
@@ -248,7 +236,7 @@ class Dashboard extends Controller
 
     private function _getPastOffers($driverid)
     {
-        $this->pastOffers = $this->model->getPastOffers($driverid);
+        $this->view->pastOffers = $this->model->getPastOffers($driverid);
     }
     
     private function _getActiveOffers($driverid)

@@ -354,6 +354,51 @@
                                 </div>
                             </div>
 
+                            <!--preferences-->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4><?php echo $this->rideOffer['firstname'] . "'s"; ?> Rules</h4>
+                                    <?php
+                                            $smoking = $this->rideOffer['smoking_yn'];
+                                            $alcohol = $this->rideOffer['alcohol_yn'];
+                                            $pets = $this->rideOffer['pets_yn'];
+
+                                            //smoking preference
+                                            if ($smoking == 'N' || $smoking == NULL) {
+                                                echo '<img class="img-responsive img-square preference-img" alt="No Smoking" src="' . URL . 'public/images/icons/smoking/no-smoking.png" 
+                                        data-toggle="tooltip" data-placement="top" title="No Smoking Allowed"/>';
+                                            } else if ($smoking == 'Y') {
+                                                echo '<img class="img-responsive img-square preference-img" alt="Smoking allowed" src="' . URL . 'public/images/icons/smoking/smoking.png" 
+                                        data-toggle="tooltip" data-placement="top" title="Smoking Is Permitted"/>';
+                                            } else {
+                                                echo 'No smoking,';
+                                            }
+
+                                            //alchohol preference
+                                            if ($alcohol == 'N' || $alcohol == NULL) {
+                                                echo '<img class="img-responsive img-square preference-img" alt="No Alcohol" src="' . URL . 'public/images/icons/alcohol/no-alcohol.png" 
+                                        data-toggle="tooltip" data-placement="top" title="No Drinking Is Allowed"/>';
+                                            } else if ($alcohol == 'Y') {
+                                                echo '<img class="img-responsive img-square preference-img" alt="Alcohol Allowed" src="' . URL . 'public/images/icons/alcohol/alcohol.png" 
+                                        data-toggle="tooltip" data-placement="top" title="Drinking Is Permitted" />';
+                                            } else {
+                                                echo 'No alcohol,';
+                                            }
+
+                                            //pets preference
+                                            if ($pets == 'N' || $pets == NULL) {
+                                                echo '<img class="img-responsive img-square preference-img" alt="No Pets" src="' . URL . 'public/images/icons/pets/no-pets.jpg" 
+                                        data-toggle="tooltip" data-placement="top" title="No Pets Allowed" />';
+                                            } else if ($pets == 'Y') {
+                                                echo '<img class="img-responsive img-square preference-img" alt="Pets Allowed" src="' . URL . 'public/images/icons/pets/pets.jpg" 
+                                        data-toggle="tooltip" data-placement="top" title="Pets Are Allowed" />';
+                                            } else {
+                                                echo 'No pets';
+                                            }
+                                            ?>
+                                </div>
+                            </div>
+
                         <?php } ?>
 
                     </div>

@@ -336,8 +336,8 @@ class Dashboard_Model extends Model
     {
         $query = 'CALL uspSearch_Any(:departure_from, :destination)';
         $params = array(
-            ':departure_from' => $from,
-            ':destination' => $to
+            ':departure_from' => trim(filter_var($from, FILTER_SANITIZE_STRING)),
+            ':destination' => trim(filter_var($to, FILTER_SANITIZE_STRING))
         );
         return Database::GetAll($query, $params);
     }

@@ -117,7 +117,14 @@
                 <!--results matches-->
                 <div class="col-sm-12 col-md-6 mt-1">
                     <h6>Matching Rides</h6>
-                    <?php if(isset($this->res_any)) { ?>
+                    <?php if(isset($this->res_any) || !empty($this->res_any)) { 
+
+                        $this->res_any = array_filter($this->res_any, function($input){
+                            return $input['ride_as'] == 'D';
+                        });
+
+                    if(!empty($this->res_any) || count($this->res_any) > 0){
+                    ?>  
                         <div class="table-responsive">
                             <table class="table table-borderless table-sm">
                                 <thead class="border-bottom">
@@ -128,47 +135,51 @@
                                         <td>Action<td>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php if(!empty($this->res_any) && count($this->res_any) > 0) { 
-                                            // $this->res_any = array_filter($this->res_any, function($input){
-                                            //     return $input['ride_as'] == 'D';
-                                            // });
-                                    ?>
-                                        <?php foreach($this->res_any as $res) { ?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $res['firstname'] . ' ' . $res['lastname'];?>
-                                            </td>
-                                            <td>
-                                                {rating}
-                                            </td>
-                                            <td>
-                                                {car_name}
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-sm btn-round btn-outline-danger m-1"
-                                                    type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
-                                                    data-id="<?php echo $res['userid'];?>" >
-                                                    Message
-                                                </button>
-                                                <button class="btn btn-sm btn-round btn-outline-danger  m-1"
-                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
-                                                    data-id="<?php echo $res['userid'];?>" >
-                                                    View profile
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    <?php } ?>
+                                <tbody>                     
+                                    <?php foreach($this->res_any as $res) { ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $res['firstname'] . ' ' . $res['lastname'];?>
+                                        </td>
+                                        <td>
+                                            {rating}
+                                        </td>
+                                        <td>
+                                            {car_name}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-round btn-outline-danger m-1"
+                                                type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
+                                                data-id="<?php echo $res['userid'];?>" >
+                                                Message
+                                            </button>
+                                            <button class="btn btn-sm btn-round btn-outline-danger  m-1"
+                                                type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
+                                                data-id="<?php echo $res['userid'];?>" >
+                                                View profile
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php }  ?>
                                 </tbody>
                                 <tr>
                                 </tr>
                             </table>
                         </div>
+
                     <?php }else { ?>
-                        <p>No matching results. Post a request</p>
-                    <?php } ?>
+
+                        <p>No matching results.</p>
+                        <a href="#">
+                            Post a request 
+                        </a>
+
+                    <?php }
+
+                        }
+                    ?>
                 </div>
+
             </div>
 
 
@@ -184,7 +195,7 @@
                     <h6>Where are you heading?</h6>
                     
                     
-                    <form method="post" action="<?php echo URL;?>dashboard/find_Ride?role=p&action=search-ride">
+                    <form method="post" action="<?php echo URL;?>dashboard/find_Ride?role=d&action=search-ride">
                         <!--origin & destination input-->
                         <div class="form-row">
                             <div class="form-group col-sm-10 col-md-6 p-1">
@@ -298,57 +309,67 @@
                 <!--results matches-->
                 <div class="col-sm-12 col-md-6 mt-1">
                     <h6>Matching Rides</h6>
-                    <?php if(isset($this->res_any)) { ?>
+                    <?php if(isset($this->res_any) || !empty($this->res_any)) { 
+
+                        $this->res_any = array_filter($this->res_any, function($input){
+                            return $input['ride_as'] == 'P';
+                        });
+
+                    if(!empty($this->res_any) || count($this->res_any) > 0){
+                    ?>  
                         <div class="table-responsive">
                             <table class="table table-borderless table-sm">
                                 <thead class="border-bottom">
                                     <tr>
-                                        <td>Driver Name</td>
+                                        <td>Passenger</td>
                                         <td>Rating</td>
                                         <td>Car</td>
                                         <td>Action<td>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php if(!empty($this->res_any) && count($this->res_any) > 0) { 
-                                            $this->res_any = array_filter($this->res_any, function($input){
-                                                return $input['ride_as'] == 'P';
-                                            });
-                                    ?>
-                                        <?php foreach($this->res_any as $res) { ?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $res['firstname'] . ' ' . $res['lastname'];?>
-                                            </td>
-                                            <td>
-                                                {rating}
-                                            </td>
-                                            <td>
-                                                {car_name}
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-sm btn-round btn-outline-danger m-1"
-                                                    type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
-                                                    data-id="<?php echo $res['userid'];?>" >
-                                                    Message
-                                                </button>
-                                                <button class="btn btn-sm btn-round btn-outline-danger  m-1"
-                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
-                                                    data-id="<?php echo $res['userid'];?>" >
-                                                    View profile
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    <?php } ?>
+                                <tbody>                     
+                                    <?php foreach($this->res_any as $res) { ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $res['firstname'] . ' ' . $res['lastname'];?>
+                                        </td>
+                                        <td>
+                                            {rating}
+                                        </td>
+                                        <td>
+                                            {car_name}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-round btn-outline-danger m-1"
+                                                type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
+                                                data-id="<?php echo $res['userid'];?>" >
+                                                Message
+                                            </button>
+                                            <button class="btn btn-sm btn-round btn-outline-danger  m-1"
+                                                type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
+                                                data-id="<?php echo $res['userid'];?>" >
+                                                View profile
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php }  ?>
                                 </tbody>
                                 <tr>
                                 </tr>
                             </table>
                         </div>
+
                     <?php }else { ?>
-                        <p>No matching results. Post a request</p>
-                    <?php } ?>
+
+                        <p>No matching results.</p>
+                        <a href="#">
+                            Post a ride
+                        </a>
+
+                    <?php }
+
+                        }
+                    ?>
                 </div>
             </div>
 

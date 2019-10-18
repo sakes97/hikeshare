@@ -10,7 +10,7 @@
                         <div class="col-12">
                             <h1>Driver has accepted users request</h1>
                             <h3>Message user to start a conversation</h3>
-                            <a href="<?php echo URL;?>dashboard/frmMessages" class="btn btn-default btn-sm">
+                            <a href="#" class="btn btn-default btn-sm">
                                 Message
                             </a>
                         </div>
@@ -19,7 +19,20 @@
 
             <?php 
                     }
-                } 
+                }  else if($_GET['view'] == 'offer') {
+                            if($_GET['status'] == 'success') {
+            ?>
+                    <!-- driver made an offer to a passengers request post --> 
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>Your offer has gone through. Please wait promptly for user to respond to your offer</h1>
+                        </div>
+                    </div>
+
+
+            <?php 
+                    } 
+                }
             ?>
         <?php } else if($_GET['as'] == 'p') {
             //passenger
@@ -44,11 +57,21 @@
                     
             <?php 
                     }
-                }
+                } else if ($_GET['view'] == 'request') {
+                          if($_GET['status'] == 'success') {
             ?>
 
-
-        <?php } ?>
+                            <!--when a passenger makes an offer to a drivers lift post --> 
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1>Request successful. Please wait for driver to respond</h1>
+                                </div>
+                            </div>
+        <?php 
+                    }
+                }
+            }
+        ?>
         
     </div>
 </div>

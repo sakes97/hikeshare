@@ -678,7 +678,7 @@ class Dashboard_Model extends Model
             Database::Execute($query, $params);
 
             if(!empty($this->getRequest($reqid))){
-                header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+                header('location:' . URL . 'dashboard/frmNoti?as=p&view=request&status=success');
             }else{
                 header('location:' . URL . 'err/index?request=fail&as=passenger');
             }
@@ -697,9 +697,9 @@ class Dashboard_Model extends Model
             Database::Execute($query, $params);
 
             if(!empty($this->getRequest($reqid))){
-                header('location:' . URL . 'dashboard/frmNoti?as=passenger&request=success');
+                header('location:' . URL . 'dashboard/frmNoti?as=d&view=offer&status=success');
             }else{
-                header('location:' . URL . 'err/index?request=fail&as=driver');
+                header('location:' . URL . 'err/index?request=fail&as=d');
             }
         }
 

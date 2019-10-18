@@ -413,7 +413,13 @@ class Dashboard_Model extends Model
         );
         return Database::GetAll($query,$params);
     }
-    
+
+    public function getRequestsByUser($userid)
+    {
+        $query = 'CALL uspGetRequestsByUser(:userid)';
+        $params = array(':userid'=>$userid);
+        return Database::GetAll($query, $params);
+    }
     #endregion
 
     #region Execute Functions

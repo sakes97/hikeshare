@@ -195,6 +195,7 @@ class Dashboard extends Controller
         $this->_getOffer($rideid, $this->_userid);
         $this->_getTripAndReturn($this->_userid,$rideid);
         $this->_getTripSchedule($rideid);
+        $this->_getRequestsByUser($this->_userid);
         $this->_search_Any();
         $this->view->render('dashboard/ride/results', 'user_nav');
     }
@@ -348,10 +349,6 @@ class Dashboard extends Controller
         $this->view->pasBookedTrips = $this->model->getPassengerBookedTrips($userid);
     }
 
-    // private function _getBookedTrips_O($rideid=null, $passengerid=null, $driverid=null)
-    // {
-    //     $this->view->upcomingBkdTrips = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
-    // }
     private function _getBookedTrips_O_P($rideid=null, $passengerid=null, $driverid=null)
     {
         $this->view->upcomingBkdTrips_P = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
@@ -359,6 +356,11 @@ class Dashboard extends Controller
     private function _getBookedTrips_O_D($rideid=null, $passengerid=null, $driverid=null)
     {
         $this->view->upcomingBkdTrips_D = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
+    }
+
+    private function _getRequestsByUser($userid)
+    {
+        $this->view->users_requests = $this->model->getRequestsByUser($userid);
     }
 
     #endregion

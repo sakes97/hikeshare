@@ -482,7 +482,7 @@ class Dashboard_Model extends Model
             $from = $_POST['origin-input'];
             $to = $_POST['destination-input'];
 
-            header("location:" . URL . 'dashboard/frmResults/'.$rideid.'?action=search-ride&role=driver&from='.$from.'&to='.$to);
+            header("location:" . URL . 'dashboard/frmResults/'.$rideid.'?action=search-ride&role=driver&for='.$rideid.'&from='.$from.'&to='.$to);
         }
         else
         {

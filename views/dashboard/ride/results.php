@@ -14,50 +14,69 @@
                     return $input['ride_as'] == 'P' && $input['status'] == 'Active';
                 });
                 if (count($this->res_any) > 0) {
-                    ?>
+            ?>
                 <p>Matching Results (<?php echo count($this->res_any); ?>)</p>
-                <div class="table-responsive">
-                    <table class="table table-borderless table-sm">
-                        <thead>
-                            <th>Passenger</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>When</th>
-                            <th colspan="2">Status</th>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($this->res_any as $any) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['departure_from']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['destination']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['departure_date']; ?>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-square btn-success">
-                                            <?php echo $any['status']; ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/request/<?php echo $any['rideid']; ?>/<?php echo $this->user['userid']; ?>/<?php echo $_GET['for']; ?>">
-                                            Offer ride
-                                        </a>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid']; ?>/<?php echo $any['rideid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-booking-post&as=d&for=<?php echo $_GET['for']; ?>">
-                                            View Details
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                
+
+                <div class="row">
+
+                   <div id="results-map" class="col-md-5 card card-body">
+                        <p>Map</p>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-sm">
+                                    <thead>
+                                        <th>Passenger</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>When</th>
+                                        <th colspan="2">Status</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($this->res_any as $any) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['departure_from']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['destination']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['departure_date']; ?>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-square btn-success">
+                                                        <?php echo $any['status']; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/request/<?php echo $any['rideid']; ?>/<?php echo $this->user['userid']; ?>/<?php echo $_GET['for']; ?>">
+                                                        Offer ride
+                                                    </a>
+                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid']; ?>/<?php echo $any['rideid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-booking-post&as=d&for=<?php echo $_GET['for']; ?>">
+                                                        View Details
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
+                
+                
+                
 
 
             <?php } else { ?>
@@ -278,58 +297,75 @@
                     return $input['ride_as'] == 'D' && $input['seats_available'] > 0;
                 });
                 if (count($this->res_any) > 0) {
-                    ?>
+            ?>
                 <p>Matching Results (<?php echo count($this->res_any); ?>)</p>
-                <div class="table-responsive">
-                    <table class="table table-borderless table-md">
-                        <thead>
-                            <th>Driver</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>When</th>
-                            <th>Seats Avail.</th>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($this->res_any as $any) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['departure_from']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['destination']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $any['departure_date']; ?>
-                                    </td>
-                                    <td id="idSeatsAvailable">
-                                        <?php echo $any['seats_available']; ?>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-default btn-square btn-sm" type="button" id="btnRequest" data-toggle="modal" data-target="#seats_for" data-id="<?php echo $any['rideid']; ?>">
-                                            Request
-                                        </button>
-                                        <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $any['rideid']; ?>/<?php echo $any['userid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-offer-post&as=p">
-                                            View Details
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                
+                
+                <div class="row">
+
+                    <div id="results-map" class="col-md-5 card card-body">
+                        <p>Map</p>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-md">
+                                    <thead>
+                                        <th>Driver</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>When</th>
+                                        <th>Seats Avail.</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($this->res_any as $any) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['departure_from']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['destination']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $any['departure_date']; ?>
+                                                </td>
+                                                <td id="idSeatsAvailable">
+                                                    <?php echo $any['seats_available']; ?>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-default btn-square btn-sm" type="button" id="btnRequest" data-toggle="modal" data-target="#seats_for" data-id="<?php echo $any['rideid']; ?>">
+                                                        Request
+                                                    </button>
+                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $any['rideid']; ?>/<?php echo $any['userid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-offer-post&as=p">
+                                                        View Details
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+
+                
             <?php } else { ?>
 
 
                 <div class="row">
 
-                    <div id="results-map" class="col-md-6 card card-body">
+                    <div id="results-map" class="col-md-5 card card-body">
                         <p>Map</p>
                     </div>
 
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-7 col-md-6">
                         <div class="card card-body">
                             <!-- one way -->
                             <?php if ($this->booking['return_trip'] == 'N' || $this->booking['return_trip'] == 'd') { ?>

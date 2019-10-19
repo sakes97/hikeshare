@@ -20,6 +20,8 @@ class Dashboard extends Controller
         //view title
         $this->view->title = "Dashboard";
 
+        // $this->view->this_id = $this->_userid;
+
         //get user details 
         $this->_getUserDetails($this->_userid);
         
@@ -34,13 +36,9 @@ class Dashboard extends Controller
 
 
         //as passenger
-        $pUserid = $this->_getUserID();
-        
-        $this->_getPassengerActivePosts($pUserid);
-        $this->_getRequests($pUserid);
-        
-        $this->_getBookedTrips_O_P(null,$pUserid,null);
-        $this->_getBookedTrips_O_D(null,null,$pUserid);
+        $this->_getPassengerActivePosts($this->_userid);
+        $this->_getRequests($this->_userid);
+
 
         //render view
         $this->view->render('dashboard/index', 'user_nav');
@@ -425,6 +423,18 @@ class Dashboard extends Controller
     {
         $this->model->sendMessage($conversationid, $senderid, $recipientid, $msg);
     }
+
+    /** ajax functions */
+    public function xhrGetMessages()
+    {
+        //$this->view->messages = $this->model->getMessages($conversationid);
+    }
+
+    public function xhrSendMessage()
+    {
+        // $this->model->sendMessage($conversationid, $senderid, $recipientid, $msg);        
+    }
+
 
     #endregion
 

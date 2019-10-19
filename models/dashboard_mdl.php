@@ -837,8 +837,13 @@ class Dashboard_Model extends Model
     #endregion
 
     #region EXECUTES
-    public function sendMessage($conversationid, $senderid, $recipientid, $msg)
+    public function sendMessage()
     {
+        $conversationid = Util::generate_id();
+        $senderid = null;
+        $recipientid = null;
+        $msg = null;
+
         $query = 'CALL uspSendMessage(:conversationid, :senderid, :recipientid, :msg)';
         $params = array(
             ':conversationid' => $conversationid, 
@@ -847,7 +852,7 @@ class Dashboard_Model extends Model
             ':msg' => htmlentities($msg)
         );
         Database::Execute($query, $params);
-
+        
     }
     #endregion
 

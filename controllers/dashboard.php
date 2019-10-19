@@ -426,9 +426,13 @@ class Dashboard extends Controller
     }
 
     /** ajax functions */
-    public function xhrGetMessages()
+    public function _xhrGetMessages()
     {
-        //$this->view->messages = $this->model->getMessages($conversationid);
+        $conversationid = $_POST['id'];
+
+        $data = $this->model->xhrGetMessages($conversationid);
+        if(count($data) > 0)
+            echo json_encode($data);
     }
 
     public function xhrSendMessage()

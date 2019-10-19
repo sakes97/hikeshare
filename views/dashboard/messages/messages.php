@@ -49,22 +49,19 @@
                     <div id="chat_container">
                                     
                         <div id="chat_box">
-
-                            <?php foreach($this->messages as $m) { ?>
-                                <div id="chat_data">
-
-                                    <span style="color:green;">
+                            <div id="chat_data">
+                                <?php foreach($this->messages as $m) { ?>
+                                    <p style="color:green;">
                                         <?php echo $m['Sender_Name'];?>
-                                    </span>
-                                    <span style="color:brown;">
+                                    </p>
+                                    <p style="color:brown;">
                                         <?php echo $m['msg'];?>
-                                    </span>
-                                    <span style="float:right;">
+                                    </p>
+                                    <p style="">
                                         <?php echo $m['sent_datetime'];?>
-                                    </span>
-
-                                </div>
-                            <?php } ?>
+                                    </p>
+                                <?php } ?>
+                            </div>
                         </div>
 
                         <form method="post" action="<?php echo URL;?>dashboard/sendMessage">

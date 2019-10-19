@@ -834,6 +834,15 @@ class Dashboard_Model extends Model
         $params = array(':conversationid' => $conversationid);
         return Database::GetAll($query, $params);
     }
+
+    public function xhrGetMessages($conversationid)
+    {
+        $query = 'CALL uspGetMessages(:conversationid)';
+        $params = array(':conversationid' => $conversationid);
+        $data = Database::GetAll($query, $params);
+        // $data = json_encode($data);
+        return $data;
+    }
     #endregion
 
     #region EXECUTES

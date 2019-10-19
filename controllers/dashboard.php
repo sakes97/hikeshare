@@ -195,6 +195,7 @@ class Dashboard extends Controller
         $this->view->title = "Matching Results";
         $this->_getUserDetails($this->_userid);
         $this->_getOffer($rideid, $this->_userid);
+        $this->_getBooking($this->_userid, $rideid);
         $this->_getTripAndReturn($this->_userid,$rideid);
         $this->_getTripSchedule($rideid);
         $this->_getRequestsByUser($this->_userid);

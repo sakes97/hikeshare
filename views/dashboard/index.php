@@ -88,12 +88,12 @@
                                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
-                                                Lifts I'm Offering As A Driver
+                                                Lifts As A Driver
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#ridesBooked">
-                                                Rides I've Requested As A Passenger
+                                                Lifts As A Passenger
                                             </a>
                                         </li>
                                     </ul>
@@ -115,6 +115,11 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#bookedDriver">
                                                 Booked
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#clubDriver">
+                                                Lift Club
                                             </a>
                                         </li>
                                     </ul>
@@ -276,6 +281,10 @@
                                                 <p>no booked trips</p>
                                             <?php } ?>
                                         </div>
+                                        <!--club--> 
+                                        <div class="tab-pane" id="clubDriver" role="tabpanel">
+                                            <p>Club placeholder</p>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -292,6 +301,11 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#bookedPassenger">
                                                 Booked
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#clubPassenger">
+                                                Lift Club
                                             </a>
                                         </li>
                                     </ul>
@@ -348,7 +362,7 @@
                                                                                                         View Details
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" 
-                                                                                                    href="<?php echo URL;?>dashboard/frmResults?action=find-match&role=passenger&for=<?php echo $request['rideid'];?>&from=<?php echo $request['departure_from'];?>&to=<?php echo $request['destination'];?>">
+                                                                                                    href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['rideid'];?>?action=find-match&role=passenger&for=<?php echo $request['rideid'];?>&from=<?php echo $request['departure_from'];?>&to=<?php echo $request['destination'];?>">
                                                                                                         Find Matches
                                                                                                     </a>
                                                                                                     <a class="dropdown-item" href="#">
@@ -443,6 +457,10 @@
                                                     </div>
                                                 </div>
                                             <?php } else {echo 'empty';} ?>
+                                        </div>
+                                        <!--club--> 
+                                        <div class="tab-pane" id="clubPassenger" role="tabpanel">
+                                            <p>Club placeholder</p>
                                         </div>
                                     </div>
                                 </div>

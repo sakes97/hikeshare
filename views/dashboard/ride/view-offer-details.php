@@ -107,10 +107,11 @@
                                             <a class="btn btn-default btn-square btn-sm" href="#">
                                                 Edit
                                             </a>
-                                            <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $this->rideOffer['departure_from']; ?>/<?php echo $this->rideOffer['destination']; ?>?role=driver">
+                                            <a class="btn btn-default btn-square btn-sm" 
+                                            href="<?php echo URL;?>dashboard/frmResults/<?php echo $this->rideOffer['rideid'];?>?action=find-match&role=driver&for=<?php echo $this->rideOffer['rideid'];?>&from=<?php echo $this->rideOffer['departure_from'];?>&to=<?php echo $this->rideOffer['destination'];?>">
                                                 Find Matches
                                             </a>
-                                            <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
+                                            <a class="btn btn-default btn-square btn-sm" href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type']; ?>">
                                                 Delete
                                             </a>
                                         </div>
@@ -269,7 +270,8 @@
                                             <a class="btn btn-default btn-square btn-sm" href="#">
                                                 Edit
                                             </a>
-                                            <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmResults/<?php echo $this->rideOffer['departure_from']; ?>/<?php echo $this->rideOffer['destination']; ?>?role=driver">
+                                            <a class="btn btn-default btn-square btn-sm" 
+                                            href="<?php echo URL;?>dashboard/frmResults/<?php echo $this->rideOffer['rideid'];?>?action=find-match&role=driver&for=<?php echo $this->rideOffer['rideid'];?>&from=<?php echo $this->rideOffer['departure_from'];?>&to=<?php echo $this->rideOffer['destination'];?>">
                                                 Find Matches
                                             </a>
                                             <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/deleteTravel/<?php echo $this->rideOffer['return_trip']; ?>/<?php echo $this->rideOffer['rideid']; ?>/<?php echo $this->rideOffer['driverid']; ?>/<?php echo $this->rideOffer['ride_type'];?>">

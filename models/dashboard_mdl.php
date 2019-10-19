@@ -384,13 +384,6 @@ class Dashboard_Model extends Model
         return Database::GetAll($query, $params);
     }
 
-    public function getRequests($userid)
-    {
-        $query = 'CALL uspGetRequests(:userid)';
-        $params = array(':userid'=>$userid);
-        return Database::GetAll($query, $params);
-    }
-
     public function getPassengerBookedTrips($userid)
     {
         $query = 'CALL uspGetPassengerBookedTrips(:userid)';

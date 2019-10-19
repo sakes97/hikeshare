@@ -144,8 +144,8 @@
                                                                                 <th>To</th>
                                                                                 <th>When</th>
                                                                                 <th>Seats Left</th>
-                                                                                <th>Total Requests</th>
-                                                                                <th colspan="2">Status</th>
+                                                                                <th>Tot. Requests</th>
+                                                                                <th></th>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <?php foreach ($this->activeOffers as $offer) { ?>
@@ -172,11 +172,6 @@
                                                                                             <?php } else { ?>
                                                                                                 <?php echo $offer['request_count'];?>
                                                                                             <?php } ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-sm btn-square btn-primary">
-                                                                                                <?php echo $offer['status'];?>
-                                                                                            </button>
                                                                                         </td>
                                                                                         <td>
                                                                                             <div class="dropdown-container">

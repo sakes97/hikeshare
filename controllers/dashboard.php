@@ -37,7 +37,7 @@ class Dashboard extends Controller
 
         //as passenger
         $this->_getPassengerActivePosts($this->_userid);
-        $this->_getRequests($this->_userid);
+        $this->_getRequestsByUser($this->_userid);
 
 
         //render view
@@ -340,11 +340,6 @@ class Dashboard extends Controller
     private function _getTripsPassengers($rideid)
     {
         $this->view->passengers = $this->model->getTripsPassengers($rideid);
-    }
-
-    private function _getRequests($userid)
-    {
-        $this->view->pas_req = $this->model->getRequests($userid);
     }
 
     private function _getPassengerBookedTrips($userid)

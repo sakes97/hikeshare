@@ -79,7 +79,7 @@
                                         One Way Trip
                                     </h6>
                                     <div class="table-responsive">
-                                        <table class="table table-sm table-borderless">
+                                        <table class="table table-md table-borderless">
                                             <thead>
                                                 <th>From</th>
                                                 <th>To</th>

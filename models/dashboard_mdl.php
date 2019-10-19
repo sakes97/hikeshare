@@ -839,20 +839,27 @@ class Dashboard_Model extends Model
     #region EXECUTES
     public function sendMessage()
     {
-        $conversationid = Util::generate_id();
-        $senderid = null;
-        $recipientid = null;
-        $msg = null;
+        if(isset($_POST['conversationid']))
+        {
+            $conversationid = $_POST['conversationid'];
+        }else{
+            $conversationid = Util::generate_id();
+        }
+
+        $senderid = $_POST['senderid'];
+        $recipientid = $_POST['recipientid'];
+        $msg = $_POST['msg'];
 
         $query = 'CALL uspSendMessage(:conversationid, :senderid, :recipientid, :msg)';
         $params = array(
             ':conversationid' => $conversationid, 
             ':senderid' => $senderid, 
-            ':recipient' => $recipientid,
+            ':recipientid' => $recipientid,
             ':msg' => htmlentities($msg)
         );
+
         Database::Execute($query, $params);
-        
+        header("location:" . URL . "dashboard/frmMessages/null/".$conversationid."?view=user-chat");
     }
     #endregion
 

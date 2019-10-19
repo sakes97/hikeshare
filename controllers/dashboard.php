@@ -399,10 +399,11 @@ class Dashboard extends Controller
     #endregion
 
     #region Messages
-    public function frmMessages($senderid=NULL, $recipientid=NULL, $conversationid=NULL)
+    public function frmMessages($userid=null,$conversationid=null)
     {
         $this->view->title = "Message";
-        $this->_getUsersConversations($this->_userid);
+        $this->_getUserDetails($this->_userid);
+        $this->_getUsersConversations($userid);
         $this->_getMessages($conversationid);
         $this->view->css = 'public/css/message.css';
         $this->view->render('dashboard/messages/messages','user_nav');
@@ -419,9 +420,9 @@ class Dashboard extends Controller
         $this->view->messages = $this->model->getMessages($conversationid);
     }
 
-    public function sendMessage($conversationid, $senderid, $recipientid, $msg)
+    public function sendMessage()
     {
-        $this->model->sendMessage($conversationid, $senderid, $recipientid, $msg);
+        $this->model->sendMessage();
     }
 
     /** ajax functions */

@@ -172,32 +172,6 @@
                                         </table>
                                     </div>
 
-                                    <h5>Return Trip</h5>
-                                    <div class="table-responsive">
-                                        <table class="table table-md table-borderless">
-                                            <thead>
-                                                <th>From</th>
-                                                <th>To</th>
-                                                <th>When</th>
-                                                <th>Seats Avail.</th>
-                                            </thead>
-                                            <tbody>
-                                                <td>
-                                                    <?php echo $this->returnTrip[1]['departure_from']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $this->returnTrip[1]['destination']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $this->returnTrip[1]['departure_date']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $this->returnTrip[1]['seats_available']; ?>
-                                                </td>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
                                     <a class="btn btn-danger btn-sm" href="#">Delete</a>
                                 </div>
 
@@ -216,6 +190,9 @@
 
                                 <!-- trip details -->
                                 <div class="row">
+                                    <h6 class="alert alert-info ml-2">
+                                        Lift Club
+                                    </h6>
                                     <div class="table-responsive">
                                         <table class="table table-md table-borderless">
                                             <thead>
@@ -247,15 +224,15 @@
 
                                                         <?php
 
-                                                                    $count = count($this->trip_schedule);
-                                                                    foreach ($this->trip_schedule as $ts) {
-                                                                        $count--;
-                                                                        if ($count > 0)
-                                                                            echo $ts['dow'] . ', ';
-                                                                        else
-                                                                            echo $ts['dow'];
-                                                                    }
-                                                                    ?>
+                                                            $count = count($this->trip_schedule);
+                                                            foreach ($this->trip_schedule as $ts) {
+                                                                $count--;
+                                                                if ($count > 0)
+                                                                    echo $ts['dow'] . ', ';
+                                                                else
+                                                                    echo $ts['dow'];
+                                                            }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             </tfoot>

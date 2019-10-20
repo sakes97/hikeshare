@@ -28,17 +28,17 @@ class Dashboard extends Controller
         //as driver
         $this->_getNumOfActiveOffers($this->_userid);
         $this->_getActiveOffers($this->_userid);
-        
-        $this->_getAllRequestCount();
-        
-        $this->_getBookedTrips_O_D(NULL,NULL,$this->_userid);
-        $this->_getBookedTrips_O_P(null,$this->_userid,null);
-
+        $this->_getBkd_Club_D(null, $this->_userid);
+        $this->_getBookedTrips_O_D(NULL,$this->_userid);
 
         //as passenger
         $this->_getPassengerActivePosts($this->_userid);
         $this->_getRequestsByUser($this->_userid);
+        $this->__getBkd_Club_P($this->_userid, null);
+        $this->_getBookedTrips_O_P($this->_userid,null);
 
+
+        $this->_getAllRequestCount();
 
         //render view
         $this->view->render('dashboard/index', 'user_nav');
@@ -348,23 +348,24 @@ class Dashboard extends Controller
         $this->view->pasBookedTrips = $this->model->getPassengerBookedTrips($userid);
     }
 
-    private function _getBookedTrips_O_P($rideid=null, $passengerid=null, $driverid=null)
+    private function _getBookedTrips_O_P($passengerid=null, $driverid=null)
     {
-        $this->view->upcomingBkdTrips_P = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
+        $this->view->upcomingBkdTrips_P = $this->model->getBookedTrips_O($passengerid,$driverid);
     }
-    private function _getBookedTrips_O_D($rideid=null, $passengerid=null, $driverid=null)
+    
+    private function _getBookedTrips_O_D($passengerid=null, $driverid=null)
     {
-        $this->view->upcomingBkdTrips_D = $this->model->getBookedTrips_O($rideid,$passengerid,$driverid);
-    }
-
-    private function _getBookedTrips_R_D($rideid=null, $passengerid=null, $driverid=null)
-    {
-        $this->view->upcomingBkd_R_D = $this->model->getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null);
+        $this->view->upcomingBkdTrips_D = $this->model->getBookedTrips_O($passengerid,$driverid);
     }
 
-    private function _getBookedTrips_R_P($rideid=null, $passengerid=null, $driverid=null)
+    private function _getBkd_Club_D($passengerid=null, $driverid=null)
     {
-        $this->view->upcomingBkd_R_P = $this->model->getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null);
+        $this->view->club_D = $this->model->getBookedTrips_R($passengerid, $driverid);
+    }
+
+    private function __getBkd_Club_P($passengerid=null, $driverid=null)
+    {
+        $this->view->club_P = $this->model->getBookedTrips_R($passengerid, $driverid);
     }
     
     private function _getRequestsByUser($userid)

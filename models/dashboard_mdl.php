@@ -398,22 +398,20 @@ class Dashboard_Model extends Model
         return Database::GetRow($query, $params);
     }
 
-    public function getBookedTrips_O($rideid=null, $passengerid=null,$driverid=null)
+    public function getBookedTrips_O($passengerid=null,$driverid=null)
     {
-        $query='CALL uspGetBookedTrips_O(:rideid, :passengerid, :driverid)';
+        $query='CALL uspGetBookedTrips_O(:passengerid, :driverid)';
         $params = array(
-            ':rideid'=>$rideid,
             ':passengerid'=>$passengerid,
             ':driverid'=>$driverid
         );
         return Database::GetAll($query,$params);
     }
 
-    public function getBookedTrips_R($rideid=null, $passengerid=null, $driverid=null)
+    public function getBookedTrips_R($passengerid=null, $driverid=null)
     {
-        $query = 'CALL uspGetBookedTrips_R(:rideid, :passengerid, :driverid)';
+        $query = 'CALL uspGetBookedTrips_R(:passengerid, :driverid)';
         $params = array(
-            ':rideid' => $rideid,
             ':passengerid' => $passengerid,
             ':driverid' => $driverid
         );

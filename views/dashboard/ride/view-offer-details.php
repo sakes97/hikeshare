@@ -9,7 +9,7 @@
                 <div class="row">
 
 
-                    <div id="map" class="col-6 shadow-sm">
+                    <div id="map" class="col-6 card card-body">
                         <img  src="" alt="Dummy Map">
                     </div>
 
@@ -101,7 +101,7 @@
                                 </div>
 
                                 <!-- buttons -->
-                                <?php if(date('Y-m-d' ,strtotime($this->rideOffer['departure_date'])) > date('Y-m-d')) { ?>
+                                <?php if(date('Y-m-d' ,strtotime($this->rideOffer['departure_date'])) > date('Y-m-d') && $this->rideOffer['status'] !== 'Booked' && $this->rideOffer['status'] !== 'Expired' && $this->rideOffer['status'] !== 'Inactive') { ?>
                                     <div class="row">
                                         <div class="col-12">
                                             <a class="btn btn-default btn-square btn-sm" href="#">
@@ -125,6 +125,10 @@
                                                 </span>
                                             <?php } else if($this->rideOffer['status'] == 'Expired') { ?>
                                                 <span class="btn btn-square btn-danger btn-sm">
+                                                    <?php echo $this->rideOffer['status']; ?>
+                                                </span>
+                                            <?php } else if ($this->rideOffer['status'] == 'Inactive') { ?>
+                                                <span class="btn btn-square btn-warning btn-sm">
                                                     <?php echo $this->rideOffer['status']; ?>
                                                 </span>
                                             <?php } ?>
@@ -296,6 +300,10 @@
                                                 </span>
                                             <?php } else if($this->rideOffer['status'] == 'Expired') { ?>
                                                 <span class="btn btn-square btn-danger btn-sm">
+                                                    <?php echo $this->rideOffer['status']; ?>
+                                                </span>
+                                            <?php } else if($this->rideOffer['status'] == 'Inactive')  {?>
+                                                <span class="btn btn-square btn-warning btn-sm">
                                                     <?php echo $this->rideOffer['status']; ?>
                                                 </span>
                                             <?php } ?>

@@ -192,7 +192,7 @@
                                 <div class="col-12">
                                     <div class="table-responsive">
                                         
-                                        <table class="table table-borderless">
+                                        <table class="table table-borderless table-sm">
                                             <thead>
                                                 <th colspan="4" class="text-center">
                                                     Drivers offering to give you a ride
@@ -279,22 +279,44 @@
                             </div>
 
                             <!-- buttons -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <a class="btn btn-default btn-square btn-sm" href="#">
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                    href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
-                                        Delete
-                                    </a>
-                                    <a class="btn btn-default btn-square btn-sm" 
-                                        href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
-                                        Find Matches
-                                    </a>
-                                </div>
+                            
 
-                            </div>
+                            <!-- buttons -->
+                                <?php if(date('Y-m-d' ,strtotime($this->booking['departure_date'])) > date('Y-m-d') && $this->booking['status'] !== 'Booked' && $this->booking['status'] !== 'Expired' && $this->booking['status'] !== 'Inactive') { ?>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a class="btn btn-default btn-square btn-sm" href="#">
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-default btn-square btn-sm" 
+                                            href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
+                                                Delete
+                                            </a>
+                                            <a class="btn btn-default btn-square btn-sm" 
+                                                href="<?php echo URL;?>dashboard/frmResults/<?php echo $request['departure_from'];?>/<?php echo $request['destination'];?>?role=passenger">
+                                                Find Matches
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php  } else { ?>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <?php if($this->booking['status'] == 'Booked') { ?>
+                                                <span class="btn btn-square btn-success btn-sm">
+                                                    <?php echo $this->booking['status']; ?>
+                                                </span>
+                                            <?php } else if($this->booking['status'] == 'Expired') { ?>
+                                                <span class="btn btn-square btn-danger btn-sm">
+                                                    <?php echo $this->booking['status']; ?>
+                                                </span>
+                                            <?php } else if ($this->booking['status'] == 'Inactive') { ?>
+                                                <span class="btn btn-square btn-warning btn-sm">
+                                                    <?php echo $this->booking['status']; ?>
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
 
 
                             <!-- date and time -->

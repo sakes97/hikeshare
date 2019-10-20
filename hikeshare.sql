@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 02:59 AM
+-- Generation Time: Oct 20, 2019 at 07:19 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -86,6 +86,10 @@ WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
     and 
     ride.departure_date >= current_date()$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllRequests` ()  NO SQL
+SELECT *
+FROM request$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAllUsers` ()  NO SQL
 select * 
 from user 
@@ -100,9 +104,9 @@ WHERE ride.ride_as = 'D' and ride.rideid = request.rideid
     and 
     ride.departure_date >= current_date()$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips_O` (IN `rideid` VARCHAR(11), IN `passengerid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips_O` (IN `passengerid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 SELECT  rg.*, CONCAT(driver_user.firstname, ' ' ,driver_user.lastname) AS driver_name, CONCAT(passenger_user.firstname, ' ' ,passenger_user.lastname) AS passenger_name,
-r.departure_from, r.destination ,r.departure_date, r.contribution_per_head
+r.departure_from, r.destination ,r.departure_date, r.contribution_per_head, r.status
 
 FROM ridegroup rg 
 
@@ -111,18 +115,17 @@ INNER JOIN user passenger_user ON rg.passengerid = passenger_user.userid
 INNER JOIN ride r ON r.rideid = rg.rideid
 
 WHERE 
-(rg.rideid = rideid or rg.passengerid = passengerid 
+(rg.passengerid = passengerid 
 or rg.driverid = driverid)
 and 
 r.departure_date >= current_date()
-and
-r.ride_type =  'O'
+
 
 group by rg.rideid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips_R` (IN `rideid` VARCHAR(11), IN `passengerid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBookedTrips_R` (IN `passengerid` VARCHAR(11), IN `driverid` VARCHAR(11))  NO SQL
 SELECT  rg.*, CONCAT(driver_user.firstname, ' ' ,driver_user.lastname) AS driver_name, CONCAT(passenger_user.firstname, ' ' ,passenger_user.lastname) AS passenger_name,
-r.departure_from, r.destination ,r.departure_date, r.contribution_per_head
+r.departure_from, r.destination ,r.departure_date, r.departure_time, r.return_time ,r.contribution_per_head
 
 FROM ridegroup rg 
 
@@ -131,12 +134,11 @@ INNER JOIN user passenger_user ON rg.passengerid = passenger_user.userid
 INNER JOIN ride r ON r.rideid = rg.rideid
 
 WHERE 
-(rg.rideid = rideid or rg.passengerid = passengerid 
+(rg.passengerid = passengerid 
 or rg.driverid = driverid)
 and 
-r.departure_date >= current_date()
-and
 r.ride_type =  'R'
+and r.status = 'Booked'
 
 group by rg.rideid$$
 
@@ -590,9 +592,10 @@ INSERT INTO `request` (`requestid`, `rideid`, `matching_rideid`, `userid`, `date
 
 CREATE TABLE `review` (
   `reviewid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rideid` int(11) NOT NULL,
-  `rating` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reviewerid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revieweeid` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rideid` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating` int(11) NOT NULL,
   `comment` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

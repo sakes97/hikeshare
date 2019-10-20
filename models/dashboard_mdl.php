@@ -420,6 +420,12 @@ class Dashboard_Model extends Model
         
     }
 
+    public function getAllRequests()
+    {
+        $query = 'CALL uspGetAllRequests()';
+        return Database::GetAll($query);
+    }
+
     public function getRequestsByUser($userid)
     {
         $query = 'CALL uspGetRequestsByUser(:userid)';

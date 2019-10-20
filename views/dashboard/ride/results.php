@@ -3,7 +3,7 @@
         <!-- driver -->
         <?php if ($_GET['role'] == 'driver') { ?>
             <h3 class="mb-3">matching results for this driver</h3>
-
+<?php print_r($this->all_requests);?>
             <?php
                 /**
                  * (FOR DRIVER)

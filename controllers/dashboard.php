@@ -201,6 +201,7 @@ class Dashboard extends Controller
         $this->_getRequestsByUser($this->_userid);
         $this->_search_Any();
         $this->_getRidesRequests($rideid);
+        $this->_getAllRequests();
         $this->view->render('dashboard/ride/results', 'user_nav');
     }
 
@@ -373,6 +374,10 @@ class Dashboard extends Controller
         $this->view->users_requests = $this->model->getRequestsByUser($userid);
     }
 
+    private function _getAllRequests()
+    {
+        $this->view->all_requests = $this->model->getAllRequests();
+    }
     #endregion
 
     #region Reviews

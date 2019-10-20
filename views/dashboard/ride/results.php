@@ -395,46 +395,136 @@
 
                     <div class="col-md-7">
                         <div class="card card-body">
-                            <div class="table-responsive">
-                                <table class="table table-borderless table-md">
-                                    <thead>
-                                        <th>Driver</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>When</th>
-                                        <th>Seats Avail.</th>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($this->res_any as $any) { ?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $any['departure_from']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $any['destination']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $any['departure_date']; ?>
-                                                </td>
-                                                <td id="idSeatsAvailable">
-                                                    <?php echo $any['seats_available']; ?>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-default btn-square btn-sm" type="button" id="btnRequest" data-toggle="modal" data-target="#seats_for" data-id="<?php echo $any['rideid']; ?>">
-                                                        Request
-                                                    </button>
-                                                    <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $any['rideid']; ?>/<?php echo $any['userid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-offer-post&as=p">
-                                                        View Details
+                            
+                            <!--wrapper nav-->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul id="tabs" class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#Matches">
+                                                        Matches
                                                     </a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#AwaitingResponse">
+                                                        Awaiting Response
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#OffersMade">
+                                                        Your Requests Made
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        
+                        
+                            <div class="row">
+                                <div id="my-result-tab-content" class="tab-content">
+                                    
+                                    <!-- matches -->
+                                    <div class="tab-pane active" id="Matches" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-md">
+                                                <thead>
+                                                    <th>Driver</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>When</th>
+                                                    <th>Seats Avail.</th>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($this->res_any as $any) { ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $any['firstname'] . ' ' . $any['lastname']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $any['departure_from']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $any['destination']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $any['departure_date']; ?>
+                                                            </td>
+                                                            <td id="idSeatsAvailable">
+                                                                <?php echo $any['seats_available']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-default btn-square btn-sm" type="button" id="btnRequest" data-toggle="modal" data-target="#seats_for" data-id="<?php echo $any['rideid']; ?>">
+                                                                    Request
+                                                                </button>
+                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/View_Offer_Details/<?php echo $any['rideid']; ?>/<?php echo $any['userid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-offer-post&as=p">
+                                                                    View Details
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!--awaiting response-->
+                                    <div class="tab-pane" id="AwaitingResponse" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-md">
+                                                <thead>
+                                                    <th>Driver</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>When</th>
+                                                    <th>Your Response</th>
+                                                </thead>
+                                                <tbody>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-round btn-outline-danger" type="button">
+                                                            <i class="fas fa-check-circle fa-1x"></i>
+                                                        </button>
+                                                        <button class="btn btn-round btn-outline-danger btn-sm" type="button">
+                                                            <i class="fas fa-times-circle"></i>
+                                                        </button>
+                                                    </td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!--offers made -->
+                                    <div class="tab-pane" id="OffersMade" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-md">
+                                                <thead>
+                                                    <th>Driver</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>When</th>
+                                                    <th>Driver Response</th>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 

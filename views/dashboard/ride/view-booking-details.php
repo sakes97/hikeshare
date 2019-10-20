@@ -10,12 +10,12 @@
                 <!--as driver -->
                 <div class="row">
 
-                    <div id="map" class="col-6 shadow-sm">
+                    <div id="map" class="col-sm-12 col-md-5 card card-body">
                         <img  src="" alt="Dummy Map">
                     </div>
 
 
-                    <div id="details" class="col-6">
+                    <div id="details" class="col-sm-12 col-md-7">
 
                         <div class="card card-body">
                         
@@ -175,12 +175,12 @@
                 <!-- as passenger -->
                 <div class="row">
 
-                    <div id="map" class="col-6 shadow-sm">
+                    <div id="map" class="col-sm-12 col-md-7 card card-body">
                         <img  src="" alt="Dummy Map">
                     </div>
 
 
-                    <div id="details" class="col-6">
+                    <div id="details" class="col-sm-12 col-md-7">
 
 
                         <div class="card card-body">

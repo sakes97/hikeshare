@@ -298,7 +298,7 @@
                                                                             <?php foreach($this->club_D as $club) { ?> 
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <?php echo $club['departure_date'];?>
+                                                                                            <?php echo date('d M Y', strtotime($club['departure_date']));?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php echo $club['departure_from'];?>
@@ -533,7 +533,7 @@
                                                                                             <?php echo $club['driver_name'];?>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <?php echo $club['departure_date'];?>
+                                                                                            <?php echo date('d M Y', strtotime($club['departure_date']));?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php echo $club['departure_from'];?>

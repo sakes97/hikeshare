@@ -39,8 +39,8 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#AwaitingResponse">
-                                                        Awaiting Response
+                                                    <a class="nav-link" data-toggle="tab" href="#PassengerRequests">
+                                                        Passenger Requests
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
@@ -102,8 +102,8 @@
                                         </div>
                                     </div>
 
-                                    <!--awaiting response-->
-                                    <div class="tab-pane" id="AwaitingResponse" role="tabpanel">
+                                    <!--passenger requests-->
+                                    <div class="tab-pane" id="PassengerRequests" role="tabpanel">
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-md">
                                                 <thead>
@@ -408,8 +408,8 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#AwaitingResponse">
-                                                        Awaiting Response
+                                                    <a class="nav-link" data-toggle="tab" href="#DriversOffers">
+                                                        Driver Offers
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
@@ -472,7 +472,7 @@
                                     </div>
 
                                     <!--awaiting response-->
-                                    <div class="tab-pane" id="AwaitingResponse" role="tabpanel">
+                                    <div class="tab-pane" id="DriversOffers" role="tabpanel">
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-md">
                                                 <thead>
@@ -509,7 +509,7 @@
                                                     <th>From</th>
                                                     <th>To</th>
                                                     <th>When</th>
-                                                    <th>Driver Response</th>
+                                                    <th>Status</th>
                                                 </thead>
                                                 <tbody>
                                                     

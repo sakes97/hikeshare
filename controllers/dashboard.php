@@ -200,6 +200,7 @@ class Dashboard extends Controller
         $this->_getTripSchedule($rideid);
         $this->_getRequestsByUser($this->_userid);
         $this->_search_Any();
+        $this->_getRidesRequests($rideid);
         $this->view->render('dashboard/ride/results', 'user_nav');
     }
 

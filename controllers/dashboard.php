@@ -34,7 +34,7 @@ class Dashboard extends Controller
         //as passenger
         $this->_getPassengerActivePosts($this->_userid);
         $this->_getRequestsByUser($this->_userid);
-        $this->__getBkd_Club_P($this->_userid, null);
+        $this->_getBkd_Club_P($this->_userid, null);
         $this->_getBookedTrips_O_P($this->_userid,null);
 
 
@@ -363,7 +363,7 @@ class Dashboard extends Controller
         $this->view->club_D = $this->model->getBookedTrips_R($passengerid, $driverid);
     }
 
-    private function __getBkd_Club_P($passengerid=null, $driverid=null)
+    private function _getBkd_Club_P($passengerid=null, $driverid=null)
     {
         $this->view->club_P = $this->model->getBookedTrips_R($passengerid, $driverid);
     }

@@ -455,7 +455,61 @@
                                         </div>
                                         <!--club--> 
                                         <div class="tab-pane" id="clubPassenger" role="tabpanel">
-                                            <p>Club placeholder</p>
+                                            <?php if(count($this->club_P) > 0 && !empty($this->club_P)) { ?>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-borderless table-sm">
+                                                                        <thead>
+                                                                            <th>Driver</th>
+                                                                            <th>From</th>
+                                                                            <th>To</th>
+                                                                            <th>Contribution</th>
+                                                                            <th>Depature Time</th>
+                                                                            <th>Return Time</th>
+                                                                            <th></th>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php foreach($this->club_P as $club) { ?> 
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <?php echo $club['driver_name'];?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $club['departure_from'];?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $club['destination'];?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $club['contribution_per_head'];?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo date('H:i', strtotime($club['departure_time']));?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo date('H:i', strtotime($club['return_time']));?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <a href="#" class="btn btn-sm btn-default btn-square">
+                                                                                                View Details
+                                                                                            </a>
+                                                                                            <a href="#" class="btn btn-sm btn-square btn-outline-danger">
+                                                                                                Leave Club
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                            <?php } ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } else {echo "no active clubs";} ?>
                                         </div>
                                     </div>
                                 </div>

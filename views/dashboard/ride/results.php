@@ -66,7 +66,7 @@
                                 </div>
                             </div>
 
-<?php print_r($offers_made); ?>
+<!-- <?php print_r($offers_made); ?> -->
 
                             <div class="row">
                                 <div id="my-result-tab-content" class="tab-content">
@@ -190,7 +190,37 @@
                                                         <th>Passenger Response</th>
                                                     </thead>
                                                     <tbody>
-                                                        
+                                                        <?php foreach($offers_made as $o) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php echo $o['Passenger_Name'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $o['departure_from'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $o['destination'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $o['departure_date'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php if($o['request_status'] == 'Awaiting Response'){ ?>
+                                                                        <span class="alert alert-info">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php }else if($o['request_status'] == 'Accepted'){ ?>
+                                                                        <span class="alert alert-success">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php }else if($o['request_status'] == 'Declined') { ?>
+                                                                        <span class="alert alert-danger">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                             </div>

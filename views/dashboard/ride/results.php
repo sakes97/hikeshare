@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <!-- driver -->
         <?php if ($_GET['role'] == 'driver') { ?>
-            <h3 class="mb-3">matching results for this driver</h3>
-<?php print_r($this->all_requests);?>
+            <h3 class="mb-3">Ride Matches</h3>
+
             <?php
                 /**
                  * (FOR DRIVER)
@@ -15,12 +15,11 @@
                 });
                 if (count($this->res_any) > 0) {
             ?>
-                <p>Matching Results (<?php echo count($this->res_any); ?>)</p>
                 
 
                 <div class="row">
 
-                   <div id="results-map" class="col-md-5 card card-body">
+                    <div id="results-map" class="col-md-5 card card-body">
                         <p>Map</p>
                     </div>
 
@@ -35,17 +34,30 @@
                                             <ul id="tabs" class="nav nav-tabs" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#Matches">
-                                                        Matches
+                                                        Passenger Matches <span class="badge badge-default"><?php echo count($this->res_any);?></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#PassengerRequests">
-                                                        Passenger Requests
+                                                        Passenger Requests <span class="badge badge-warning"><?php echo count($this->rides_requests);?></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OffersMade">
-                                                        Your Offers Made
+                                                        Your Offers Made 
+                                                        <span class="badge badge-primary">
+                                                            <?php 
+                                                                /**
+                                                                 * $this->users_requests returns all requests made by the user
+                                                                 * filter the array to return only offers made to users that have a matching ride
+                                                                 */
+                                                                $offers_made = array_filter($this->users_requests, function($u_r) {
+                                                                    return $u_r['matching_rideid'] == $_GET['for'];
+                                                                });
+
+                                                                echo count($offers_made);
+                                                            ;?>
+                                                        </span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -54,101 +66,146 @@
                                 </div>
                             </div>
 
-
+<?php print_r($offers_made); ?>
 
                             <div class="row">
-                                
                                 <div id="my-result-tab-content" class="tab-content">
-                                    <!--matches-->
+                                    <!--matches - passenger rides going the same way as the driver -->
                                     <div class="tab-pane active" id="Matches" role="tabpanel">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-md">
-                                                <thead>
-                                                    <th>Passenger</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>When</th>
-                                                    <th></th>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($this->res_any as $any) { ?>
-                                                        <tr>
-                                                            <td>
-                                                                <span data-toggle="tooltip" data-placement="top" title="Click to view profile summary">
-                                                                    <a href="#" class="text-danger"><?php echo $any['firstname'] . ' ' . $any['lastname']; ?></a>
-                                                                </span>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $any['departure_from']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $any['destination']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $any['departure_date']; ?>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/request/<?php echo $any['rideid']; ?>/<?php echo $this->user['userid']; ?>/<?php echo $_GET['for']; ?>">
-                                                                    Offer ride
-                                                                </a>
-                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid']; ?>/<?php echo $any['rideid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-booking-post&as=d&for=<?php echo $_GET['for']; ?>">
-                                                                    View Details
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-borderless table-md">
+                                                        <thead>
+                                                            <th>Passenger</th>
+                                                            <th>From</th>
+                                                            <th>To</th>
+                                                            <th>When</th>
+                                                            <th></th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($this->res_any as $any) { ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span data-toggle="tooltip" data-placement="top" title="Click to view profile summary">
+                                                                                <a href="#" class="text-danger"><?php echo $any['firstname'] . ' ' . $any['lastname']; ?></a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php echo $any['departure_from']; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php echo $any['destination']; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php echo $any['departure_date']; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php 
+                                                                                $search_result = array_search($any['rideid'],array_map(function($data) {return $data['rideid'];}, $offers_made),true);
+                                                                                if($search_result) {
+                                                                                    //if the id was found in the array do not display the offer button
+                                                                            ?>
+                                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid']; ?>/<?php echo $any['rideid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-booking-post&as=d&for=<?php echo $_GET['for']; ?>">
+                                                                                    View Details
+                                                                                </a>
+                                                                            <?php } else if(!$search_result) { // if the id was not found in the array display offer button ?>
+                                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/request/<?php echo $any['rideid']; ?>/<?php echo $this->user['userid']; ?>/<?php echo $_GET['for']; ?>">
+                                                                                Offer ride
+                                                                                </a>
+                                                                                <a class="btn btn-default btn-square btn-sm" href="<?php echo URL; ?>dashboard/frmViewBooking/<?php echo $any['userid']; ?>/<?php echo $any['rideid']; ?>/<?php echo $any['ride_type']; ?>/<?php echo $any['return_trip']; ?>?view=view-booking-post&as=d&for=<?php echo $_GET['for']; ?>">
+                                                                                    View Details
+                                                                                </a>
+                                                                            <?php } ?>
+                                                                            
+                                                                        </td>
+                                                                    </tr>
+                                                            <?php } ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!--passenger requests-->
+                                    <!--passenger requests  made to the driver for the trip -->
                                     <div class="tab-pane" id="PassengerRequests" role="tabpanel">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-md">
-                                                <thead>
-                                                    <th>Passenger</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>When</th>
-                                                    <th>Seats Requested</th>
-                                                    <th>Your Response</th>
-                                                </thead>
-                                                <tbody>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-round btn-outline-danger" type="button">
-                                                            <i class="fas fa-check-circle fa-1x"></i>
-                                                        </button>
-                                                        <button class="btn btn-round btn-outline-danger btn-sm" type="button">
-                                                            <i class="fas fa-times-circle"></i>
-                                                        </button>
-                                                    </td>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <?php if (count($this->rides_requests) > 0 && !empty($this->rides_requests)) { ?>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless table-md">
+                                                            <thead>
+                                                                <th>Passenger</th>
+                                                                <th>Travel</th>
+                                                                <th>Seats Requested</th>
+                                                                <th>Response</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach($this->rides_requests as $requests) { ?>
+                                                                <tr>
+                                                                    <td><?php echo $requests['firstname']. " " . $requests['lastname']; ?></td>
+                                                                    <td><?php echo $requests['departure_from'] . " ". $requests['destination'];?></td>
+                                                                    <td><?php echo $requests['seats_for'];?></td>
+                                                                    <td>
+                                                                        <a class="btn btn-round btn-outline-danger btn-sm" 
+                                                                        href="<?php echo URL;?>dashboard/requestResponse/<?php echo $requests['requestid'];?>/<?php echo $this->rideOffer['rideid'];?>/Accepted/D/<?php echo $requests['seats_for'];?>/<?php echo $this->rideOffer['userid'];?>/<?php echo $requests['matching_rideid'];?>/<?php echo $requests['userid'] ?>">
+                                                                            <i class="fas fa-check-circle"></i>
+                                                                        </a>
+                                                                        <a class="btn btn-round btn-outline-danger btn-sm" href="#">
+                                                                            <i class="fas fa-times-circle"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="row">
+                                                <div class="col-12 text-center">
+                                                    <h4>
+                                                        No passengers have made requests for your ride.
+                                                    </h4>
+                                                    <h4>
+                                                        Consider making offers to passengers that have trip requests matching yours in the passenger matches tab.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
 
-                                    <!--offers made -->
+                                    <!--offers made by the driver to passengers going the same way -->
                                     <div class="tab-pane" id="OffersMade" role="tabpanel">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-md">
-                                                <thead>
-                                                    <th>Passenger</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>When</th>
-                                                    <th>Passenger Response</th>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <?php if(count($offers_made) > 0 && !empty($offers_made)) { ?>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-md">
+                                                    <thead>
+                                                        <th>Passenger</th>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>When</th>
+                                                        <th>Passenger Response</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="row">
+                                                <div class="col-12 text-center">
+                                                    <h4>
+                                                        No offers have been made to passengers.
+                                                    </h4>
+                                                    <h4>
+                                                        To make offers to passengers view matching rides in the Passengers Matches tab.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>  
 

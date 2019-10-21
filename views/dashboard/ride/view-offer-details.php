@@ -26,7 +26,6 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                            
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <th colspan="4" class="text-center">

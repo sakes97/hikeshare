@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 07:19 AM
+-- Generation Time: Oct 21, 2019 at 05:05 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -259,9 +259,17 @@ FROM request
 WHERE request.rideid = rideid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRequestsByUser` (IN `userid` VARCHAR(11))  NO SQL
-SELECT * 
-FROM request
-WHERE request.userid = userid$$
+SELECT req.*, CONCAT(u.firstname, ' ', u.lastname) as Member_Name, u.userid as Passenger_ID,
+r.rideid as Passenger_Trip_ID, r.departure_from, r.destination, r.departure_date
+
+
+FROM request as req
+
+INNER JOIN ride as r ON r.rideid = req.rideid
+INNER JOIN user as u ON u.userid = r.userid
+
+
+WHERE req.userid = userid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetReturn` (IN `rideid` VARCHAR(11))  NO SQL
 SELECT *
@@ -577,6 +585,7 @@ CREATE TABLE `request` (
 INSERT INTO `request` (`requestid`, `rideid`, `matching_rideid`, `userid`, `date_requested`, `seats_for`, `request_status`) VALUES
 ('3yueeVhIH5t', 'ZbqrZDoidfE', '4OGqWGwcQ5j', 'Szw332Ada17', '2019-10-18 08:08:11', 2, 'Accepted'),
 ('CESVvYXv1YP', 'ckfEEuV51Bw', 'dkGebrS8C6p', '7', '2019-10-16 06:47:58', 2, 'Accepted'),
+('FgAsJ9aTdB1', '49tzS2tl6wM', 'VaAAy03flng', '8', '2019-10-21 03:36:06', 1, 'Awaiting Response'),
 ('ha6i7mXv112', 'QpYvOmJQgET', 'aoGXU1PFaEX', '5DFcJzbMjbi', '2019-10-10 20:32:43', 3, 'Accepted'),
 ('KDAViKCuOVp', 'AlE2qR8hl5v', 'ZbqrZDoidfE', '8', '2019-10-18 07:57:53', 1, 'Accepted'),
 ('otbZlgL3org', 'vjMFnNwfgo1', 'z8dfNHUbLp6', '8', '2019-10-15 02:31:42', 1, 'Accepted'),

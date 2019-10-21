@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2019 at 05:05 AM
+-- Generation Time: Oct 21, 2019 at 06:05 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -660,6 +660,7 @@ INSERT INTO `ride` (`rideid`, `userid`, `carid`, `seats_available`, `contributio
 ('rudn8mjNdJQ', '7', NULL, NULL, NULL, '2019-10-29', '10:43:00', NULL, 'Port Elizabeth', 'Pretoria', '', 'P', 'O', 'd', 'Active', '2019-10-18 08:43:18', 'XYk9DNIsqbc', NULL, NULL),
 ('srdE1WCPW5P', '8', '5HQbCiPCQrg', 3, 10000, '2019-10-21', '12:45:00', NULL, 'Uitenhage', 'Jeffrey Bay', '', 'D', 'O', 'N', 'Active', '2019-10-20 01:02:43', NULL, NULL, NULL),
 ('SyywtmA4ntM', '8', '5HQbCiPCQrg', 3, 10000, '2019-11-04', '09:04:00', NULL, 'Port Elizabeth', 'East London', '', 'D', 'O', 'N', 'Active', '2019-10-20 01:04:42', NULL, NULL, NULL),
+('ucUQjfQu8Ke', '8', '5HQbCiPCQrg', 3, 10000, '2019-11-29', '06:00:00', NULL, '6 Tomlinson Street, Mosel, Uitenhage, South Africa', 'Nelson Mandela Metropolitan University (Nmmu) South Campus - Hiv/aids Clinic, Summerstrand, Port Elizabeth, South Africa', '', 'D', 'O', 'N', 'Active', '2019-10-21 06:00:29', NULL, NULL, NULL),
 ('VaAAy03flng', '8', '5HQbCiPCQrg', 3, 10000, '2019-11-06', '12:21:00', NULL, 'Cape Town', 'Durban', '', 'D', 'O', 'N', 'Active', '2019-10-20 01:21:09', NULL, NULL, NULL),
 ('vjMFnNwfgo1', '5DFcJzbMjbi', NULL, NULL, NULL, '2019-10-15', '09:05:00', NULL, 'JHB', 'EL', '', 'P', 'O', 'N', 'Booked', '2019-10-15 01:06:07', NULL, NULL, NULL),
 ('XYk9DNIsqbc', '7', NULL, NULL, NULL, '2019-10-23', '10:43:00', NULL, 'Pretoria', 'Port Elizabeth', '', 'P', 'O', 'Y', 'Booked', '2019-10-18 08:43:18', NULL, NULL, NULL),

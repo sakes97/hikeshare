@@ -1,8 +1,18 @@
 <div class="section profile-content">
     <div class="container-fluid">
+            
         <!-- driver -->
         <?php if ($_GET['role'] == 'driver') { ?>
             <h3 class="mb-3">Ride Matches</h3>
+
+            <p id="origin" style="display:none;">
+                <?php echo $this->rideOffer['departure_from'];?>
+            </p>
+            <p id="destination" style="display:none;">
+                <?php echo $this->rideOffer['destination'];?>
+            </p>
+
+
 
             <?php
                 /**
@@ -459,6 +469,14 @@
         <?php } else if ($_GET['role'] == 'passenger') { ?>
             <!-- view as a passsenger -->
             <h3 class="mb-3">Ride Matches</h3>
+            
+            <p id="origin" style="display:none;">
+                <?php echo $this->booking['departure_from'];?>
+            </p>
+            <p id="destination" style="display:none;">
+                <?php echo $this->booking['destination'];?>
+            </p>
+
             <?php
                 /**
                  * (FOR PASSENGER)

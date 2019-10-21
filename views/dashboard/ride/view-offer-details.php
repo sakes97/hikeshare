@@ -70,11 +70,11 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <h5>From:<?php echo $this->rideOffer['departure_from']; ?></h5>
+                                        <h5 id="origin">From:<?php echo $this->rideOffer['departure_from']; ?></h5>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
+                                        <h5 id="destination">To:<?php echo $this->rideOffer['destination']; ?></h5>
                                     </div>
 
 
@@ -243,10 +243,10 @@
                                 <!-- from-to-->
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
-                                        <h5>From:<?php echo $this->rideOffer['departure_from']; ?></h5>
+                                        <h5 id="origin">From:<?php echo $this->rideOffer['departure_from']; ?></h5>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
+                                        <h5 id="destination">To:<?php echo $this->rideOffer['destination']; ?></h5>
                                     </div>
                                 </div>
                                 
@@ -438,11 +438,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>From:<?php echo $this->rideOffer['departure_from']; ?></h5>
+                                    <h5 id="origin">From:<?php echo $this->rideOffer['departure_from']; ?></h5>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>To:<?php echo $this->rideOffer['destination']; ?></h5>
+                                    <h5 id="destination"To:<?php echo $this->rideOffer['destination']; ?></h5>
                                 </div>
 
                                 

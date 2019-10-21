@@ -27,11 +27,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>From:<?php echo $this->booking['departure_from']; ?></h5>
+                                    <h5 id="origin">From:<?php echo $this->booking['departure_from']; ?></h5>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>To:<?php echo $this->booking['destination']; ?></h5>
+                                    <h5 id="destination"To:<?php echo $this->booking['destination']; ?></h5>
                                 </div>
 
 
@@ -236,11 +236,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>From:<?php echo $this->booking['departure_from']; ?></h5>
+                                    <h5 id="origin">From:<?php echo $this->booking['departure_from']; ?></h5>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5>To:<?php echo $this->booking['destination']; ?></h5>
+                                    <h5 id="destination"To:<?php echo $this->booking['destination']; ?></h5>
                                 </div>
 
 

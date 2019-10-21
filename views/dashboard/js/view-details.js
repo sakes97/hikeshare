@@ -1,4 +1,4 @@
-  function initMap() {
+function viewMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeControl: false,
       center: { lat: -33.8688, lng: 151.2195 },
@@ -39,8 +39,7 @@
     // this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(
     //     destinationInput);
   }
-  
-  
+
   AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (
     autocomplete, mode) {
     var me = this;

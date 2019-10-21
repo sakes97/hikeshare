@@ -192,7 +192,7 @@
                                                         <?php foreach($offers_made as $o) { ?>
                                                             <tr>
                                                                 <td>
-                                                                    <?php echo $o['Passenger_Name'];?>
+                                                                    <?php echo $o['Member_Name'];?>
                                                                 </td>
                                                                 <td>
                                                                     <?php echo $o['departure_from'];?>
@@ -624,20 +624,63 @@
                                     <!--offers made -->
                                     <div class="tab-pane" id="OffersMade" role="tabpanel">
                                         
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-md">
-                                                <thead>
-                                                    <th>Driver</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>When</th>
-                                                    <th>Status</th>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <?php if(count($requests_made) > 0 && !empty($requests_made)) { ?>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-md">
+                                                    <thead>
+                                                        <th>Driver</th>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>When</th>
+                                                        <th>Driver Response</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach($requests_made as $r) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php echo $r['Member_Name'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $r['departure_from'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $r['destination'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $r['departure_date'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php if($o['request_status'] == 'Awaiting Response'){ ?>
+                                                                        <span class="alert alert-info">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php }else if($o['request_status'] == 'Accepted'){ ?>
+                                                                        <span class="alert alert-success">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php }else if($o['request_status'] == 'Declined') { ?>
+                                                                        <span class="alert alert-danger">
+                                                                            <?php echo $o['request_status'];?>
+                                                                        </span>
+                                                                    <?php } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="row">
+                                                <div class="col-12 text-center">
+                                                    <h4>
+                                                        No offers have been made to drivers.
+                                                    </h4>
+                                                    <h4>
+                                                        To make requests view matching rides in the Drivers Matches tab.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
 
 

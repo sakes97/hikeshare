@@ -537,7 +537,7 @@ class Dashboard extends Controller
             'dashboard/js/results.js',
             'dashboard/js/messages.js',
             'dashboard/js/ride-details.js',
-            'dashboard/js/view-details'
+            'dashboard/js/view-details.js'
         );
     }
     #endregion

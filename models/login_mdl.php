@@ -23,10 +23,17 @@ class Login_Model extends Model
             );
             Util::init_session();
             Util::set_session('loggedin',$arr);
+            $this->_expireOffers();
             header('location:' . URL . 'dashboard/index');
         }else {
             header('location:' . URL . 'login/index?login=fail');
         }
+    }
+
+    private function _expireOffers()
+    {
+        $query = 'CALL uspExpireOffers()';
+        Database::Execute($query);
     }
 
 }

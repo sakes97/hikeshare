@@ -612,11 +612,11 @@ class Dashboard_Model extends Model
         return $result;
     }
 
-    public function expireOffers()
-    {
-        $query = 'CALL uspExpireOffers()';
-        return Database::Execute($query);
-    }
+    // private function _expireOffers()
+    // {
+    //     $query = 'CALL uspExpireOffers()';
+    //     Database::Execute($query);
+    // }
 
     public function deleteTravel($return_trip, $rideid, $userid, $ride_type)
     {

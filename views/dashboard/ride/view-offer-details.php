@@ -9,7 +9,7 @@
                 <div class="row">
 
 
-                    <div id="map" class="col-sm-12 col-md-5 card card-body">
+                    <div id="results-map" class="col-sm-12 col-md-5 card card-body">
                         <img  src="" alt="Dummy Map">
                     </div>
 
@@ -430,7 +430,7 @@
 
                 <div class="row">
 
-                    <div id="map" class="col-sm-12 col-md-5 card card-body">
+                    <div id="results-map" class="col-sm-12 col-md-5 card card-body">
                         <img  src="" alt="Dummy Map">
                     </div>
 

@@ -531,13 +531,12 @@ class Dashboard extends Controller
         $this->view->js = array(
             'dashboard/js/datetimepickers.js',
             'dashboard/js/general.js',
-            'dashboard/js/offer-ride.js',
+            'dashboard/js/offer-gMaps-api.js',
             'dashboard/js/offer.js',
             'dashboard/js/profile.js',
             'dashboard/js/results.js',
             'dashboard/js/messages.js',
-            'dashboard/js/ride-details.js',
-            'dashboard/js/view-details.js'
+            'dashboard/js/ride-details.js'
         );
     }
     #endregion

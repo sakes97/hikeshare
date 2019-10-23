@@ -445,7 +445,7 @@ class Dashboard_Model extends Model
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
                     foreach ($_POST['days_checklist'] as $day) {
-                        $this->setSchedule($rideid, $day);
+                        $this->_setSchedule($rideid, $day);
                     }
                     $return_time = $_POST['return_time'];
                 }
@@ -504,7 +504,7 @@ class Dashboard_Model extends Model
             if ($_POST['ride_type'] == "R") {
                 if (!empty($_POST['days_checklist'])) {
                     foreach ($_POST['days_checklist'] as $day) {
-                        $this->setSchedule($rideid, $day);
+                        $this->_setSchedule($rideid, $day);
                     }
                     $return_time = $_POST['return_time'];
                 }
@@ -601,7 +601,7 @@ class Dashboard_Model extends Model
         }
     }
 
-    public function setSchedule($rideid, $dayid)
+    private function _setSchedule($rideid, $dayid)
     {
         $query = 'CALL uspSetSchedule(:rideid, :dayid)';
         $params = array(
@@ -611,12 +611,6 @@ class Dashboard_Model extends Model
         $result = Database::Execute($query, $params);
         return $result;
     }
-
-    // private function _expireOffers()
-    // {
-    //     $query = 'CALL uspExpireOffers()';
-    //     Database::Execute($query);
-    // }
 
     public function deleteTravel($return_trip, $rideid, $userid, $ride_type)
     {

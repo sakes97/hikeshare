@@ -257,8 +257,17 @@
                                             <h5>Schedule:</h5>
                                             <p>
                                                 <?php
+                                                    $count = count($this->trip_schedule);
+
                                                     foreach ($this->trip_schedule as $day) {
-                                                        echo $day['dow'];
+                                                        //commas for readability
+                                                        if($count > 1){
+                                                            echo $day['dow'] . ', ';  
+                                                        } else if($count == 1){
+                                                            echo $day['dow'];  
+                                                        }
+                                                        
+                                                        $count--;
                                                     }
                                                 ?>
                                             </p>

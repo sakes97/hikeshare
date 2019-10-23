@@ -8,8 +8,34 @@ $(document).ready(function(){
     });
 
 
-    $("#btnViewProfile").on('click', function(){
+
+    // $("#btnViewProfile").on('click', function(){
+    //     var userid = $(this).attr("data-id");
+    //     var url = 'http://localhost:8080/myphp/hikeshare/dashboard/xhrLoadUser';
+
+    //     $.ajax({
+    //         url: url,
+    //         type: 'POST',
+    //         data: 'id='+userid,
+    //         dataType: 'json'
+    //     }).done(function(data){
+    //         $("#txtName").text(data.firstname + " " + data.lastname);
+    //         $("#txtBio").text(data.bio);
+    //         console.log(data);
+    //     }).fail(function(){
+    //         alert("fail");
+    //     });
+
+    
+    
+    
+    
+    // });
+    
+
+    $(document).on('click','#btnViewProfile', function(){
         var userid = $(this).attr("data-id");
+        // alert(userid);
         var url = 'http://localhost:8080/myphp/hikeshare/dashboard/xhrLoadUser';
 
         $.ajax({
@@ -30,7 +56,6 @@ $(document).ready(function(){
     
     
     });
-    
 
 
 

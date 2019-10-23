@@ -209,13 +209,16 @@
                                                                     <?php echo $acPas['firstname'] . ' ' . $acPas['lastname']; ?>
                                                                 </td>
                                                                 <td>
-                                                                    <a class="btn btn-outline-danger btn-round btn-sm m-2" 
-                                                                    href="<?php echo URL;?>dashboard/frmMessages?view=user-chat">
-                                                                        Message
-                                                                    </a>
-                                                                    <a class="btn btn-outline-danger btn-round btn-sm m-2" href="#">
-                                                                        View Profile
-                                                                    </a>
+                                                                <button class="btn btn-sm btn-round btn-outline-danger m-1"
+                                                                    type="button" id="btnMessageUser" data-toggle="modal" data-target="#Message_User"
+                                                                    data-id="<?php echo $acPas['userid'];?>" >
+                                                                    Message
+                                                                </button>
+                                                                <button class="btn btn-sm btn-round btn-outline-danger  m-1"
+                                                                    type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
+                                                                    data-id="<?php echo $acPas['userid'];?>" >
+                                                                    View profile
+                                                                </button>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
@@ -559,14 +562,11 @@
                                                 <span>
                                                     <?php  if ($acPas['userid'] !== $this->user['userid']) { ?>
                                                     
-                                                        <!-- <a class="btn btn-outline-danger btn-round btn-sm m-2" 
-                                                        href="<?php echo URL;?>dashboard/frmMessages?view=user-chat">
-                                                            Message
-                                                        </a> -->
-
-                                                        <a class="btn btn-outline-danger btn-round btn-sm m-2" href="#">
-                                                            View Profile
-                                                        </a>
+                                                        <button class="btn btn-sm btn-round btn-outline-danger  m-1"
+                                                            type="button" id="btnViewProfile" data-toggle="modal" data-target="#View_User"
+                                                            data-id="<?php echo $acPas['userid'];?>" >
+                                                            View profile
+                                                        </button>
 
                                                     <?php } ?>
                                                 </span>
@@ -646,6 +646,64 @@
 
         <?php }?>
 
-        
+        <!-- view user modal --> 
+        <div class="modal fade" id="View_User" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-profile">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6>View user details</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <img src="<?php echo URL;?>public/images/kaci-baum-2.jpg" class="img-circle img-no-padding img-responsive img-circle">
+                                <p class="text-center" id="txtName"></p>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <h6>User rating</h6>
+                                <p>5.9</p>
+                                <h6>Bio</h6>
+                                <p id="txtBio"></p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- message modal --> 
+        <div class="modal fade" id="Message_User" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-message">
+                <div class="modal-content">
+                    <div class="modal-header no-border-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6>Message User</h6>
+                    </div>
+                    <div class="modal-body">
+                        <form id="msgForm" method="post" action="<?php echo URL;?>dashboard/xhrSendMessage/<?php echo $this->user['userid'];?>">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label data-error="wrong" data-success="right" for="msgText">Your message</label>
+                                    <textarea type="text" id="msgText" name="msgText" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row p-1 m-1">
+                                <div class="mx-auto">
+                                    <button type="button" class="btn btn-sm btn-round btn-danger" id="btnSendMessage"> 
+                                        Send message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -88,12 +88,12 @@
                                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
-                                                Lifts As A Driver
+                                                Lifts as driver
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#ridesBooked">
-                                                Lifts As A Passenger
+                                                Lifts as passenger
                                             </a>
                                         </li>
                                     </ul>
@@ -211,6 +211,7 @@
                                                     <p>No lifts offered</p>
                                             <?php } ?>
                                         </div>
+                                        
                                         <!--booked-->
                                         <div class="tab-pane" id="bookedDriver" role="tabpanel">
                                             <?php if(count($this->upcomingBkdTrips_D) > 0) { ?>
@@ -276,6 +277,7 @@
                                                 <p>no booked trips</p>
                                             <?php } ?>
                                         </div>
+
                                         <!--club--> 
                                         <div class="tab-pane" id="clubDriver" role="tabpanel">
                                             <?php if(count($this->club_D) > 0) { ?>

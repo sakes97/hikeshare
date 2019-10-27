@@ -11,12 +11,12 @@
                         <ul id="tabs" class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#liftsOffered">
-                                    Lifts Offered
+                                    Lifts as driver
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#ridesBooked">
-                                    Rides Booked
+                                    Lifts as passenger
                                 </a>
                             </li>
                         </ul>
@@ -83,6 +83,7 @@
 
 
                 </div>
+
             </div>
         </div>
     </div>

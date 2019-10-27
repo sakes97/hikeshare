@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo URL; ?>dashboard/frmMessages/<?php echo $session['userid'];?>?view=conv-all">
-                        Messages <span class="badge badge-warning">4</span>
+                        Messages <span class="badge badge-warning">?</span>
                     </a>
                 </li>
                 <li class="nav-item">

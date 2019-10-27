@@ -657,6 +657,7 @@
                         <h6>View user details</h6>
                     </div>
                     <div class="modal-body">
+                        <!-- user details --> 
                         <div class="row">
                             <div class="col-sm-12 col-md-4">
                                 <img src="<?php echo URL;?>public/images/kaci-baum-2.jpg" class="img-circle img-no-padding img-responsive img-circle">
@@ -669,7 +670,41 @@
                                 <p id="txtBio"></p>
                             </div>
                         </div>
+
                         <hr>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>Rate User</h6>
+                            </div>
+                            <div class="col-12">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <textarea type="text" class="form-control" id="rating_comment" name="rating_comment" rows="4"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row p-1 m-1">
+                                        <div class="mx-auto">
+                                            <button type="button" class="btn btn-sm btn-round btn-danger">Submit</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -705,5 +740,7 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>

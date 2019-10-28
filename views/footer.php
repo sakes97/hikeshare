@@ -1,5 +1,5 @@
         <footer class="footer footer-white">
-            <!-- <div class="container">
+            <div class="container">
                 <div class="row">
                     <nav class="footer-nav">
                         <ul>
@@ -23,7 +23,7 @@
                         </span>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </footer>
     </div>
 
@@ -40,6 +40,7 @@
             echo '<script type="text/javascript" src="'.URL. 'views/' .$js.'"></script>';
     }
 ?>
+
 <script src="<?php echo URL; ?>public/js/plugins/bootstrap-switch.js"></script>
 
 <script src="<?php echo URL; ?>public/js/plugins/nouislider.min.js" type="text/javascript"></script>
@@ -49,8 +50,8 @@
 
 <script src="<?php echo URL; ?>public/js/paper-kit.min.js?v=2.2.0" type="text/javascript"></script>
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=initMap"
-async defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJmFJBYpMRLsJ2dLI28tC__ddzNO3FV8&libraries=places&callback=initMap"
+async defer></script>
 
 </body>
 </html>

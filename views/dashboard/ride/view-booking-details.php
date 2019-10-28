@@ -1,7 +1,8 @@
 <div class="section profile-content">
     <div class="container-fluid">
 
-        <h3>Offer Details</h3>
+        <h2 class="text-center">Offer Details</h2>
+        <hr class="liner"/>
 
         <?php if ($_GET['view'] == "view-booking-post") { ?>
             
@@ -10,12 +11,8 @@
                 <!--as driver -->
                 <div class="row">
 
-                    <div id="results-map" class="col-sm-12 col-md-5 card card-body">
-                        <img  src="" alt="Dummy Map">
-                    </div>
 
-
-                    <div id="details" class="col-sm-12 col-md-7">
+                    <div id="details" class="col-sm-12 col-md-8 mr-auto ml-auto">
 
                         <div class="card card-body">
                         
@@ -175,12 +172,7 @@
                 <!-- as passenger -->
                 <div class="row">
 
-                    <div id="results-map" class="col-sm-12 col-md-5 card card-body">
-                        <img  src="" alt="Dummy Map">
-                    </div>
-
-
-                    <div id="details" class="col-sm-12 col-md-7">
+                    <div id="details" class="col-sm-12 col-md-8 mr-auto ml-auto">
 
 
                         <div class="card card-body">
@@ -284,9 +276,6 @@
                                 <?php if(date('Y-m-d' ,strtotime($this->booking['departure_date'])) > date('Y-m-d') && $this->booking['status'] !== 'Booked' && $this->booking['status'] !== 'Expired' && $this->booking['status'] !== 'Inactive') { ?>
                                     <div class="row">
                                         <div class="col-12">
-                                            <a class="btn btn-default btn-square btn-sm" href="#">
-                                                Edit
-                                            </a>
                                             <a class="btn btn-default btn-square btn-sm" 
                                             href="<?php echo URL;?>dashboard/deleteTravel/<?php echo $this->booking['return_trip'];?>/<?php echo $this->booking['rideid'];?>/<?php echo $this->booking['driverid'];?>/<?php echo $this->booking['ride_type'];?>">
                                                 Delete

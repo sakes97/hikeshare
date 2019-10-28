@@ -151,3 +151,10 @@
 		-o-transition: all .4s ease;
 		transition: all .4s ease;
 }
+
+.liner{
+    border:0;
+    height: 3px;
+    width: 5%;
+    background-image: linear-gradient(to bottom, red, #f06d06); 
+}

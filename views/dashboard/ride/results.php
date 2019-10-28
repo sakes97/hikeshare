@@ -3,7 +3,8 @@
             
         <!-- driver -->
         <?php if ($_GET['role'] == 'driver') { ?>
-            <h3 class="mb-3">Ride Matches</h3>
+            <h2 class="mb-3 text-center">Ride Matches</h2>
+            <hr class="liner">
 
             <p id="origin" style="display:none;">
                 <?php echo $this->rideOffer['departure_from'];?>
@@ -29,11 +30,8 @@
 
                 <div class="row">
 
-                    <div id="results-map" class="col-md-5 card card-body">
-                        <p>Map</p>
-                    </div>
 
-                    <div class="col-md-7">
+                    <div class="col-sm-12 col-md-8 mr-auto ml-auto">
                         <div class="card card-body">
 
                             <!--wrapper nav-->
@@ -265,11 +263,8 @@
 
                 <div class="row">
 
-                    <div id="results-map" class="col-md-6 card card-body">
-                        <p>Map</p>
-                    </div>
 
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-8 mr-auto ml-auto">
                         <div class="card card-body">
                             <!-- one way -->
                             <?php if ($this->rideOffer['return_trip'] == 'N' || $this->rideOffer['return_trip'] == 'd') { ?>
@@ -458,6 +453,8 @@
                             <?php } ?>
                         </div>
                     </div>
+
+
                 </div>
 
 
@@ -491,11 +488,7 @@
                   
                 <div class="row">
 
-                    <div id="results-map" class="col-md-5 card card-body">
-                        <p>Map</p>
-                    </div>
-
-                    <div class="col-md-7">
+                    <div class="col-sm-12 col-md-8 mr-auto ml-auto">
                         <div class="card card-body">
                             
                             <!--wrapper nav-->
@@ -720,11 +713,8 @@
 
                 <div class="row">
 
-                    <div id="results-map" class="col-md-5 card card-body">
-                        <p>Map</p>
-                    </div>
 
-                    <div class="col-sm-7 col-md-6">
+                    <div class="col-sm-12 col-md-8 mr-auto ml-auto">
                         <div class="card card-body">
                             <!-- one way -->
                             <?php if ($this->booking['return_trip'] == 'N' || $this->booking['return_trip'] == 'd') { ?>

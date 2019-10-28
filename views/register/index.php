@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-lg-4 ml-auto mr-auto">
           <div class="card card-register">
-            <h3 class="title mx-auto">Welcome</h3>
+            <h2 class="title mx-auto">Welcome</h2>
             <form class="register-form" method="post" action="<?php echo URL;?>register/register_standard">
               <label for="inputFname">Firstname</label>
               <input type="text" name="inputFname" class="form-control" placeholder="Firstname" required>

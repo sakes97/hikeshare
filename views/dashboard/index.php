@@ -614,9 +614,6 @@
                                 <a href="<?php echo URL; ?>dashboard/offer_Ride" class="btn btn-outline-danger btn-round">
                                     POST A RIDE
                                 </a>
-                                <a href="<?php echo URL; ?>dashboard/find_Ride?role=d" class="btn btn-outline-danger btn-round">
-                                    FIND A PASSENGER
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -632,9 +629,6 @@
                                 </p>
                                 <a href="<?php echo URL;?>dashboard/frmPostRequest" class="btn btn-outline-danger btn-round">
                                     POST A REQUEST
-                                </a>
-                                <a href="<?php echo URL; ?>dashboard/find_Ride?role=p" class="btn btn-outline-danger btn-round">
-                                    FIND A DRIVER
                                 </a>
                             </div>
                         </div>

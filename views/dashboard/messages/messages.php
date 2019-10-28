@@ -9,28 +9,36 @@
                 <div class="col-12">
 
                     <h2 class="text-center">Conversations</h2>
+                    <?php if(!empty($this->conversations)) { ?>
 
-                    <div class="table-responsive">
-                        <table class="table table-borderless table-sm">
-                            <thead>
-                                <th>Member</th>
-                            </thead>
-                            <tbody>
-                                <?php foreach($this->conversations as $c) { ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $c['Member_Name'];?>
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo URL;?>dashboard/frmMessages/''/<?php echo $c['conversationid'];?>?view=user-chat&mem=<?php echo $c['Member_ID'];?>">
-                                                View Messages
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-sm">
+                                <thead>
+                                    <th>Member</th>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($this->conversations as $c) { ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $c['Member_Name'];?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo URL;?>dashboard/frmMessages/''/<?php echo $c['conversationid'];?>?view=user-chat&mem=<?php echo $c['Member_ID'];?>">
+                                                    View Messages
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php } else { ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>You have no messages shared with other users.</h3>
+                            </div>
+                        </div>
+                    <?php } ?>
 
                 </div>
             </div>

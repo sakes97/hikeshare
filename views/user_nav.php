@@ -31,8 +31,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="ridesDropdown">
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/offer_Ride">Offer Ride</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride?role=p">Find a driver</a>
-                        <a class="dropdown-item" href="<?php echo URL; ?>dashboard/find_Ride?role=d">Find a passenger</a>
+                        <a class="dropdown-item" href="<?php echo URL;?>dashboard/frmPostRequest">Request Ride</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo URL; ?>dashboard/View_Ride_History">View Ride History</a>
                     </div>
@@ -40,11 +39,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo URL; ?>dashboard/frmMessages/<?php echo $session['userid'];?>?view=conv-all">
                         Messages
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL; ?>dashboard/frmPastReviews">
-                    Reviews
                     </a>
                 </li>
                 <li class="nav-item dropdown">

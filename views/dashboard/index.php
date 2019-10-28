@@ -208,7 +208,7 @@
                                                         </div>
                                                     </div>
                                             <?php } else { ?>
-                                                    <p>No lifts offered</p>
+                                                    <h6>No lifts have been offered</h6>
                                             <?php } ?>
                                         </div>
                                         
@@ -274,7 +274,7 @@
                                                     </div>
                                                 </div>
                                             <?php } else { ?>
-                                                <p>no booked trips</p>
+                                                <h6>No trips have been booked</h6>
                                             <?php } ?>
                                         </div>
 
@@ -334,7 +334,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php } else {echo "no active clubs";} ?>
+                                            <?php } else { ?>
+                                                <h6>Not a driver for any lift clubs</h6>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -439,7 +441,7 @@
                                                         </div>
                                                     </div>
                                             <?php } else { ?>
-                                                    <p>You have not posted any ride requests</p>
+                                                    <h6>No ride requests have been made</h6>
                                             <?php } ?>
                                         </div>
                                         <!--booked-->
@@ -507,7 +509,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php } else {echo 'empty';} ?>
+                                            <?php } else { ?>
+                                                <h6>No trips have been booked</h6>
+                                            <?php } ?>
                                         </div>
                                         <!--club--> 
                                         <div class="tab-pane" id="clubPassenger" role="tabpanel">
@@ -569,7 +573,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php } else {echo "no active clubs";} ?>
+                                            <?php } else {  ?>
+                                                <h6>Not a passenger in any lift clubs</h6>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

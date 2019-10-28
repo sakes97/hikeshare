@@ -151,18 +151,17 @@
             <div class="card card-profile card-plain">
               <div class="card-avatar">
                 <a href="#avatar">
-                  <img src="../assets/img/faces/clem-onojeghuo-3.jpg" alt="...">
+                  <img src="<?php echo URL;?>public/images/faces/avatar.jpg" alt="User Image - Avatar">
                 </a>
               </div>
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
                     <h4 class="card-title">Henry Ford</h4>
-                    <h6 class="card-category">Product Manager</h6>
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  Teamwork is so important that it is virtually impossible for you to reach the heights of your capabilities or make the money that you want without becoming very good at it.
+                  Hikeshare is a wonderful community in which members can all share rides together and at an affordable price.
                 </p>
               </div>
               <div class="card-footer text-center">
@@ -176,18 +175,17 @@
             <div class="card card-profile card-plain">
               <div class="card-avatar">
                 <a href="#avatar">
-                  <img src="../assets/img/faces/joe-gardner-2.jpg" alt="...">
+                  <img src="<?php echo URL;?>public/images/faces/eva.jpg" alt="User Image - Eva">
                 </a>
               </div>
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
                     <h4 class="card-title">Sophie West</h4>
-                    <h6 class="card-category">Designer</h6>
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  A group becomes a team when each member is sure enough of himself and his contribution to praise the skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
+                  As long as you've got hikeshare, you don't have to stress about how you going to get to where you going.
                 </p>
               </div>
               <div class="card-footer text-center">
@@ -201,18 +199,17 @@
             <div class="card card-profile card-plain">
               <div class="card-avatar">
                 <a href="#avatar">
-                  <img src="../assets/img/faces/erik-lucatero-2.jpg" alt="...">
+                  <img src="<?php echo URL;?>public/images/faces/ryan.jpg" alt="User Image - Ryan">
                 </a>
               </div>
               <div class="card-body">
                 <a href="#paper-kit">
                   <div class="author">
                     <h4 class="card-title">Robert Orben</h4>
-                    <h6 class="card-category">Developer</h6>
                   </div>
                 </a>
                 <p class="card-description text-center">
-                  The strength of the team is each individual member. The strength of each member is the team. If you can laugh together, you can work together, silence isn’t golden, it’s deadly.
+                  Everyone in the community is very reliable and helpful. You wont regret it.
                 </p>
               </div>
               <div class="card-footer text-center">
@@ -226,49 +223,6 @@
       </div>
     </div>
 
-    <!-- SEND US A MESSAGE -->
-    <div class="section landing-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="text-center">Keep in touch?</h2>
-            <form class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Name</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-single-02"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Name">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label>Email</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-email-85"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Email">
-                  </div>
-                </div>
-              </div>
-              <label>Message</label>
-              <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
-              <div class="row">
-                <div class="col-md-4 ml-auto mr-auto">
-                  <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
   
   </div>

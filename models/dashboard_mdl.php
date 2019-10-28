@@ -869,14 +869,13 @@ class Dashboard_Model extends Model
 
     #region GET
 
-    public function getReviewOfUser()
+    public function getReviewOfUser($reviewerid, $revieweeid)
     {
         $query = 'CALL uspGetReviewOfUser(:reviewerid, :revieweeid)';
         $params = array(
-            ':reviwerid' => $_POST['reviewerid'],
-            ':revieweeid' => $_POST['revieweeid']
+            ':reviewerid' => $reviewerid,
+            ':revieweeid' => $revieweeid
         );
-
         return Database::GetRow($query, $params);
     }
     #endregion
@@ -914,22 +913,6 @@ class Dashboard_Model extends Model
 
     }
 
-    public function updateReview()
-    {
-        $query = 'CALL uspUpdateReview(:reviewid, :rating, :review_comment)';
-        $params = array(
-            ':reviewid' => $_POST['reviewid'],
-            ':rating' => intval($_POST['rating']) + 1,
-            ':review_comment' => $_POST['review_comment']
-        );
-        $result = Database::Execute($query, $params);
-        if($result)
-        {
-            header("Location: {$_REQUEST["return_to"]}&upstatus=success");
-        }else if(!$result){
-            header("Location: {$_REQUEST["return_to"]}&upstatus=fail");
-        }
-    }
 
     #endregion
 

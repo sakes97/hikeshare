@@ -397,11 +397,12 @@ class Dashboard extends Controller
         $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/reviews/view-review', 'user_nav');
     }
-    public function frmReviewUser($revieweeid)
+    public function frmReviewUser($revieweeid, $reviewerid=null)
     {
         $this->view->title = "Review User";
         $this->_getUserDetails($this->_userid);
         $this->_getUser($revieweeid);
+        $this->_getReviewOfUser($reviewerid, $revieweeid);
         $this->view->render('dashboard/reviews/review-user', 'user_nav');
     }
 
@@ -410,6 +411,11 @@ class Dashboard extends Controller
         $this->model->reviewUser();
     }
 
+
+    private function _getReviewOfUser($reviewerid, $revieweeid)
+    {
+        $this->view->reviewOfUser = $this->model->getReviewOfUser($reviewerid, $revieweeid);
+    }
     #endregion
 
     #region Messages

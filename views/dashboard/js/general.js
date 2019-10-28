@@ -46,8 +46,22 @@ $(document).ready(function () {
 
   //user ratings 
   resetStar();
+  
 
   var ratedIndex = -1;
+
+  function ratingCheck(){
+    var orRating = parseInt($("#originalRating").text());
+    if(orRating > 0)
+    {
+      ratedIndex = orRating;
+      setStars(ratedIndex);
+    }else{
+      ratedIndex = -1;
+    }
+  }
+
+  ratingCheck();
 
   $('.fa-star').on('click', function(){
       ratedIndex = parseInt($(this).data('index'));

@@ -219,7 +219,7 @@
                                                                     data-id="<?php echo $acPas['userid'];?>" >
                                                                     View profile
                                                                 </button>
-                                                                <a target="_blank" class="btn btn-sm btn-round btn-outline-danger m-1" href="<?php echo URL;?>dashboard/frmReviewUser/<?php echo $acPas['userid'];?>?revieweeID=<?php echo $acPas['userid'];?>">
+                                                                <a target="_blank" class="btn btn-sm btn-round btn-outline-danger m-1" href="<?php echo URL;?>dashboard/frmReviewUser/<?php echo $acPas['userid'];?>/<?php echo $this->user['userid'];?>?revieweeID=<?php echo $acPas['userid'];?>">
                                                                     Review 
                                                                 </a>
                                                                 </td>

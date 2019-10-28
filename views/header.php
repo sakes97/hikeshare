@@ -40,7 +40,7 @@
             <link href="<?php echo URL . $this->css;?>" rel="stylesheet"/>
         <?php  }   ?>
 
-        <link href="<?php echo URL;?>public/css/error404.css" rel="stylesheet"/>
+        <link href="<?php echo URL;?>public/css/message.css" rel="stylesheet"/>
 
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />

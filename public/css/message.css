@@ -23,3 +23,14 @@
     font:1em Arial;
 }
 
+.outgoing_msg p {
+    background: #fbfbfb none repeat scroll 0 0;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0; 
+    padding: 20px;
+    width:100%;
+    margin: 5px;
+    color: #000;
+}
+

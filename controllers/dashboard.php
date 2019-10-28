@@ -80,6 +80,10 @@ class Dashboard extends Controller
         $this->view->user = $this->model->getUserDetails($userid);
     }
 
+    private function _getUser($uid){
+        $this->view->u = $this->model->getUserDetails($uid);
+    }
+
     private function _getUserID()
     {
         $user_session = Util::get_session('loggedin');
@@ -393,12 +397,19 @@ class Dashboard extends Controller
         $this->_getUserDetails($this->_userid);
         $this->view->render('dashboard/reviews/view-review', 'user_nav');
     }
-    public function review_ride()
+    public function frmReviewUser($revieweeid)
     {
-        $this->view->title = "Review Ride";
+        $this->view->title = "Review User";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/reviews/review-ride', 'user_nav');
+        $this->_getUser($revieweeid);
+        $this->view->render('dashboard/reviews/review-user', 'user_nav');
     }
+
+    public function reviewUser()
+    {
+        $this->model->reviewUser();
+    }
+
     #endregion
 
     #region Messages

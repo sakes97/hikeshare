@@ -41,4 +41,47 @@ $(document).ready(function () {
   });
 
 
+
+
+
+  //user ratings 
+  resetStar();
+
+  var ratedIndex = -1;
+
+  $('.fa-star').on('click', function(){
+      ratedIndex = parseInt($(this).data('index'));
+      $("#rating").val(ratedIndex);
+  });
+
+  $('.fa-star').mouseover(function(){
+      resetStar();
+
+      var currentIndex = parseInt($(this).data('index'));
+
+      setStars(currentIndex);
+
+  });
+
+  $('.fa-star').mouseleave(function(){
+      resetStar();
+
+      if(ratedIndex != -1){
+          setStars(ratedIndex);
+      }
+
+  });
+
+  function resetStar()
+  {
+      $('.fa-star').css('color', 'black');
+  }
+
+  function setStars(max){
+      for(var i = 0; i <= max; i++){
+          $('.fa-star:eq('+i+')').css('color','yellow');
+      }
+  }
+
+
 });

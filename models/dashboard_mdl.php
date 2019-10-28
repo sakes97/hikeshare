@@ -864,4 +864,44 @@ class Dashboard_Model extends Model
     #endregion
 
     #endregion 
+
+    #region Reviews
+
+    #region GET
+    #endregion
+
+
+    #region Execute
+
+    public function reviewUser()
+    {
+        $reviewid = Util::generate_id();
+        $reviewerid = $_POST['reviewerid'];
+        $revieweeid = $_POST['revieweeid'];
+        $rating = $_POST['rating'];
+        $comment = $_POST['review_comment'];
+
+
+        $query = 'CALL uspReviewUser(:reviewid, :reviewerid, :revieweeid, :rating, :review_comment)';
+        $params = array(
+            ':reviewid' => $reviewid,
+            ':reviewerid' => $reviewerid,
+            ':revieweeid' => $revieweeid,
+            ':rating' => $rating,
+            ':review_comment' => $comment
+        );
+        $result = Database::Execute($query, $params);
+
+        if($result)
+        {
+            header("Location: {$_REQUEST["return_to"]}&status=success");
+        }
+
+
+    }
+
+    #endregion
+
+
+    #endregion
 }

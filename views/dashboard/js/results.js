@@ -46,14 +46,11 @@ $(document).ready(function(){
         }).done(function(data){
             $("#txtName").text(data.firstname + " " + data.lastname);
             $("#txtBio").text(data.bio);
-            console.log(data);
+            $("#profileID").text(data.userid);
         }).fail(function(){
-            alert("fail");
+            alert("Unable to retrieve user details. Please try again.");
         });
 
-    
-    
-    
     
     });
 

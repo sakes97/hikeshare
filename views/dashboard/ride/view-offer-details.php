@@ -219,6 +219,9 @@
                                                                     data-id="<?php echo $acPas['userid'];?>" >
                                                                     View profile
                                                                 </button>
+                                                                <a target="_blank" class="btn btn-sm btn-round btn-outline-danger m-1" href="<?php echo URL;?>dashboard/frmReviewUser/<?php echo $acPas['userid'];?>?revieweeID=<?php echo $acPas['userid'];?>">
+                                                                    Review 
+                                                                </a>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
@@ -651,7 +654,7 @@
             <div class="modal-dialog modal-profile">
                 <div class="modal-content">
                     <div class="modal-header no-border-header text-center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button id="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h6>View user details</h6>
@@ -668,40 +671,6 @@
                                 <p>5.9</p>
                                 <h6>Bio</h6>
                                 <p id="txtBio"></p>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <h6>Rate User</h6>
-                            </div>
-                            <div class="col-12">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <textarea type="text" class="form-control" id="rating_comment" name="rating_comment" rows="4"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row p-1 m-1">
-                                        <div class="mx-auto">
-                                            <button type="button" class="btn btn-sm btn-round btn-danger">Submit</button>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
                             </div>
                         </div>
 

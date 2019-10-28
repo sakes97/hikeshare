@@ -32,6 +32,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="col-12">
+                                    <?php 
+                                        if(!empty($this->pastOffers)){
+                                            $this->pastOffers = array_filter($this->pastOffers, function($input){
+                                                return $input['ride_as'] == 'D';
+                                            });
+                                        }
+                                    ?>
                                     <?php if(!empty($this->pastOffers) && count($this->pastOffers) > 0) { ?>
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-md">
@@ -68,7 +75,7 @@
                                             </table>
                                         </div>
                                     <?php } else { ?>
-                                        <h6>No past offers</h6>
+                                        <h6>No past trips as a driver</h6>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -78,7 +85,50 @@
 
                     <!--booking content-->
                     <div class="tab-pane" id="ridesBooked" role="tabpanel">
-                        <h6>Your Request Bookings</h6>
+                        <div class="card">
+                                <div class="card-body">
+                                    <div class="col-12">
+                                        <?php if(!empty($this->myPastBookings) && count($this->myPastBookings) > 0) { ?>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-md">
+                                                    <thead>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>When</th>
+                                                        <th colspan="2">Status</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach($this->myPastBookings as $p) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php echo $p['departure_from']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $p['destination']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $p['departure_date']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $p['status'];?>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-sm btn-default btn-square" 
+                                                                    href="<?php echo URL;?>dashboard/View_Offer_Details/<?php echo $p['rideid'];?>/<?php echo $p['userid'];?>/<?php echo $p['ride_type']?>?view=view-offer-post&as=p">
+                                                                        View Details
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        <?php } else { ?>
+                                            <h6>No past trips as a passenger</h6>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
 

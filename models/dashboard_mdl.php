@@ -222,6 +222,13 @@ class Dashboard_Model extends Model
     #region Ride
 
     #region Get Functions
+
+    public function getPastBookings($id){
+        $query = 'CALL uspGetPastBookings(:userid)';
+        $params = array(':userid' => $id);
+        return Database::GetAll($query, $params);
+    }
+
     public function getOffers($driverid)
     {
         $query = 'CALL uspGetOffers(:driverid)';

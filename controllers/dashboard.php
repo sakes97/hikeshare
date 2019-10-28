@@ -161,7 +161,7 @@ class Dashboard extends Controller
         $this->_getUserDetails($this->_userid);
 
         $this->_getPastOffers($this->_userid);
-        
+        $this->_getPastBookings($this->_userid);
 
 
         //render view 
@@ -212,6 +212,11 @@ class Dashboard extends Controller
         $this->_getRidesRequests($rideid);
         $this->_getAllRequests();
         $this->view->render('dashboard/ride/results', 'user_nav');
+    }
+
+    private function _getPastBookings($id)
+    {
+        $this->view->myPastBookings = $this->model->getPastBookings($id);
     }
 
     public function frmNoti()

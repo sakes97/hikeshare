@@ -868,6 +868,17 @@ class Dashboard_Model extends Model
     #region Reviews
 
     #region GET
+
+    public function getReviewOfUser()
+    {
+        $query = 'CALL uspGetReviewOfUser(:reviewerid, :revieweeid)';
+        $params = array(
+            ':reviwerid' => $_POST['reviewerid'],
+            ':revieweeid' => $_POST['revieweeid']
+        );
+
+        return Database::GetRow($query, $params);
+    }
     #endregion
 
 
@@ -878,7 +889,8 @@ class Dashboard_Model extends Model
         $reviewid = Util::generate_id();
         $reviewerid = $_POST['reviewerid'];
         $revieweeid = $_POST['revieweeid'];
-        $rating = $_POST['rating'];
+        $rating = intval($_POST['rating']);
+        $rating = $rating + 1;
         $comment = $_POST['review_comment'];
 
 
@@ -895,9 +907,28 @@ class Dashboard_Model extends Model
         if($result)
         {
             header("Location: {$_REQUEST["return_to"]}&status=success");
+        }else if(!$result){
+            header("Location: {$_REQUEST["return_to"]}&status=fail");
         }
 
 
+    }
+
+    public function updateReview()
+    {
+        $query = 'CALL uspUpdateReview(:reviewid, :rating, :review_comment)';
+        $params = array(
+            ':reviewid' => $_POST['reviewid'],
+            ':rating' => intval($_POST['rating']) + 1,
+            ':review_comment' => $_POST['review_comment']
+        );
+        $result = Database::Execute($query, $params);
+        if($result)
+        {
+            header("Location: {$_REQUEST["return_to"]}&upstatus=success");
+        }else if(!$result){
+            header("Location: {$_REQUEST["return_to"]}&upstatus=fail");
+        }
     }
 
     #endregion

@@ -5,7 +5,12 @@
             <div class="col-sm-12 col-lg-3 text-center">
                 <div class="owner">
                     <div class="avatar">
-                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($this->user['picture']); ?>" alt="User Profile Picture" class="img-circle img-no-padding img-responsive img-circle">
+                        <?php if($this->user['picture'] != NULL) { ?>
+                            <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($this->user['picture']); ?>" alt="User Profile Picture" class="img-circle img-no-padding img-responsive">
+                        <?php } else { ?>
+
+                            <img src="<?php echo URL;?>public/images/profile-picture-silhouette.jpg" alt="User Profile Picture" class="img-circle img-no-padding img-responsive">
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="name">
@@ -77,8 +82,7 @@
             <!-- rides -->
             <div class="col-sm-12 col-lg-9">
                 
-                
-                <?php if(count($this->activeOffers) > 0 || (count($this->active_pass_post) > 0) || count($this->pas_req) > 0) { ?>
+                <?php if(count($this->activeOffers) > 0 || (count($this->active_pass_post) > 0)) { ?>
                     
                     <div class="row">
                         <div class="col-sm-12 col-md-12">

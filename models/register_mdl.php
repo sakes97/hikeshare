@@ -19,23 +19,16 @@ class Register_Model extends Model
             ':userid' => $userid,
         );
         $result = Database::Execute($query, $params);
-        if ($result) {
+        if (!empty($result)) {
             $arr = array(
                 'online'=>true,
                 'userid'=>$userid
             );
             Util::init_session();
             Util::set_session('loggedin',$arr);
-            header('location:' . URL . 'dashboard');
-            exit;
+            header('location:' . URL . 'dashboard/index?reg-msg=success');
         } else {
-            header('location:' . URL .'register');
+            header('location:' . URL .'register/index?register=fail');
         }
     }
-
-    public function register_google()
-    {}
-
-    public function register_facebook()
-    {}
 }

@@ -35,5 +35,4 @@ class Login_Model extends Model
         $query = 'CALL uspExpireOffers()';
         Database::Execute($query);
     }
-
 }

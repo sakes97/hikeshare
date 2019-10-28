@@ -33,31 +33,17 @@
         <div class="col-lg-4 ml-auto mr-auto">
           <div class="card card-register">
             <h3 class="title mx-auto">Welcome</h3>
-            <div class="social-line text-center">
-              <a href="<?php echo URL; ?>register/register_facebook" class="btn btn-neutral btn-facebook btn-just-icon">
-                <i class="fab fa-facebook-square"></i>
-              </a>
-              <a href="<?php echo URL; ?>register/register_google" class="btn btn-neutral btn-google btn-just-icon">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-              <a href="<?php echo URL; ?>register/register_google" class="btn btn-neutral btn-twitter btn-just-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
             <form class="register-form" method="post" action="<?php echo URL;?>register/register_standard">
-              <label>Firstname</label>
+              <label for="inputFname">Firstname</label>
               <input type="text" name="inputFname" class="form-control" placeholder="Firstname" required>
-              <label>Lastname</label>
+              <label for="inputLname">Lastname</label>
               <input type="text" name="inputLname" class="form-control" placeholder="Lastname" required>
-              <label>Email</label>
+              <label for="inputEmail">Email</label>
               <input type="text" name="inputEmail"  class="form-control" placeholder="Email" required>
-              <label>Password</label>
+              <label for="inputPassword">Password</label>
               <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
-              <button class="btn btn-danger btn-block btn-round">Register</button>
+              <button class="btn btn-danger btn-block btn-round" type="submit">Register</button>
             </form>
-            <div class="forgot">
-              <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
-            </div>
           </div>
         </div>
       </div>

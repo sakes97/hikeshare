@@ -1,5 +1,5 @@
 <div class="section profile-content">
   <div class="container">
-    <h1>Review Past Rides</h1>
+    <h3 class="text-center">View Your Past Reviews</h3>
   </div>
 </div>

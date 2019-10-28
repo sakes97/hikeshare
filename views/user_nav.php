@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL; ?>dashboard/review_past_rides">
+                    <a class="nav-link" href="<?php echo URL; ?>dashboard/frmPastReviews">
                     Reviews
                     </a>
                 </li>

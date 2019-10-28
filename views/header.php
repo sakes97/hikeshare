@@ -35,9 +35,12 @@
         <link href="<?php echo URL; ?>public/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
 
         <!-- Dynamically link view css-->
-        <?php if (isset($this->css)) { ?>
+        <?php if (isset($this->css)) {  ?>
+            
             <link href="<?php echo URL . $this->css;?>" rel="stylesheet"/>
         <?php  }   ?>
+
+        <link href="<?php echo URL;?>public/css/error404.css" rel="stylesheet"/>
 
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />

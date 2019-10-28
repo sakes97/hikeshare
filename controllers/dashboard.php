@@ -13,6 +13,7 @@ class Dashboard extends Controller
         $this->_userid = $this->_getUserID();
 
         $this->_loadJS();
+
     }
     #region Index
     public function index()
@@ -385,18 +386,13 @@ class Dashboard extends Controller
     #endregion
 
     #region Reviews
-    public function review_past_rides()
+    public function frmPastReviews()
     {
-        $this->view->title = "Review Past Rides";
+        $this->view->title = "Past Reviews";
         $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/reviews/review-past-rides', 'user_nav');
+        $this->view->render('dashboard/reviews/past-reviews', 'user_nav');
     }
-    public function view_Review()
-    {
-        $this->view->title = "View Review";
-        $this->_getUserDetails($this->_userid);
-        $this->view->render('dashboard/reviews/view-review', 'user_nav');
-    }
+
     public function frmReviewUser($revieweeid, $reviewerid=null)
     {
         $this->view->title = "Review User";

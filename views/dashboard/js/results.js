@@ -47,6 +47,7 @@ $(document).ready(function(){
             $("#txtName").text(data.firstname + " " + data.lastname);
             $("#txtBio").text(data.bio);
             $("#profileID").text(data.userid);
+            $("#txtRating").text(data.rating);
         }).fail(function(){
             alert("Unable to retrieve user details. Please try again.");
         });

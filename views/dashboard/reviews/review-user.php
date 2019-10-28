@@ -79,7 +79,7 @@
 
                 <?php } else { ?>
 
-                    <?php if(count($this->reviewOfUser) < 1) { ?>
+                    <?php if(empty($this->reviewOfUser)) { ?>
                         <div class="row">
                             <div class="col-12">
                                 <h6 class="text-center">Rate User</h6>
@@ -106,7 +106,7 @@
 
                                     <div class="row">
                                         <div class="col-12">
-                                            <textarea type="text" class="form-control" id="review_comment" name="review_comment" rows="4"></textarea>
+                                            <textarea type="text" class="form-control" id="review_comment" placeholder="Write a short comment about your experience with the member...." name="review_comment" rows="4"></textarea>
                                         </div>
                                     </div>
 
@@ -124,7 +124,7 @@
                     <?php } else { ?>
                         <div class="row">
                             <div class="col-12">
-                                <h6 class="text-center">Update your rating</h6>
+                                <h6 class="text-center">Your review for the user</h6>
                             </div>
                         </div>
 

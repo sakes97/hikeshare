@@ -127,6 +127,12 @@ class Dashboard_Model extends Model
         $params = array(':userid' => $id);
         return Database::GetRow($query, $params);
     }
+    public function getRating($id)
+    {
+        $query = 'CALL uspGetRating(:userid)';
+        $params = array(':userid' => $id);
+        return Database::GetRow($query, $params);
+    }
     #endregion
 
     #region Execute Functions 

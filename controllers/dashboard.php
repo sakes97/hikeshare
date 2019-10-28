@@ -97,6 +97,8 @@ class Dashboard extends Controller
         if(isset($_POST['id']) && !empty($_POST['id'])){
             $id = $_POST['id'];
             $profile = $this->model->getUserDetails($id);
+            $rating = $this->model->getRating($id);
+
             if(isset($profile) && !empty($profile))
             {
                 $data = array();
@@ -112,6 +114,8 @@ class Dashboard extends Controller
                 $data['alcohol_yn'] =$profile['alcohol_yn'];
                 $data['pets_yn'] = $profile['pets_yn'];
                 $data['smoking_yn'] = $profile['smoking_yn'];
+                $data['rating'] = number_format((float)$rating['rating'], 2, '.', '');
+                
             
                 echo json_encode($data);
             }

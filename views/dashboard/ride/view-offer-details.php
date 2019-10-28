@@ -668,7 +668,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <h6>User rating</h6>
-                                <p>5.9</p>
+                                <p id="txtRating">5.9</p>
                                 <h6>Bio</h6>
                                 <p id="txtBio"></p>
                             </div>
